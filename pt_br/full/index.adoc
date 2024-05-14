@@ -1,4 +1,4 @@
-= Começando Concorrente: Uma introdução leve à Programação Concorrente
+= Começando Concorrente: Uma Introdução Gentil à Programação Concorrente
 Barry Wittman <wittman1@otterbein.edu>; Tim Korb <jtk@purdue.edu>; Aditya Mathur <apm@purdue.edu>
 :doctype: book
 :toc: left

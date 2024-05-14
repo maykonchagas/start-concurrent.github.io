@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.22">
 <meta name="author" content="Barry Wittman, Tim Korb, Aditya Mathur">
-<title>Começando Concorrente: Uma introdução leve à Programação Concorrente</title>
+<title>Começando Concorrente: Uma Introdução Gentil à Programação Concorrente</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <link rel="stylesheet" href="style0.css" type="text/css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Começando Concorrente: Uma introdução leve à Programação Concorrente</h1>
+<h1>Começando Concorrente: Uma Introdução Gentil à Programação Concorrente</h1>
 <div class="details">
 <span id="author" class="author">Barry Wittman</span><br>
 <span id="email" class="email"><a href="mailto:wittman1@otterbein.edu">wittman1@otterbein.edu</a></span><br>
@@ -24,7 +24,7 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="index.html">Start Concurrent</a></li><li><a href="index.html">1. Computer Basics</a>
+<li><a href="index.html">Começando Concorrente</a></li><li><a href="index.html">1. Computer Basics</a>
 <ul class="sectlevel2">
 <li><a href="index.html#_problem_buying_a_computer">1.1. Problem: Buying a computer</a></li>
 <li><a href="index.html#_concepts_hardware_and_software">1.2. Concepts: Hardware and software</a></li>
@@ -158,11 +158,11 @@
 <li><a href="chap12.html#_exercises_12">12.6. Exercises</a></li>
 </ul>
 </li>
-<li class="current"><a href="chap13.html">13. Concurrent Programming</a>
+<li class="current"><a href="chap13.html">13. Programação Concorrente</a>
 <ul class="sectlevel2">
-<li class="current"><a href="chap13.html#_introduction_2">13.1. Introduction</a></li>
-<li class="current"><a href="chap13.html#_problem_deadly_virus">13.2. Problem: Deadly virus</a></li>
-<li class="current"><a href="chap13.html#_concepts_splitting_up_work">13.3. Concepts: Splitting up work</a></li>
+<li class="current"><a href="chap13.html#_introdução">13.1. Introdução</a></li>
+<li class="current"><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
+<li class="current"><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li class="current"><a href="chap13.html#_syntax_threads_in_java">13.4. Syntax: Threads in Java</a></li>
 <li class="current"><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
 <li class="current"><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
@@ -174,7 +174,7 @@
 </li>
 <li><a href="chap14.html">14. Synchronization</a>
 <ul class="sectlevel2">
-<li><a href="chap14.html#_introduction_3">14.1. Introduction</a></li>
+<li><a href="chap14.html#_introduction_2">14.1. Introduction</a></li>
 <li><a href="chap14.html#_problem_dining_philosophers">14.2. Problem: Dining philosophers</a></li>
 <li><a href="chap14.html#_concepts_thread_interaction">14.3. Concepts: Thread interaction</a></li>
 <li><a href="chap14.html#_syntax_thread_synchronization">14.4. Syntax: Thread synchronization</a></li>
@@ -289,14 +289,14 @@
 
 
 <div class="sect1">
-<h2 id="ch13-concurrency">13. Concurrent Programming</h2>
+<h2 id="ch13-concurrency">13. Programação Concorrente</h2>
 <div class="sectionbody">
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>Time is the substance from which I am made. Time is a river which carries me along, but I am
-the river; it is a tiger that devours me, but I am the tiger; it is a fire that consumes me, but I am
-the fire.</p>
+<p>O tempo é a substância da qual sou feito. O tempo é um rio que me arrasta, mas
+eu sou o rio; é um tigre que me devora, mas eu sou o tigre; é um fogo que me
+consome, mas eu sou o fogo.</p>
 </div>
 </blockquote>
 <div class="attribution">
@@ -304,75 +304,33 @@ the fire.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_introduction_2">13.1. Introduction</h3>
+<h3 id="_introdução">13.1. Introdução</h3>
 <div class="paragraph">
-<p>So far we’ve focused mostly on writing sequential programs. Sequential execution
-means that program statements are executed one at a time in a sequence
-determined by program logic and input data. However, more than
-one program statement can be executed independently by a multicore
-processor. While it’s common for
-programmers to write sequential programs, the widespread availability of
-multicore processors in a single computer has led to an increase in the
-demand for programmers who can write <em>concurrent</em> programs.</p>
+<p>Até agora, nos concentramos principalmente em escrever programas sequenciais. A execução sequencial significa que as instruções do programa são executadas uma de cada vez em uma sequência determinada pela lógica do programa e pelos dados de entrada. No entanto, mais de uma instrução de programa pode ser executada independentemente por um processador multicore. Embora seja comum os programadores escreverem programas sequenciais, a disponibilidade generalizada de processadores de vários núcleos em um único computador levou a um aumento na demanda por programadores que possam escrever programas concorrentes.</p>
 </div>
 <div class="paragraph">
-<p>A concurrent program is one in which several statements can be executed
-simultaneously by two or more cores. In this chapter we show how to
-write simple concurrent programs in Java that exploit the power of a
-multicore computer. We begin with a problem where the fate of the
-planet’s in grave danger!</p>
+<p>Um programa concorrente é aquele em que várias instruções podem ser executadas simultaneamente por dois ou mais núcleos. Neste capítulo, mostramos como escrever programas concorrentes simples em Java que exploram o poder de um computador com vários núcleos. Começamos com um problema em que o destino do planeta está em grave perigo!</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_problem_deadly_virus">13.2. Problem: Deadly virus</h3>
+<h3 id="_problema_vírus_mortal">13.2. Problema: Vírus mortal</h3>
 <div class="paragraph">
-<p>A deadly virus capable of wiping out the world’s population is about to
-be released by an evil mastermind. Only he knows the security code that
-can stop the countdown. The world is doomed. The single hope for
-salvation lies with you and your Java programming skills. Through the
-investigations of a top secret, government-funded spy ring, it’s been
-revealed that the security code is tied to the number
-59,984,005,171,248,659. This large number is the product of two prime
-numbers, and the security code is their sum. All you need to do is
-factor the number 59,984,005,171,248,659 into its two prime factors and add them.</p>
+<p>Um vírus mortal capaz de exterminar a população mundial está prestes a ser liberado por um gênio do mal. Somente ele sabe o código de segurança que pode interromper a contagem regressiva.  O mundo está condenado. A única esperança de salvação está em você e em suas habilidades de programação em Java. Por meio das investigações de uma rede de espionagem ultrassecreta e financiada pelo governo, foi revelado que o código de segurança está vinculado ao número 59.984.005.171.248.659. Esse grande número é o produto de dois números primos, e o código de segurança é a soma deles. Tudo o que você precisa fazer é fatorar o número 59.984.005.171.248.659 em seus dois fatores primos e somá-los.</p>
 </div>
 <div class="paragraph">
-<p>Of course, there’s a catch. The deadly virus is going to be released
-soon, so soon that there might not be enough time for your computer to
-search through all the numbers one by one. Instead, you must use
-concurrency to check more than one number at a time.</p>
+<p>É claro que há uma pegadinha.  O vírus mortal será lançado em breve, tão em breve que talvez não haja tempo suficiente para seu computador pesquisar todos os números um a um. Em vez disso, você deve usar a concorrência para verificar mais de um número por vez.</p>
 </div>
 <div class="paragraph">
-<p>Does this problem sound contrived? To keep information sent over the
-Internet private, many kinds of public key cryptography rely on the
-difficulty of factoring large numbers. Although factoring the number in
-this problem isn’t difficult, the numbers used for public key
-cryptography, typically more than 300 decimal digits long, have resisted
-factorization by even the fastest computers.</p>
+<p>Esse problema parece artificial?  Para manter a privacidade das informações enviadas pela Internet, muitos tipos de criptografia de chave pública dependem da dificuldade de fatorar números grandes. Embora a fatoração do número nesse problema não seja difícil, os números usados para criptografia de chave pública, geralmente com mais de 300 dígitos decimais, resistem à fatoração até mesmo pelos computadores mais rápidos.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concepts_splitting_up_work">13.3. Concepts: Splitting up work</h3>
+<h3 id="_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</h3>
 <div class="paragraph">
-<p>The deadly virus problem has one large task (factoring a number) to
-perform. How should we split up this task so that we can do it more
-quickly? Splitting up the work to be done is at the heart of any
-concurrent solution to a problem.</p>
+<p>O problema do vírus mortal tem uma grande tarefa (fatorar um número) a ser executada.  Como devemos dividir essa tarefa para que possamos realizá-la mais rapidamente? Dividir o trabalho a ser feito é o cerne de qualquer solução simultânea para um problema.</p>
 </div>
 <div class="paragraph">
-<p>In a multicore processor, each core is an independent worker. It takes
-some care to coordinate these workers. First of all, we still need to
-get the right answer. A concurrent solution is worthless if it’s
-incorrect, and by reading and writing to the same shared memory, answers
-found by one core can corrupt answers found by other cores. Preventing
-that problem will be addressed in <a href="chap14.html">Chapter 14</a>.
-Once we can guarantee the concurrent solution is correct, we also want to
-improve performance. Perhaps we want the task to finish more
-quickly. Perhaps we have an interactive system that should continue to
-handle user requests even though it’s working on a solution in the
-background. Again, if the overhead of coordinating our workers takes
-more time than a sequential solution or makes the system less
-responsive, it’s not useful.</p>
+<p>Em um processador com vários núcleos, cada núcleo é um trabalhador independente.  É preciso algum cuidado para coordenar esses trabalhadores. Antes de tudo, ainda precisamos obter a resposta correta. Uma solução concorrente não tem valor se estiver incorreta e, ao ler e gravar na mesma memória compartilhada, as respostas encontradas por um núcleo podem corromper as respostas encontradas por outros núcleos. A prevenção desse problema será abordada no <a href="chap14.html">Chapter 14</a>. Quando pudermos garantir que a solução concorrente está correta, também vamos querer melhorar o desempenho. Talvez queiramos que a tarefa seja concluída mais rapidamente. Talvez tenhamos um sistema interativo que deva continuar a lidar com as solicitações dos usuários mesmo que esteja trabalhando em uma solução em segundo plano. Novamente, se a sobrecarga de coordenar nossos trabalhadores levar mais tempo do que uma solução sequencial ou tornar o sistema menos responsivo, isso não será útil.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -382,36 +340,18 @@ responsive, it’s not useful.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>There are two main ways to split up work. The first is called
-<em>task decomposition</em>. In this approach, each worker is given a different job
-to do. The second is called <em>domain decomposition</em>. In this approach,
-the workers do the same job but to different data.</p>
+<p>Há duas maneiras principais de dividir o trabalho. A primeira é chamada de <em>decomposição de tarefas</em>. Nessa abordagem, cada funcionário recebe uma tarefa diferente para fazer. A segunda é chamada de <em>decomposição de domínio</em>. Nessa abordagem, os funcionários fazem o mesmo trabalho, mas com dados diferentes.</p>
 </div>
 <div class="paragraph">
-<p>It’s possible to use both task and domain decomposition together to
-solve the same problem. With both kinds of decomposition, it’s usually
-necessary to coordinate the workers so that they can share information.
-In the next two subsections, we describe task decomposition and domain
-decomposition in greater depth. Then we discuss mapping tasks to threads
-of execution and the different memory architectures that can be used for
-concurrent programming.</p>
+<p>É possível usar tanto a decomposição de tarefas quanto a de domínios para resolver o mesmo problema. Com os dois tipos de decomposição, geralmente é necessário coordenar os trabalhadores para que possam compartilhar informações. Nas próximas duas subseções, descreveremos com mais detalhes a decomposição de tarefas e a decomposição de domínios. Em seguida, discutiremos o mapeamento de tarefas para <em>threads</em> de execução e as diferentes arquiteturas de memória que podem ser usadas para programação simultânea.</p>
 </div>
 <div class="sect3">
-<h4 id="_task_decomposition">13.3.1. Task decomposition</h4>
+<h4 id="_decomposição_de_tarefas">13.3.1. Decomposição de tarefas</h4>
 <div class="paragraph">
-<p>The idea of breaking a task down into smaller subtasks is a natural one.
-Imagine you’re planning a dinner party. You need to buy supplies, cook
-the dinner, clean your house, and set the table. If four of you were
-planning the party, each could perform a separate activity. The
-preparations could go much faster than if a single person was doing the
-work, but coordination is still important. Perhaps the person cooking
-the dinner couldn’t finish until certain supplies were bought.</p>
+<p>A ideia de dividir uma tarefa em subtarefas menores é natural. Imagine que você está planejando um jantar. Você precisa comprar suprimentos, preparar o jantar, limpar a casa e arrumar a mesa. Se quatro de vocês estivessem planejando a festa, cada um poderia realizar uma atividade separada. Os preparativos poderiam ser muito mais rápidos do que se uma única pessoa estivesse fazendo o trabalho, mas a coordenação ainda é importante. Talvez a pessoa que estiver preparando o jantar não possa terminar até que certos suprimentos sejam comprados.</p>
 </div>
 <div class="paragraph">
-<p>Task decomposition is often easier than domain decomposition because
-many tasks have natural divisions. Unfortunately, it’s not always an
-effective way to use multiple cores on a computer. If one task finishes
-long before the others, a core might sit idle.</p>
+<p>A decomposição de tarefas geralmente é mais fácil do que a decomposição de domínios porque muitas tarefas têm divisões naturais. Infelizmente, essa nem sempre é uma maneira eficaz de usar vários núcleos em um computador. Se uma tarefa for concluída muito antes das outras, um núcleo poderá ficar ocioso.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -421,32 +361,31 @@ long before the others, a core might sit idle.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The next two examples give simple illustrations of the process of
-splitting a task into smaller subtasks in the context of multicore
-programming.</p>
+<p>Os dois exemplos a seguir mostram ilustrações simples do processo de divisão de uma tarefa em subtarefas menores no contexto da programação multicore.</p>
 </div>
 <div id="videoGameTasksExample" class="exampleblock">
-<div class="title">Example 13.1 Video game tasks</div>
+<div class="title">Example 13.1 Tarefas de video game</div>
 <div class="content">
 <div class="paragraph">
-<p>Consider a simple video game that consists of the following tasks.</p>
+<p>Considere um video game simples que consiste nas seguintes tarefas
+Consider a simple video game that consists of the following tasks.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Start game</p>
+<p>Iniciar o jogo</p>
 </li>
 <li>
-<p>Process move</p>
+<p>Processar a jogada</p>
 </li>
 <li>
-<p>Update score</p>
+<p>Atualizar pontuação</p>
 </li>
 <li>
-<p>Repaint screen</p>
+<p>Repintar a tela</p>
 </li>
 <li>
-<p>End game</p>
+<p>Encerrar o jogo</p>
 </li>
 </ol>
 </div>
@@ -2639,7 +2578,7 @@ wait and which threads terminate.</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-13 21:39:09 -0300
+Last updated 2024-05-14 12:00:37 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>
