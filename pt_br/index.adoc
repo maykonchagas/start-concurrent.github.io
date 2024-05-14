@@ -21,8 +21,8 @@ link:http://www.thepress.purdue.edu/titles/format/9781626710092[Purdue Universit
 link:https://www.amazon.com/Start-Concurrent-Introduction-Problem-Concurrency/dp/1626710090[Amazon^],
 além disso o texto também está disponível na íntegra em HTML para leitura em um navegador web.
 A versão HTML está disponível como um documento único (o que permite uma pesquisa fácil) e dividida 
-num documento separado para cada capítulo (o que reduz o tempo de carregamento). Clique numa ligação 
-abaixo para aceder à versão pretendida.
+num documento separado para cada capítulo (o que reduz o tempo de carregamento). Clique em um __link__ 
+abaixo para acessar à versão pretendida.
 
 * link:full/index.html[HTML (documento único)]
 * link:chunked/index.html[HTML (dividido)]
@@ -50,57 +50,57 @@ faça alterações no código fonte e submeta um __pull request__.
 
 == Sobre
 
-Welcome to __Start Concurrent__!
-This book is intended as an entry point into the challenging realm of multicore computing.
-It's designed to introduce students to concurrent programming at the same time they are learning the basics of sequential
-programming, early in their college days. After mastering the concepts covered
-here, students should be prepared when they encounter more complex forms of
-concurrency in advanced courses and in the workplace. A generation of
-students who learn concurrency from their first course will be ready to exploit
-the full power of multicore chips by the time they join the workforce.
+Bem-vindo ao __Start Concurrent__!
+Este livro foi concebido como um ponto de entrada para o desafiador domínio da 
+computação multicore. Ele foi projetado para apresentar aos alunos a programação 
+concorrente ao mesmo tempo em que eles aprendem os fundamentos da programação 
+sequencial, no início da faculdade. Depois de dominar os conceitos abordados 
+aqui, os alunos devem estar preparados quando se depararem com formas mais 
+complexas de concorrência em cursos avançados e no local de trabalho. Uma 
+geração de alunos que aprende a concorrência em seu primeiro curso estará pronta 
+para explorar todo o poder dos chips com vários núcleos quando ingressar no mercado 
+de trabalho.
 
-Multicore processors are omnipresent. Whether you use a desktop, a laptop, or even just a smart phone,
-chances are that your computer has a multicore chip at its heart. Inexpensive
-parallel computers have been prophesied for years. That time has come. Parallel
-computers sit on our laps and in our pockets. This progress in microprocessor
-technology has thrown a challenge to educators: __How can we teach
-concurrent programming?__
+Os processadores multicore são onipresentes. Quer você use um desktop, um laptop ou 
+até mesmo um smartphone, é bem provável que seu computador tenha um chip multicore 
+em seu coração. Computadores paralelos de baixo custo foram profetizados durante anos. 
+Esse momento chegou. Os computadores paralelos estão em nossas mãos e em nossos bolsos. 
+Esse progresso na tecnologia de microprocessadores lançou um desafio aos educadores: __Como 
+podemos ensinar programação simultânea?__
 
-Computer programming has been taught in academia for decades. However, the
-unwritten goal in nearly every beginning programming class has been teaching
-students to write, compile, test, and debug *sequential* programs.
-Material related to concurrent programming is often left to courses about
-operating systems and programming languages or courses in high performance
-computing. Now that parallel computers are everywhere, should we consider
-introducing the fundamentals  of concurrent programming in beginner classes in
-programming?
+A programação de computadores tem sido ensinada no meio acadêmico há décadas. No 
+entanto, o objetivo não escrito em quase todas as aulas de programação para iniciantes 
+tem sido ensinar os alunos a escrever, compilar, testar e depurar programas *sequenciais*. 
+O material relacionado à programação simultânea geralmente é deixado para cursos sobre 
+sistemas operacionais e linguagens de programação ou cursos de computação de alto 
+desempenho. Agora que os computadores paralelos estão em toda parte, devemos considerar 
+introduzir os fundamentos da programação simultânea em aulas para iniciantes em programação?
 
-For our part, we believe that concurrent programming can be, and should be,
-taught to first year students. This book aims at introducing concurrent
-programming from almost the first day. The rationale for our belief stems
-from another belief that procedural thinking, sequential as well as concurrent,
-is natural. People knew how to solve problems in a sequential manner, long
-before the study of algorithms became a formal subject and computer science a
-formal discipline. And this rationale applies to problem solving using a
-collection of sequential solutions applied concurrently. Watch a cook in
-the kitchen and you'll see concurrency in action. Watch a movie and you'll
-see concurrency in action as various subplots, scenes, and flashbacks weave the
-story together. Parents use concurrent solutions to solve day-to-day problems as
-they juggle childcare, a career, and a social life.
 
-If people naturally solve problems sequentially and concurrently, why do we need
-to teach them programming? Programming is a way to map an algorithmic solution
-of a problem to an artificial language such as Java. It's an activity
-that requires formal analysis, specialized vocabulary, and razor sharp
-logic. The real intellectual substance of programming lies in this
-mapping process. What's the best way to transform a sequential solution to an
-artificial language? How can a sequential solution be broken into concurrent
-parts that run faster than the original? How can a large
-problem be divided into small, manageable chunks that can be programmed
-separately and then integrated into a whole? In addition, there are issues of
-testing, debugging, documentation, and management of the software development
-process, which combine to make programming a limitless field for intellectual
-effort.
+De nossa parte, acreditamos que a programação simultânea pode e deve ser ensinada aos alunos 
+do primeiro ano. Este livro tem como objetivo apresentar a programação concorrente praticamente 
+desde o primeiro dia. A justificativa para nossa crença deriva de outra crença de que o pensamento 
+processual, tanto sequencial quanto concorrente, é natural. As pessoas sabiam como resolver 
+problemas de maneira sequencial, muito antes de o estudo de algoritmos se tornar um disciplina 
+formal e a ciência da computação um curso formal. E essa lógica se aplica à solução de problemas 
+usando um conjunto de soluções sequenciais aplicadas simultaneamente. Observe um cozinheiro na 
+cozinha e você verá a simultaneidade em ação. Assista a um filme e você verá a simultaneidade em 
+ação à medida que várias subtramas, cenas e flashbacks história. Os pais usam soluções simultâneas 
+para resolver problemas cotidianos enquanto lidam com os cuidados com os filhos, a carreira e a 
+vida social.
+
+
+Se as pessoas resolvem naturalmente os problemas de forma sequencial e simultânea, por que 
+precisamos ensinar programação? A programação é uma maneira de mapear uma solução algorítmica 
+de um problema em uma linguagem artificial, como Java. É uma atividade que requer análise 
+formal, vocabulário especializado e lógica afiada. A verdadeira substância intelectual da 
+programação está nesse processo de mapeamento. Qual é a melhor maneira de transformar uma 
+solução sequencial em uma linguagem artificial? Como uma solução sequencial pode ser dividida 
+em partes simultâneas que são executadas mais rapidamente do que a original? Como um problema 
+grande problema pode ser dividido em partes pequenas e gerenciáveis que podem ser programadas 
+separadamente e depois integrados em um todo? Além disso, há questões de testes, depuração, 
+documentação e gerenciamento do processo de desenvolvimento de software, que se combinam para 
+tornar a programação um campo ilimitado para o esforço intelectual.
 
 === Target audience
 
