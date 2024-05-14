@@ -102,27 +102,25 @@ separadamente e depois integrados em um todo? Além disso, há questões de test
 documentação e gerenciamento do processo de desenvolvimento de software, que se combinam para 
 tornar a programação um campo ilimitado para o esforço intelectual.
 
-=== Target audience
+=== Público alvo
 
-This book is intended to teach college level students with no programming
-experience over a period of two semesters. Although we start with concurrency
-concepts from the very beginning, it's difficult for students with no
-prior programming experience to write useful multithreaded programs by the end
-of their first semester.  By the end of the second semester, however, this book
-can lead a student from a blank slate to a capable programmer of complex
-parallel programs that exploit the power of multicore processors.
+Este livro foi concebido para ensinar estudantes de nível universitário sem experiência em 
+programação em um período de dois semestres. Embora comecemos com conceitos de concorrência 
+desde o início, é difícil para os alunos sem experiência prévia em programação escrever 
+programas multithread úteis até o final do primeiro semestre.  No entanto, ao final do 
+segundo semestre, este livro pode levar o aluno de uma folha em branco a um programador 
+capaz de programas paralelos complexos que exploram o poder dos processadores com vários núcleos.
 
-
-The content in this book could also be used for single semester courses.
-Chapters 1 through 12 are intended for the absolute beginner. If you don't want
-to introduce concurrent programming in a first course, these chapters should
-prove adequate. The concurrency material and exercises in these chapters can be ignored without negatively impacting the other
-material. For a second course in programming, Chapters 1 through 12 should be
-used as review material as well as an introduction to concurrent programming.
-Most material from Chapters 13 onward could then be covered in a single semester.
+O conteúdo deste livro também pode ser usado em cursos de um único semestre. Os capítulos 1 
+a 12 são destinados ao iniciante absoluto. Se você não quiser introduzir a programação simultânea 
+em um primeiro curso, esses capítulos devem ser adequados. O material e os exercícios sobre 
+concorrência nesses capítulos podem ser ignorados sem afetar negativamente o outro material. Em 
+um segundo curso de programação, os Capítulos 1 a 12 devem ser usados como material de revisão, bem 
+como uma introdução à programação simultânea. A maior parte do material dos Capítulos 13 em diante 
+poderia ser abordada em um único semestre.
 
 
-=== Material covered
+=== Material abordado
 
 Java is a complex language. Its long list of features makes it difficult for
 an instructor to decide what to cover and what to leave out. Often there's a
@@ -142,7 +140,7 @@ treatment of classes and objects unfolds throughout the book, moving
 naturally from monolithic programs to decomposition into methods to full
 object orientation.
 
-=== Organization
+=== Organização
 
 The material covered can be divided up in different ways depending on the needs
 of the instructor or the student. Chapters 1 through 12, with the exception of

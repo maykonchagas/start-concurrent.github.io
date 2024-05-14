@@ -266,7 +266,29 @@
 </ul>
 </div>
 </div>
-<div id="content"><div class="sect1">
+<div id="content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sect1">
 <h2 id="ch01-computer-basics">1. Computer Basics</h2>
 <div class="sectionbody">
 <div class="quoteblock">
@@ -3493,6 +3515,8 @@ Last updated 2023-06-27 19:41:42 -0400
       window.location.href = button.href;
   }
   document.addEventListener('keydown', e => {
+    if (e.shiftKey)
+      return;
     switch (e.key) {
       case 'ArrowRight':
         e.preventDefault();
