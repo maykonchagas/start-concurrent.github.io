@@ -1,0 +1,1004 @@
+[#ch12-exceptions]
+:imagesdir: chapters/12-exceptions/images
+:programsdir: chapters/12-exceptions/programs
+== Exceptions
+
+[quote, W. R. Inge]
+____
+The vulgar mind always mistakes the exceptional for the important.
+____
+
+=== Problem: Bank burglary
+
+Let's consider a problem in which various aspects of a bank burglary are
+modeled as Java objects. You want to write some code that will
+accomplish the following steps:
+
+. Disable the burglar alarm
+. Break into the bank
+. Find the vault
+. Open the vault
+. Carry away the loot
+
+But any number of things could go wrong! When trying to disable the
+burglar alarm, you might set it off. When you try to break into the
+bank, you might have thought that you'd disabled the burglar alarm but
+actually failed to do so. The door of the bank might be too difficult to
+open. The vault might be impossible to find, or the vault might be
+impossible to open. It could even be empty! The money might be made of
+enormous gold blocks that are too heavy to carry away. Finally, at any
+time during the heist, a night watchman might catch you in the act.
+
+If you're the criminal mastermind who planned this deed, you need to
+know if (and preferably how) your henchman bungled the burglary. You
+need a simple system that can inform you of any errors that have
+occurred along the way. Likewise, you need to be able to react
+differently depending on what went wrong.
+
+We are going to model each of these error conditions with Java
+_exceptions_. An exception is how Java indicates exceptional or
+incorrect situations inside of a program. These exceptions are _thrown_
+when the error happens. You must then write code to _catch_ the error
+and deal with it appropriately. The bank burglar program will deal with
+three different classes, `Bank`, `Vault`, and `Loot`.
+
+The `Bank` class has three methods, `disableAlarm()`, `breakIn()`, and
+`findVault()`, which returns a `Vault` object. The `Vault` class has an
+`open()` method and a `getLoot()` method, which returns a `Loot` object.
+The `Loot` class has a `carryAway()` method. Below is a table of the
+exceptions which can be thrown by each of the methods.
+
+[.center%autowidth%header,cols="3*<.^l",]
+|=================================================
+|Class |Method |Exceptions
+.6+|Bank .2+|disableAlarm() |BurglarAlarmException
+							|WatchmanException
+		.3+|breakIn()		|BurglarAlarmException
+							|LockPickFailException
+							|WatchmanException
+			|findVault() 	|WatchmanException
+.3+|Vault .2+|open() 		|LockPickFailException
+							|WatchmanException
+			|getLoot() 		|WatchmanException
+.2+|Loot .2+|carryAway() 	|LootTooHeavyException
+							|WatchmanException
+|=================================================
+
+In order to deal with each of these possible errors, you need some
+special Java syntax.
+
+=== Concepts: Error handling
+
+As a rule, computer programs are filled with errors. Writing a program
+is a difficult and complex process. Even if a segment of code is free
+from errors, it may call other code which contains mistakes. The user
+could be making mistakes and issuing commands to a program that are
+impossible to execute. Even hardware can produce errors, as in a hard
+drive crash or a network connectivity problem.
+
+==== Error codes
+
+A robust program should deal with as many errors as possible. One
+strategy is to have every method give back a special error code
+corresponding to an error when it occurs. Then, the code
+calling the method can react appropriately. Of course, many methods do
+not return a numerical type, limiting this kind of error handling. A
+solution that was very common in the C language, particularly in Unix
+system calls, was to set a globally visible `int` variable called
+`errno` to a value corresponding to the error that has just happened.
+
+These approaches have a number of drawbacks. In the case of `errno`, if a
+number of different threads were running at the same time, different
+errors could occur simultaneously, but only one value could be kept in
+`errno`. For any system that relies on checking for an error condition
+after each method call, a large amount of error handling code must be
+mixed in with normal code. Doing so reduces code readability and makes
+it difficult to handle errors in a central place. Likewise, a numerical value
+doesn't describe the error, requiring good documentation to know what
+the number means.
+
+****
+<<advantageOfExceptionsExercise>>
+****
+
+==== Exceptions
+
+Java adopts a different error handling strategy called exceptions.
+Whenever a specified error state or unusual situation is reached, an
+exception is thrown. When an exception is thrown, normal execution stops
+immediately. The JVM starts backtracking, looking for code that's designed to deal with
+that specific exception. The code that will handle the exception can be
+in the current method, in the calling method, in the caller of the
+calling method, or arbitrarily far back in the chain of method calls,
+all the way to `main()`. Each method will return, looking for code to
+handle this exception, until it's found. If no handling code is found,
+the exception will propagate all the way past `main()`, and
+the program will end.
+
+Exceptions give a unified and simple way to handle all errors. You can
+choose to deal with errors directly or delegate that responsibility to
+methods that call the code you've written. Selection statements and
+loops are forms of _local_ control flow, but exceptions give us the power
+of _non-local_ control flow, able to jump back through any number of
+method calls.
+
+=== Syntax: Exceptions in Java
+
+In Java syntax, there are two important sides of using exceptions:
+throwing the exception when an error occurs and then handling that
+exception properly. Below we explain both of these as well as the
+catch or specify requirement, the `finally` keyword, and the process of
+creating custom exceptions.
+
+==== Throwing exceptions
+
+By now you've probably experienced a `NullPointerException` in the
+process of coding. This exception happens when an object reference is
+`null` but we try to access one of its methods or fields.
+
+[source,java]
+----
+String text = null;
+int x = text.length(); // NullPointerException
+----
+
+In this case, the exception is thrown by the JVM itself. It is possible
+to catch this exception and deal with it, but a `NullPointerException`
+generally means a mistake in the program, not an error that can be
+recovered from. Although many useful exceptions such as `NullPointerException`,
+`ArithmeticException`, and `ArrayIndexOutOfBoundsException` are implicitly
+thrown by the JVM, we're also allowed to throw them explicitly.
+
+[source,java]
+----
+if(y < 14)
+    throw new NullPointerException();
+----
+
+Like any other object, we use the `new` keyword to instantiate a
+`NullPointerException` using its default constructor. Once created, we
+use the `throw` keyword to cause the exception to go into effect. Any
+exception you throw explicitly must use the `throw` keyword, but the
+majority of exceptions thrown by your programs will either be mistakes
+or exceptions thrown by library code you're calling. If you write a
+significant amount of library or API code, you might use `throw` more
+often.
+
+==== Handling exceptions
+
+Normal application programmers will find themselves writing code that
+handles exceptions much more often than code that throws them. In order
+to catch an exception, you must enclose the code you think is going
+to throw an exception in a `try` block. Immediately after the `try`
+block, you can list one or more `catch` blocks. The first `catch`
+block that matches your exception will be executed.
+
+[source,java]
+----
+try {
+    String text = null;
+    int x = text.length(); // NullPointerException
+    System.out.println("This will never be printed.");
+}
+catch(NullPointerException e) {
+    System.out.println("Surprise! A NullPointerException!");
+}
+----
+
+In this case, trying to access the `length()` method of a `null`
+reference will still throw a `NullPointerException`, but now it'll be
+caught by the `catch` block below. The message
+`"Surprise! A NullPointerException!"` will be printed to the screen, and
+execution will continue normally after the `catch` block. Once the
+exception is caught, it stops trying to propagate. Of course, whatever
+the code was doing when the exception was thrown was abandoned
+immediately because it might have depended on successful execution of
+the code that threw the exception. Thus, the call to the
+`System.out.println()` method in the `try` block will never be executed.
+
+An exception will match the first `catch` block with the same class or
+any superclass. Since `Exception` is the parent of `RuntimeException`
+which is the parent of `NullPointerException`, we could write our
+example with `Exception` instead.
+
+[source,java]
+----
+try {
+    String text = null;
+    int x = text.length(); // NullPointerException
+    System.out.println("This will never be printed.");
+}
+catch(Exception e) {
+    System.out.println("Well, of course you got a NullPointerException!");
+}
+----
+
+In general, you should write the most specific exception class possible
+for your `catch` blocks. Otherwise, you might be catching a different
+exception than you planned for, preventing that exception from propagating
+up to an appropriate handler. For example, the following code will randomly
+throw either a `NullPointerException` or an
+`ArithmeticException` (because of a division by 0).
+
+[source,java]
+----
+try {
+    String text = null;
+    int x;
+    if(Math.random() > 0.5)
+        x = text.length(); // NullPointerException
+    else
+        x = 5 / 0; // ArithmeticException
+}
+catch(Exception e) {
+    System.out.println("You got some kind of exception!");
+}
+----
+
+This code will catch either kind of exception, but it won't tell you
+which you got. Instead, the correct approach is to have one `catch`
+block for each possible kind of exception.
+
+[source,java]
+----
+try {
+    String text = null;
+    int x;
+    if(Math.random() > 0.5)
+        x = text.length(); // NullPointerException
+    else
+        x = 5 / 0; // ArithmeticException
+}
+catch(NullPointerException e) {
+    System.out.println("You used a null pointer!");
+}
+catch(ArithmeticException e) {
+    System.out.println("You divided by zero!");
+}
+----
+
+The list of `catch` blocks can be arbitrarily long. You must always go
+from the most specific exceptions to the most general, like `Exception`,
+otherwise some exceptions could never be reached. The Java compiler
+enforces this requirement. The `e` is a reference to the exception
+itself, which behaves something like a parameter in a method. It's
+common to use `e` as the identifier, but you're allowed to call it any
+legal variable name. Usually, the kind of exception is all you need to
+know, but every exception is an object and has fields and methods.
+Particularly useful is the `getMessage()` method which can give
+additional information about the exception.
+
+****
+<<unreachableExceptionExercise>>
+****
+
+==== Catch or specify
+
+In contrast to the examples given above, you'll rarely write code to catch a
+`NullPointerException` or an `ArithmeticException`. Both of these
+exceptions are called _unchecked_ exceptions. In
+<<ch06-arrays#ch06-arrays>>, we used the `Thread.sleep()` method to put
+the execution of our program to sleep for a short period of time. We
+were forced to enclose this method call in a `try` block with a `catch`
+block for `InterruptedException`.
+
+[source,java]
+----
+try{
+    Thread.sleep(100);
+}
+catch(InterruptedException  e) {
+    System.out.println("Wake up!");
+}
+----
+
+An `InterruptedException` is thrown when another thread tells your
+thread of execution to wake up before it finishes sleeping or waiting.
+This exception is a _checked_ exception, meaning that Java insists that
+you use a `try`-`catch` pair anytime there's even a chance of it being
+thrown. Otherwise, your code won't compile.
+
+Checked exceptions are those exceptions that your program must plan
+for. Library and API code often throw checked exceptions. For example,
+when trying to open a file with an API call, it's possible that no file
+with that name exists or that the user might not have permission to
+access it. A program should catch the corresponding exceptions and
+recover rather than crashing. Perhaps the program should prompt the user
+for a new name or explain that the required permission is not set.
+
+****
+<<checkedExceptionsExercise>> +
+<<needThrowsExercise>>
+****
+
+In <<ch06-arrays#ch06-arrays>>, there were no executable statements in
+the `catch` block used with the `Thread.sleep()` method. However, you
+should *never* write an empty `catch` block. Doing so allows errors to fail silently.
+
+****
+<<genericExceptionExercise>>
+****
+
+We're allowed to put code that can throw a checked exception into a
+`try`-`catch` block, but there's another option. Java has a catch
+or specify requirement, meaning that your code is required either to
+catch a checked exception or to specify that it has the potential for
+causing that exception. To specify that a method can throw certain
+exceptions, we use the `throws` keyword. Note that this is *not* the
+same as the `throw` keyword.
+
+****
+<<throwThrowsExercise>> +
+<<catchOrSpecifyExercise>>
+****
+
+[source,java]
+----
+public static void sleepWithoutTry(int milliseconds) throws InterruptedException {
+    Thread.sleep(milliseconds);
+}
+----
+
+In this case, there's no need for a `try`-`catch` block because the
+method announces that it has a risk of throwing an
+`InterruptedException`. Of course, any code that uses this method will
+have to have a `try`-`catch` block or specify that it also throws
+`InterruptedException`. A method can throw many different exceptions,
+and you can simply list them out after the `throws` keyword, separated
+by commas.
+
+Almost every exception thrown in Java is a child class of `Exception`,
+`RuntimeException`, or `Error`. Any descendant of `RuntimeException` or
+`Error` is an unchecked exception and is exempt from the catch or
+specify requirement. Any direct descendant of `Exception` is a checked
+exception and must either be caught with a `try`-`catch` block or
+specified with the `throws` keyword. We say *direct* descendant because
+`RuntimeException` is a child of `Exception`, leading to the confusing
+situation where only those descendants of `Exception` which are not also
+descendants of `RuntimeException` are checked.
+
+==== The `finally` keyword
+
+To deal with the situation in which an important cleanup or finalizing
+task must be done no matter what, the designers of Java introduced the
+`finally` keyword. A `finally` block comes after all the `catch` blocks
+following a `try` block. The code inside the `finally` block will be
+executed *whether or not* any exception was thrown. A `finally` block is
+often used with file I/O to close the file, which should be closed
+whether or not something went wrong in the process of reading it, as
+we'll demonstrate in <<Reading and writing text files>>.
+
+The `finally` keyword is unusually powerful. If an exception isn't
+caught and propagates up another level, the `finally` block will be
+executed *before* propagating the exception. Even a `return` statement
+will wait for a `finally` block to be executed before returning, leading
+to the following bizarre possibility.
+
+[source,java]
+----
+public static boolean neverTrue() {
+    try {
+        return true;
+    }
+    finally {
+        return false;
+    }
+}
+----
+
+This method attempts to return `true`, but before it can finish, the
+`finally` block returns `false`. Only one value can be returned, and the
+`finally` block wins. You should be aware of `finally` blocks and their
+unusual semantics. Use them sparingly and only for careful cleanup
+operations when needed to guarantee that some event occurs.
+
+Code in a `finally` block will execute *no matter what* unless the JVM
+exits or the thread in question terminates.
+
+****
+<<finalFinallyFinalizeExercise>> +
+<<finallyReturnExercise>> +
+<<competingExceptionsExercise>>
+****
+
+
+==== Customized exceptions
+
+Exceptions are most useful when dealing with problems encountered
+by API code. In those cases, your code must merely catch exceptions
+defined by someone else; however, it's sometimes useful to define your
+own exceptions. For one thing, you might write some API code yourself. Generally,
+you'll want to use the standard exceptions whenever possible, but your
+code might generate some unusual or specific error condition that you
+want to communicate to a programmer, using your own exception.
+
+Defining a new exception is surprisingly simple. All you have to do is
+write a class that extends `Exception`. Theoretically, you could
+extend `RuntimeException` or `Error` instead, but you typically won't.
+Children of `RuntimeException` are intended to indicate a bug in
+the program, and children of `Error` are intended to indicate a system
+error.
+
+When creating your new exception, you don't even have to create
+any methods, but it's wise to implement a default constructor and one
+that takes a `String` as an additional message.
+
+[source,java]
+----
+public class EndOfWorldException extends Exception {
+    public EndOfWorldException() {}
+
+    public EndOfWorldException(String message) {
+        super(message);
+    }
+}
+----
+
+As with all other classes, your exceptions should be named in a readable
+way. This exception is apparently thrown when the world ends. It's
+considered good style to end the name of any exception class with
+`Exception`. An exception class is a fully fledged class. If you need to
+add other fields or methods to give your exception the functionality it
+needs, go ahead. However, the main value of an exception lies in
+its existence as a named error, not in any tricks it can perform.
+
+****
+<<NumberFormatExceptionExercise>> +
+<<customExceptionsExercise>> +
+<<passwordExceptionExercise>>
+****
+
+Here we'll give a few examples of exception handling, although
+exceptions are more useful in large systems with heavy API use. We'll
+start with an example of a simple calculator that detects division by
+zero, then look at exceptions as a tool to detect array bounds problems,
+and end with a custom exception used with the `Color` class.
+
+.Calculator with division by zero
+====
+
+Here we implement a quick calculator that reads input from the user
+in the form of _integer operator integer_, where _operator_ is one
+of the four basic arithmetic operators (`+`, `-`, `*`, `/`). Our code
+will perform the appropriate operation and output the answer, but we'll
+use exception handling to avoid killing the program when a division
+by zero occurs.
+
+[source, java]
+----
+include::{programsdir}/QuickCalculator.java[lines=1..12]
+----
+<.> The program reads a line of input from the user.
+<.> It tests to see if it's the sentinel value `"quit"`.
+<.> If it isn't, the program parses it into two `int` values and a `char`.
+
+[source, java]
+----
+include::{programsdir}/QuickCalculator.java[lines=13..28]
+----
+<.> Here we have a `try` block enclosing the code where the operations
+occur.
+<.> Inside the `switch` statement, the code blindly performs
+addition, subtraction, multiplication, or division, depending on the
+value of `operator`.
+<.> Then, it prints the answer.
+<.> However, if a division by zero occurs, the execution jumps to the `catch` block
+and prints an appropriate message.
+
+This `try`-`catch` pair is situated
+inside the loop so that the input will continue even if there was a
+division by zero. We could achieve the same effect by using an `if`
+statement to test if the divisor is zero, but our solution allows easy
+extensions if there are other exceptions we want to catch.
+
+====
+
+.Array bounds
+====
+
+Exceptions provide a lot of power. If we want, we can use the
+`ArrayOutOfBoundsException` as a crutch when we don't want to think
+about the bounds of our array. Although this makes for an interesting
+example, exceptions should *not* be used in Java to perform normal tasks.
+This method takes in an array of `int` values and prints them all out.
+
+[source,java]
+----
+public static void exceptionalArrayPrint(int[] array) {
+    try {
+        int i = 0;
+        while(true)
+            System.out.print(array[i++] + " ");
+    }
+    catch(ArrayIndexOutOfBoundsException e) {}
+}
+----
+
+Although the `while` loop will run without stopping, the moment that `i`
+reaches `array.length`, it will throw an `ArrayIndexOutOfBoundsException` when
+it tries to access that element in `array`. Since we left the `catch`
+block empty, nothing will happen, the method will return, and everything
+will work fine. This example is a peculiar kind of laziness, indeed,
+since a `for` loop could achieve the same effect with fewer lines of
+code.
+
+Programmers can be tempted to abuse exceptions in this way when a lot of
+calculations are needed to determine the correct bounds. Consider a game
+of Connect Four. To see if a player has won, the computer must examine
+all horizontal, vertical, and diagonal possibilities for four in a row.
+If the game board is represented as a 2D array, the programmer must be
+careful to make sure that checking for four in a row does not access any
+index greater than the last row or column or smaller than 0.
+
+The danger of using exceptions for these kinds of tasks has several
+sources. First, the programmer may not deeply understand the problem and
+may be careless about the solution. Second, there's a risk of hiding
+exceptions that are generated because of real errors. Third, the
+code becomes difficult to read and unintuitive. Finally, excessive use
+of exceptions can negatively impact performance.
+====
+
+****
+<<exceptionTimingExercise>>
+****
+
+.Color ranges
+====
+
+The `Color` class provided by Java allows us to represent a color as a
+triple of red, green, and blue values with each value in the range
+[0,255]. Using these three components, we can produce
+256^3^ = 16,777,216 colors. If we were programming some
+image manipulation software, we might want to be able to increase the
+red, green, or blue values separately. If changing a value makes it
+larger than 255, we could throw an exception. Likewise, if changing a
+value makes it less than 0, we could throw a different exception. Let's
+give two custom exceptions that could serve in these roles.
+
+[source, java]
+[[ColorUnderflowExceptionProgram]]
+----
+include::{programsdir}/ColorUnderflowException.java[]
+----
+
+
+[source, java]
+[[ColorOverflowExceptionProgram]]
+----
+include::{programsdir}/ColorOverflowException.java[]
+----
+
+
+Now we can write six methods, each of which increases or decreases the
+red, green, or blue component of a `Color` object by 5. If the value of
+the component is out of range, an appropriate exception will be thrown.
+
+[source,java]
+----
+public static Color increaseRed(Color color)
+    throws ColorOverflowException {
+    if(color.getRed() + 5 > 255)
+        throw new ColorOverflowException("Red: " + (color.getRed() + 5));
+    else
+        return new Color(color.getRed() + 5, color.getGreen(), color.getBlue());
+}
+
+public static Color increaseGreen(Color color)
+    throws ColorOverflowException {
+    if(color.getGreen() + 5 > 255)
+        throw new ColorOverflowException("Green: " + (color.getGreen() + 5));
+    else
+        return new Color(color.getRed(), color.getGreen() + 5, color.getBlue());
+}
+
+public static Color increaseBlue(Color color)
+    throws ColorOverflowException {
+    if(color.getBlue() + 5 > 255)
+        throw new ColorOverflowException("Blue: " + (color.getBlue() + 5));
+    else
+        return new Color(color.getRed(), color.getGreen(), color.getBlue() + 5);
+}
+
+public static Color decreaseRed(Color color) throws ColorUnderflowException {
+    if(color.getRed() - 5 < 0)
+        throw new ColorUnderflowException("Red: " + (color.getRed() - 5));
+    else
+        return new Color(color.getRed() - 5, color.getGreen(), color.getBlue());
+}
+
+public static Color decreaseGreen(Color color)
+    throws ColorUnderflowException {
+    if(color.getGreen() - 5 < 0)
+        throw new ColorUnderflowException("Green: " + (color.getGreen() - 5));
+    else
+        return new Color(color.getRed(), color.getGreen() - 5, color.getBlue());
+}
+
+public static Color decreaseBlue(Color color)
+    throws ColorUnderflowException {
+    if(color.getBlue() - 5 < 0)
+        throw new ColorUnderflowException("Blue: " + (color.getBlue() - 5));
+    else
+        return new Color(color.getRed(), color.getGreen(), color.getBlue() - 5);
+}
+----
+
+Finally, we can write a short method that changes a given color based on
+user input and deals with exceptions appropriately.
+
+[source,java]
+----
+public static Color changeColor(Color color) {
+    System.out.println("Enter 'R', 'G', or 'B' to increase " +
+        "the amount of red, green, or blue in your color. " +
+        "Enter 'r', 'g', or 'b' to decrease the amount of " +
+        "red, green, or blue in your color.");
+        Scanner in = new Scanner(System.in);
+    try {
+        switch(in.next().trim().charAt(0)) {
+            case 'R': color = increaseRed(color); break;
+            case 'G': color = increaseGreen(color); break;
+            case 'B': color = increaseBlue(color); break;
+            case 'r': color = decreaseRed(color); break;
+            case 'g': color = decreaseGreen(color); break;
+            case 'b': color = decreaseBlue(color); break;
+        }
+    }
+    catch(ColorOverflowException e) {
+        System.out.println(e);
+    }
+    catch(ColorUnderflowException e) {
+        System.out.println(e);
+    }
+    return color;
+}
+----
+
+The code that uses these methods and exceptions is compact. One `try`
+block enclosing the method calls is needed so that the exceptions can be
+caught. Following the `try`, there's a `catch` block for the
+`ColorOverflowException` and one for the `ColorUnderflowException`. Each
+will print out its exception, including the customized message inside.
+If an exception occurred, the value of `color` would remain unchanged
+because the execution would have jumped to a `catch` block before the
+assignment could happen.
+
+Note that when catching the `ColorOverflowException` or the `ColorUnderflowException`
+in the above code, we do the same thing in either case: print the exception.
+To reduce the amount of code, we could have caught `Exception`
+instead of those two specific exceptions, but doing so would catch *all*
+exceptions, not just the two related to color that we care about.
+
+In Java 7 and higher, there's special syntax to deal with situations like the
+one above where several specific exceptions are handled in the same way.  The
+exception types are listed in a `catch` block with pipe symbols (`|`) between
+them.  There's still only a single reference to the exception (often named
+`e`).  Using this updated syntax, we could have written the `try`-`catch` above
+as follows. 
+
+[source,java]
+----
+    try {
+        switch(in.next().trim().charAt(0)) {
+            case 'R': color = increaseRed(color); break;
+            case 'G': color = increaseGreen(color); break;
+            case 'B': color = increaseBlue(color); break;
+            case 'r': color = decreaseRed(color); break;
+            case 'g': color = decreaseGreen(color); break;
+            case 'b': color = decreaseBlue(color); break;
+        }
+    }
+    catch(ColorOverflowException | ColorUnderflowException e) {
+        System.out.println(e);
+    }
+----
+
+
+====
+
+=== Solution: Bank burglary
+
+Here's our solution to the bank burglary problem. Although somewhat
+fanciful, the process could be expanded into a more serious simulation.
+We begin by defining each of the exceptions.
+
+[source, java]
+[[BurglarAlarmExceptionProgram]]
+----
+include::{programsdir}/BurglarAlarmException.java[]
+----
+
+
+[source, java]
+[[WatchmanExceptionProgram]]
+----
+include::{programsdir}/WatchmanException.java[]
+----
+
+
+[source, java]
+[[LockPickFailExceptionProgram]]
+----
+include::{programsdir}/LockPickFailException.java[]
+----
+
+
+[source, java]
+[[LootTooHeavyExceptionProgram]]
+----
+include::{programsdir}/LootTooHeavyException.java[]
+----
+
+
+Note that the default constructor for each exception is necessary, since
+constructors taking a `String` value are provided for each class.
+Although these default constructors do nothing other than call their
+parent constructor, they are needed so that it is possible to create
+each of these constructors *without* a customized message.
+
+With the exceptions defined, we can assume that the `Bank` class and the
+`Vault` class throw the appropriate exceptions when something goes
+wrong. Thus, we can make a `Henchman` class who can try to do the heist
+and react appropriately if there's a problem.
+
+[source, java]
+----
+include::{programsdir}/Henchman.java[lines=1..13]
+----
+<.> To burgle a bank, one must create a `Henchman` object then pass a `Bank`
+object into its `burgle()` method.
+<.> The method will try to disable the
+alarm, break into the bank, find the vault, open the vault, get the loot
+out of the vault, and carry it away.
+<.> If all those steps happen
+successfully, the method will print out a `String` version of the loot.
+
+All of this code is inside of a `try` block. If an exception is thrown
+at any point, the following `catch` blocks will deal with it.
+
+[source, java]
+----
+include::{programsdir}/Henchman.java[lines=14..35]
+----
+<.> If a `BurglarAlarmException` happens, the henchman is forced to run
+away.
+<.> If a `WatchmanException` happens, the henchman is caught and must
+be bailed out of jail.
+<.> If a `LockPickFailException` the henchman is unable to carry the
+loot off.
+<.> Something similar happens for a `LootTooHeavyException`.
+<.> The last `catch` block is a little unusual. In this case, a
+`NullPointerException` has occurred. Within the `try` block, two obvious
+sources of this exception are the `vault` and the `loot` variables. If
+either of them were `null`, in the case of a vault that could not be
+found or a vault that was empty, trying to call a method on that `null`
+reference would throw a `NullPointerException`. Although this code shows
+the power of exception handling, it's a little unwieldy since we don't
+know which variable was `null`. Also, it'll hide any
+`NullPointerException` that might happen for other reasons. A better
+solution would be to check for each of these `null` cases or create more
+specific exceptions thrown by `findVault()` and `getLoot()` if either
+returns `null`.
+
+=== Concurrency: Exceptions
+
+Any thread in Java can throw an exception. That thread might be the main
+thread or it might be an extra one that you spawned yourself. (Or even
+one spawned behind the scenes through a library call.)
+
+What happens when a thread throws an exception? As we've been
+discussing in this chapter, the exception will either be caught or
+propagate back to its caller. If the exception is caught, the `catch` block
+determines what happens. If the exception propagates back and back and back and
+is never caught, then what? If you've coded some of the examples in this
+chapter, you might think the entire program crashes, but only the thread
+throwing the exception dies.
+
+.Multiple threads with exceptions
+====
+
+In a program with a single thread, an exception thrown by the `main()`
+method will crash the program, completely halting execution. In a
+multi-threaded program, execution will continue on all threads that have
+not thrown exceptions. If even a single thread is executing, the program
+will run to completion before the JVM shuts down.
+
+.Spawns 10 threads. 9 out of 10 spawned threads as well as the main thread throw an exception and die. The remaining thread outputs the sum of the sines of 1 through 1,000,000.
+[source, java]
+[[CrazyThreadProgram]]
+----
+include::{programsdir}/CrazyThread.java[]
+----
+
+In the program given above, all of the threads except one will die
+because of the `RuntimeException` that they throw. Note that we use the unchecked
+`RuntimeException` so that Java does not complain about the lack of
+`catch` blocks. The thread with a `value` of `7` will complete its
+calculation and print it to the screen even though the main thread has
+died. For more information on how to spawn threads, refer to
+<<ch13-concurrency#ch13-concurrency>>.
+
+====
+
+This behavior can cause a program that never seems to finish. You might
+write a program that spawns a number of threads and does some work. Even
+if the `main()` method has completed and all the important data has been
+output, the program won't terminate if any threads are still alive.
+This problem can also be caused by creating a GUI (such as a `JFrame`),
+which spawns one or more threads indirectly, if the GUI isn't properly
+disposed.
+
+==== `InterruptedException`
+
+In conjunction with concurrency, one exception deserves special
+attention: `InterruptedException`. This exception can happen when a thread calls
+`wait()`, `join()`, or `sleep()`. It's a checked exception, requiring
+either a `catch` block or a `throws` specification.
+
+This exception is used in cases where the executing thread must wait for
+some event to occur or some time to pass. In extreme circumstances,
+another thread can interrupt the waiting thread, forcing it to continue
+executing before it's done waiting. If that happens, the code in the
+`catch` block determines how the thread should recover from being awoken
+prematurely.
+
+Programmers who are new to concurrency in Java are often confused or
+annoyed by `InterruptedException`, particularly since it never seems to be thrown.
+Although it's thrown rarely, situations such as a system shutting down
+may be best dealt with by calling `interrupt()` on a waiting thread,
+causing such an exception. Although we'll generally leave the
+`InterruptedException` `catch` block empty in this book, threads written
+for production code should always handle interruptions gracefully.
+
+=== Exercises
+*Conceptual Problems*
+
+.  [[advantageOfExceptionsExercise]] What are the advantages of
+using exceptions instead of returning error codes?
+.  [[finalFinallyFinalizeExercise]] The keywords `final` and `finally`,
+as well as the `Object` method `finalize()`, are sometimes confused.
+What's the purpose of each one?
+.  [[throwThrowsExercise]] What's the difference between the
+`throw` keyword and the `throws` keyword?
+.  [[catchOrSpecifyExercise]] Explain the catch or specify
+requirement of Java.
+.  [[checkedExceptionsExercise]] What must be done differently
+when using methods that throw checked exceptions as compared to
+unchecked exceptions? How do the classes `Exception`,
+`RuntimeException`, and `Error` play a role?
+.  [[genericExceptionExercise]] For every program you write, you
+could choose to put the entire body of your `main()` method in a large
+`try` block with a `catch` block at the end that catches `Exception`. In
+this way, no exception would cause your program to crash. Why is this
+approach a bad programming decision?
+.  Why did the designers of Java choose to make `NullPointerException`
+and `ArithmeticException` unchecked exceptions even though a program that
+unintentionally dereferences a `null` pointer or
+divides by zero will often crash?
+.  [[needThrowsExercise]] Consider the following two classes.
++
+[source,java]
+----
+public class Trouble {
+    public makeTrouble() {
+        throw new ArithmeticException();
+    }
+}
+
+public class Hazard {
+    public makeHazard() {
+        throw new InterruptedException();
+    }
+}
+----
++
+Class `Trouble` will compile, but class `Hazard` will not. Explain why
+and what could be done to make `Hazard` compile.
+.  [[finallyReturnExercise]] What value will the following method
+always return and why?
++
+[source,java]
+----
+public static int magic(String value) {
+    try {
+        int x = Integer.parseInt(value);
+        return x;
+    }
+    catch(Exception e) {
+        System.out.println("Some exception occurred.");
+        return 0;
+    }
+    finally {
+        return -1;
+    }
+}
+----
+. [[unreachableExceptionExercise]] Why will the following
+segment of code fail to compile?
++
+[source,java]
+----
+try{
+    Thread.sleep(1000);
+}
+catch(Exception e) {
+    System.out.println("Exception occurred!");
+}
+catch(InterruptedException e) {
+    System.out.println("Woke up early!");
+}
+----
+. [[competingExceptionsExercise]] Consider the following fragment of
+Java.
++
+[source,java]
+----
+try {
+    throw new NullPointerException();
+}
+finally {
+    throw new ArrayIndexOutOfBoundsException();
+}
+----
++
+This code is legal Java. It's possible to have a `finally` block after
+a `try` block without any `catch` blocks between them. However, only a
+single exception can be active at once. Which exception will propagate
+up from this code and why?
+
+*Programming Practice*
+
+. [[NumberFormatExceptionExercise]] The `NumberFormatException`
+exception is thrown whenever the `Integer.parseInt()` method receives a poorly formatted `String` representation of an integer.
+Re-implement `QuickCalculator` to catch any `NumberFormatException` and give an appropriate message to the user.
+. [[customExceptionsExercise]] Refer to
+<<celestialSimulatorExercise>> and add to the basic mechanics of the simulation by designing two custom
+exceptions, `CollisionException` and `LightSpeedException`. These
+exceptions should be thrown, respectively, if two bodies collide or if
+the total magnitude of a body's velocity exceeds the speed of light.
+. [[passwordExceptionExercise]] Users often log onto systems by
+entering their user name and a password. Unfortunately, human beings are
+notoriously bad at picking passwords. In computer security, a tool
+called a _proactive password checker_ allows a user to pick a password
+but rejects the choice if it doesn't meet certain criteria.
++
+Common criteria for a password are that it must be at least a certain
+length, must contain must contain uppercase and lowercase letters, must
+contain numerical digits, must contain symbols, cannot be the same as a
+list of words from a dictionary, and others.
++
+Write a short program with a `check()` method that takes a single
+`String` parameter giving a possible password. This method should throw
+an exception if the password does not meet the matching criteria listed
+below.
++
+[.center%autowidth%header,cols="<.^,<.^l"]
+|==================================================================
+|Password criteria|Exception
+|At least 8 characters in length |TooShortException
+|Contains both upper- and lowercase letters |NoMixedCaseException
+|Contains at least one numerical digit |NoDigitException
+|Contains at least one symbol |NoSymbolException
+|==================================================================
++
+Your `main()` method should prompt the user to select a password and
+then pass it to the `check()` method. If the method throws an exception,
+you should catch it and print an appropriate error message. Otherwise,
+you should report to the user that the password is acceptable. Note that
+you'll need to define each of the four exceptions as well.
+
+
+*Experiments*
+
+. [[exceptionTimingExercise]] Throwing and catching exceptions
+is a useful tool for making robust programs in Java. However, the JVM
+machinery needed to implement such a powerful tool is complex. Create an
+array containing 100,000 random `int` values. First, sum all these
+variables up using a `for` loop and time how long it takes. Then, do the
+same thing, but, inside of the `for` loop, put a `try` block containing
+a simple division by zero instruction such as `x = 5 / 0;`. After the
+`try` block, put a `catch` block catching an `ArithmeticException`.
+Time this version of the code. Again, you may
+wish to use `System.nanoTime()` to measure the time accurately. Was
+there a large difference in the time taken? Do your findings have any
+implications for code that routinely throws thousands of exceptions?

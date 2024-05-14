@@ -1,0 +1,1993 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="author" content="Barry Wittman, Tim Korb, Aditya Mathur">
+<title>Começando Concorrente: Uma introdução leve à Programação Concorrente</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="style0.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style1.css" type="text/css">
+<link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Começando Concorrente: Uma introdução leve à Programação Concorrente</h1>
+<div class="details">
+<span id="author" class="author">Barry Wittman</span><br>
+<span id="email" class="email"><a href="mailto:wittman1@otterbein.edu">wittman1@otterbein.edu</a></span><br>
+<span id="author2" class="author">Tim Korb</span><br>
+<span id="email2" class="email"><a href="mailto:jtk@purdue.edu">jtk@purdue.edu</a></span><br>
+<span id="author3" class="author">Aditya Mathur</span><br>
+<span id="email3" class="email"><a href="mailto:apm@purdue.edu">apm@purdue.edu</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="index.html">Start Concurrent</a></li><li><a href="index.html">1. Computer Basics</a>
+<ul class="sectlevel2">
+<li><a href="index.html#_problem_buying_a_computer">1.1. Problem: Buying a computer</a></li>
+<li><a href="index.html#_concepts_hardware_and_software">1.2. Concepts: Hardware and software</a></li>
+<li><a href="index.html#_syntax_data_representation">1.3. Syntax: Data representation</a></li>
+<li><a href="index.html#_solution_buying_a_computer">1.4. Solution: Buying a computer</a></li>
+<li><a href="index.html#_summary">1.5. Summary</a></li>
+<li><a href="index.html#_exercises">1.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap2.html">2. Problem Solving and Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap2.html#_problem_how_to_solve_problems">2.1. Problem: How to solve problems</a></li>
+<li><a href="chap2.html#_concepts_developing_software">2.2. Concepts: Developing software</a></li>
+<li><a href="chap2.html#_syntax_java_basics">2.3. Syntax: Java basics</a></li>
+<li><a href="chap2.html#_solution_how_to_solve_problems">2.4. Solution: How to solve problems</a></li>
+<li><a href="chap2.html#_concurrency_solving_problems_in_parallel">2.5. Concurrency: Solving problems in parallel</a></li>
+<li><a href="chap2.html#_summary_2">2.6. Summary</a></li>
+<li><a href="chap2.html#_exercises_2">2.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap3.html">3. Primitive Types and Strings</a>
+<ul class="sectlevel2">
+<li><a href="chap3.html#_problem_college_cost_calculator">3.1. Problem: College cost calculator</a></li>
+<li><a href="chap3.html#_concepts_types">3.2. Concepts: Types</a></li>
+<li><a href="chap3.html#_syntax_types_in_java">3.3. Syntax: Types in Java</a></li>
+<li><a href="chap3.html#_syntax_useful_libraries">3.4. Syntax: Useful libraries</a></li>
+<li><a href="chap3.html#_solution_college_cost_calculator">3.5. Solution: College cost calculator</a></li>
+<li><a href="chap3.html#_concurrency_expressions">3.6. Concurrency: Expressions</a></li>
+<li><a href="chap3.html#_summary_3">3.7. Summary</a></li>
+<li><a href="chap3.html#_exercises_3">3.8. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap4.html">4. Selection</a>
+<ul class="sectlevel2">
+<li><a href="chap4.html#_problem_monty_hall_simulation">4.1. Problem: Monty Hall simulation</a></li>
+<li><a href="chap4.html#_concepts_choosing_between_options">4.2. Concepts: Choosing between options</a></li>
+<li><a href="chap4.html#_syntax_selection_in_java">4.3. Syntax: Selection in Java</a></li>
+<li><a href="chap4.html#_solution_monty_hall">4.4. Solution: Monty Hall</a></li>
+<li><a href="chap4.html#_concurrency_selection">4.5. Concurrency: Selection</a></li>
+<li><a href="chap4.html#_exercises_4">4.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap5.html">5. Repetition</a>
+<ul class="sectlevel2">
+<li><a href="chap5.html#_problem_dna_searching">5.1. Problem: DNA searching</a></li>
+<li><a href="chap5.html#_concepts_repetition">5.2. Concepts: Repetition</a></li>
+<li><a href="chap5.html#_syntax_loops_in_java">5.3. Syntax: Loops in Java</a></li>
+<li><a href="chap5.html#_solution_dna_searching">5.4. Solution: DNA searching</a></li>
+<li><a href="chap5.html#_concurrency_loops">5.5. Concurrency: Loops</a></li>
+<li><a href="chap5.html#_exercises_5">5.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap6.html">6. Arrays</a>
+<ul class="sectlevel2">
+<li><a href="chap6.html#_introduction">6.1. Introduction</a></li>
+<li><a href="chap6.html#_problem_game_of_life">6.2. Problem: Game of Life</a></li>
+<li><a href="chap6.html#_concepts_lists_of_data">6.3. Concepts: Lists of data</a></li>
+<li><a href="chap6.html#_syntax_arrays_in_java">6.4. Syntax: Arrays in Java</a></li>
+<li><a href="chap6.html#_examples_array_usage">6.5. Examples: Array usage</a></li>
+<li><a href="chap6.html#_concepts_multidimensional_lists">6.6. Concepts: Multidimensional lists</a></li>
+<li><a href="chap6.html#_syntax_advanced_arrays_in_java">6.7. Syntax: Advanced arrays in Java</a></li>
+<li><a href="chap6.html#_examples_two_dimensional_arrays">6.8. Examples: Two-dimensional arrays</a></li>
+<li><a href="chap6.html#_advanced_special_array_tools_in_java">6.9. Advanced: Special array tools in Java</a></li>
+<li><a href="chap6.html#_solution_game_of_life">6.10. Solution: Game of Life</a></li>
+<li><a href="chap6.html#_concurrency_arrays">6.11. Concurrency: Arrays</a></li>
+<li><a href="chap6.html#_exercises_6">6.12. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap7.html">7. Simple Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap7.html#_problem_codon_extractor">7.1. Problem: Codon extractor</a></li>
+<li><a href="chap7.html#GUIBasicsIntroductionSection">7.2. Concepts: User interaction</a></li>
+<li><a href="chap7.html#_syntax_dialogs_and_the_joptionpane_class">7.3. Syntax: Dialogs and the <code>JOptionPane</code> class</a></li>
+<li><a href="chap7.html#_solution_codon_extractor">7.4. Solution: Codon extractor</a></li>
+<li><a href="chap7.html#_concurrency_simple_guis">7.5. Concurrency: Simple GUIs</a></li>
+<li><a href="chap7.html#_summary_4">7.6. Summary</a></li>
+<li><a href="chap7.html#_exercises_7">7.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap8.html">8. Methods</a>
+<ul class="sectlevel2">
+<li><a href="chap8.html#_problem_three_card_poker">8.1. Problem: Three card poker</a></li>
+<li><a href="chap8.html#_concepts_dividing_work_into_segments">8.2. Concepts: Dividing work into segments</a></li>
+<li><a href="chap8.html#_syntax_methods">8.3. Syntax: Methods</a></li>
+<li><a href="chap8.html#_examples_defining_methods">8.4. Examples: Defining methods</a></li>
+<li><a href="chap8.html#_solution_three_card_poker">8.5. Solution: Three card poker</a></li>
+<li><a href="chap8.html#_concurrency_methods">8.6. Concurrency: Methods</a></li>
+<li><a href="chap8.html#_exercises_8">8.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap9.html">9. Classes</a>
+<ul class="sectlevel2">
+<li><a href="chap9.html#_problem_nested_expressions">9.1. Problem: Nested expressions</a></li>
+<li><a href="chap9.html#_concepts_object_oriented_programming">9.2. Concepts: Object-oriented programming</a></li>
+<li><a href="chap9.html#_syntax_classes_in_java">9.3. Syntax: Classes in Java</a></li>
+<li><a href="chap9.html#_advanced_nested_classes">9.4. Advanced: Nested classes</a></li>
+<li><a href="chap9.html#_solution_nested_expressions">9.5. Solution: Nested expressions</a></li>
+<li><a href="chap9.html#_concurrency_objects">9.6. Concurrency: Objects</a></li>
+<li><a href="chap9.html#_exercises_9">9.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap10.html">10. Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap10.html#_problem_sort_it_out">10.1. Problem: Sort it out</a></li>
+<li><a href="chap10.html#_concepts_making_a_promise">10.2. Concepts: Making a promise</a></li>
+<li><a href="chap10.html#_syntax_interfaces">10.3. Syntax: Interfaces</a></li>
+<li><a href="chap10.html#_advanced_local_and_anonymous_classes">10.4. Advanced: Local and anonymous classes</a></li>
+<li><a href="chap10.html#_solution_sort_it_out">10.5. Solution: Sort it out</a></li>
+<li><a href="chap10.html#_concurrency_interfaces">10.6. Concurrency: Interfaces</a></li>
+<li><a href="chap10.html#_exercises_10">10.7. Exercises</a></li>
+</ul>
+</li>
+<li class="current"><a href="chap11.html">11. Inheritance</a>
+<ul class="sectlevel2">
+<li class="current"><a href="chap11.html#_problem_boolean_circuits">11.1. Problem: Boolean circuits</a></li>
+<li class="current"><a href="chap11.html#_concepts_refining_classes">11.2. Concepts: Refining classes</a></li>
+<li class="current"><a href="chap11.html#_syntax_inheritance_in_java">11.3. Syntax: Inheritance in Java</a></li>
+<li class="current"><a href="chap11.html#_examples_problem_solving_with_inheritance">11.4. Examples: Problem solving with inheritance</a></li>
+<li class="current"><a href="chap11.html#_solution_boolean_circuits">11.5. Solution: Boolean circuits</a></li>
+<li class="current"><a href="chap11.html#_concurrency_inheritance">11.6. Concurrency: Inheritance</a></li>
+<li class="current"><a href="chap11.html#_exercises_11">11.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap12.html">12. Exceptions</a>
+<ul class="sectlevel2">
+<li><a href="chap12.html#_problem_bank_burglary">12.1. Problem: Bank burglary</a></li>
+<li><a href="chap12.html#_concepts_error_handling">12.2. Concepts: Error handling</a></li>
+<li><a href="chap12.html#_syntax_exceptions_in_java">12.3. Syntax: Exceptions in Java</a></li>
+<li><a href="chap12.html#_solution_bank_burglary">12.4. Solution: Bank burglary</a></li>
+<li><a href="chap12.html#_concurrency_exceptions">12.5. Concurrency: Exceptions</a></li>
+<li><a href="chap12.html#_exercises_12">12.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap13.html">13. Concurrent Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap13.html#_introduction_2">13.1. Introduction</a></li>
+<li><a href="chap13.html#_problem_deadly_virus">13.2. Problem: Deadly virus</a></li>
+<li><a href="chap13.html#_concepts_splitting_up_work">13.3. Concepts: Splitting up work</a></li>
+<li><a href="chap13.html#_syntax_threads_in_java">13.4. Syntax: Threads in Java</a></li>
+<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
+<li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
+<li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
+<li><a href="chap13.html#_summary_5">13.9. Summary</a></li>
+<li><a href="chap13.html#_exercises_13">13.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap14.html">14. Synchronization</a>
+<ul class="sectlevel2">
+<li><a href="chap14.html#_introduction_3">14.1. Introduction</a></li>
+<li><a href="chap14.html#_problem_dining_philosophers">14.2. Problem: Dining philosophers</a></li>
+<li><a href="chap14.html#_concepts_thread_interaction">14.3. Concepts: Thread interaction</a></li>
+<li><a href="chap14.html#_syntax_thread_synchronization">14.4. Syntax: Thread synchronization</a></li>
+<li><a href="chap14.html#_pitfalls_synchronization_challenges">14.5. Pitfalls: Synchronization challenges</a></li>
+<li><a href="chap14.html#_solution_dining_philosophers">14.6. Solution: Dining philosophers</a></li>
+<li><a href="chap14.html#_exercises_14">14.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap15.html">15. Constructing Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap15.html#_problem_math_tutor">15.1. Problem: Math tutor</a></li>
+<li><a href="chap15.html#_concepts_graphical_user_interfaces">15.2. Concepts: Graphical user interfaces</a></li>
+<li><a href="chap15.html#_syntax_guis_in_java">15.3. Syntax: GUIs in Java</a></li>
+<li><a href="chap15.html#_solution_math_tutor">15.4. Solution: Math tutor</a></li>
+<li><a href="chap15.html#_concurrency_guis">15.5. Concurrency: GUIs</a></li>
+<li><a href="chap15.html#_summary_6">15.6. Summary</a></li>
+<li><a href="chap15.html#_exercises_15">15.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap16.html">16. Testing and Debugging</a>
+<ul class="sectlevel2">
+<li><a href="chap16.html#_fixing_bugs">16.1. Fixing bugs</a></li>
+<li><a href="chap16.html#_concepts_approaches_to_debugging">16.2. Concepts: Approaches to debugging</a></li>
+<li><a href="chap16.html#_syntax_java_debugging_tools">16.3. Syntax: Java debugging tools</a></li>
+<li><a href="chap16.html#_concurrency_parallel_bugs">16.4. Concurrency: Parallel bugs</a></li>
+<li><a href="chap16.html#_finding_and_avoiding_bugs">16.5. Finding and avoiding bugs</a></li>
+<li><a href="chap16.html#_concepts_design_implementation_and_testing">16.6. Concepts: Design, implementation, and testing</a></li>
+<li><a href="chap16.html#_syntax_java_testing_tools">16.7. Syntax: Java testing tools</a></li>
+<li><a href="chap16.html#_concurrency_testing_tools">16.8. Concurrency: Testing tools</a></li>
+<li><a href="chap16.html#_examples_testing_a_class">16.9. Examples: Testing a class</a></li>
+<li><a href="chap16.html#_exercises_16">16.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap17.html">17. Polymorphism</a>
+<ul class="sectlevel2">
+<li><a href="chap17.html#_problem_banking_account_with_a_vengeance">17.1. Problem: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concepts_polymorphism">17.2. Concepts: Polymorphism</a></li>
+<li><a href="chap17.html#_syntax_inheritance_tools_in_java">17.3. Syntax: Inheritance tools in Java</a></li>
+<li><a href="chap17.html#_solution_banking_account_with_a_vengeance">17.4. Solution: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concurrency_atomic_libraries">17.5. Concurrency: Atomic libraries</a></li>
+<li><a href="chap17.html#_exercises_17">17.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap18.html">18. Dynamic Data Structures</a>
+<ul class="sectlevel2">
+<li><a href="chap18.html#_problem_infix_conversion">18.1. Problem: Infix conversion</a></li>
+<li><a href="chap18.html#_concepts_dynamic_data_structures">18.2. Concepts: Dynamic data structures</a></li>
+<li><a href="chap18.html#_syntax_dynamic_arrays_and_linked_lists">18.3. Syntax: Dynamic arrays and linked lists</a></li>
+<li><a href="chap18.html#_syntax_abstract_data_types_adt">18.4. Syntax: Abstract data types (ADT)</a></li>
+<li><a href="chap18.html#_advanced_generic_data_structures">18.5. Advanced: Generic data structures</a></li>
+<li><a href="chap18.html#_solution_infix_conversion">18.6. Solution: Infix conversion</a></li>
+<li><a href="chap18.html#_concurrency_linked_lists_and_thread_safety">18.7. Concurrency: Linked lists and thread safety</a></li>
+<li><a href="chap18.html#_concurrency_thread_safe_libraries">18.8. Concurrency: Thread-safe libraries</a></li>
+<li><a href="chap18.html#_exercises_18">18.9. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap19.html">19. Recursion</a>
+<ul class="sectlevel2">
+<li><a href="chap19.html#_problem_maze_of_doom">19.1. Problem: Maze of doom</a></li>
+<li><a href="chap19.html#_concepts_recursive_problem_solving">19.2. Concepts: Recursive problem solving</a></li>
+<li><a href="chap19.html#_syntax_recursive_methods">19.3. Syntax: Recursive methods</a></li>
+<li><a href="chap19.html#_syntax_recursive_data_structures">19.4. Syntax: Recursive data structures</a></li>
+<li><a href="chap19.html#_solution_maze_of_doom">19.5. Solution: Maze of doom</a></li>
+<li><a href="chap19.html#_concurrency_futures">19.6. Concurrency: Futures</a></li>
+<li><a href="chap19.html#_exercises_19">19.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap20.html">20. File I/O</a>
+<ul class="sectlevel2">
+<li><a href="chap20.html#_problem_a_picture_is_worth_1000_bytes">20.1. Problem: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concepts_file_io">20.2. Concepts: File I/O</a></li>
+<li><a href="chap20.html#_syntax_file_operations_in_java">20.3. Syntax: File operations in Java</a></li>
+<li><a href="chap20.html#_examples_file_examples">20.4. Examples: File examples</a></li>
+<li><a href="chap20.html#fileChapterSolution">20.5. Solution: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concurrency_file_io">20.6. Concurrency: File I/O</a></li>
+<li><a href="chap20.html#_exercises_20">20.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap21.html">21. Network Communication</a>
+<ul class="sectlevel2">
+<li><a href="chap21.html#_problem_web_server">21.1. Problem: Web server</a></li>
+<li><a href="chap21.html#_concepts_tcpip_communication">21.2. Concepts: TCP/IP communication</a></li>
+<li><a href="chap21.html#_syntax_networking_in_java">21.3. Syntax: Networking in Java</a></li>
+<li><a href="chap21.html#_solution_web_server">21.4. Solution: Web server</a></li>
+<li><a href="chap21.html#_concurrency_networking">21.5. Concurrency: Networking</a></li>
+<li><a href="chap21.html#_exercises_21">21.6. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="ch11-inheritance">11. Inheritance</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Your children are not your children.<br>
+They are the sons and daughters of Life’s longing for itself.<br>
+They come through you but not from you,<br>
+And though they are with you yet they belong not to you.</p>
+</div>
+</blockquote>
+<div class="attribution">
+— Khalil Gibran
+</div>
+</div>
+<div class="sect2">
+<h3 id="_problem_boolean_circuits">11.1. Problem: Boolean circuits</h3>
+<div class="paragraph">
+<p>In <a href="chap4.html">Chapter 4</a>, we talked extensively about Boolean
+algebra and how it can be applied to <code>if</code> statements in order to control
+the flow of execution in your program. The commands that we give in
+software must be executed by hardware in order to have an effect. It
+shouldn’t be surprising that computer hardware is built out of digital
+circuits that behave according to the same rules as Boolean logic. Each
+component of these circuits is called a <em>logic gate</em>. There are logic
+gates corresponding to all the Boolean operations you’re used to: AND,
+OR, XOR, NOT, and others.</p>
+</div>
+<div class="paragraph">
+<p>The output of an AND gate is the result of performing a logical AND on
+its inputs. That is, its output is true if and only if both of its
+inputs are true. The same correlation exists between each gate and the
+Boolean operator with the same name. At the level of circuitry, a 1 (or
+“on”) is often used to represent true, and a 0 (or “off”) is often
+used to represent false. Modern computer circuitry is built almost
+entirely out of such gates, performing addition, subtraction, and all
+other basic operations as complicated combinations of logic gates, where
+each digit of every number is a 1 or 0 determined by the circuit.</p>
+</div>
+<div class="paragraph">
+<p>Because these circuits can become large and unwieldy, your problem is to
+write a Java program that will allow a user to specify the design of
+such a circuit and then see what its output is. The input to this
+program will be a text file redirected to standard input that gives the
+number of gates of the circuit, lists what each gate is, and then
+lists the connections between them.</p>
+</div>
+<div class="paragraph">
+<p>The following is an example of input to make a circuit with six
+components.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>6
+true
+false
+AND
+XOR
+NOT
+OUTPUT 1
+2 0 1
+3 2 1
+4 3
+5 4</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first line specifies the total number of components. The next two
+components give either true or false inputs, depending on their names.
+The <code>AND</code> and the <code>XOR</code> correspond to gates of the same name which each
+take two inputs. The <code>NOT</code> corresponds to a NOT gate with a single
+input. Finally, <code>OUTPUT 1</code> is the single output of this circuit that
+we’re interested in. After the list of gates is a list of how they’re
+connected. The line <code>2 0 1</code> specifies that the gate at index 2, which
+happens to be an AND gate, has an input from the gate at index 0 and an
+input from the gate at index 1. In other words, the AND gate has one
+true input and one false input. The final circuit produced would look
+like the following.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="chapters/11-inheritance/images/circuit.svg" alt="circuit" width="75%">
+</div>
+<div class="title">Figure 11.1 Final circuit diagram showing the six components.</div>
+</div>
+<div class="paragraph">
+<p>We’re only interested in the value of any OUTPUT gates. Thus, the
+program that’s simulating this circuit would print the following.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>OUTPUT 1: true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are many different ways to implement a solution to this problem.
+The total number of gates is given as the first input. Thus, you can
+make an array of gates. When you go to connect them, the indexes given
+in the input will map naturally onto the gates in the array. But what
+type should the array be? You could create a <code>Gate</code> class that could do
+the work of any conceivable gate, but the implementation would be
+awkward. All gates would have to have two inputs even if they don’t need
+any. Adding different kinds of gates later (like a NAND, for example)
+would mean rewriting the <code>Gate</code> class.</p>
+</div>
+<div class="paragraph">
+<p>Instead, a cleaner approach to the solution is to use <em>inheritance</em>. In
+object-oriented languages like Java, inheritance is a process that
+allows you to create a new, specialized class from a more general,
+preexisting class.</p>
+</div>
+<div class="paragraph">
+<p>We recommend the following inheritance hierarchy, in which the arrows
+point from each child class to its parent class.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="chapters/11-inheritance/images/gates.svg" alt="gates" width="100%">
+</div>
+<div class="title">Figure 11.2 Recommended inheritance hierarchy.</div>
+</div>
+<div class="paragraph">
+<p>As you can see, every class inherits from the <code>Gate</code> class. If your
+array can be of type <code>Gate</code>, it will be able to hold objects of any
+child of <code>Gate</code>. <code>UnaryOperator</code>, <code>BinaryOperator</code>, <code>True</code>, and <code>False</code>
+are children of the basic <code>Gate</code> class. Then, <code>Output</code> and <code>Not</code> are
+children of <code>UnaryOperator</code> since each only has a single input.
+Naturally, <code>And</code>, <code>Or</code>, and <code>Xor</code> are children of <code>BinaryOperator</code>,
+since they all have two inputs.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap11.html#classHierarchyExercise">Exercise 11.9</a></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If this jumble of classes seems bewildering, don’t be
+discouraged. Each is very short and easy to write. We’ll explain what
+the inheritance relationship means and how to use it in the next few
+sections.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concepts_refining_classes">11.2. Concepts: Refining classes</h3>
+<div class="paragraph">
+<p>Here we give a brief overview of inheritance that will give us enough
+information to continue onward. We’ll cover some of the deeper areas of the
+subject in <a href="chap17.html">Chapter 17</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_basic_inheritance">11.2.1. Basic inheritance</h4>
+<div class="paragraph">
+<p>The process of creating an inherited class out of an existing class is
+called <em>inheriting</em> a class, <em>deriving</em> a class, or simply
+<em>subclassing</em>. The class that already exists is called a <em>parent class</em>,
+<em>base class</em>, or <em>superclass</em> and the new class is called a <em>child
+class</em>, <em>derived class</em>, or <em>subclass</em>.</p>
+</div>
+<div class="paragraph">
+<p>When you create a child class from a parent class, the child class
+inherits all of its fields and methods. Thus, you can use a child class
+object anywhere you’d use the parent class object. This relationship
+explains the terms superclass and subclass: Since you can treat any
+subclass object as if it were a superclass object, the superclass type
+can be thought of as a superset including all subclass objects.</p>
+</div>
+<div class="paragraph">
+<p>The names superclass and subclass can sound
+misleading because the subclass can usually do more than the superclass.
+From that perspective, the child class has a superset of the fields and
+methods of its parent class. To avoid confusion, we favor the
+terminology of parent and child classes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adding_functionality">11.2.2. Adding functionality</h4>
+<div class="paragraph">
+<p>When creating a child class, a programmer will normally add
+functionality above and beyond the original parent class. Otherwise,
+there’s little point in creating a child class. For example, a simple
+<code>Fish</code> class might be able to do things like swim and feed. A child
+<code>Flounder</code> class has the additional ability to camouflage itself.
+Another child class, the <code>Shark</code> class, adds the ability to eat other
+<code>Fish</code> objects.</p>
+</div>
+<div class="paragraph">
+<p>By adding a few methods, we can create a new class with special
+abilities without interfering with the basic functionality of the
+underlying class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_code_reuse">11.2.3. Code reuse</h4>
+<div class="paragraph">
+<p>Of course, a programmer who wished to program a <code>Shark</code> class could
+simply copy and paste in all the code from the <code>Fish</code> class and then
+make the necessary additions. In many ways the evolution of modern
+programming languages has been to reduce the need for copying and
+pasting.</p>
+</div>
+<div class="paragraph">
+<p>Old mistakes are propagated with copying and pasting. When discovered,
+they must be fixed in several different locations. New mistakes can also
+be introduced by cutting and pasting. Instead, we wish to guarantee that
+working code from a parent class continues to work in a child class.
+Ideally, code from parent classes will not need to be debugged a second
+time when a child class is created.</p>
+</div>
+<div class="paragraph">
+<p>Even without the issue of errors introduced by copying and pasting, the
+total amount of code increases. By minimizing the amount of code, issues
+of performance and storage can be improved, but not always. Object-oriented
+languages have taken criticism for low speed and high memory
+use due to the additional complexities of objects and inheritance, but
+compiler optimization, good library design, and improved JVM performance
+have brought Java a long way in this area.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap11.html#inheritanceAdvantagesExercise">Exercise 11.1</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_syntax_inheritance_in_java">11.3. Syntax: Inheritance in Java</h3>
+<div class="paragraph">
+<p>In this section we discuss the mechanism for creating a child class in
+Java using the <code>extends</code> keyword. Then, we discuss access restriction
+and visibility, constructor issues, the <code>Object</code> class, and overriding
+methods.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_extends_keyword">11.3.1. The <code>extends</code> keyword</h4>
+<div class="paragraph">
+<p>In order to make a child class in Java, we use the <code>extends</code> keyword.
+Let’s give an example using the <code>Fish</code> class defined below. This class
+creates a basic fish that can swim, feed, and die. We can check its
+color, location, and whether or not it’s alive. When it runs out of
+energy, it dies.</p>
+</div>
+<div id="FishProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fish</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="nc">Color</span> <span class="n">color</span> <span class="o">=</span> <span class="nc">Color</span><span class="o">.</span><span class="na">GRAY</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">location</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">energy</span> <span class="o">=</span> <span class="mf">100.0</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">alive</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">Color</span> <span class="nf">getColor</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">color</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">location</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isAlive</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">alive</span><span class="o">;</span> <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">swim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">alive</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">location</span> <span class="o">+=</span> <span class="mf">0.5</span><span class="o">;</span>
+            <span class="n">energy</span> <span class="o">-=</span> <span class="mf">0.25</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">energy</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="o">)</span>
+            <span class="n">die</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">feed</span><span class="o">()</span> <span class="o">{</span> <span class="n">energy</span> <span class="o">=</span> <span class="mf">100.0</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">die</span><span class="o">()</span> <span class="o">{</span> <span class="n">alive</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From here we can create a child class called <code>BoringFish</code> that does
+exactly what <code>Fish</code> does. To do so, we use the <code>extends</code> keyword after
+the new class name, followed by the parent class name (in this case
+<code>Fish</code>), followed by the body of the class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoringFish</span> <span class="kd">extends</span> <span class="nc">Fish</span> <span class="o">{</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Just as we’re allowed to make an empty class, we’re allowed to make an
+inherited class and add nothing, but doing so is pointless. Instead, we
+can make a <code>Flounder</code> class that can change its color.</p>
+</div>
+<div id="FlounderProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Flounder</span> <span class="kd">extends</span> <span class="nc">Fish</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setColor</span><span class="o">(</span><span class="nc">Color</span> <span class="n">newColor</span><span class="o">)</span> <span class="o">{</span> <span class="n">color</span> <span class="o">=</span> <span class="n">newColor</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Flounder</code> class can do everything a <code>Fish</code> can: It can swim, feed,
+and die. But we also add the ability to change color since
+flounders are famous for their ability to mimic the ocean floor they
+swim over. Note that the <code>color</code> field in the <code>Fish</code> class has the
+<code>protected</code> access modifier, not <code>private</code>. We’ll come back to this
+point.</p>
+</div>
+<div class="paragraph">
+<p>Here’s a <code>Shark</code> class that extends <code>Fish</code> in another way, by adding
+the capability of eating other <code>Fish</code>.</p>
+</div>
+<div id="SharkProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Shark</span> <span class="kd">extends</span> <span class="nc">Fish</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eat</span><span class="o">(</span><span class="nc">Fish</span> <span class="n">fish</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">fish</span><span class="o">.</span><span class="na">die</span><span class="o">();</span>
+        <span class="n">feed</span><span class="o">();</span>     
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we have added an <code>eat()</code> method that takes another <code>Fish</code> object as
+a parameter. First, the <code>Fish</code> parameter is killed; then the <code>eat()</code>
+method calls <code>feed()</code>, restoring the energy of the <code>Shark</code> object. Note
+that the <code>Shark</code> object is able to call the <code>feed()</code> method even though
+it isn’t defined inside of <code>Shark</code>. Because it inherits from <code>Fish</code>, it
+has a version of <code>feed()</code>.</p>
+</div>
+<div class="sect4">
+<h5 id="_single_inheritance_only">Single inheritance only</h5>
+<div class="paragraph">
+<p>Particularly if you’ve programmed in C++, you might be wondering if it’s
+possible to have one class inherit from <strong>multiple</strong> classes in Java.
+In multiple inheritance, a single class can have many different parents.
+Since C++ supports multiple inheritance, it would allow you to have a
+<code>SharkAlligatorMan</code> class that inherits from the
+<code>Shark</code>, <code>Alligator</code>, and <code>Human</code> classes. If you go back to the sorting
+problem from <a href="chap10.html">Chapter 10</a>, multiple inheritance would
+allow us to solve the problem with an <code>Age</code> class and a <code>Weight</code> class
+from which <code>Dog</code>, <code>Cat</code>, <code>Person</code>, and <code>Cheese</code> all inherit.</p>
+</div>
+<div class="paragraph">
+<p>However, the designers of Java decided not to allow multiple
+inheritance, perhaps for this reason: Imagine a <code>River</code> class with a
+<code>run()</code> method and a <code>Politician</code> class with a <code>run()</code> method. It seems
+strange to create a class which is both a river and politician, but
+there is no rule in C++ which makes doing so impossible. If you did have
+a <code>RiverPolitician</code> class which inherits from both, what would happen
+when you call the <code>run()</code> method? How would the <code>RiverPolitician</code> class
+know which of its parents' methods to pick? Surely, the way that a
+politician runs for office is very different from the way a river runs
+along its banks.</p>
+</div>
+<div class="paragraph">
+<p>This problem is similar to the issue discussed in
+<a href="chap10.html#_default_methods">Section 10.3.1</a>, where a class could implement more than one interface
+with the same default method; however, the problem is more severe in the
+case of multiple inheritance since it becomes unclear which fields inside
+of parent classes are being referred to, not just which methods.</p>
+</div>
+<div class="paragraph">
+<p>If you find yourself in a situation where you want to use multiple
+inheritance in Java, try to reformulate your class hierarchy into one
+where your classes implement multiple interfaces. Recall that multiples
+interfaces <strong>can</strong> be implemented by a single class in Java, and like
+multiple inheritance, this practice allows a single class to be used in
+wildly different contexts.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_interfaces_using_extends">Interfaces using <code>extends</code></h5>
+<div class="paragraph">
+<p>The <code>extends</code> keyword is not limited to classes. It’s possible for an
+interface to extend another interface. In fact, an interface can extend
+any number of other interfaces. As when a class implements multiple
+interfaces, each interface in an extends list is separated by commas.</p>
+</div>
+<div class="paragraph">
+<p>When an interface extends other interfaces, it includes all the methods
+(and constants) they define. If a class implements an interface that
+extends other interfaces, it must contain versions of all the methods
+specified by <strong>all</strong> the interfaces. Recall the <code>Ageable</code> and <code>Weighable</code>
+interfaces from <a href="chap10.html">Chapter 10</a>, which specified the
+<code>getAge()</code> and <code>getWeight()</code> methods, respectively. We could create an
+interface that required both of these methods by extending <code>Ageable</code> and
+<code>Weighable</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">AgeableAndWeighable</span> <span class="kd">extends</span> <span class="nc">Ageable</span><span class="o">,</span> <span class="nc">Weighable</span> <span class="o">{</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We could add additional methods to the <code>AgeableAndWeighable</code> interface,
+but even empty it will enforce the contracts defined by both <code>Ageable</code>
+and <code>Weighable</code>. It’s usually not necessary to create an interface
+that extends other interfaces, since a class could implement each of the
+individual interfaces. Nevertheless, it can be used as a convenience to
+save typing or to create a reference type with certain guaranteed
+abilities.</p>
+</div>
+<div class="paragraph">
+<p>Note that a class can never extend an interface. Likewise, an interface
+cannot extend a class or implement another interface.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_access_restriction_and_visibility">11.3.2. Access restriction and visibility</h4>
+<div class="paragraph">
+<p>The <code>Shark</code> example above gives an example of inheritance in which the
+child class only calls methods of the parent class and does not
+interfere with the fields of the parent class. Generally, leaving parent
+fields alone is a good thing because it protects the state of the parent
+class from getting corrupted. However, it’s not always possible.
+If we return to the earlier <code>Flounder</code> example, we had to change the
+<code>color</code> field directly since there was no mutator to change it.</p>
+</div>
+<div class="paragraph">
+<p>Perhaps the <code>Fish</code> class was poorly designed because it didn’t have a
+<code>color</code> mutator. On the other hand, most fish cannot change their color,
+so it might be good design to prevent outside code from changing the
+<code>color</code> field with such a mutator. There are no absolute rules for
+making these kinds of decisions.</p>
+</div>
+<div class="paragraph">
+<p>We introduced access modifiers in <a href="chap9.html#_access_modifiers">Section 9.3.4</a>, but inheritance
+gives them new meaning. Recall that the
+access modifier for the <code>color</code> field of <code>Fish</code> was <code>protected</code>. A field
+or method with the <code>protected</code> modifier can be accessed by all child
+classes (as well as classes in the same package). If the modifier for
+<code>color</code> was <code>private</code>, the <code>Flounder</code> class would not be able to change
+it directly.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>Shark</code> class, it <strong>must</strong> use mutators to change the value of its
+own <code>energy</code> and the <code>alive</code> field of the <code>fish</code> object it eats since
+they’re both marked <code>private</code>. It’s generally preferable to use mutator
+and accessor methods whenever possible, even within the same class, so
+that fields are not inadvertently corrupted.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_constructors_2">11.3.3. Constructors</h4>
+<div class="paragraph">
+<p>When you create a child class, you can imagine that a copy of the
+parent class exists inside of the child. When you create an object from
+a child class, how do you properly initialize the fields inside the
+parent class?</p>
+</div>
+<div class="paragraph">
+<p>As we discussed in <a href="chap9.html">Chapter 9</a>, every class has a
+constructor, even if it’s a default one created for you. Whenever the
+constructor for a child class is invoked, the constructor for the parent
+class is invoked as well. If the parent class is also the child of some
+other class, that grandparent class will have its constructor invoked as
+well. This chain of constructors will continue, reaching all the way
+back to the ultimate ancestor, <code>Object</code>.</p>
+</div>
+<div class="paragraph">
+<p>When writing the constructor for a child class, the first line of it
+should be the call to the parent constructor. If you don’t explicitly
+call the parent constructor, its default (no parameter) constructor will
+be called. If the parent class does not have a default constructor, then
+leaving off an appropriate call to a parent constructor will result in a
+compiler error. Consider the following two classes.</p>
+</div>
+<div id="ParentProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Parent</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	
+    <span class="kd">public</span> <span class="nf">Parent</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="ChildProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="nc">Parent</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Child</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="s">"Baby "</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As shown above, the <code>super</code> keyword is used to call the constructor of a
+parent class. The <code>Child</code> constructor takes a name and prepends the
+<code>String</code> <code>"Baby "</code> to it before passing it on to the <code>Parent</code>
+constructor.</p>
+</div>
+<div class="paragraph">
+<p>In a similar way, the <code>this</code> keyword can be used to call another
+constructor in the <strong>same</strong> class, provided that a constructor to the
+<strong>parent</strong> class is eventually reached. For example, we could add the
+following constructor to the <code>Child</code> class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">    <span class="kd">public</span> <span class="nf">Child</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="s">"Unknown"</span><span class="o">);</span>
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This second constructor will be called whenever a new <code>Child</code> object is
+instantiated without any arguments. It will supply the <code>String</code>
+<code>"Unknown"</code> to the other constructor, which will add <code>"Baby"</code> and pass
+it on to the <code>Parent</code> class.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_overriding_methods_and_hiding_fields">11.3.4. Overriding methods and hiding fields</h4>
+<div class="paragraph">
+<p>Sometimes a parent method doesn’t provide all the power you want in the
+child class. It’s possible to <em>override</em> a parent method in the child
+class. Then, when that method is called on child objects, the new method
+will be called. The new method has exactly the same name and parameters.
+The return type must either be exactly the same or a child class of the
+original return type.</p>
+</div>
+<div class="paragraph">
+<p>We can return to the <code>Fish</code> class example and make a new kind of fish
+that never moves.</p>
+</div>
+<div id="LazyFishProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LazyFish</span> <span class="kd">extends</span> <span class="nc">Fish</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">swim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"I think I'll just sit here."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Whenever someone calls the <code>swim()</code> method on a <code>LazyFish</code> object, it
+will announce that it’s going to sit where it is. Its location isn’t
+updated, and its energy doesn’t change.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, we could create another child class that swims twice
+as fast as the original <code>Fish</code>.</p>
+</div>
+<div id="FastFishProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FastFish</span> <span class="kd">extends</span> <span class="nc">Fish</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">swim</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">swim</span><span class="o">();</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">swim</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every time <code>swim()</code> is called on objects of type <code>FastFish</code>, those
+objects will call the <code>swim()</code> method from <code>Fish</code> twice. Thus, this fish
+will move twice as fast (and consume twice as much energy). Because the
+<code>location</code> and <code>energy</code> fields are <code>private</code>, we must use methods from
+<code>Fish</code> to affect them. Note the use of the keyword <code>super</code>, allowing us
+to specify that we want to call the <code>swim()</code> method from <code>Fish</code> and not
+just call the same method from <code>FastFish</code> again. Using the <code>super</code>
+keyword, we can call methods from the parent. If the parent didn’t
+override a method from an ancestor class, we can still use <code>super</code> to
+call a method from the most recent ancestor class that did implement the method.
+However, Java does not allow us to skip over a parent method to call a
+grandparent method if there’s an implementation in the parent class. In
+other words, there’s no way to call something like a
+<code>super.super.swim()</code> method.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap11.html#methodOverridingExercise">Exercise 11.6</a></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Just as methods are overridden, fields are <em>hidden</em>. It’s perfectly
+legal to declare a field with the same name as a field from a parent
+class, but the new field will then be used instead of the old one.</p>
+</div>
+<div id="AProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
+	
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getA</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">a</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setA</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span> <span class="n">a</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="BProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="no">A</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
+	
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setA</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span> <span class="n">a</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Class <code>B</code> is a child of class <code>A</code> and declares a field called <code>a</code>,
+hiding a field of the same name from <code>A</code>. However, which <code>a</code> is which
+can cause some confusion. Consider the following fragment of code.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="no">A</span> <span class="n">objectA</span> <span class="o">=</span> <span class="k">new</span> <span class="no">A</span><span class="o">();</span>
+<span class="no">B</span> <span class="n">objectB</span> <span class="o">=</span> <span class="k">new</span> <span class="no">B</span><span class="o">();</span>
+<span class="n">objectA</span><span class="o">.</span><span class="na">setA</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+<span class="n">objectB</span><span class="o">.</span><span class="na">setA</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"A = "</span> <span class="o">+</span> <span class="n">objectA</span><span class="o">.</span><span class="na">getA</span><span class="o">());</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"B = "</span> <span class="o">+</span> <span class="n">objectB</span><span class="o">.</span><span class="na">getA</span><span class="o">());</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output of this code is:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A = 5
+B = 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Calling the <code>setA()</code> method on an <code>A</code> object sets the <code>a</code> field inside
+of <code>A</code>. Calling the overridden <code>setA()</code> method on a <code>B</code> object sets the
+<code>a</code> field inside of <code>B</code>, but since the <code>getA()</code> method hasn’t been
+overridden, the <code>a</code> field from the <code>A</code> parent class part of <code>B</code> is
+returned. Since that <code>a</code> field in <code>B</code> hasn’t been given a value, it
+still has the default value of <code>0</code>. Both <code>a</code> fields exist inside of <code>B</code>,
+but the methods are poorly designed, leaving one field capable only of
+being set and the other capable only of being retrieved.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap11.html#fieldHidingExercise">Exercise 11.7</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_object_class">11.3.5. The <code>Object</code> class</h4>
+<div class="paragraph">
+<p>You may not have realized it, but <strong>every</strong> class you’ve created in Java uses
+inheritance. To provide uniformity, the designers of Java made every
+class the child (or grandchild or great-grandchild…​) of a class
+called <code>Object</code>. When you omit the <code>extends</code> clause in a class
+definition, you’re making that class a direct child of <code>Object</code>.</p>
+</div>
+<div class="paragraph">
+<p>As a consequence, <strong>all</strong> classes in Java are guaranteed to have the
+following methods.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Method</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clone()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Make a separate copy of an object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>equals()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Determine if two objects are the same.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>finalize()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Perform cleanup when an object is garbage collected. Similar to a destructor in C++. Rarely used.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>getClass()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Find out what the class type of a given object is.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>hashCode()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get the hash code for an object, useful for making hash
+tables of objects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>notify()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used for synchronization with threaded programs. More in
+<a href="chap14.html">Chapter 14</a>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>notifyAll()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Same as previous.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>toString()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get a <code>String</code> representation of the given object.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>wait()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used with <code>notify()</code> and <code>notifyAll()</code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Java provides basic implementations for most of these, but if you want
+them to work well for your object, you’ll have to override some of
+them with appropriate methods. For example, the <code>Object</code> version of
+<code>toString()</code> returns the virtual address of the object in JVM memory,
+which is not very useful information.</p>
+</div>
+<div class="paragraph">
+<p>Nevertheless, API classes usually have good <code>equals()</code> and <code>toString()</code>
+methods. Aside from making a few useful methods available, having a
+common ancestor for all classes means that you can store any object in
+an <code>Object</code> reference. An array of type <code>Object</code> can hold anything,
+provided that you know how to retrieve it. We discuss the finer points
+of inheritance and polymorphism in <a href="chap17.html">Chapter 17</a> and
+how to build lists and other data structures using <code>Object</code> references
+in <a href="chap18.html">Chapter 18</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples_problem_solving_with_inheritance">11.4. Examples: Problem solving with inheritance</h3>
+<div class="paragraph">
+<p>Here are two extended examples showing how we can use inheritance to
+solve problems. First, we revisit the student roster example from
+<a href="chap9.html">Chapter 9</a> and then move onto an inheritance hierarchy
+of polygons.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 11.1 Graduate student roster</div>
+<div class="content">
+<div class="paragraph">
+<p>The <code>Student</code> class we created in <a href="chap9.html#studentRosterExample">Example 9.1</a> is useful
+but works only for undergraduate students. With only a few additions, we
+can make it suitable for graduate students as well. First, let’s take
+another look at the <code>Student</code> class.</p>
+</div>
+<div id="StudentProgram" class="listingblock">
+<div class="title">Program 11.1 Basic student class, designed for undergraduates.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span><span class="o">[]</span> <span class="no">YEARS</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Freshman"</span><span class="o">,</span> <span class="s">"Sophomore"</span><span class="o">,</span> <span class="s">"Junior"</span><span class="o">,</span> <span class="s">"Senior"</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">year</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="no">GPA</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Student</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">year</span><span class="o">,</span> <span class="kt">double</span> <span class="no">GPA</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+        <span class="n">setYear</span><span class="o">(</span><span class="n">year</span><span class="o">);</span>
+        <span class="n">setGPA</span><span class="o">(</span><span class="no">GPA</span><span class="o">);</span>
+    <span class="o">}</span>   
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setYear</span><span class="o">(</span><span class="kt">int</span> <span class="n">year</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">year</span> <span class="o">=</span> <span class="n">year</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGPA</span><span class="o">(</span><span class="kt">double</span> <span class="no">GPA</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="no">GPA</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="no">GPA</span> <span class="o">&lt;=</span> <span class="mf">4.0</span><span class="o">)</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">GPA</span> <span class="o">=</span> <span class="no">GPA</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Invalid GPA: "</span> <span class="o">+</span> <span class="no">GPA</span><span class="o">);</span>      
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">};</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getYear</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">year</span><span class="o">;</span> <span class="o">};</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getGPA</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="no">GPA</span><span class="o">;</span> <span class="o">};</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"\t"</span> <span class="o">+</span> <span class="no">YEARS</span><span class="o">[</span><span class="n">year</span><span class="o">]</span> <span class="o">+</span> <span class="s">"\t"</span> <span class="o">+</span> <span class="no">GPA</span><span class="o">;</span>
+    <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We want to create a <code>GraduateStudent</code> class that inherits from
+<code>Student</code>. We need to add a thesis topic for each graduate student.
+Likewise, we need to update the <code>toString()</code> method so that outputs the
+appropriate data. We use <code>4</code> as the year value for graduate students.</p>
+</div>
+<div id="GraduateStudentProgram" class="listingblock">
+<div class="title">Program 11.2 Class extending <code>Student</code> to add graduate student capabilities.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GraduateStudent</span> <span class="kd">extends</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">topic</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="kd">public</span> <span class="nf">GraduateStudent</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="kt">double</span> <span class="no">GPA</span><span class="o">,</span> <span class="nc">String</span> <span class="n">topic</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="no">GPA</span><span class="o">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="n">setTopic</span><span class="o">(</span><span class="n">topic</span><span class="o">);</span>
+    <span class="o">}</span>   
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTopic</span><span class="o">(</span><span class="nc">String</span> <span class="n">topic</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">topic</span> <span class="o">=</span> <span class="n">topic</span><span class="o">;</span> <span class="o">}</span>  
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="k">return</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\tGraduate\t"</span> <span class="o">+</span> <span class="n">getGPA</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\tTopic: "</span> <span class="o">+</span> <span class="n">topic</span><span class="o">;</span>
+    <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Because we’re inheriting most of the fields we need, we only need to
+declare the <code>topic</code> field.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Then, in the <code>GraduateStudent</code> constructor,
+we call the parent constructor with the name, year, and GPA and then set
+<code>topic</code> to the input value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Finally, we override the <code>toString()</code> method so that <code>"Graduate"</code> and
+the thesis topic are output. Note that we must use the <code>getName()</code> and
+<code>getGPA()</code> accessors since those fields are <code>private</code> in <code>Student</code>.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Most code that uses <code>Student</code> objects should be able to incorporate
+<code>GraduateStudent</code> objects easily. Code that creates <code>Student</code> objects
+from input will need slight modifications to handle the thesis topic.
+Also, old code that only expects values of <code>0</code>, <code>1</code>, <code>2</code>, or <code>3</code> for
+year may need to be modified so that it doesn’t break.</p>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap11.html#internationalStudentExercise">Exercise 11.10</a></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 11.2 Polygons</div>
+<div class="content">
+<div class="paragraph">
+<p>Let’s examine a class hierarchy used to create several different
+polygons. Our base class needs to be general. It can represent any kind
+of closed polygon, using an array of <code>Point</code> objects. The <code>Point</code> library class
+is a way to package up <code>x</code> and <code>y</code> values of type <code>int</code>. Each coordinate
+in the array gives the next vertex of the polygon.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Polygon</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="nc">Point</span><span class="o">[]</span> <span class="n">points</span><span class="o">;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+    <span class="kd">public</span> <span class="nf">Polygon</span><span class="o">(</span><span class="nc">Point</span><span class="o">[]</span> <span class="n">points</span><span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="k">this</span><span class="o">.</span><span class="na">points</span> <span class="o">=</span> <span class="n">points</span><span class="o">;</span>
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>import</code> statement allows us to use the <code>Point</code> class as well as the
+<code>Graphics</code> class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Our array of type <code>Point</code> is declared <code>protected</code> so
+that the child classes we want to create can access it directly.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The constructor takes an array of type <code>Point</code> and stores it.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPerimeter</span><span class="o">()</span> <span class="o">{</span> <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="kt">double</span> <span class="n">perimeter</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">perimeter</span> <span class="o">+=</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">distance</span><span class="o">(</span><span class="n">points</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]);</span>
+        <span class="n">perimeter</span> <span class="o">+=</span> <span class="n">points</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">distance</span><span class="o">(</span><span class="n">points</span><span class="o">[</span><span class="n">points</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]);</span>
+        <span class="k">return</span> <span class="n">perimeter</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">draw</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">x</span><span class="o">,</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">y</span><span class="o">,</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">].</span><span class="na">x</span><span class="o">,</span> <span class="n">points</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">].</span><span class="na">y</span><span class="o">);</span>
+        <span class="n">g</span><span class="o">.</span><span class="na">drawLine</span><span class="o">(</span><span class="n">points</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">x</span><span class="o">,</span> <span class="n">points</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">y</span><span class="o">,</span>
+			<span class="n">points</span><span class="o">[</span><span class="n">points</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">].</span><span class="na">x</span><span class="o">,</span> <span class="n">points</span><span class="o">[</span><span class="n">points</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">].</span><span class="na">y</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>getPerimeter()</code> method can determine the length
+of the perimeter by adding the lengths of the segments connecting the
+vertices. Although it’s also possible to determine the area enclosed by a list of
+vertices, the algorithm is complex.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>draw()</code> method draws the
+polygon by drawing each line segment that connects adjacent vertices. We
+discuss the <code>Graphics</code> class in <a href="chap15.html">Chapter 15</a>. If you compile and run this code, please note that in
+Java graphics, like many computer graphics environments, the upper left
+hand corner of the screen or window is considered (0,0), and
+<em>y</em> values <strong>increase</strong> going downward, not upward.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>The number of things that can be done with this very general <code>Polygon</code>
+class are limited, but with this basic parent class defined, we can
+design a <code>Triangle</code> class as a child of it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Triangle</span> <span class="kd">extends</span> <span class="nc">Polygon</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Triangle</span><span class="o">(</span><span class="kt">int</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x3</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y3</span><span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="kd">super</span><span class="o">(</span><span class="n">toPointArray</span><span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">,</span> <span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">,</span> <span class="n">x3</span><span class="o">,</span> <span class="n">y3</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="kd">protected</span> <span class="kd">static</span> <span class="nc">Point</span><span class="o">[]</span> <span class="nf">toPointArray</span><span class="o">(</span><span class="kt">int</span> <span class="n">x1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y1</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x3</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y3</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">Point</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x1</span><span class="o">,</span> <span class="n">y1</span><span class="o">),</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="n">y2</span><span class="o">),</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x3</span><span class="o">,</span> <span class="n">y3</span><span class="o">)};</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="k">return</span> <span class="n">array</span><span class="o">;</span>
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Again, the <code>import</code> statement is for the <code>Point</code> class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>One reasonable
+constructor for a triangle takes in six values, giving the
+<em>x</em> and <em>y</em> coordinates of the three vertices of
+the triangle. Of course, the <code>Polygon</code> class requires an array of type
+<code>Point</code>, but the <code>super</code> constructor <strong>must</strong> be the first line of the
+<code>Triangle</code> constructor.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>To solve this problem, we create a <code>static</code>
+method to package the values into an array. We could have done the same
+thing in the argument list of the <code>super</code> constructor, but it would have
+looked messier. The <code>toPointArray()</code> is <code>protected</code> because there’s no
+reason to let external code have access to it.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getType</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">points</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">distance</span><span class="o">(</span><span class="n">points</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+        <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">points</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">distance</span><span class="o">(</span><span class="n">points</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+        <span class="kt">double</span> <span class="n">c</span> <span class="o">=</span> <span class="n">points</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">distance</span><span class="o">(</span><span class="n">points</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="o">&amp;&amp;</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span><span class="o">)</span>
+            <span class="k">return</span> <span class="s">"Equilateral"</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="o">||</span> <span class="n">b</span> <span class="o">==</span> <span class="n">c</span> <span class="o">||</span> <span class="n">a</span> <span class="o">==</span> <span class="n">c</span><span class="o">)</span>
+            <span class="k">return</span> <span class="s">"Isosceles"</span><span class="o">;</span>
+        <span class="k">return</span> <span class="s">"Scalene"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, the <code>getType()</code> method allows us to do something specific with
+triangles. We can use the <code>distance()</code> method from the <code>Point</code> class to
+find the length of each of the three sides. By comparing these lengths,
+we can determine whether the triangle represented is equilateral,
+isosceles, or scalene. Of course, computing the perimeter and drawing
+the triangle are already taken care of by the <code>Polygon</code> class.</p>
+</div>
+<div class="paragraph">
+<p>We can easily make a <code>Rectangle</code> class along the same lines.</p>
+</div>
+<div id="RectangleProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Rectangle</span> <span class="kd">extends</span> <span class="nc">Polygon</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Rectangle</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">length</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="kd">super</span><span class="o">(</span><span class="n">toArray</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">length</span><span class="o">,</span> <span class="n">width</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="kd">static</span> <span class="nc">Point</span><span class="o">[]</span> <span class="nf">toArray</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">length</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="nc">Point</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="o">{</span><span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">),</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">length</span><span class="o">,</span> <span class="n">y</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Point</span><span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">length</span><span class="o">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">width</span><span class="o">),</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">width</span><span class="o">)};</span>
+        <span class="k">return</span> <span class="n">array</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getArea</span><span class="o">()</span> <span class="o">{</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">points</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">x</span> <span class="o">-</span> <span class="n">points</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">x</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="n">points</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="na">y</span> <span class="o">-</span> <span class="n">points</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="na">y</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">length</span> <span class="o">*</span> <span class="n">width</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The constructor is similar to the <code>Triangle</code> constructor except that the
+upper left corner of the rectangle is specified, along with the length
+and the width.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>From these values, the appropriate array of <code>Point</code>
+values is generated.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The rectangle-specific code that we add is the
+<code>getArea()</code> method, which determines the length and width of the
+rectangle by examining the <code>points</code> array and then calculates area.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Using inheritance as form of specialization, we can go one step further
+and make a <code>Square</code> class.</p>
+</div>
+<div id="SquareProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Square</span> <span class="kd">extends</span> <span class="nc">Rectangle</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Square</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">size</span><span class="o">,</span> <span class="n">size</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This very short class uses everything available in <code>Rectangle</code> but
+simplifies the constructor slightly so that the user doesn’t have to
+enter both length and width.</p>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap11.html#polygonExercise">Exercise 11.11</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_solution_boolean_circuits">11.5. Solution: Boolean circuits</h3>
+<div class="paragraph">
+<p>Here we present our solution to the Boolean Circuits problem. First, we
+define a parent class for all circuit components, called <code>Gate</code>.</p>
+</div>
+<div id="GateProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Gate</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Gate</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">name</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">getValue</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Gate</code> class doesn’t do anything except set up ways to store a name
+and to get a value. It
+doesn’t really matter what <code>getValue()</code> gives back for <code>Gate</code>, but we
+can say that it’s <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>In principle, it shouldn’t be possible to create an object of type <code>Gate</code>,
+<code>UnaryOperator</code>, or <code>BinaryOperator</code>.  Classes that are designed only to
+be parent classes and never to be instantiated are called <em>abstract classes</em> and
+are discussed in <a href="chap17.html#_abstract_classes_and_methods">Section 17.3.1</a>.</p>
+</div>
+<div class="paragraph">
+<p>From <code>Gate</code>, we can define the most basic circuit
+components: gates whose value is either always true or always false.</p>
+</div>
+<div id="TrueProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">True</span> <span class="kd">extends</span> <span class="nc">Gate</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">True</span><span class="o">()</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"true"</span><span class="o">);</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="FalseProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">False</span> <span class="kd">extends</span> <span class="nc">Gate</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">False</span><span class="o">()</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"false"</span><span class="o">);</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To conform with the constructor for <code>Gate</code>, these new classes must pass
+a <code>String</code> giving their name to the <code>super</code> constructor. The values
+returned by the <code>getValue()</code> method are clear. Next, we want to create a
+class that can be used as a parent for all unary operators.</p>
+</div>
+<div id="UnaryOperatorProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnaryOperator</span> <span class="kd">extends</span> <span class="nc">Gate</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Gate</span> <span class="n">input</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">UnaryOperator</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">);</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setInput</span><span class="o">(</span><span class="nc">Gate</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">input</span> <span class="o">=</span> <span class="n">input</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">Gate</span> <span class="nf">getInput</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">input</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The important addition in the <code>UnaryOperator</code> class is the <code>input</code>
+field. Any unary operator must have a single input gate that it operates
+on. This class provides a mutator and accessor for <code>input</code>, as well as
+an appropriate constructor. From <code>UnaryOperator</code>, we can derive two
+specific operators.</p>
+</div>
+<div id="OutputProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Output</span> <span class="kd">extends</span> <span class="nc">UnaryOperator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Output</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"OUTPUT "</span> <span class="o">+</span> <span class="n">i</span><span class="o">);</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">getInput</span><span class="o">().</span><span class="na">getValue</span><span class="o">();</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Output</code> class takes in an <code>int</code> value and uses it to make a
+numbered name. Its <code>getValue()</code> method simply returns the value of its
+input. The <code>Output</code> class doesn’t do anything except serve as a marker
+for circuit output.</p>
+</div>
+<div id="NotProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Not</span> <span class="kd">extends</span> <span class="nc">UnaryOperator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Not</span><span class="o">()</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"NOT"</span><span class="o">);</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="o">!</span><span class="n">getInput</span><span class="o">().</span><span class="na">getValue</span><span class="o">();</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Not</code> class uses <code>"NOT"</code> as the name supplied to
+the <code>super</code> constructor and returns the logical NOT of the value of its
+input.</p>
+</div>
+<div class="paragraph">
+<p>Just as we did for unary operators, we also need a parent class for binary
+operators.</p>
+</div>
+<div id="BinaryOperatorProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinaryOperator</span> <span class="kd">extends</span> <span class="nc">Gate</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Gate</span> <span class="n">operand1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Gate</span> <span class="n">operand2</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">BinaryOperator</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">);</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">Gate</span> <span class="nf">getOperand1</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">operand1</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">Gate</span> <span class="nf">getOperand2</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">operand2</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOperand1</span><span class="o">(</span><span class="nc">Gate</span> <span class="n">operand</span><span class="o">)</span> <span class="o">{</span> <span class="n">operand1</span> <span class="o">=</span> <span class="n">operand</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setOperand2</span><span class="o">(</span><span class="nc">Gate</span> <span class="n">operand</span><span class="o">)</span> <span class="o">{</span> <span class="n">operand2</span> <span class="o">=</span> <span class="n">operand</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>BinaryOperator</code> has two <code>Gate</code> fields, <code>operand1</code> and <code>operand2</code>,
+representing the inputs to the operator. The <code>BinaryOperator</code> class has
+an appropriate constructor and then accessors and mutators for the
+operands. With <code>BinaryOperator</code> as a parent, only a few lines of code
+are necessary to define any logical binary operator.</p>
+</div>
+<div id="AndProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">And</span> <span class="kd">extends</span> <span class="nc">BinaryOperator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">And</span><span class="o">()</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"AND"</span><span class="o">);</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getOperand1</span><span class="o">().</span><span class="na">getValue</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">getOperand1</span><span class="o">().</span><span class="na">getValue</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="OrProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Or</span> <span class="kd">extends</span> <span class="nc">BinaryOperator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Or</span><span class="o">()</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"OR"</span><span class="o">);</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getOperand1</span><span class="o">().</span><span class="na">getValue</span><span class="o">()</span> <span class="o">||</span> <span class="n">getOperand1</span><span class="o">().</span><span class="na">getValue</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="XorProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Xor</span> <span class="kd">extends</span> <span class="nc">BinaryOperator</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Xor</span><span class="o">()</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"XOR"</span><span class="o">);</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nf">getOperand1</span><span class="o">().</span><span class="na">getValue</span><span class="o">()</span> <span class="o">^</span> <span class="n">getOperand1</span><span class="o">().</span><span class="na">getValue</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In each case, a constructor passes the name of the gate to the <code>super</code>
+constructor. Then, each <code>getValue()</code> method gets the values from the two
+operands and combines them with AND, OR, or XOR, respectively. This
+design allows the programmer to focus only on the important element of
+each class. Adding new classes for NAND, NOR, or any other possible
+logical binary operator would be quick.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap11.html#gatesExercise">Exercise 11.12</a></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The client code that uses these classes to simulate a circuit follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BooleanCircuit</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="nc">Gate</span><span class="o">[]</span> <span class="n">gates</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Gate</span><span class="o">[</span><span class="n">count</span><span class="o">];</span>
+        <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">value</span><span class="o">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>First we have the <code>import</code> needed for <code>Scanner</code>. In <code>main()</code>, we read in the
+total number of gates, create an array of type <code>Gate</code> of that length,
+and declare a few useful temporary variables.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">        <span class="c1">// Create gates</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toUpperCase</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"true"</span><span class="o">))</span>
+                <span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">True</span><span class="o">();</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"false"</span><span class="o">))</span>
+                <span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">False</span><span class="o">();</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"AND"</span><span class="o">))</span>
+                <span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">And</span><span class="o">();</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"OR"</span><span class="o">))</span>
+                <span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Or</span><span class="o">();</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"XOR"</span><span class="o">))</span>
+                <span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Xor</span><span class="o">();</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"NOT"</span><span class="o">))</span>
+                <span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Not</span><span class="o">();</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"OUTPUT"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+                <span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Output</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>       </code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, we parse the input, creating an appropriate gate based on the name
+read in. In the case of an OUTPUT gate, we must also read in a number so
+that we can identify which OUTPUT gate is which later.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">        <span class="c1">//connect gates</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">in</span><span class="o">.</span><span class="na">hasNextInt</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">gates</span><span class="o">[</span><span class="n">value</span><span class="o">].</span><span class="na">getName</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"AND"</span><span class="o">)</span> <span class="o">||</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"OR"</span><span class="o">)</span> <span class="o">||</span> <span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"XOR"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="nc">BinaryOperator</span> <span class="n">operator</span> <span class="o">=</span> <span class="o">(</span><span class="nc">BinaryOperator</span><span class="o">)</span><span class="n">gates</span><span class="o">[</span><span class="n">value</span><span class="o">];</span>
+                <span class="n">operator</span><span class="o">.</span><span class="na">setOperand1</span><span class="o">(</span><span class="n">gates</span><span class="o">[</span><span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">()]);</span>
+                <span class="n">operator</span><span class="o">.</span><span class="na">setOperand2</span><span class="o">(</span><span class="n">gates</span><span class="o">[</span><span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">()]);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"NOT"</span><span class="o">)</span> <span class="o">||</span> <span class="n">name</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"OUTPUT"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="nc">UnaryOperator</span> <span class="n">operator</span> <span class="o">=</span> <span class="o">(</span><span class="nc">UnaryOperator</span><span class="o">)</span><span class="n">gates</span><span class="o">[</span><span class="n">value</span><span class="o">];</span>
+                <span class="n">operator</span><span class="o">.</span><span class="na">setInput</span><span class="o">(</span><span class="n">gates</span><span class="o">[</span><span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">()]);</span>
+            <span class="o">}</span>
+        <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As long as there’s input remaining, we read in an index. Based on the
+name of the gate at that index in the array, we either read in two more
+indexes (for binary operators) or just a single additional index (for
+unary operators). In either case, we set the input or inputs of the
+operator to the gate or gates at those indexes.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">        <span class="c1">// Compute output</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+          <span class="k">if</span><span class="o">(</span><span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">().</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"OUTPUT"</span><span class="o">))</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">gates</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+      <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, the simulation of the circuit is surprisingly simple. We look
+through array until we find a gate whose name starts with <code>"OUTPUT"</code>.
+Then, we print out its value. In order to determine its value, it will
+ask its input what its value is, which in turn will ask for the values
+from its input. The <code>toString()</code> in the <code>Gate</code> class will assure us that
+the final output is nicely formatted. This system accommodates any
+number of output gates connected arbitrarily, as long as the circuit has
+no loops inside of it, such as an AND gate whose output is also one of
+its inputs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concurrency_inheritance">11.6. Concurrency: Inheritance</h3>
+<div class="paragraph">
+<p>Like interfaces, inheritance in Java is not closely related to
+concurrency. However, two ways in which inheritance interacts with
+concurrency deserve attention.</p>
+</div>
+<div class="paragraph">
+<p>The first is the <code>Thread</code> class. Each thread of execution in Java
+(except the main thread) is managed with a <code>Thread</code> object or an object
+whose type inherits from <code>Thread</code>. Creating such types is done by
+extending <code>Thread</code>, just as you would extend any other class. Further
+information about extending <code>Thread</code> for concurrency is given in
+<a href="chap13.html#_syntax_threads_in_java">Section 13.4</a>. Extending the <code>Thread</code> class to make
+your own customized threads of execution is an alternative to
+implementing the <code>Runnable</code> interface mentioned in
+<a href="chap10.html#_concurrency_interfaces">Section 10.6</a> and is discussed in greater detail in
+<a href="chap13.html#_the_runnable_interface">Section 13.4.5</a>.</p>
+</div>
+<div class="paragraph">
+<p>The second interaction between inheritance and concurrency is again very
+similar to the problem with interfaces and concurrency: There’s no way
+to specify that a method is thread-safe. Recall that it’s not allowed
+to use the <code>synchronized</code> keyword on a method in an interface
+declaration. Likewise, there’s no restriction on overriding a
+synchronized method with a non-synchronized method or vice versa.</p>
+</div>
+<div class="paragraph">
+<p>The rules for overriding methods in Java guarantee that an object of a
+child class is usable anywhere that an object of the parent class is
+usable. Thus, you cannot override a public method with a private one,
+reducing the visibility of a method. We discuss a similar restriction
+with exceptions in <a href="chap17.html#_inheritance_and_exceptions">Section 17.3.4</a>.</p>
+</div>
+<div class="paragraph">
+<p>If it has these restrictions, why doesn’t Java prevent a synchronized
+method from being overridden by a non-synchronized method? In the first
+place, a non-synchronized method can be used anywhere a synchronized one
+could (unlike a private method, which is not accessible everywhere a
+public one is). In the second, the designers of Java put thread
+safety in the category of implementation details left up to the
+programmer. Some classes need specific methods to be synchronized and
+others (even child classes) do not. However, if you override a class
+with a synchronized method, it’s safest to mark your method
+synchronized as well.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercises_11">11.7. Exercises</h3>
+<div class="paragraph">
+<p><strong>Conceptual Problems</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a id="inheritanceAdvantagesExercise"></a> Give three advantages of using inheritance instead of copying and
+pasting code from a parent class. Are there any disadvantages to using
+inheritance?</p>
+</li>
+<li>
+<p>Consider classes <code>Radish</code> and <code>Carrot</code> which both extend class
+<code>Vegetable</code> and implement interface <code>Crunchable</code>. Which of the following
+sets of assignments are legal and why?</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>Radish radish = new Radish();</code></p>
+</li>
+<li>
+<p><code>Radish radish = new Vegetable();</code></p>
+</li>
+<li>
+<p><code>Vegetable vegetable = new Radish();</code></p>
+</li>
+<li>
+<p><code>Crunchable crunchy = new Radish();</code></p>
+</li>
+<li>
+<p><code>Radish radish = new Carrot();</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>In the context of inheritance, the keyword <code>super</code> can be used for
+two different purposes. What are they?</p>
+</li>
+<li>
+<p>Consider the following class definitions.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">value</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">A</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span> <span class="n">value</span> <span class="o">=</span> <span class="s">"A"</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s">"A"</span><span class="o">;</span> <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">value</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="no">A</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">B</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"B"</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s">"B"</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">C</span> <span class="kd">extends</span> <span class="no">B</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">C</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span> <span class="kd">super</span><span class="o">(</span><span class="s">"C"</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="s">"C"</span><span class="o">);</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What’s output by the following code fragment?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="no">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="no">C</span><span class="o">(</span><span class="s">"ABC"</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">c</span><span class="o">);</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Beginning Java programmers often confuse package-private access (no
+explicit specifier) with <code>public</code> access. How is this confusion possible
+when default access is more constrained than both <code>public</code> and
+<code>protected</code> access? (Hint: The file system plays a role.)</p>
+</li>
+<li>
+<p><a id="methodOverridingExercise"></a> What are the similarities and differences between overloading a
+method and overriding a method?</p>
+</li>
+<li>
+<p><a id="fieldHidingExercise"></a> What’s field hiding? How can software bugs arise from this Java feature?</p>
+</li>
+<li>
+<p>Give reasons why the designers of Java decided not to allow multiple
+inheritance. Would you have made the same decision? Why or why not?</p>
+</li>
+<li>
+<p><a id="classHierarchyExercise"></a> Draw a class hierarchy establishing a sensible relationship between
+the <code>Human</code>, <code>Soldier</code>, <code>Sailor</code>, <code>Marine</code>, <code>General</code>, and <code>Admiral</code>
+classes. For this class hierarchy, refer to the U.S. military structure
+in which the U.S. Marine Corps is a part of the U.S. Navy.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Programming Practice</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="10">
+<li>
+<p><a id="internationalStudentExercise"></a> Create an <code>InternationalStudent</code> class that extends <code>Student</code>. It
+should include <code>String</code> fields for country of origin and visa
+status. It should include mutator and accessor methods for these two new
+fields.</p>
+</li>
+<li>
+<p><a id="polygonExercise"></a> Add <code>Pentagon</code> and <code>Hexagon</code> classes that extend the <code>Polygon</code>
+class. The constructor for each class should take an <em>x</em>,
+<em>y</em> and radius value, each of <code>int</code> type. Both classes
+should be implemented to create <em>regular</em> polygons, that is, polygons in
+which all five or six sides have the same length. The <em>x</em> and
+<em>y</em> values should give the center of the polygon, and each
+of the five or six points should be the radius distance away from that
+center.</p>
+<div class="paragraph">
+<p>Because the internal structure of <code>Polygon</code> keeps all vertices as
+<code>Point</code> values, the <em>x</em> and <em>y</em> coordinates of
+the points must be <code>int</code> values. This requirement will force you to
+round these <em>x</em> and <em>y</em> coordinates after using
+trigonometry to determine their locations. As a result, the final
+pentagons and hexagons stored and displayed will be slightly irregular.</p>
+</div>
+</li>
+<li>
+<p><a id="gatesExercise"></a> The inheritance design of our solution to the Boolean circuits
+problem given in <a href="chap11.html#_solution_boolean_circuits">Section 11.5</a> makes adding new
+gates easy. Add classes that implement a NAND gate and a NOR gate. Then,
+rewrite the <code>main()</code> method of <code>BooleanCircuit</code> to accommodate these two
+extra classes.</p>
+</li>
+<li>
+<p>Re-implement the object hierarchy in the solution from <a href="chap10.html#_solution_sort_it_out">Section 10.5</a>
+to the sort it out problem. This time, let the <code>Cat</code>,
+<code>Dog</code>, and <code>Person</code> classes extend the <code>Creature</code> class defined below.</p>
+<div id="CreatureProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Creature</span> <span class="kd">implements</span> <span class="nc">Ageable</span><span class="o">,</span> <span class="nc">Weighable</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Creature</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">age</span><span class="o">;</span> <span class="o">}</span>    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getWeight</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">weight</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Refactor your code so that the <code>Cat</code>, <code>Dog</code>, and <code>Person</code> classes are as
+short as possible. How many lines of code do you save?</p>
+</div>
+</li>
+<li>
+<p><a id="celestialSimulatorExercise"></a> Design a celestial body simulator. You’ll
+need to create a class containing fields for the <em>x</em>,
+<em>y</em>, and <em>z</em> locations, <em>x</em>,
+<em>y</em>, and <em>z</em> velocities, radii, and masses of
+each object. For each time step of length <em>t</em>, you must do
+the following.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Compute the sum of forces exerted on each body by every other body.
+The equation for gravitational force on body <em>b</em> exerted by
+body <em>a</em> is given by the following equation.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="chapters/11-inheritance/images/force.svg" alt="force" width="20%">
+</div>
+</div>
+<div class="paragraph">
+<p>As mentioned in <a href="chap8.html#gravitationalAttractionExample">Example 8.1</a>, the gravitational constant <em>G</em> = 6.673 × 10<sup>-11</sup> N⋅m<sup>2</sup>⋅kg<sup>-2</sup>.
+Also, |<strong>r</strong><sub><em>ab</em></sub>| is the distance between the
+centers of objects <em>a</em> and <em>b</em>.  Finally, the unit vector between the centers
+of the two objects is given by the equation below.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="chapters/11-inheritance/images/unitvector.svg" alt="unitvector" width="15%">
+</div>
+</div>
+</li>
+<li>
+<p>Compute the <em>x</em>, <em>y</em>, and <em>z</em>
+components of the acceleration vector <strong>a</strong> for each
+object using the equation <strong>F</strong> = <em>m</em><strong>a</strong> once the sum of forces has been calculated.</p>
+</li>
+<li>
+<p>Update the <em>x</em>, <em>y</em>, and <em>z</em>
+components of the velocity vector <strong>v</strong> for each
+object using the equation
+<strong>v</strong><sub><em>new</em></sub> = <strong>v</strong><sub><em>old</em></sub> + <strong>a</strong><em>t</em>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Experiments</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="15">
+<li>
+<p>Inheritance is a powerful technique, but it comes with some overhead
+costs. Create a class called <code>A</code> with the following implementation.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">a</span><span class="o">;</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, create 25 more classes named <code>B</code> through <code>Z</code>. Class <code>B</code> should
+extend <code>A</code> and add a <code>protected</code> <code>int</code> field called <code>b</code>. Continue in
+this manner, with each new class extending the previous one and adding
+an <code>int</code> field named the lowercase version of the class name. Thus, if
+you create an object of type <code>Z</code>, it will contain, through inheritance,
+26 <code>int</code> fields named <code>a</code> through <code>z</code>. But for a single <code>Z</code> object to
+be created, it must call 27 (<code>Z</code> back through <code>A</code> plus <code>Object</code>)
+constructors. You may wish to use the file I/O material in
+<a href="chap20.html">Chapter 20</a> to write a program to create all these
+classes so that you do not have to do so by hand.</p>
+</div>
+<div class="paragraph">
+<p>Finally, create a new class called <code>All</code> which contains 26 <code>protected</code>
+fields of <code>int</code> type named <code>a</code> through <code>z</code>. Now, the purpose of creating
+all these classes is to compare the time needed to instantiate an object of type
+<code>Z</code> with one of type <code>All</code>, though they both only contain 26 <code>int</code>
+fields named <code>a</code> through <code>z</code>.</p>
+</div>
+<div class="paragraph">
+<p>Create an array of 100,000 elements of type <code>Z</code> and then populate it
+with 100,000 <code>Z</code> objects. Time this process. Create an array of 100,000
+elements of type <code>All</code> and then populate that array with 100,000 <code>All</code>
+objects. You may wish to use the <code>System.nanoTime()</code> method described in
+<a href="chap13.html">Chapter 13</a> to accurately time these
+processes. Is there a significant difference in the times you found?</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div>
+
+<nav>
+  <a rel="prev" href="chap10.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+     </a>
+  <a rel="next" href="chap12.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+     </a>
+  <div style="clear: both"></div>
+</nav>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-05-13 21:39:09 -0300
+</div>
+</div>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-VEDGKRPMMK');
+          </script>
+
+</body>
+  <script>
+  function isInViewport(ele) {
+    const rect = ele.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+  function yPosition (ele) {
+    const rect = ele.getBoundingClientRect();
+    return (rect.top - 20); // 20px above
+  }
+  let curr = document.getElementsByClassName('current');
+  if (!isInViewport(curr[curr.length - 1])) {
+    document.getElementById('toc').scrollTo({
+      top: yPosition(curr[0]),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  /* For page navigation */
+  function gotoPage(selector) {
+    const button = document.querySelector(selector);
+    if (button)
+      window.location.href = button.href;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.shiftKey)
+      return;
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        gotoPage('.nav-next');
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        gotoPage('.nav-prev');
+        break;
+    }
+  });
+  </script>
+  </html>

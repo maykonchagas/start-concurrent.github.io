@@ -1,0 +1,134 @@
+
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #000000;
+  background-color: #f8f8f8;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #408080;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #BC7A00;
+}
+pre.rouge .k, pre.rouge .kc, pre.rouge .kd, pre.rouge .kn, pre.rouge .kr, pre.rouge .kv {
+  color: #008000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+}
+pre.rouge .kt {
+  color: #B00040;
+}
+pre.rouge .o {
+  color: #666666;
+}
+pre.rouge .ow {
+  color: #AA22FF;
+  font-weight: bold;
+}
+pre.rouge .nb, pre.rouge .bp {
+  color: #008000;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #0000FF;
+}
+pre.rouge .nc {
+  color: #0000FF;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #0000FF;
+  font-weight: bold;
+}
+pre.rouge .ne {
+  color: #D2413A;
+  font-weight: bold;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #19177C;
+}
+pre.rouge .no {
+  color: #880000;
+}
+pre.rouge .nl {
+  color: #A0A000;
+}
+pre.rouge .ni {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .na {
+  color: #7D9029;
+}
+pre.rouge .nt {
+  color: #008000;
+  font-weight: bold;
+}
+pre.rouge .nd {
+  color: #AA22FF;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sb, pre.rouge .sc, pre.rouge .dl, pre.rouge .s2, pre.rouge .sh, pre.rouge .s1 {
+  color: #BA2121;
+}
+pre.rouge .sd {
+  font-style: italic;
+}
+pre.rouge .si {
+  color: #BB6688;
+  font-weight: bold;
+}
+pre.rouge .se {
+  color: #BB6622;
+  font-weight: bold;
+}
+pre.rouge .sr {
+  color: #BB6688;
+}
+pre.rouge .ss {
+  color: #19177C;
+}
+pre.rouge .sx {
+  color: ##008000;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #666666;
+}
+pre.rouge .gh {
+  color: #000080;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #800080;
+  font-weight: bold;
+}
+pre.rouge .gd {
+  color: #A00000;
+}
+pre.rouge .gi {
+  color: #00A000;
+}
+pre.rouge .gr {
+  color: ##FF0000;
+}
+pre.rouge .ge {
+  font-style: italic;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gp {
+  color: #000080;
+  font-weight: bold;
+}
+pre.rouge .go {
+  color: #888;
+}
+pre.rouge .gt {
+  color: #04D;
+}
+pre.rouge .err {
+  color: #F00;
+  background-color: #FAA;
+}

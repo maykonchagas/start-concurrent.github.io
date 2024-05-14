@@ -1,0 +1,1413 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="author" content="Barry Wittman, Tim Korb, Aditya Mathur">
+<title>Começando Concorrente: Uma introdução leve à Programação Concorrente</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="style0.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style1.css" type="text/css">
+<link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Começando Concorrente: Uma introdução leve à Programação Concorrente</h1>
+<div class="details">
+<span id="author" class="author">Barry Wittman</span><br>
+<span id="email" class="email"><a href="mailto:wittman1@otterbein.edu">wittman1@otterbein.edu</a></span><br>
+<span id="author2" class="author">Tim Korb</span><br>
+<span id="email2" class="email"><a href="mailto:jtk@purdue.edu">jtk@purdue.edu</a></span><br>
+<span id="author3" class="author">Aditya Mathur</span><br>
+<span id="email3" class="email"><a href="mailto:apm@purdue.edu">apm@purdue.edu</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="index.html">Start Concurrent</a></li><li><a href="index.html">1. Computer Basics</a>
+<ul class="sectlevel2">
+<li><a href="index.html#_problem_buying_a_computer">1.1. Problem: Buying a computer</a></li>
+<li><a href="index.html#_concepts_hardware_and_software">1.2. Concepts: Hardware and software</a></li>
+<li><a href="index.html#_syntax_data_representation">1.3. Syntax: Data representation</a></li>
+<li><a href="index.html#_solution_buying_a_computer">1.4. Solution: Buying a computer</a></li>
+<li><a href="index.html#_summary">1.5. Summary</a></li>
+<li><a href="index.html#_exercises">1.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap2.html">2. Problem Solving and Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap2.html#_problem_how_to_solve_problems">2.1. Problem: How to solve problems</a></li>
+<li><a href="chap2.html#_concepts_developing_software">2.2. Concepts: Developing software</a></li>
+<li><a href="chap2.html#_syntax_java_basics">2.3. Syntax: Java basics</a></li>
+<li><a href="chap2.html#_solution_how_to_solve_problems">2.4. Solution: How to solve problems</a></li>
+<li><a href="chap2.html#_concurrency_solving_problems_in_parallel">2.5. Concurrency: Solving problems in parallel</a></li>
+<li><a href="chap2.html#_summary_2">2.6. Summary</a></li>
+<li><a href="chap2.html#_exercises_2">2.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap3.html">3. Primitive Types and Strings</a>
+<ul class="sectlevel2">
+<li><a href="chap3.html#_problem_college_cost_calculator">3.1. Problem: College cost calculator</a></li>
+<li><a href="chap3.html#_concepts_types">3.2. Concepts: Types</a></li>
+<li><a href="chap3.html#_syntax_types_in_java">3.3. Syntax: Types in Java</a></li>
+<li><a href="chap3.html#_syntax_useful_libraries">3.4. Syntax: Useful libraries</a></li>
+<li><a href="chap3.html#_solution_college_cost_calculator">3.5. Solution: College cost calculator</a></li>
+<li><a href="chap3.html#_concurrency_expressions">3.6. Concurrency: Expressions</a></li>
+<li><a href="chap3.html#_summary_3">3.7. Summary</a></li>
+<li><a href="chap3.html#_exercises_3">3.8. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap4.html">4. Selection</a>
+<ul class="sectlevel2">
+<li><a href="chap4.html#_problem_monty_hall_simulation">4.1. Problem: Monty Hall simulation</a></li>
+<li><a href="chap4.html#_concepts_choosing_between_options">4.2. Concepts: Choosing between options</a></li>
+<li><a href="chap4.html#_syntax_selection_in_java">4.3. Syntax: Selection in Java</a></li>
+<li><a href="chap4.html#_solution_monty_hall">4.4. Solution: Monty Hall</a></li>
+<li><a href="chap4.html#_concurrency_selection">4.5. Concurrency: Selection</a></li>
+<li><a href="chap4.html#_exercises_4">4.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap5.html">5. Repetition</a>
+<ul class="sectlevel2">
+<li><a href="chap5.html#_problem_dna_searching">5.1. Problem: DNA searching</a></li>
+<li><a href="chap5.html#_concepts_repetition">5.2. Concepts: Repetition</a></li>
+<li><a href="chap5.html#_syntax_loops_in_java">5.3. Syntax: Loops in Java</a></li>
+<li><a href="chap5.html#_solution_dna_searching">5.4. Solution: DNA searching</a></li>
+<li><a href="chap5.html#_concurrency_loops">5.5. Concurrency: Loops</a></li>
+<li><a href="chap5.html#_exercises_5">5.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap6.html">6. Arrays</a>
+<ul class="sectlevel2">
+<li><a href="chap6.html#_introduction">6.1. Introduction</a></li>
+<li><a href="chap6.html#_problem_game_of_life">6.2. Problem: Game of Life</a></li>
+<li><a href="chap6.html#_concepts_lists_of_data">6.3. Concepts: Lists of data</a></li>
+<li><a href="chap6.html#_syntax_arrays_in_java">6.4. Syntax: Arrays in Java</a></li>
+<li><a href="chap6.html#_examples_array_usage">6.5. Examples: Array usage</a></li>
+<li><a href="chap6.html#_concepts_multidimensional_lists">6.6. Concepts: Multidimensional lists</a></li>
+<li><a href="chap6.html#_syntax_advanced_arrays_in_java">6.7. Syntax: Advanced arrays in Java</a></li>
+<li><a href="chap6.html#_examples_two_dimensional_arrays">6.8. Examples: Two-dimensional arrays</a></li>
+<li><a href="chap6.html#_advanced_special_array_tools_in_java">6.9. Advanced: Special array tools in Java</a></li>
+<li><a href="chap6.html#_solution_game_of_life">6.10. Solution: Game of Life</a></li>
+<li><a href="chap6.html#_concurrency_arrays">6.11. Concurrency: Arrays</a></li>
+<li><a href="chap6.html#_exercises_6">6.12. Exercises</a></li>
+</ul>
+</li>
+<li class="current"><a href="chap7.html">7. Simple Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li class="current"><a href="chap7.html#_problem_codon_extractor">7.1. Problem: Codon extractor</a></li>
+<li class="current"><a href="chap7.html#GUIBasicsIntroductionSection">7.2. Concepts: User interaction</a></li>
+<li class="current"><a href="chap7.html#_syntax_dialogs_and_the_joptionpane_class">7.3. Syntax: Dialogs and the <code>JOptionPane</code> class</a></li>
+<li class="current"><a href="chap7.html#_solution_codon_extractor">7.4. Solution: Codon extractor</a></li>
+<li class="current"><a href="chap7.html#_concurrency_simple_guis">7.5. Concurrency: Simple GUIs</a></li>
+<li class="current"><a href="chap7.html#_summary_4">7.6. Summary</a></li>
+<li class="current"><a href="chap7.html#_exercises_7">7.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap8.html">8. Methods</a>
+<ul class="sectlevel2">
+<li><a href="chap8.html#_problem_three_card_poker">8.1. Problem: Three card poker</a></li>
+<li><a href="chap8.html#_concepts_dividing_work_into_segments">8.2. Concepts: Dividing work into segments</a></li>
+<li><a href="chap8.html#_syntax_methods">8.3. Syntax: Methods</a></li>
+<li><a href="chap8.html#_examples_defining_methods">8.4. Examples: Defining methods</a></li>
+<li><a href="chap8.html#_solution_three_card_poker">8.5. Solution: Three card poker</a></li>
+<li><a href="chap8.html#_concurrency_methods">8.6. Concurrency: Methods</a></li>
+<li><a href="chap8.html#_exercises_8">8.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap9.html">9. Classes</a>
+<ul class="sectlevel2">
+<li><a href="chap9.html#_problem_nested_expressions">9.1. Problem: Nested expressions</a></li>
+<li><a href="chap9.html#_concepts_object_oriented_programming">9.2. Concepts: Object-oriented programming</a></li>
+<li><a href="chap9.html#_syntax_classes_in_java">9.3. Syntax: Classes in Java</a></li>
+<li><a href="chap9.html#_advanced_nested_classes">9.4. Advanced: Nested classes</a></li>
+<li><a href="chap9.html#_solution_nested_expressions">9.5. Solution: Nested expressions</a></li>
+<li><a href="chap9.html#_concurrency_objects">9.6. Concurrency: Objects</a></li>
+<li><a href="chap9.html#_exercises_9">9.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap10.html">10. Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap10.html#_problem_sort_it_out">10.1. Problem: Sort it out</a></li>
+<li><a href="chap10.html#_concepts_making_a_promise">10.2. Concepts: Making a promise</a></li>
+<li><a href="chap10.html#_syntax_interfaces">10.3. Syntax: Interfaces</a></li>
+<li><a href="chap10.html#_advanced_local_and_anonymous_classes">10.4. Advanced: Local and anonymous classes</a></li>
+<li><a href="chap10.html#_solution_sort_it_out">10.5. Solution: Sort it out</a></li>
+<li><a href="chap10.html#_concurrency_interfaces">10.6. Concurrency: Interfaces</a></li>
+<li><a href="chap10.html#_exercises_10">10.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap11.html">11. Inheritance</a>
+<ul class="sectlevel2">
+<li><a href="chap11.html#_problem_boolean_circuits">11.1. Problem: Boolean circuits</a></li>
+<li><a href="chap11.html#_concepts_refining_classes">11.2. Concepts: Refining classes</a></li>
+<li><a href="chap11.html#_syntax_inheritance_in_java">11.3. Syntax: Inheritance in Java</a></li>
+<li><a href="chap11.html#_examples_problem_solving_with_inheritance">11.4. Examples: Problem solving with inheritance</a></li>
+<li><a href="chap11.html#_solution_boolean_circuits">11.5. Solution: Boolean circuits</a></li>
+<li><a href="chap11.html#_concurrency_inheritance">11.6. Concurrency: Inheritance</a></li>
+<li><a href="chap11.html#_exercises_11">11.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap12.html">12. Exceptions</a>
+<ul class="sectlevel2">
+<li><a href="chap12.html#_problem_bank_burglary">12.1. Problem: Bank burglary</a></li>
+<li><a href="chap12.html#_concepts_error_handling">12.2. Concepts: Error handling</a></li>
+<li><a href="chap12.html#_syntax_exceptions_in_java">12.3. Syntax: Exceptions in Java</a></li>
+<li><a href="chap12.html#_solution_bank_burglary">12.4. Solution: Bank burglary</a></li>
+<li><a href="chap12.html#_concurrency_exceptions">12.5. Concurrency: Exceptions</a></li>
+<li><a href="chap12.html#_exercises_12">12.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap13.html">13. Concurrent Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap13.html#_introduction_2">13.1. Introduction</a></li>
+<li><a href="chap13.html#_problem_deadly_virus">13.2. Problem: Deadly virus</a></li>
+<li><a href="chap13.html#_concepts_splitting_up_work">13.3. Concepts: Splitting up work</a></li>
+<li><a href="chap13.html#_syntax_threads_in_java">13.4. Syntax: Threads in Java</a></li>
+<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
+<li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
+<li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
+<li><a href="chap13.html#_summary_5">13.9. Summary</a></li>
+<li><a href="chap13.html#_exercises_13">13.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap14.html">14. Synchronization</a>
+<ul class="sectlevel2">
+<li><a href="chap14.html#_introduction_3">14.1. Introduction</a></li>
+<li><a href="chap14.html#_problem_dining_philosophers">14.2. Problem: Dining philosophers</a></li>
+<li><a href="chap14.html#_concepts_thread_interaction">14.3. Concepts: Thread interaction</a></li>
+<li><a href="chap14.html#_syntax_thread_synchronization">14.4. Syntax: Thread synchronization</a></li>
+<li><a href="chap14.html#_pitfalls_synchronization_challenges">14.5. Pitfalls: Synchronization challenges</a></li>
+<li><a href="chap14.html#_solution_dining_philosophers">14.6. Solution: Dining philosophers</a></li>
+<li><a href="chap14.html#_exercises_14">14.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap15.html">15. Constructing Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap15.html#_problem_math_tutor">15.1. Problem: Math tutor</a></li>
+<li><a href="chap15.html#_concepts_graphical_user_interfaces">15.2. Concepts: Graphical user interfaces</a></li>
+<li><a href="chap15.html#_syntax_guis_in_java">15.3. Syntax: GUIs in Java</a></li>
+<li><a href="chap15.html#_solution_math_tutor">15.4. Solution: Math tutor</a></li>
+<li><a href="chap15.html#_concurrency_guis">15.5. Concurrency: GUIs</a></li>
+<li><a href="chap15.html#_summary_6">15.6. Summary</a></li>
+<li><a href="chap15.html#_exercises_15">15.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap16.html">16. Testing and Debugging</a>
+<ul class="sectlevel2">
+<li><a href="chap16.html#_fixing_bugs">16.1. Fixing bugs</a></li>
+<li><a href="chap16.html#_concepts_approaches_to_debugging">16.2. Concepts: Approaches to debugging</a></li>
+<li><a href="chap16.html#_syntax_java_debugging_tools">16.3. Syntax: Java debugging tools</a></li>
+<li><a href="chap16.html#_concurrency_parallel_bugs">16.4. Concurrency: Parallel bugs</a></li>
+<li><a href="chap16.html#_finding_and_avoiding_bugs">16.5. Finding and avoiding bugs</a></li>
+<li><a href="chap16.html#_concepts_design_implementation_and_testing">16.6. Concepts: Design, implementation, and testing</a></li>
+<li><a href="chap16.html#_syntax_java_testing_tools">16.7. Syntax: Java testing tools</a></li>
+<li><a href="chap16.html#_concurrency_testing_tools">16.8. Concurrency: Testing tools</a></li>
+<li><a href="chap16.html#_examples_testing_a_class">16.9. Examples: Testing a class</a></li>
+<li><a href="chap16.html#_exercises_16">16.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap17.html">17. Polymorphism</a>
+<ul class="sectlevel2">
+<li><a href="chap17.html#_problem_banking_account_with_a_vengeance">17.1. Problem: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concepts_polymorphism">17.2. Concepts: Polymorphism</a></li>
+<li><a href="chap17.html#_syntax_inheritance_tools_in_java">17.3. Syntax: Inheritance tools in Java</a></li>
+<li><a href="chap17.html#_solution_banking_account_with_a_vengeance">17.4. Solution: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concurrency_atomic_libraries">17.5. Concurrency: Atomic libraries</a></li>
+<li><a href="chap17.html#_exercises_17">17.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap18.html">18. Dynamic Data Structures</a>
+<ul class="sectlevel2">
+<li><a href="chap18.html#_problem_infix_conversion">18.1. Problem: Infix conversion</a></li>
+<li><a href="chap18.html#_concepts_dynamic_data_structures">18.2. Concepts: Dynamic data structures</a></li>
+<li><a href="chap18.html#_syntax_dynamic_arrays_and_linked_lists">18.3. Syntax: Dynamic arrays and linked lists</a></li>
+<li><a href="chap18.html#_syntax_abstract_data_types_adt">18.4. Syntax: Abstract data types (ADT)</a></li>
+<li><a href="chap18.html#_advanced_generic_data_structures">18.5. Advanced: Generic data structures</a></li>
+<li><a href="chap18.html#_solution_infix_conversion">18.6. Solution: Infix conversion</a></li>
+<li><a href="chap18.html#_concurrency_linked_lists_and_thread_safety">18.7. Concurrency: Linked lists and thread safety</a></li>
+<li><a href="chap18.html#_concurrency_thread_safe_libraries">18.8. Concurrency: Thread-safe libraries</a></li>
+<li><a href="chap18.html#_exercises_18">18.9. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap19.html">19. Recursion</a>
+<ul class="sectlevel2">
+<li><a href="chap19.html#_problem_maze_of_doom">19.1. Problem: Maze of doom</a></li>
+<li><a href="chap19.html#_concepts_recursive_problem_solving">19.2. Concepts: Recursive problem solving</a></li>
+<li><a href="chap19.html#_syntax_recursive_methods">19.3. Syntax: Recursive methods</a></li>
+<li><a href="chap19.html#_syntax_recursive_data_structures">19.4. Syntax: Recursive data structures</a></li>
+<li><a href="chap19.html#_solution_maze_of_doom">19.5. Solution: Maze of doom</a></li>
+<li><a href="chap19.html#_concurrency_futures">19.6. Concurrency: Futures</a></li>
+<li><a href="chap19.html#_exercises_19">19.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap20.html">20. File I/O</a>
+<ul class="sectlevel2">
+<li><a href="chap20.html#_problem_a_picture_is_worth_1000_bytes">20.1. Problem: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concepts_file_io">20.2. Concepts: File I/O</a></li>
+<li><a href="chap20.html#_syntax_file_operations_in_java">20.3. Syntax: File operations in Java</a></li>
+<li><a href="chap20.html#_examples_file_examples">20.4. Examples: File examples</a></li>
+<li><a href="chap20.html#fileChapterSolution">20.5. Solution: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concurrency_file_io">20.6. Concurrency: File I/O</a></li>
+<li><a href="chap20.html#_exercises_20">20.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap21.html">21. Network Communication</a>
+<ul class="sectlevel2">
+<li><a href="chap21.html#_problem_web_server">21.1. Problem: Web server</a></li>
+<li><a href="chap21.html#_concepts_tcpip_communication">21.2. Concepts: TCP/IP communication</a></li>
+<li><a href="chap21.html#_syntax_networking_in_java">21.3. Syntax: Networking in Java</a></li>
+<li><a href="chap21.html#_solution_web_server">21.4. Solution: Web server</a></li>
+<li><a href="chap21.html#_concurrency_networking">21.5. Concurrency: Networking</a></li>
+<li><a href="chap21.html#_exercises_21">21.6. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="ch07-gui-basics">7. Simple Graphical User Interfaces</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>To a true artist only that face is beautiful which, quite apart from its exterior, shines with the
+truth within the soul.</p>
+</div>
+</blockquote>
+<div class="attribution">
+— Mahatma Gandhi
+</div>
+</div>
+<div class="sect2">
+<h3 id="_problem_codon_extractor">7.1. Problem: Codon extractor</h3>
+<div class="paragraph">
+<p>Recall from <a href="chap5.html">Chapter 5</a> that we can record DNA as a
+sequence of nucleotide bases A, C, G, and T. Using this idea, we can
+represent any sequence of DNA using a <code>String</code> made up of those four
+letters such as <code>"ATGGAAGTATTTAAATAG"</code>.</p>
+</div>
+<div class="paragraph">
+<p>This particular sequence contains 18 bases and six <em>codons</em>. A codon is
+a three-base subsequence in DNA. Biologists are interested in dividing
+DNA into codons because a single codon usually maps to the production of
+a specific amino acid. Amino acids, in turn, are the building blocks of
+proteins. The DNA sequence above contains the six codons ATG, GAA, GTA,
+TTT, AAA, and TAG.</p>
+</div>
+<div class="paragraph">
+<p>We want to write a program that extracts codons from DNA
+sequences entered by the user. The program must detect and inform the
+user of invalid DNA sequences (those containing letters other than the
+four bases). If the user enters a DNA sequence whose length is not a
+multiple of three, the final codon should be written with one or two
+asterisks (<code>*</code>), representing the missing bases.</p>
+</div>
+<div class="paragraph">
+<p>With your knowledge of <code>String</code> manipulation and loops, this problem
+should be easy. However, we want to solve it with a <em>graphical user
+interface</em>, not with the command line interaction we’ve emphasized in
+previous chapters. That is, the input step should be done with a window
+that looks similar to the following.</p>
+</div>
+<div id="codonInput" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/codoninput.png" alt="codoninput" width="50%">
+</div>
+</div>
+<div class="paragraph">
+<p>And the corresponding output should look very much like this.</p>
+</div>
+<div id="codonOutput" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/codonoutput.png" alt="codonoutput" width="50%">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="GUIBasicsIntroductionSection">7.2. Concepts: User interaction</h3>
+<div class="paragraph">
+<p>Many computer programs communicate with a human user. There are at least
+two ways in which this communication can happen. One way is to use
+command line input and output. In this case, a program prompts the user
+for an input and the user responds through the keyboard, usually
+completing the response by pressing the <code>&lt;return&gt;</code> or <code>&lt;enter&gt;</code> key.
+Another way to communicate is to use a graphical user interface or GUI.
+(Some people pronounce “GUI” to sound like “gooey,” but others say
+“G-U-I.”) In this case, the program displays a window consisting of
+one or more <em>widgets</em>, such as a button labeled “OK” or a text box in
+which the user can type some text. Widgets (also known as controls) can
+include buttons, labels, text areas, check boxes, menus, and many other
+pre-defined objects for user interaction. While the program waits for
+the user or does something in the background, the user has the option of
+using a combination of the keyboard and the mouse to respond to the
+program. While command line interfaces were dominant until the mid-70s,
+GUIs have become the prime mode of communication between a program and a
+human user. This chapter focuses on the design of simple GUIs using a
+few built-in Java classes. <a href="chap15.html">Chapter 15</a> introduces more advanced tools for constructing complex
+GUIs.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7.1 User interaction</div>
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#applicationInterfaceFigure">Figure 7.1</a>(a) shows a Java application
+interacting with a user through a command line interface. The
+application asks the user for a temperature value in degrees Fahrenheit,
+converts it to the equivalent Celsius, and displays it. <a href="chap7.html#applicationInterfaceFigure">Figure 7.1</a>(b) shows a
+similar application interacting with the user through a GUI. In this
+case, the application creates a window with six widgets (two labels, two text boxes,
+and two buttons). The user enters a temperature value in the text box
+below either the Celsius label or the Fahrenheit label and presses
+the appropriate Convert button. Then, the application displays the
+equivalent temperature in the other text box.</p>
+</div>
+<div id="applicationInterfaceFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/applicationInterface.svg" alt="applicationInterface" width="100%">
+</div>
+<div class="title">Figure 7.1 User interaction with a Java application (a)&nbsp;through a command line interface and (b)&nbsp;through a graphical user interface.</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>We describe the GUIs we introduce in this chapter as simple because
+several aspects of GUI creation are hidden by the methods we use.
+For example, these GUIs do not require the programmer to handle the
+details of events such as a user pressing an “OK” button or typing
+text into a text box and pressing the <code>&lt;enter&gt;</code> key. These events will
+be handled automatically by existing libraries.
+<a href="chap15.html">Chapter 15</a> discusses the
+creation of more complex GUIs that require the programmer to program
+event handling explicitly.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_syntax_dialogs_and_the_joptionpane_class">7.3. Syntax: Dialogs and the <code>JOptionPane</code> class</h3>
+<div class="paragraph">
+<p><code>JOptionPane</code> is a utility class for creating GUIs consisting
+of a single dialog. It offers a variety of ways to create useful dialogs
+quickly and easily and is part of the larger Java Swing GUI library. In
+this chapter, we’ll show you how to use the static methods and
+constants in <code>JOptionPane</code> to construct useful dialogs. Specifically,
+you’ll learn how to construct the following four types of dialogs.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Information</dt>
+<dd>
+<p>An information, or message, dialog displays a message to the user.
+Static method <code>showMessageDialog()</code> creates such a dialog. See
+<a href="chap7.html#simpleMessageFigure">Figure 7.2</a> for an example of a message dialog.</p>
+</dd>
+<dt class="hdlist1">Confirm</dt>
+<dd>
+<p>A confirm dialog asks a user to confirm a statement. Static method<br>
+<code>showConfirmDialog()</code> creates such a dialog. This dialog may return
+user input as <code>YES_OPTION</code>, <code>NO_OPTION</code>, <code>OK_OPTION</code>, or
+<code>CANCEL_OPTION</code>. See <a href="chap7.html#yes-noDialogFigure">Figure 7.4</a> for an example of
+a Yes-No dialog.</p>
+</dd>
+<dt class="hdlist1">Option</dt>
+<dd>
+<p>An option dialog asks the user to select one from an arbitrary set of
+options. Static method <code>showOptionDialog()</code> creates such a dialog. See
+<a href="chap7.html#selectCapitalDialogFigure">Figure 7.5</a> for an example.</p>
+</dd>
+<dt class="hdlist1">Input</dt>
+<dd>
+<p>An input dialog is useful for obtaining data provided by the user.
+Static method <code>showInputDialog()</code> creates such a dialog. The user can
+input a <code>String</code> that might represent a number, a name, or any
+arbitrary text. See <a href="#inputDialogFigure" class="target-missing">[inputDialogFigure]</a> for an
+example.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The <code>JOptionPane</code> class can be used to create both <em>modal</em> and
+<em>non-modal</em> dialogs. A modal dialog is one that forces the user to
+interact with the dialog before the program can continue. Thus, the
+dialog is dismissed and the program execution resumes only <strong>after</strong> the
+user has responded. Modal dialogs are useful in situations where user
+input is required for the program to continue.</p>
+</div>
+<div class="paragraph">
+<p>A non-modal dialog is one that’s displayed on the screen and doesn’t
+require the user to interact with it for the underlying program to
+proceed. It’s easy to create a modal dialog using the static methods in
+the <code>JOptionPane</code> class mentioned earlier. Creation of non-modal dialogs
+requires a bit more effort and is not covered in this chapter. In the
+remainder of this chapter we show how to use <code>JOptionPane</code> to create
+various types of modal dialogs.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#modalDialogExercise">Exercise 7.2</a></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="informationMessageDialog">7.3.1. Generating an information dialog</h4>
+<div class="paragraph">
+<p>Programs often need to generate a message for the user and request a
+response. The message might be a short piece of information, and the
+only response might be “OK.” Alternatively, the message might be more complex and
+require a more thoughtful response. In this section, we show how the
+Java utility class <code>JOptionPane</code> can generate a simple dialog whose sole
+purpose is to inform the user that a task has been completed.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7.2 Simple dialog</div>
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#SimpleDialogProgram">Program 7.1</a> creates a dialog to inform the user
+that the task it was assigned to perform is now complete.
+<a href="chap7.html#simpleMessageFigure">Figure 7.2</a> shows the dialog generated by this
+program.</p>
+</div>
+<div id="SimpleDialogProgram" class="listingblock">
+<div class="title">Program 7.1 Generates a simple dialog.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleDialog</span> <span class="o">{</span>    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>     
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="s">"Task completed. Click OK to exit."</span><span class="o">,</span>         
+            <span class="s">"Simple Dialog"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">INFORMATION_MESSAGE</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Done."</span><span class="o">);</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We import classes used in this program. The <code>swing</code> package
+contains a number of classes needed to create a GUI, and <code>JOptionPane</code>
+is one such class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>These lines use a static
+method to create a modal dialog. <code>JOptionPane</code> is a utility class, and
+<code>showMessageDialog()</code> is a static method in this class. This method,
+along with the other three <code>JOptionPane</code> methods we discuss in this
+chapter, is a <em>factory method</em>, meaning that it creates a new object (in
+this case some kind of dialog object) on the fly with specific
+attributes. In this example, the program informs the user that a
+task has been completed. The method has the following four parameters.
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Component</dt>
+<dd>
+<p>The parent component in which the dialog is displayed. We use <code>null</code>
+in this example, which causes a default frame to be used, centering
+the dialog in the screen.</p>
+</dd>
+<dt class="hdlist1">Message</dt>
+<dd>
+<p>The message to be displayed. In this example, we have<br>
+<code>"Task completed. Click OK to exit."</code></p>
+</dd>
+<dt class="hdlist1">Title</dt>
+<dd>
+<p>The title of the dialog. In this example, it is
+<code>"A Simple Dialog"</code>.</p>
+</dd>
+<dt class="hdlist1">Message Type</dt>
+<dd>
+<p>The type of the message to be displayed. In this example, we use the
+constant <code>INFORMATION_MESSAGE</code>.</p>
+</dd>
+<dt class="hdlist1">Icon</dt>
+<dd>
+<p>The icon to be displayed in the dialog. If you have an object of type
+<code>Icon</code>, you can use it to customize your dialog. The
+<code>showMessageDialog()</code> is an overloaded method that can take several
+different sets of parameters. In this example, we used a version of
+the method that does not specify an icon.</p>
+</dd>
+</dl>
+</div></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We display a message on the terminal which isn’t
+needed in this program but illustrates an interesting point. When
+you run <code>SimpleDialog</code>, you’ll notice that the <code>"Done."</code> message
+displays on the terminal only <strong>after</strong> you’ve clicked the “OK” button.
+This modal behavior blocks execution of the thread that generated it until
+the button is pressed.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>In <a href="chap7.html#simpleMessageFigure">Figure 7.2</a> the dialog titled “Simple Dialog”
+includes an icon, a message, and a button labeled “OK.” This dialog is
+actually a <em>frame</em>, which is what windows are called in Java. We’ll
+discuss frames in greater detail in <a href="chap15.html#_syntax_guis_in_java">Section 15.3</a>.</p>
+</div>
+<div id="simpleMessageFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/simpleMessageFigure.svg" alt="simpleMessageFigure" width="80%">
+</div>
+<div class="title">Figure 7.2 A simple dialog generated using <code>JOptionPane</code>.</div>
+</div>
+<div class="paragraph">
+<p>The appearance of the dialog may be different on your
+computer. Even though Java is platform independent, GUIs are customized
+based on the OS you’re running. Each OS has a default <em>look and feel</em>
+(L &amp; F) manager that specifies how widgets look and behave in your
+program. You can change the L &amp; F manager, but not all managers are
+available on all operating systems.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the previous example, we displayed a message of type
+<code>INFORMATION_MESSAGE</code>. There are additional message types that could be
+used.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ERROR_MESSAGE</code></p>
+</li>
+<li>
+<p><code>PLAIN_MESSAGE</code></p>
+</li>
+<li>
+<p><code>QUESTION_MESSAGE</code></p>
+</li>
+<li>
+<p><code>WARNING_MESSAGE</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When used as parameters in <code>showMessageDialog()</code>, the constants above
+cause different default icons to be displayed in the dialog box.
+<a href="chap7.html#iconsInMessageDialogsFigure">Figure 7.3</a> shows dialogs generated by
+<code>showMessageDialog()</code> when using <code>JOptionPane.ERROR_MESSAGE</code>, (left)
+and <code>JOptionPane.WARNING_MESSAGE</code> (right). Note the difference in the
+icons displayed toward the top left of the two dialogs.</p>
+</div>
+<div id="iconsInMessageDialogsFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/iconsinMessageDialogsFigure.png" alt="iconsinMessageDialogsFigure" width="100%">
+</div>
+<div class="title">Figure 7.3 The left dialog uses <code>JOptionPane.ERROR_MESSAGE</code>, and the right uses <code>JOptionPane.WARNING_MESSAGE</code>. The only difference is the icon displayed.</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#dialogMessageTypesExercise">Exercise 7.3</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="yes-noDialog">7.3.2. Generating a Yes-No confirm dialog</h4>
+<div class="paragraph">
+<p>There are situations when a program needs to obtain a binary answer from
+the user, a “yes” or a “no.” The next example shows how to generate
+such a dialog and how to get the user’s response.</p>
+</div>
+<div id="yes-NoDialogExample" class="exampleblock">
+<div class="title">Example 7.3 Yes-No dialog</div>
+<div class="content">
+<div class="paragraph">
+<p>Consider a program that checks whether a student understands the
+difference between odd and even integers. The program generates a random
+integer <em>x</em>, presents it to the user, and asks the question,
+“Is <em>x</em> an odd integer?” The answer given by the user is
+checked for correctness, and the user is informed accordingly.
+<a href="chap7.html#OddEvenTestProgram">Program 7.2</a> shows how to use the <code>JOptionPane</code> class
+to generate a dialog for such an interaction.</p>
+</div>
+<div id="OddEvenTestProgram" class="listingblock">
+<div class="title">Program 7.2 Tests knowledge of odd and even integers with a Yes-No dialog.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OddEvenTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span> 
+        <span class="nc">String</span> <span class="n">title</span> <span class="o">=</span> <span class="s">"Odd Even Test"</span><span class="o">;</span>
+        <span class="nc">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span> <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span> 
+        <span class="nc">String</span> <span class="n">question</span> <span class="o">=</span> <span class="s">"Is "</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">" an odd integer?"</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showConfirmDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="n">question</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">YES_NO_OPTION</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">message</span><span class="o">;</span>     
+        <span class="c1">// Response is YES_OPTION for yes, NO_OPTION for no</span>
+        <span class="k">if</span><span class="o">((</span><span class="n">response</span> <span class="o">==</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">YES_OPTION</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span>
+            <span class="o">(</span><span class="n">response</span> <span class="o">==</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">NO_OPTION</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">))</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"You're right!"</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"Sorry, that's incorrect."</span><span class="o">;</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">INFORMATION_MESSAGE</span><span class="o">);</span>
+    <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We declare a random number generator named <code>random</code> and then use it to generate a random number from 0 to 9.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We present the number to the user. Note
+the use of <code>JOptionPane.YES_NO_OPTION</code> as the last parameter in the
+<code>showConfirmDialog()</code>. The generated
+dialog is shown in <a href="chap7.html#yes-noDialogFigure">Figure 7.4</a>(a). The call to
+<code>showConfirmDialog()</code> returns the
+<code>JOptionPane.YES_OPTION</code> or the <code>JOptionPane.NO_OPTION</code> value
+depending on whether the user clicked the “Yes” or “No” button.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A second dialog is shown with a message dependent on whether the user gives the correct answer. The two different versions of this dialog are shown in <a href="chap7.html#yes-noDialogFigure">Figure 7.4</a>(b) and (c).</td>
+</tr>
+</tbody></table>
+</div>
+<div id="yes-noDialogFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/yes-noDialogFigure.svg" alt="yes noDialogFigure" width="100%">
+</div>
+<div class="title">Figure 7.4 (a)&nbsp;A Yes-No dialog generated using <code>JOptionPane</code>. (b)&nbsp;Dialog in response to correct answer. (c)&nbsp;Dialog in response to incorrect answer.</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Because we used <code>YES_NO_OPTION</code>, the dialog in
+<a href="chap7.html#yes-NoDialogExample">Example 7.3</a> automatically generates two buttons
+labeled “Yes” and “No.” Dialogs can also use the
+<code>YES_NO_CANCEL_OPTION</code> to generate a dialog with “Yes,” “No,” and
+“Cancel” options. The return value from <code>showConfirmDialog()</code> is
+<code>CANCEL_OPTION</code> if the user presses the “Cancel” button.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#parityTestExercise">Exercise 7.4</a><br>
+<a href="chap7.html#yesNoCancelExercise">Exercise 7.7</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_generating_a_dialog_with_a_list_of_options">7.3.3. Generating a dialog with a list of options</h4>
+<div class="paragraph">
+<p>The <code>JOptionPane</code> class can also be used to generate an arbitrary set of
+options as shown in the next example.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7.4 Capital dialog</div>
+<div class="content">
+<div class="paragraph">
+<p>Consider a program that asks the user to select the correct capital of a
+country from a list of capitals. It shows three options and asks
+the user to select one from among the three. It then checks the user
+response for correctness and displays a suitable message.</p>
+</div>
+<div id="CapitalQuizProgram" class="listingblock">
+<div class="title">Program 7.3 Generates a dialog with programmer-defined options.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CapitalQuiz</span> <span class="o">{</span>    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>     
+        <span class="nc">String</span> <span class="n">title</span> <span class="o">=</span> <span class="s">"Capital Quiz"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">country</span> <span class="o">=</span> <span class="s">"Azerbaijan"</span><span class="o">;</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">capitals</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Bujumbura"</span><span class="o">,</span><span class="s">"Baku"</span><span class="o">,</span> <span class="s">"Moroni"</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">correct</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="c1">//Baku is the correct answer        </span>
+        <span class="nc">String</span> <span class="n">question</span> <span class="o">=</span> <span class="s">"Select the capital of "</span> <span class="o">+</span> <span class="n">country</span> <span class="o">+</span> <span class="s">"."</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showOptionDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="n">question</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">PLAIN_MESSAGE</span><span class="o">,</span>
+            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">QUESTION_MESSAGE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">capitals</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="c1">//Response is 0, 1, or 2 for the three options</span>
+        <span class="nc">String</span> <span class="n">message</span><span class="o">;</span>     
+        <span class="k">if</span><span class="o">(</span><span class="n">response</span> <span class="o">==</span> <span class="n">correct</span><span class="o">)</span> 
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"You're right!"</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"Sorry, the capital of "</span> <span class="o">+</span> <span class="n">country</span> <span class="o">+</span>
+				<span class="s">" is "</span> <span class="o">+</span> <span class="n">capitals</span><span class="o">[</span><span class="n">correct</span><span class="o">]</span> <span class="o">+</span> <span class="s">"."</span><span class="o">;</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">INFORMATION_MESSAGE</span><span class="o">);</span>        
+    <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We call the <code>showOptionDialog()</code> method to create a dialog with multiple options. In our case, the options are three names of capitals, and only one of them is correct. <a href="chap7.html#selectCapitalDialogFigure">Figure 7.5</a> shows the dialog created.<br>
+The <code>showOptionDialog()</code> method creates an options dialog, which is the most complicated (but also the most flexible) of all the dialogs. The array of <code>String</code> values provided as the second to last parameter to <code>showOptionDialog()</code> gives the labels for the buttons.<br>
+There are three <code>null</code> values passed into this method. The first one functions like the <code>null</code> used in <a href="chap7.html#OddEvenTestProgram">Program 7.2</a>, specifying that the default frame should be used. The second specifies that the default icon should be used. In the next section, we’ll show how to specify a custom icon. The last parameter indicates the default button, which will have focus when the dialog is created. If the user hits <code>&lt;enter&gt;</code> instead of clicking, the button with focus is the button that will be pressed.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>As in <a href="chap7.html#OddEvenTestProgram">Program 7.2</a>, a second dialog is shown with a message dependent on whether the user gives the correct answer.</td>
+</tr>
+</tbody></table>
+</div>
+<div id="selectCapitalDialogFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/selectCapitalDialogFigure.png" alt="selectCapitalDialogFigure" width="50%">
+</div>
+<div class="title">Figure 7.5 A dialog with programmer-defined options generated by <a href="chap7.html#CapitalQuizProgram">Program 7.3</a>.</div>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#capitalQuizExercise">Exercise 7.8</a><br>
+<a href="chap7.html#buttonFocusExercise">Exercise 7.9</a><br>
+<a href="chap7.html#shuffleCapitalsExercise">Exercise 7.10</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="customIconDialog">7.3.4. Generating a dialog with a custom icon</h4>
+<div class="paragraph">
+<p>A custom icon can be included in any dialog. Each of the methods in
+<code>JOptionPane</code> introduced earlier can take an icon as a parameter. The
+next example illustrates how to do so.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7.5 Custom icon</div>
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#CustomIconDialogProgram">Program 7.4</a> shows how to use
+<code>showMessageDialog()</code> to generate a message dialog with a custom icon.</p>
+</div>
+<div id="CustomIconDialogProgram" class="listingblock">
+<div class="title">Program 7.4 Generates a dialog with a custom icon.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomIconDialog</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>     
+        <span class="nc">String</span> <span class="n">file</span> <span class="o">=</span> <span class="s">"bat.png"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">title</span> <span class="o">=</span> <span class="s">"Custom Icon"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">"Some bats eat 3,000 mosquitoes a night."</span><span class="o">;</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span>
+            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">INFORMATION_MESSAGE</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="n">file</span><span class="o">));</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The last parameter creates a new <code>ImageIcon</code> object from the <code>file</code> <code>String</code> (<code>"bat.png"</code> in this case). The resulting dialog appears in <a href="chap7.html#customIconDialogFigure">Figure 7.6</a>.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Dialogs illustrated in earlier examples can also use an icon parameter to include a custom icon.</p>
+</div>
+<div id="customIconDialogFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/customIconDialogFigure.png" alt="customIconDialogFigure" width="50%">
+</div>
+<div class="title">Figure 7.6 Dialog with a custom icon generated by <a href="chap7.html#CustomIconDialogProgram">Program 7.4</a>.</div>
+</div>
+<div class="paragraph">
+<p>Note that the icon shown above will not appear when you run this code
+unless you have a copy of <code>bat.png</code> in the appropriate directory.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_generating_an_input_dialog">7.3.5. Generating an input dialog</h4>
+<div class="paragraph">
+<p>An input dialog can read text data from the user. The
+<code>showInputDialog()</code> method in the <code>JOptionPane</code> class allows us to
+create such a dialog. We introduced the <code>showInputDialog()</code> method in
+<a href="chap2.html#_syntax_java_basics">Section 2.3</a>, but we give two more examples here to
+emphasize its similarity to the other <code>JOptionPane</code> factory methods and
+to show off some of its additional features.</p>
+</div>
+<div id="inputDialogExample" class="exampleblock">
+<div class="title">Example 7.6 Input dialog</div>
+<div class="content">
+<div class="paragraph">
+<p>We want to write a program that asks a question about basic chemistry.
+<a href="chap7.html#ChemistryQuizOneProgram">Program 7.5</a> shows how to display a question,
+obtain an answer from the user, check for the correctness of the answer,
+and report back to the user.</p>
+</div>
+<div id="ChemistryQuizOneProgram" class="listingblock">
+<div class="title">Program 7.5 Generates a dialog to input data as text.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChemistryQuizOne</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">title</span> <span class="o">=</span> <span class="s">"Atoms in Water"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">query</span> <span class="o">=</span> <span class="s">"How many atoms are in a molecule of water?"</span><span class="o">;</span>        
+        <span class="nc">String</span> <span class="n">response</span> <span class="o">=</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showInputDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="n">query</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">QUESTION_MESSAGE</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">response</span><span class="o">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="nc">String</span> <span class="n">message</span><span class="o">;</span>         
+        <span class="k">if</span><span class="o">(</span><span class="n">answer</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"You're right!"</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"Sorry, that's incorrect."</span><span class="o">;</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <i class="conum" data-value="4"></i><b>(4)</b>
+            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">INFORMATION_MESSAGE</span><span class="o">);</span>
+    <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We use the <code>showInputDialog()</code> method to generate the dialog shown in <a href="chap7.html#inputDialogTextFigure">Figure 7.7</a>. This method returns a <code>String</code> named <code>response</code> containing the text entered by the user in the dialog box.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We convert this <code>String</code> to an <code>int</code> and save it into variable <code>answer</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We check this value against the correct answer.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>showMessageDialog()</code> method informs the user whether or not the answer is correct.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>It’s important to note that the user could type any sequence of
+characters in the dialog box. Try running
+<a href="chap7.html#ChemistryQuizOneProgram">Program 7.5</a> and see what happens when you type
+“two,” instead of the number “2,” into the dialog box and press the
+“OK” button. The program will generate an exception indicating that
+the input <code>String</code> cannot be converted to an integer.</p>
+</div>
+<div id="inputDialogTextFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/inputDialogTextFigure.png" alt="inputDialogTextFigure" width="50%">
+</div>
+<div class="title">Figure 7.7 Dialog to read text input generated by <a href="chap7.html#ChemistryQuizOneProgram">Program 7.5</a>.</div>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap7.html#integerFormatExceptionExercise">Exercise 7.15</a></p>
+</div>
+</div>
+</div>
+<div id="inputDialogWithAListExample" class="exampleblock">
+<div class="title">Example 7.7 Input dialog with a list</div>
+<div class="content">
+<div class="paragraph">
+<p>In <a href="chap7.html#inputDialogExample">Example 7.6</a> the user is required to enter text. To reduce input errors, we can restrict the user to
+picking from a predefined list. We can create this list by generating an
+array and supplying it as a parameter to the <code>showInputDialog()</code> method.</p>
+</div>
+<div class="paragraph">
+<p><a href="chap7.html#ChemistryQuizTwoProgram">Program 7.6</a> displays a list of chemical
+elements and asks the user to select the heaviest.</p>
+</div>
+<div id="ChemistryQuizTwoProgram" class="listingblock">
+<div class="title">Program 7.6 Generates a dialog to input a choice from a list.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChemistryQuizTwo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>     
+        <span class="nc">String</span> <span class="n">title</span> <span class="o">=</span> <span class="s">"Heaviest Element"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">query</span> <span class="o">=</span> <span class="s">"Which is the heaviest element?"</span><span class="o">;</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">elements</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Iron"</span><span class="o">,</span> <span class="s">"Uranium"</span><span class="o">,</span> <span class="s">"Copernicium"</span><span class="o">,</span> <span class="s">"Nitrogen"</span><span class="o">};</span>
+        <span class="nc">String</span> <span class="n">response</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span><span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showInputDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="n">query</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">QUESTION_MESSAGE</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">elements</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">message</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"Copernicium"</span><span class="o">))</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"You're right!"</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s">"Sorry, correct answer: Copernicium."</span><span class="o">;</span>               
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">INFORMATION_MESSAGE</span><span class="o">);</span>
+    <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We pass an array of four <code>String</code> values to the <code>showInputDialog()</code> method. Note that the last parameter to this method is <code>null</code> indicating that no specific item on the list should be selected by default. (In this case, the first item in the list is initially selected.) The generated dialog is shown in <a href="chap7.html#inputDialogListFigure">Figure 7.8</a>. The four elements are contained in a drop-down list.<br>
+Unlike <a href="chap7.html#inputDialogExample">Example 7.6</a>, the return value from <code>showInputDialog()</code> is now of type <code>Object</code>, not of type <code>String</code>. The type of the list required by the method is <code>Object</code> array. You’re allowed to pass a <code>String</code> array to a method that wants an <code>Object</code> array due to inheritance, which is further discussed in
+<a href="chap11.html">Chapter 11</a> and <a href="chap17.html">Chapter 17</a>. The return value is the specific object from the array that was passed in. In our case, it <strong>has</strong> to be a <code>String</code>, but the compiler isn’t smart enough to figure that out. For this reason, we cast the object to a <code>String</code> before using the <code>equals()</code> method.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We check this <code>String</code> for correctness.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>As before, the <code>showMessageDialog()</code> method informs the user whether or not the answer is correct.</td>
+</tr>
+</tbody></table>
+</div>
+<div id="inputDialogListFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/inputDialogListFigure.png" alt="inputDialogListFigure" width="50%">
+</div>
+<div class="title">Figure 7.8 Dialog to read input from a list generated by <a href="chap7.html#ChemistryQuizTwoProgram">Program 7.6</a>.</div>
+</div>
+<div class="paragraph">
+<p>Note that this program will crash if the user clicks the “Cancel” button,
+since <code>null</code> will be returned and stored into <code>response</code>.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7.8 Input dialog with a long list</div>
+<div class="content">
+<div id="inputDialogListManyItemsFigure" class="imageblock text-center">
+<div class="content">
+<img src="chapters/07-gui-basics/images/inputDialogListManyItemsFigure.png" alt="inputDialogListManyItemsFigure" width="50%">
+</div>
+<div class="title">Figure 7.9 A dialog requesting user to select one item from a list of 20 data items. Note the use of a scroll down list to display the items.</div>
+</div>
+<div class="paragraph">
+<p>When the number of elements in the list supplied to the
+<code>showInputDialog()</code> is 20 or more, a <code>JList</code> object is automatically
+used to display the items as shown in
+<a href="chap7.html#inputDialogListManyItemsFigure">Figure 7.9</a>.</p>
+</div>
+<div class="paragraph">
+<p>Other than a longer list, the code in this example is virtually
+identical to the code in <a href="chap7.html#ChemistryQuizTwoProgram">Program 7.6</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_solution_codon_extractor">7.4. Solution: Codon extractor</h3>
+<div class="paragraph">
+<p>Here we give the solution to the codon extractor problem posed at the
+beginning of the chapter. As we have done throughout this chapter, we
+start with the import needed for GUIs built on the Swing framework. Next
+we begin the <code>CodonExtractor</code> class and its <code>main()</code> method. For
+readability, the solution to this problem is divided into methods that
+each do a specific task. We hope that the way a method works is
+intuitively clear to you. If not, the next chapter explains them in
+detail.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CodonExtractor</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>       
+        <span class="kt">int</span> <span class="n">continueProgram</span><span class="o">;</span>
+        <span class="k">do</span> <span class="o">{</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="c1">// Read DNA sequence</span>
+            <span class="nc">String</span> <span class="n">input</span> <span class="o">=</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showInputDialog</span><span class="o">(</span><span class="s">"Enter a DNA sequence"</span><span class="o">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="n">input</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">toUpperCase</span><span class="o">();</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">"Do you want to continue?"</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">isValid</span><span class="o">(</span><span class="n">input</span><span class="o">))</span> <i class="conum" data-value="4"></i><b>(4)</b>
+                <span class="n">displayCodons</span><span class="o">(</span><span class="n">input</span><span class="o">);</span> <i class="conum" data-value="5"></i><b>(5)</b>
+            <span class="k">else</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="s">"Invalid DNA Sequence.\n"</span> <span class="o">+</span> <span class="n">message</span><span class="o">;</span>
+            <span class="n">continueProgram</span> <span class="o">=</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showConfirmDialog</span><span class="o">(</span><i class="conum" data-value="6"></i><b>(6)</b>
+                <span class="kc">null</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <span class="s">"Alert"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">YES_NO_OPTION</span><span class="o">);</span>            
+        <span class="o">}</span> <span class="k">while</span><span class="o">(</span><span class="n">continueProgram</span> <span class="o">==</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">YES_OPTION</span><span class="o">);</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Thanks for using the Codon Extractor!"</span><span class="o">);</span>  
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>main()</code> method contains a <code>do</code>-<code>while</code> loop that allows the user to
+enter sequences repeatedly.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>showInputDialog()</code> method makes an
+input dialog and returns the <code>String</code> the user enters.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>toUpperCase()</code> method converts the <code>String</code> to uppercase, allowing us to read input in either case.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>We then call the <code>isValid()</code> method to make sure that the user entered a
+valid DNA sequence.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>If it is valid, we use <code>displayCodons()</code> to display
+the codons in the sequence.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Either way, we use a <code>showConfirmDialog()</code> method to creating a confirm dialog, asking the user if he or she wants to continue entering sequences. The loop will continue as long as the return value is <code>JOptionPane.YES_OPTION</code>.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">(</span><span class="nc">String</span> <span class="n">dna</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">validBases</span> <span class="o">=</span> <span class="s">"ACGT"</span><span class="o">;</span>                
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">char</span> <span class="n">base</span> <span class="o">=</span> <span class="n">dna</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">validBases</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">base</span><span class="o">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span>          
+                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> <span class="c1">//base not in "ACGT"</span>
+        <span class="o">}</span>        
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>isValid()</code> method checks to see if the DNA contains only the
+letters representing the four bases. To do this, we use the Java
+<code>String</code> library cleverly: We loop through the characters in our input,
+checking to see where they can be found in <code>"ACGT"</code>. If the index
+returned is -1, the character was not found, and the DNA is invalid.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>displayCodons()</code> method, we display the individual codons to the
+user.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">displayCodons</span><span class="o">(</span><span class="nc">String</span> <span class="n">dna</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="c1">// Get as many complete codons as possible</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">3</span><span class="o">)</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="n">message</span> <span class="o">+=</span> <span class="s">"\n"</span> <span class="o">+</span> <span class="n">dna</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="c1">// 1-2 bases might be left over</span>
+        <span class="kt">int</span> <span class="n">remaining</span> <span class="o">=</span> <span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">%</span> <span class="mi">3</span><span class="o">;</span>        
+        <span class="k">if</span><span class="o">(</span><span class="n">remaining</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="s">"\n"</span><span class="o">+</span> <span class="n">dna</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">+</span> <span class="s">"**"</span><span class="o">;</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">remaining</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="s">"\n"</span><span class="o">+</span> <span class="n">dna</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">2</span><span class="o">,</span> <span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">())</span> <span class="o">+</span> <span class="s">"*"</span><span class="o">;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="s">"DNA length: "</span> <span class="o">+</span> <span class="n">dna</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">+</span> <span class="s">"\n\nCodons: "</span> <span class="o">+</span> <span class="n">message</span><span class="o">;</span>
+        <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">message</span><span class="o">,</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="s">"Codons in DNA"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">INFORMATION_MESSAGE</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We build a large <code>String</code> with newlines separating each codon. To do so, we loop through the input, jumping ahead three characters each time. If the input length is not a multiple of three, we pad with asterisks.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We use the <code>showMessageDialog()</code> method to display an information dialog with the list of codons.</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concurrency_simple_guis">7.5. Concurrency: Simple GUIs</h3>
+<div class="paragraph">
+<p>Many GUI frameworks (including Swing) are built on a multi-threaded
+model. Swing uses threads to redraw widgets and listen for user input
+while the main thread can continue processing other data.</p>
+</div>
+<div class="paragraph">
+<p>In this chapter, the impact of these threads is minimal because we used
+only <strong>modal</strong> dialogs. Every time we called a <code>JOptionPane</code> method, the
+execution of the program’s main thread had to wait until the method
+returned. As it turns out, several threads are created when
+<code>showInputDialog()</code> or any of the others dialog methods are called, but
+they do not interact with the main thread since it’s been blocked.</p>
+</div>
+<div class="paragraph">
+<p>The situation is more complicated with a non-modal dialog, which is one
+of the reasons we did not go into them. In a non-modal dialog, the
+threads that redraw the dialog and handle its events (like a user
+clicking on a button) are running at the same time as the thread that
+created the dialog. Since many threads are running, it’s possible for
+them to write to the same data at the same time. Doing so can lead to
+inconsistencies such as the ones we’ll describe in
+<a href="chap14.html">Chapter 14</a>.</p>
+</div>
+<div class="paragraph">
+<p>The GUIs we’ll create in <a href="chap15.html">Chapter 15</a>, however, will be more than dialogs. They will be fully
+functional windows, known as frames in Java. Like a non-modal dialog,
+the creation of a frame doesn’t block the thread that created it.</p>
+</div>
+<div class="paragraph">
+<p>Many applications launch a frame and then end their main thread. If no
+other threads are created, such a program is comparatively easy to think about.
+However, complex applications may create multiple frames or launch threads to work on
+tasks in the background. Another common problem is caused by performing
+complicated tasks in the event handler for a GUI. If a task takes too
+long, the GUI can freeze or become unresponsive, as you’ve probably
+experienced. The fact that this problem happens so frequently even in
+the latest operating systems should hint at the difficulty of managing
+GUI threads.</p>
+</div>
+<div class="paragraph">
+<p>When we describe how to create fully featured GUIs in
+<a href="chap15.html">Chapter 15</a>, we’ll also
+give some techniques to help with avoiding unresponsive GUIs in a
+multi-threaded environment.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary_4">7.6. Summary</h3>
+<div class="paragraph">
+<p>In this chapter we’ve introduced a way to create simple GUIs. These
+GUIs are created using various methods available in the <code>JOptionPane</code>
+class. While the interfaces created this way are limited in scope,
+they’re often adequate for input and output in short Java programs.
+Construction of more complex GUIs is the subject of
+<a href="chap15.html">Chapter 15</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercises_7">7.7. Exercises</h3>
+<div class="paragraph">
+<p><strong>Conceptual Problems</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In which situations would it be better to use a command-line
+interface instead of a GUI? When is it better to use a GUI over a
+command-line interface?</p>
+</li>
+<li>
+<p><a id="modalDialogExercise"></a> Explain the difference
+between a modal and a non-modal dialog. Give an example of when you
+would prefer a modal over a non-modal dialog and another example of when
+you would prefer a non-modal to a modal dialog.</p>
+</li>
+<li>
+<p><a id="dialogMessageTypesExercise"></a> Give one example each when
+you would use the five different message type constants in
+<code>showMessageDialog()</code> method.</p>
+</li>
+<li>
+<p><a id="parityTestExercise"></a> In <a href="chap7.html#OddEvenTestProgram">Program 7.2</a>,
+we could have coded the line&nbsp;checking to see if the user had correctly determined whether the number was odd or even as follows.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">((</span><span class="n">response</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">||</span>
+   <span class="o">(</span><span class="n">response</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Yet another option is below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">response</span> <span class="o">!=</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="o">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which of these three implementations is best? Why?</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Programming Practice</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>Modify the program in <a href="chap7.html#yes-NoDialogExample">Example 7.3</a> such that it
+tests the user many times whether a randomly generated
+integer is odd or even. The program should keep a score indicating the
+number of correct answers. At the end of the test, display the score using a suitable dialog.</p>
+</li>
+<li>
+<p>Modify the program in <a href="chap7.html#yes-NoDialogExample">Example 7.3</a> such that it
+displays a dialog that asks the user “Do you wish to continue?” and
+offers options “Yes” and “No.” The program should exit the loop when the
+“No” option is selected and display the score using a suitable
+dialog.</p>
+</li>
+<li>
+<p><a id="yesNoCancelExercise"></a> Rewrite
+<a href="chap7.html#OddEvenTestProgram">Program 7.2</a> so that the dialog
+generated offers the “Yes,” “No,” and “Cancel” options to the
+user. The program should exit with a message dialog saying “Thank You” when
+the user selects the “Cancel” option.</p>
+</li>
+<li>
+<p><a id="capitalQuizExercise"></a> Modify
+<a href="chap7.html#CapitalQuizProgram">Program 7.3</a> to create and administer a test wherein
+the user is asked capitals of 10 countries in a sequence. The program
+must keep a count of the number of correct answers.
+Inform the user of the score at the end of the test using a suitable
+dialog.</p>
+</li>
+<li>
+<p><a id="buttonFocusExercise"></a> Modify <a href="chap7.html#CapitalQuizProgram">Program 7.3</a> so that the button labeled “Baku” has focus when the program begins.</p>
+</li>
+<li>
+<p><a id="shuffleCapitalsExercise"></a> <a href="chap8.html#_solution_three_card_poker">Section 8.5</a> gives a method called <code>shuffle()</code> that can randomize an
+array representing a deck of cards. Adapt this code and modify
+<a href="chap7.html#CapitalQuizProgram">Program 7.3</a> so that the order of the capitals is
+randomized. Note that you will need to record which index contains the
+correct answer.</p>
+</li>
+<li>
+<p>Re-implement the solution to the college cost calculator problem
+given in <a href="chap3.html#_solution_college_cost_calculator">Section 3.5</a> so that it uses
+GUIs constructed with <code>JOptionPane</code> for input and output.</p>
+</li>
+<li>
+<p>Re-implement the solution to the Monty Hall problem given in
+<a href="chap4.html#_solution_monty_hall">Section 4.4</a> so that it uses GUIs constructed with
+<code>JOptionPane</code> for input and output.</p>
+</li>
+<li>
+<p>Re-implement the solution to the DNA searching problem given in
+<a href="chap5.html#_solution_dna_searching">Section 5.4</a> so that it uses GUIs constructed with
+<code>JOptionPane</code> for input and output.</p>
+</li>
+<li>
+<p>Write a program that creates an input dialog that prompts and reads
+a file name of an image from the user. Then, create an information
+dialog that displays the file as a custom icon. In this way, you can
+construct a simple image viewer.</p>
+</li>
+<li>
+<p><a id="integerFormatExceptionExercise"></a> Use a <code>try</code>-<code>catch</code> block and modify
+<a href="chap7.html#ChemistryQuizOneProgram">Program 7.5</a> so that it handles an exception
+generated when the user enters text that cannot be converted to an
+integer. In the event such an exception is raised, pop up a message
+dialog box informing the user to try again and type an integer value.
+When the user responds by clicking the “OK” button on this message
+box, the input dialog box should appear once again and offer the user
+another chance at the answer. Write two versions of the modified
+program. In one version, your program should give only one chance for
+input after an incorrect string has been typed. In another version, your
+program should remain in a loop until the user enters a valid integer.
+There is, of course, no guarantee that an answer is correct just because it’s a valid integer.</p>
+<div class="paragraph">
+<p><strong>Note:</strong> You should attempt this exercise only if you’re familiar with exceptions in Java. Exceptions are covered in <a href="chap12.html">Chapter 12</a>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div>
+
+<nav>
+  <a rel="prev" href="chap6.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+     </a>
+  <a rel="next" href="chap8.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+     </a>
+  <div style="clear: both"></div>
+</nav>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-05-13 21:39:09 -0300
+</div>
+</div>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-VEDGKRPMMK');
+          </script>
+
+</body>
+  <script>
+  function isInViewport(ele) {
+    const rect = ele.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+  function yPosition (ele) {
+    const rect = ele.getBoundingClientRect();
+    return (rect.top - 20); // 20px above
+  }
+  let curr = document.getElementsByClassName('current');
+  if (!isInViewport(curr[curr.length - 1])) {
+    document.getElementById('toc').scrollTo({
+      top: yPosition(curr[0]),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  /* For page navigation */
+  function gotoPage(selector) {
+    const button = document.querySelector(selector);
+    if (button)
+      window.location.href = button.href;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.shiftKey)
+      return;
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        gotoPage('.nav-next');
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        gotoPage('.nav-prev');
+        break;
+    }
+  });
+  </script>
+  </html>

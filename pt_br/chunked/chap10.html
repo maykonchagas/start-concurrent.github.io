@@ -1,0 +1,1639 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="author" content="Barry Wittman, Tim Korb, Aditya Mathur">
+<title>Começando Concorrente: Uma introdução leve à Programação Concorrente</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="style0.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style1.css" type="text/css">
+<link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Começando Concorrente: Uma introdução leve à Programação Concorrente</h1>
+<div class="details">
+<span id="author" class="author">Barry Wittman</span><br>
+<span id="email" class="email"><a href="mailto:wittman1@otterbein.edu">wittman1@otterbein.edu</a></span><br>
+<span id="author2" class="author">Tim Korb</span><br>
+<span id="email2" class="email"><a href="mailto:jtk@purdue.edu">jtk@purdue.edu</a></span><br>
+<span id="author3" class="author">Aditya Mathur</span><br>
+<span id="email3" class="email"><a href="mailto:apm@purdue.edu">apm@purdue.edu</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="index.html">Start Concurrent</a></li><li><a href="index.html">1. Computer Basics</a>
+<ul class="sectlevel2">
+<li><a href="index.html#_problem_buying_a_computer">1.1. Problem: Buying a computer</a></li>
+<li><a href="index.html#_concepts_hardware_and_software">1.2. Concepts: Hardware and software</a></li>
+<li><a href="index.html#_syntax_data_representation">1.3. Syntax: Data representation</a></li>
+<li><a href="index.html#_solution_buying_a_computer">1.4. Solution: Buying a computer</a></li>
+<li><a href="index.html#_summary">1.5. Summary</a></li>
+<li><a href="index.html#_exercises">1.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap2.html">2. Problem Solving and Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap2.html#_problem_how_to_solve_problems">2.1. Problem: How to solve problems</a></li>
+<li><a href="chap2.html#_concepts_developing_software">2.2. Concepts: Developing software</a></li>
+<li><a href="chap2.html#_syntax_java_basics">2.3. Syntax: Java basics</a></li>
+<li><a href="chap2.html#_solution_how_to_solve_problems">2.4. Solution: How to solve problems</a></li>
+<li><a href="chap2.html#_concurrency_solving_problems_in_parallel">2.5. Concurrency: Solving problems in parallel</a></li>
+<li><a href="chap2.html#_summary_2">2.6. Summary</a></li>
+<li><a href="chap2.html#_exercises_2">2.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap3.html">3. Primitive Types and Strings</a>
+<ul class="sectlevel2">
+<li><a href="chap3.html#_problem_college_cost_calculator">3.1. Problem: College cost calculator</a></li>
+<li><a href="chap3.html#_concepts_types">3.2. Concepts: Types</a></li>
+<li><a href="chap3.html#_syntax_types_in_java">3.3. Syntax: Types in Java</a></li>
+<li><a href="chap3.html#_syntax_useful_libraries">3.4. Syntax: Useful libraries</a></li>
+<li><a href="chap3.html#_solution_college_cost_calculator">3.5. Solution: College cost calculator</a></li>
+<li><a href="chap3.html#_concurrency_expressions">3.6. Concurrency: Expressions</a></li>
+<li><a href="chap3.html#_summary_3">3.7. Summary</a></li>
+<li><a href="chap3.html#_exercises_3">3.8. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap4.html">4. Selection</a>
+<ul class="sectlevel2">
+<li><a href="chap4.html#_problem_monty_hall_simulation">4.1. Problem: Monty Hall simulation</a></li>
+<li><a href="chap4.html#_concepts_choosing_between_options">4.2. Concepts: Choosing between options</a></li>
+<li><a href="chap4.html#_syntax_selection_in_java">4.3. Syntax: Selection in Java</a></li>
+<li><a href="chap4.html#_solution_monty_hall">4.4. Solution: Monty Hall</a></li>
+<li><a href="chap4.html#_concurrency_selection">4.5. Concurrency: Selection</a></li>
+<li><a href="chap4.html#_exercises_4">4.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap5.html">5. Repetition</a>
+<ul class="sectlevel2">
+<li><a href="chap5.html#_problem_dna_searching">5.1. Problem: DNA searching</a></li>
+<li><a href="chap5.html#_concepts_repetition">5.2. Concepts: Repetition</a></li>
+<li><a href="chap5.html#_syntax_loops_in_java">5.3. Syntax: Loops in Java</a></li>
+<li><a href="chap5.html#_solution_dna_searching">5.4. Solution: DNA searching</a></li>
+<li><a href="chap5.html#_concurrency_loops">5.5. Concurrency: Loops</a></li>
+<li><a href="chap5.html#_exercises_5">5.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap6.html">6. Arrays</a>
+<ul class="sectlevel2">
+<li><a href="chap6.html#_introduction">6.1. Introduction</a></li>
+<li><a href="chap6.html#_problem_game_of_life">6.2. Problem: Game of Life</a></li>
+<li><a href="chap6.html#_concepts_lists_of_data">6.3. Concepts: Lists of data</a></li>
+<li><a href="chap6.html#_syntax_arrays_in_java">6.4. Syntax: Arrays in Java</a></li>
+<li><a href="chap6.html#_examples_array_usage">6.5. Examples: Array usage</a></li>
+<li><a href="chap6.html#_concepts_multidimensional_lists">6.6. Concepts: Multidimensional lists</a></li>
+<li><a href="chap6.html#_syntax_advanced_arrays_in_java">6.7. Syntax: Advanced arrays in Java</a></li>
+<li><a href="chap6.html#_examples_two_dimensional_arrays">6.8. Examples: Two-dimensional arrays</a></li>
+<li><a href="chap6.html#_advanced_special_array_tools_in_java">6.9. Advanced: Special array tools in Java</a></li>
+<li><a href="chap6.html#_solution_game_of_life">6.10. Solution: Game of Life</a></li>
+<li><a href="chap6.html#_concurrency_arrays">6.11. Concurrency: Arrays</a></li>
+<li><a href="chap6.html#_exercises_6">6.12. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap7.html">7. Simple Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap7.html#_problem_codon_extractor">7.1. Problem: Codon extractor</a></li>
+<li><a href="chap7.html#GUIBasicsIntroductionSection">7.2. Concepts: User interaction</a></li>
+<li><a href="chap7.html#_syntax_dialogs_and_the_joptionpane_class">7.3. Syntax: Dialogs and the <code>JOptionPane</code> class</a></li>
+<li><a href="chap7.html#_solution_codon_extractor">7.4. Solution: Codon extractor</a></li>
+<li><a href="chap7.html#_concurrency_simple_guis">7.5. Concurrency: Simple GUIs</a></li>
+<li><a href="chap7.html#_summary_4">7.6. Summary</a></li>
+<li><a href="chap7.html#_exercises_7">7.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap8.html">8. Methods</a>
+<ul class="sectlevel2">
+<li><a href="chap8.html#_problem_three_card_poker">8.1. Problem: Three card poker</a></li>
+<li><a href="chap8.html#_concepts_dividing_work_into_segments">8.2. Concepts: Dividing work into segments</a></li>
+<li><a href="chap8.html#_syntax_methods">8.3. Syntax: Methods</a></li>
+<li><a href="chap8.html#_examples_defining_methods">8.4. Examples: Defining methods</a></li>
+<li><a href="chap8.html#_solution_three_card_poker">8.5. Solution: Three card poker</a></li>
+<li><a href="chap8.html#_concurrency_methods">8.6. Concurrency: Methods</a></li>
+<li><a href="chap8.html#_exercises_8">8.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap9.html">9. Classes</a>
+<ul class="sectlevel2">
+<li><a href="chap9.html#_problem_nested_expressions">9.1. Problem: Nested expressions</a></li>
+<li><a href="chap9.html#_concepts_object_oriented_programming">9.2. Concepts: Object-oriented programming</a></li>
+<li><a href="chap9.html#_syntax_classes_in_java">9.3. Syntax: Classes in Java</a></li>
+<li><a href="chap9.html#_advanced_nested_classes">9.4. Advanced: Nested classes</a></li>
+<li><a href="chap9.html#_solution_nested_expressions">9.5. Solution: Nested expressions</a></li>
+<li><a href="chap9.html#_concurrency_objects">9.6. Concurrency: Objects</a></li>
+<li><a href="chap9.html#_exercises_9">9.7. Exercises</a></li>
+</ul>
+</li>
+<li class="current"><a href="chap10.html">10. Interfaces</a>
+<ul class="sectlevel2">
+<li class="current"><a href="chap10.html#_problem_sort_it_out">10.1. Problem: Sort it out</a></li>
+<li class="current"><a href="chap10.html#_concepts_making_a_promise">10.2. Concepts: Making a promise</a></li>
+<li class="current"><a href="chap10.html#_syntax_interfaces">10.3. Syntax: Interfaces</a></li>
+<li class="current"><a href="chap10.html#_advanced_local_and_anonymous_classes">10.4. Advanced: Local and anonymous classes</a></li>
+<li class="current"><a href="chap10.html#_solution_sort_it_out">10.5. Solution: Sort it out</a></li>
+<li class="current"><a href="chap10.html#_concurrency_interfaces">10.6. Concurrency: Interfaces</a></li>
+<li class="current"><a href="chap10.html#_exercises_10">10.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap11.html">11. Inheritance</a>
+<ul class="sectlevel2">
+<li><a href="chap11.html#_problem_boolean_circuits">11.1. Problem: Boolean circuits</a></li>
+<li><a href="chap11.html#_concepts_refining_classes">11.2. Concepts: Refining classes</a></li>
+<li><a href="chap11.html#_syntax_inheritance_in_java">11.3. Syntax: Inheritance in Java</a></li>
+<li><a href="chap11.html#_examples_problem_solving_with_inheritance">11.4. Examples: Problem solving with inheritance</a></li>
+<li><a href="chap11.html#_solution_boolean_circuits">11.5. Solution: Boolean circuits</a></li>
+<li><a href="chap11.html#_concurrency_inheritance">11.6. Concurrency: Inheritance</a></li>
+<li><a href="chap11.html#_exercises_11">11.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap12.html">12. Exceptions</a>
+<ul class="sectlevel2">
+<li><a href="chap12.html#_problem_bank_burglary">12.1. Problem: Bank burglary</a></li>
+<li><a href="chap12.html#_concepts_error_handling">12.2. Concepts: Error handling</a></li>
+<li><a href="chap12.html#_syntax_exceptions_in_java">12.3. Syntax: Exceptions in Java</a></li>
+<li><a href="chap12.html#_solution_bank_burglary">12.4. Solution: Bank burglary</a></li>
+<li><a href="chap12.html#_concurrency_exceptions">12.5. Concurrency: Exceptions</a></li>
+<li><a href="chap12.html#_exercises_12">12.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap13.html">13. Concurrent Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap13.html#_introduction_2">13.1. Introduction</a></li>
+<li><a href="chap13.html#_problem_deadly_virus">13.2. Problem: Deadly virus</a></li>
+<li><a href="chap13.html#_concepts_splitting_up_work">13.3. Concepts: Splitting up work</a></li>
+<li><a href="chap13.html#_syntax_threads_in_java">13.4. Syntax: Threads in Java</a></li>
+<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
+<li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
+<li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
+<li><a href="chap13.html#_summary_5">13.9. Summary</a></li>
+<li><a href="chap13.html#_exercises_13">13.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap14.html">14. Synchronization</a>
+<ul class="sectlevel2">
+<li><a href="chap14.html#_introduction_3">14.1. Introduction</a></li>
+<li><a href="chap14.html#_problem_dining_philosophers">14.2. Problem: Dining philosophers</a></li>
+<li><a href="chap14.html#_concepts_thread_interaction">14.3. Concepts: Thread interaction</a></li>
+<li><a href="chap14.html#_syntax_thread_synchronization">14.4. Syntax: Thread synchronization</a></li>
+<li><a href="chap14.html#_pitfalls_synchronization_challenges">14.5. Pitfalls: Synchronization challenges</a></li>
+<li><a href="chap14.html#_solution_dining_philosophers">14.6. Solution: Dining philosophers</a></li>
+<li><a href="chap14.html#_exercises_14">14.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap15.html">15. Constructing Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap15.html#_problem_math_tutor">15.1. Problem: Math tutor</a></li>
+<li><a href="chap15.html#_concepts_graphical_user_interfaces">15.2. Concepts: Graphical user interfaces</a></li>
+<li><a href="chap15.html#_syntax_guis_in_java">15.3. Syntax: GUIs in Java</a></li>
+<li><a href="chap15.html#_solution_math_tutor">15.4. Solution: Math tutor</a></li>
+<li><a href="chap15.html#_concurrency_guis">15.5. Concurrency: GUIs</a></li>
+<li><a href="chap15.html#_summary_6">15.6. Summary</a></li>
+<li><a href="chap15.html#_exercises_15">15.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap16.html">16. Testing and Debugging</a>
+<ul class="sectlevel2">
+<li><a href="chap16.html#_fixing_bugs">16.1. Fixing bugs</a></li>
+<li><a href="chap16.html#_concepts_approaches_to_debugging">16.2. Concepts: Approaches to debugging</a></li>
+<li><a href="chap16.html#_syntax_java_debugging_tools">16.3. Syntax: Java debugging tools</a></li>
+<li><a href="chap16.html#_concurrency_parallel_bugs">16.4. Concurrency: Parallel bugs</a></li>
+<li><a href="chap16.html#_finding_and_avoiding_bugs">16.5. Finding and avoiding bugs</a></li>
+<li><a href="chap16.html#_concepts_design_implementation_and_testing">16.6. Concepts: Design, implementation, and testing</a></li>
+<li><a href="chap16.html#_syntax_java_testing_tools">16.7. Syntax: Java testing tools</a></li>
+<li><a href="chap16.html#_concurrency_testing_tools">16.8. Concurrency: Testing tools</a></li>
+<li><a href="chap16.html#_examples_testing_a_class">16.9. Examples: Testing a class</a></li>
+<li><a href="chap16.html#_exercises_16">16.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap17.html">17. Polymorphism</a>
+<ul class="sectlevel2">
+<li><a href="chap17.html#_problem_banking_account_with_a_vengeance">17.1. Problem: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concepts_polymorphism">17.2. Concepts: Polymorphism</a></li>
+<li><a href="chap17.html#_syntax_inheritance_tools_in_java">17.3. Syntax: Inheritance tools in Java</a></li>
+<li><a href="chap17.html#_solution_banking_account_with_a_vengeance">17.4. Solution: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concurrency_atomic_libraries">17.5. Concurrency: Atomic libraries</a></li>
+<li><a href="chap17.html#_exercises_17">17.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap18.html">18. Dynamic Data Structures</a>
+<ul class="sectlevel2">
+<li><a href="chap18.html#_problem_infix_conversion">18.1. Problem: Infix conversion</a></li>
+<li><a href="chap18.html#_concepts_dynamic_data_structures">18.2. Concepts: Dynamic data structures</a></li>
+<li><a href="chap18.html#_syntax_dynamic_arrays_and_linked_lists">18.3. Syntax: Dynamic arrays and linked lists</a></li>
+<li><a href="chap18.html#_syntax_abstract_data_types_adt">18.4. Syntax: Abstract data types (ADT)</a></li>
+<li><a href="chap18.html#_advanced_generic_data_structures">18.5. Advanced: Generic data structures</a></li>
+<li><a href="chap18.html#_solution_infix_conversion">18.6. Solution: Infix conversion</a></li>
+<li><a href="chap18.html#_concurrency_linked_lists_and_thread_safety">18.7. Concurrency: Linked lists and thread safety</a></li>
+<li><a href="chap18.html#_concurrency_thread_safe_libraries">18.8. Concurrency: Thread-safe libraries</a></li>
+<li><a href="chap18.html#_exercises_18">18.9. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap19.html">19. Recursion</a>
+<ul class="sectlevel2">
+<li><a href="chap19.html#_problem_maze_of_doom">19.1. Problem: Maze of doom</a></li>
+<li><a href="chap19.html#_concepts_recursive_problem_solving">19.2. Concepts: Recursive problem solving</a></li>
+<li><a href="chap19.html#_syntax_recursive_methods">19.3. Syntax: Recursive methods</a></li>
+<li><a href="chap19.html#_syntax_recursive_data_structures">19.4. Syntax: Recursive data structures</a></li>
+<li><a href="chap19.html#_solution_maze_of_doom">19.5. Solution: Maze of doom</a></li>
+<li><a href="chap19.html#_concurrency_futures">19.6. Concurrency: Futures</a></li>
+<li><a href="chap19.html#_exercises_19">19.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap20.html">20. File I/O</a>
+<ul class="sectlevel2">
+<li><a href="chap20.html#_problem_a_picture_is_worth_1000_bytes">20.1. Problem: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concepts_file_io">20.2. Concepts: File I/O</a></li>
+<li><a href="chap20.html#_syntax_file_operations_in_java">20.3. Syntax: File operations in Java</a></li>
+<li><a href="chap20.html#_examples_file_examples">20.4. Examples: File examples</a></li>
+<li><a href="chap20.html#fileChapterSolution">20.5. Solution: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concurrency_file_io">20.6. Concurrency: File I/O</a></li>
+<li><a href="chap20.html#_exercises_20">20.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap21.html">21. Network Communication</a>
+<ul class="sectlevel2">
+<li><a href="chap21.html#_problem_web_server">21.1. Problem: Web server</a></li>
+<li><a href="chap21.html#_concepts_tcpip_communication">21.2. Concepts: TCP/IP communication</a></li>
+<li><a href="chap21.html#_syntax_networking_in_java">21.3. Syntax: Networking in Java</a></li>
+<li><a href="chap21.html#_solution_web_server">21.4. Solution: Web server</a></li>
+<li><a href="chap21.html#_concurrency_networking">21.5. Concurrency: Networking</a></li>
+<li><a href="chap21.html#_exercises_21">21.6. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="ch10-interfaces">10. Interfaces</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Our work is the presentation of our capabilities.</p>
+</div>
+</blockquote>
+<div class="attribution">
+— Edward Gibbon
+</div>
+</div>
+<div class="sect2">
+<h3 id="_problem_sort_it_out">10.1. Problem: Sort it out</h3>
+<div class="paragraph">
+<p>Learning to use classes as we did in <a href="chap9.html">Chapter 9</a> provides us
+with useful tools. First, we can group related data together. Then, we
+can encapsulate that data so that it can only be changed in carefully
+controlled ways. But these ideas are only a fraction of the true power
+of object orientation available when we exploit
+relationships between different classes. Eventually, in
+<a href="chap11.html">Chapter 11</a>, we’ll talk about hierarchical
+relationships, where one class can be the parent of many other child
+classes.</p>
+</div>
+<div class="paragraph">
+<p>However, there’s a simpler relationship that classes can
+share, the ability to do some specific action or answer some specific
+question. If we know that several different classes can all do the same
+things, we want to be able to treat them in a unified way. For example,
+imagine that you’re writing code to do laboratory analysis of the free
+radical content of a number of creatures and items. For this analysis
+it’s necessary to sort the test subjects by weight and by age.</p>
+</div>
+<div class="paragraph">
+<p>The subjects you’re going to sort will be objects of type <code>Dog</code>, <code>Cat</code>,
+<code>Person</code>, and <code>Cheese</code>. All of these subjects will have some calendar
+age. Naturally, the age we’re interested for a <code>Dog</code> is 7 times its
+calendar age. At the same time, because a cat has nine lives, we’ll
+use 1/9 of its calendar age. The age we use for
+<code>Person</code> and <code>Cheese</code> objects is simply their calendar age.</p>
+</div>
+<div class="paragraph">
+<p>As we discussed in <a href="chap6.html#selectionSortExample">Example 6.2</a>, sorting is one of
+the most fundamental tools for computer scientists. In that
+example, we introduced selection sort. Here we’re going to use another
+sort called <em>bubble sort</em>. We introduce bubble sort to expose you to
+another way to sort data. Although both are easy to understand, neither
+bubble sort nor selection sort are the fastest ways known to sort lists.</p>
+</div>
+<div class="paragraph">
+<p>Bubble sort works by scanning through a list of items, a pair at a time,
+and swapping the elements of the pair if they’re out of order. One scan
+through the list is called a <em>pass</em>. The algorithm keeps making passes
+until no consecutive pair of elements is out of order. Here’s an
+implementation of bubble sort that sorts an array of <code>int</code> values in
+ascending order.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="n">swapped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">temp</span><span class="o">;</span>
+<span class="k">while</span><span class="o">(</span><span class="n">swapped</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">swapped</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+            <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+            <span class="n">swapped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Pitfall: Array out of bounds</div>
+<div class="paragraph">
+<p>Note that index variable <code>i</code> stops before <code>array.length - 1</code> since we
+don’t want to get an <code>ArrayIndexOutOfBoundsException</code> when looking at <code>array[i + 1]</code>.
+Another way to think about it is that we only want to loop
+<code>array.length - 1</code> times, since that’s how many neighboring pairs of values there are
+in <code>array</code>.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>The only change needed to make a bubble sort work with lists of
+arbitrary objects (instead of just <code>int</code> values) is the <code>if</code> statement.
+Likewise, changing the greater than (<code>&gt;</code>) to a less than (<code>&lt;</code>) will
+change the sort from ascending to descending.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concepts_making_a_promise">10.2. Concepts: Making a promise</h3>
+<div class="paragraph">
+<p>Knowing how to sort a list of items is half the problem we want to
+solve. The other half is designing the classes so that sorting by either
+age or weight is easy. And easy sorting isn’t enough: We want to follow
+good object-oriented design so that sorting future classes will be easy
+as well.</p>
+</div>
+<div class="paragraph">
+<p>For these kinds of situations, Java has a feature called <em>interfaces</em>.
+An interface is a set of methods that an object <strong>must</strong> have in order to
+<em>implement</em> that interface. If an object implements an interface, it’s
+making a promise to have a version of each of the methods listed in the
+interface. It can choose to do anything it wants inside the body of each
+method, but it must have them to compile. Interfaces are also described
+as contracts, since a contract is a promise to do certain things. One
+reason that interfaces are so useful is because Java allows objects to
+implement any number of them.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of an interface is to guarantee that an object has the
+capability to do something. In the case of this sorting problem, we’ll
+need to sort by age and weight. Consequently, the ability to report age
+and weight are the two important capabilities that the objects must have.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_syntax_interfaces">10.3. Syntax: Interfaces</h3>
+<div class="paragraph">
+<p>Declaring an interface is similar to declaring a class except that
+interfaces can only hold abstract methods, default methods, static methods,
+and constants. Note that interfaces can never contain fields other than constants.
+Because the purpose of an
+interface is to ensure that an object has certain publicly available
+capabilities, all methods and constants listed in an interface
+are assumed to be <code>public</code>. It’s legal but clutters code to mark
+interface members with <code>public</code>, and it’s illegal to mark them with <code>private</code>
+or <code>protected</code>.</p>
+</div>
+<div class="paragraph">
+<p>An <em>abstract method</em> is one that doesn’t have a body. Its return type,
+name, and parameters are given, but this information is concluded with a
+semicolon (<code>;</code>) instead of a method body.</p>
+</div>
+<div class="paragraph">
+<p>Here’s an interface for a guitar player that defines two abstract
+methods.</p>
+</div>
+<div id="GuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Guitarist</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Any object that implements this interface must have both of these
+methods, declared with the access modifier <code>public</code>, the same return
+types, and the same parameter types. We could create a <code>RockGuitarist</code> class
+that implements <code>Guitarist</code> as follows.</p>
+</div>
+<div id="RockGuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RockGuitarist</span> <span class="kd">implements</span> <span class="nc">Guitarist</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Totally wails on that "</span> <span class="o">+</span> <span class="n">chord</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" chord!"</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Burns through the notes "</span> <span class="o">+</span> <span class="n">notes</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span>
+			<span class="s">" like Jimmy Page!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or we can create a <code>ClassicalGuitarist</code> class. A classical guitarist is
+going to approach playing a chord or a melody differently from a rock
+guitarist. Java only requires that all the methods in the interface are
+implemented.</p>
+</div>
+<div id="ClassicalGuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassicalGuitarist</span> <span class="kd">implements</span> <span class="nc">Guitarist</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Delicately voices a "</span> <span class="o">+</span> <span class="n">chord</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">" chord."</span><span class="o">);</span>      
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Plucks the melodic line "</span> <span class="o">+</span> <span class="n">notes</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span>
+			<span class="s">" with the skill of John Williams."</span><span class="o">);</span>     
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Interfaces make our code more flexible because we can use a reference
+with an interface type to refer to <strong>any</strong> objects that implement the
+interface. In the following snippet of code, we do this by creating 100
+<code>Guitarist</code> references, each of which randomly points to either a
+<code>RockGuitarist</code> or a <code>ClassicalGuitarist</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Guitarist</span><span class="o">[]</span> <span class="n">guitarists</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Guitarist</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
+<span class="nc">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">guitarists</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">random</span><span class="o">.</span><span class="na">nextBoolean</span><span class="o">())</span>
+        <span class="n">guitarists</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RockGuitarist</span><span class="o">();</span>
+    <span class="k">else</span>
+        <span class="n">guitarists</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClassicalGuitarist</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One benefit of using interfaces is that more mistakes can be caught
+at compile time instead of run time.
+If you implement an interface with a class you’re writing but
+forget (or misspell) a required method, the compiler will fail to
+compile that class. If you remember all of the required methods but
+forget to specify that your class implements a particular interface, the
+compiler will fail when you try to use that class in a place where that
+interface is required.</p>
+</div>
+<div class="paragraph">
+<p>If you have code that takes some arbitrary object as a parameter, you
+can determine if that object implements a particular interface by using
+the <code>instanceof</code> keyword. For example, the following method takes a
+<code>Chord</code> object and an object of type <code>Object</code>. The <code>Object</code> type is the
+most basic reference type there is. All reference types in Java can be
+treated as an <code>Object</code> type. Thus, a reference of type <code>Object</code> could
+point at any object of any type. In this case, if the <code>Object</code> turns out
+to implement the <code>Guitarist</code> interface, we can cast it to a <code>Guitarist</code>
+and use it to strum a chord.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kt">void</span> <span class="nf">checkBeforeStrum</span><span class="o">(</span><span class="nc">Object</span> <span class="n">unknown</span><span class="o">,</span> <span class="nc">Chord</span> <span class="n">chord</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">unknown</span> <span class="k">instanceof</span> <span class="nc">Guitarist</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Guitarist</span> <span class="n">player</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Guitarist</span><span class="o">)</span><span class="n">unknown</span><span class="o">;</span>
+        <span class="n">player</span><span class="o">.</span><span class="na">strumChord</span><span class="o">(</span><span class="n">chord</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">else</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"That's not a guitarist!"</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Pitfall: Interfaces cannot be instantiated</div>
+<div class="paragraph">
+<p>It’s tempting to try to create an object of an interface type. If you
+think about doing so carefully, it should be clear why this is impossible.
+An interface is only a list of promises, and it’s <strong>not</strong> a class, a template
+for an object. It has neither data nor methods to manipulate data.
+Thus, the following code will fail to compile.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">Guitarist</span> <span class="n">guitarist</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Guitarist</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As we showed before, we <strong>are</strong> permitted to make a reference to an object that implements
+<code>Guitarist</code> or make an array that holds such references. The
+interface itself, however, can never be instantiated.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="sect3">
+<h4 id="_default_methods">10.3.1. Default methods</h4>
+<div class="paragraph">
+<p>Before Java 8, only abstract methods (methods without bodies) could be added to interfaces.
+And that made sense: Interfaces were promises to do things, while classes actually did those things.
+Unfortunately, a problem became apparent over time.  Some Java library designers
+would create a useful interface, and many people would write classes that implement that interface.
+Eventually, someone would want to add a new method to the original interface, but doing so would break lots
+of code.  All the existing classes that implemented the interface would fail to compile until they
+added the new method.</p>
+</div>
+<div class="paragraph">
+<p>To allow new methods to be added to old interfaces without breaking existing classes, the idea of a
+default method was added to the rules for Java interfaces.  A method with a body could be added to
+an interface, provided that it was marked with the <code>default</code> keyword.  If a class implements that interface
+and has a public method that matches the default method, the class’s method will be used.  However,
+if a class doesn’t have a matching method, the default method will be used, and the class will still compile.</p>
+</div>
+<div class="paragraph">
+<p>Consider the following interface similar to the original <code>Guitarist</code> interface except that it contains a default
+<code>tune()</code> method.</p>
+</div>
+<div id="DefaultGuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DefaultGuitarist</span> <span class="o">{</span>    
+    <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">);</span>
+	
+	<span class="k">default</span> <span class="kt">boolean</span> <span class="nf">tune</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tuning guitar..."</span><span class="o">);</span>
+		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a class implements <code>DefaultGuitarist</code> and includes its own <code>tune()</code> method, that method will satisfy the interface.
+On the other hand, a class that implements <code>DefaultGuitarist</code> without a <code>tune()</code> method will automatically include
+the <code>tune()</code> method given above, which prints a message about tuning and then returns <code>true</code> (presumably indicating
+that tuning was successful). The way that a class can supply a method that overrides a default method
+is very similar to the way that methods can be overridden with inheritance, as discussed in <a href="chap11.html#_overriding_methods_and_hiding_fields">Section 11.3.4</a>.
+Note that a default method <strong>must</strong> have a body.</p>
+</div>
+<div class="paragraph">
+<p>An additional issue can arise with default methods when a class implements two or more interfaces that specify default
+methods with the same signature.  Consider the following interface that also has a <code>tune()</code> method.</p>
+</div>
+<div id="DefaultEngineProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DefaultEngine</span> <span class="o">{</span>    
+    <span class="kt">void</span> <span class="nf">start</span><span class="o">();</span>
+    <span class="kt">int</span> <span class="nf">getRedline</span><span class="o">();</span>
+	
+	<span class="k">default</span> <span class="kt">boolean</span> <span class="nf">tune</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Checking spark plugs..."</span><span class="o">);</span>
+		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By itself, this interface doesn’t cause any problems.  However, when a class implements both it and <code>DefaultGuitarist</code>,
+there can be a conflict.</p>
+</div>
+<div id="EngineGuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EngineGuitarist</span> <span class="kd">implements</span> <span class="nc">DefaultGuitarist</span><span class="o">,</span> <span class="nc">DefaultEngine</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Rumbles out "</span> <span class="o">+</span> <span class="n">chord</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">"!"</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Plays "</span> <span class="o">+</span> <span class="n">notes</span><span class="o">.</span><span class="na">toString</span><span class="o">()</span> <span class="o">+</span> <span class="s">" revving at different RPMs!"</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"*Crank*, *crank*, *vroooom!*"</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getRedline</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="mi">7000</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This strange class is the template for an object that’s simultaneously an engine and a guitarist, implementing both
+<code>DefaultGuitarist</code> and <code>DefaultEngine</code>.  It has public methods for <code>strumChord()</code> and <code>playMelody()</code>, satisfying the
+<code>DefaultGuitarist</code> interface.  It also has public methods for <code>start()</code> and <code>getRedline()</code>, satisfying the <code>DefaultEngine</code>
+interface.  But it’s received two different default methods for <code>tune()</code>, one that tunes like a guitarist and one that
+tunes like an engine.  As a consequence, an <code>EngineGuitarist</code> object wouldn’t know which <code>tune()</code> to call and won’t
+compile as it’s written.</p>
+</div>
+<div class="paragraph">
+<p>You’re allowed to create classes like <code>EngineGuitarist</code> that implement more than one interface with the same default method,
+but you need to create a <code>tune()</code> method inside <code>EngineGuitarist</code> to make clear what happens when <code>tune()</code> is called.</p>
+</div>
+<div class="paragraph">
+<p>The use of default methods in interfaces is relatively rare, and situations where there are two conflicting default methods
+are rarer still.  Even so, it’s important to understand how all the features of a language work.  Note that it’s unlikely that
+you’ll be writing interfaces with default methods often, since their primary use is to add capabilities to existing interfaces
+without breaking classes that already use those interfaces.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_interfaces_and_static">10.3.2. Interfaces and <code>static</code></h4>
+<div class="paragraph">
+<p>When designing an interface, you can’t mark an abstract method <code>static</code>.
+One way to think about this rule is that interfaces specify actions
+(in the form of methods) that an <em>object</em> can do.  Interfaces don’t specify
+requirements for a <em>class</em>, such as its static methods or its class variables.
+To illustrate, even with <code>Chord</code> and <code>Melody</code> defined, the following
+interface fails to compile.</p>
+</div>
+<div id="AbstractStaticGuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">AbstractStaticGuitarist</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">);</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getStrings</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, in Java 8 and higher, non-abstract static methods <strong>are</strong> allowed in interfaces.
+Such methods aren’t promises that objects of a class must fulfill.  Instead, they’re
+simply utility methods that perform some task associated with the interface.</p>
+</div>
+<div id="StaticGuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">StaticGuitarist</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">);</span>
+    
+	<span class="kd">static</span> <span class="nc">String</span> <span class="nf">nextNote</span><span class="o">(</span><span class="nc">String</span> <span class="n">note</span><span class="o">)</span> <span class="o">{</span>
+		<span class="kt">char</span> <span class="n">letter</span> <span class="o">=</span> <span class="n">note</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+		<span class="k">if</span><span class="o">(</span><span class="n">note</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">if</span><span class="o">(</span><span class="n">note</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'b'</span><span class="o">)</span>
+				<span class="k">return</span> <span class="s">""</span> <span class="o">+</span> <span class="n">letter</span><span class="o">;</span>
+			<span class="k">else</span> <span class="o">{</span>
+				<span class="k">switch</span><span class="o">(</span><span class="n">letter</span><span class="o">)</span> <span class="o">{</span>
+				<span class="k">case</span> <span class="sc">'B'</span><span class="o">:</span>
+				<span class="k">case</span> <span class="sc">'E'</span><span class="o">:</span>
+					<span class="k">return</span> <span class="n">letter</span> <span class="o">+</span> <span class="s">"#"</span><span class="o">;</span>
+				<span class="k">case</span> <span class="sc">'G'</span><span class="o">:</span>
+					<span class="k">return</span> <span class="s">"A"</span><span class="o">;</span>
+				<span class="k">default</span><span class="o">:</span>
+					<span class="k">return</span> <span class="s">""</span> <span class="o">+</span> <span class="o">(</span><span class="n">letter</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+				<span class="o">}</span>
+			<span class="o">}</span>
+		<span class="o">}</span>
+		<span class="k">else</span> <span class="o">{</span>
+			<span class="k">switch</span><span class="o">(</span><span class="n">letter</span><span class="o">)</span> <span class="o">{</span>
+			<span class="k">case</span> <span class="sc">'B'</span><span class="o">:</span>
+			<span class="k">case</span> <span class="sc">'E'</span><span class="o">:</span>
+				<span class="k">return</span> <span class="s">""</span> <span class="o">+</span> <span class="o">(</span><span class="n">letter</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+			<span class="k">default</span><span class="o">:</span>
+				<span class="k">return</span> <span class="n">letter</span> <span class="o">+</span> <span class="s">"#"</span><span class="o">;</span>
+			<span class="o">}</span>
+		<span class="o">}</span>	
+	<span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This interface includes the method <code>nextNote()</code>, which takes a <code>String</code> representation
+of a note such as <code>"D#"</code> or <code>"Bb"</code> and returns a <code>String</code> with a representation of a
+note one half step higher.  The rules for musical notes are somewhat complex, so this
+method is useful even when separate from any particular class that implements <code>StaticGuitarist</code>.
+The <code>nextNote()</code> method would be called just like any static method, using the name
+of its container <code>StaticGuitarist</code> followed by a dot followed by the name of the method itself.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">note</span> <span class="o">=</span> <span class="nc">StaticGuitarist</span><span class="o">.</span><span class="na">nextNote</span><span class="o">(</span><span class="s">"F"</span><span class="o">);</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Neither fields nor class variables are allowed in interfaces, so neither static nor default
+methods will ever change any data inside the interface.  This is the fundamental difference
+between an interface and a class: Interfaces never contain <em>state</em>.  Even so, class constants are allowed.
+Thus, we could define <code>static</code> <code>final</code>
+values that might be useful to any class implementing an interface. With
+<code>Chord</code> and <code>Melody</code> defined, the following interface will compile.</p>
+</div>
+<div id="ConstantGuitaristProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ConstantGuitarist</span> <span class="o">{</span>    
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAJOR</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">NATURAL_MINOR</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">HARMONIC_MINOR</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MELODIC_MINOR</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CHROMATIC</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">PENTATONIC</span> <span class="o">=</span> <span class="mi">6</span><span class="o">;</span>    
+
+    <span class="kt">void</span> <span class="nf">strumChord</span><span class="o">(</span><span class="nc">Chord</span> <span class="n">chord</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">playMelody</span><span class="o">(</span><span class="nc">Melody</span> <span class="n">notes</span><span class="o">);</span>    
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another source of confusion is that class variables will be both <code>static</code> and <code>final</code> by default
+in an interface, even if those keywords aren’t used.</p>
+</div>
+<div class="paragraph">
+<p>Some Java users object to the use of constants in interfaces,
+since the purpose of an interface is to define a list of a requirements
+for objects of a class rather than dealing with data values.
+Nevertheless, constants are allowed in interfaces, and the Java API uses
+them in many cases.</p>
+</div>
+<div id="supermarketPricingExample" class="exampleblock">
+<div class="title">Example 10.1 Supermarket pricing</div>
+<div class="content">
+<div class="paragraph">
+<p>Interface names often include the suffix <em>-able</em>, for example,
+<code>Runnable</code>, <code>Callable</code>, and <code>Comparable</code>. This suffix is typical because
+it reminds us that a class implementing an interface has some specific
+ability. Let’s consider an example in a supermarket in which the items
+could have very little in common with each other but they all have a
+price. We could define the interface <code>Priceable</code> as follows.</p>
+</div>
+<div id="PriceableProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">interface</span> <span class="nc">Priceable</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">getPrice</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If bananas cost $0.49 a pound, we can define the <code>Bananas</code> class as
+follows.</p>
+</div>
+<div id="BananasProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Bananas</span> <span class="kd">implements</span> <span class="nc">Priceable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PRICE_PER_POUND</span> <span class="o">=</span> <span class="mf">0.49</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Bananas</span><span class="o">(</span><span class="kt">double</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span> <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">weight</span><span class="o">*</span><span class="no">PRICE_PER_POUND</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If eggs are $1.50 for a dozen large eggs and $1.75 for a dozen extra
+large eggs, we can define the <code>Eggs</code> class as follows.</p>
+</div>
+<div id="EggsProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Eggs</span> <span class="kd">implements</span> <span class="nc">Priceable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PRICE_PER_DOZEN_LARGE</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PRICE_PER_DOZEN_EXTRA_LARGE</span> <span class="o">=</span> <span class="mf">1.75</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">dozens</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">extraLarge</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Eggs</span><span class="o">(</span><span class="kt">int</span> <span class="n">dozens</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">extraLarge</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dozens</span> <span class="o">=</span> <span class="n">dozens</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">extraLarge</span> <span class="o">=</span> <span class="n">extraLarge</span><span class="o">;</span>
+    <span class="o">}</span>       
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">extraLarge</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">dozens</span><span class="o">*</span><span class="no">PRICE_PER_DOZEN_EXTRA_LARGE</span><span class="o">;</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">dozens</span><span class="o">*</span><span class="no">PRICE_PER_DOZEN_LARGE</span><span class="o">;</span>            
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, if water is $0.99 a gallon, we can define the <code>Water</code> class as
+follows.</p>
+</div>
+<div id="WaterProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Water</span> <span class="kd">implements</span> <span class="nc">Priceable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PRICE_PER_GALLON</span> <span class="o">=</span> <span class="mf">0.99</span><span class="o">;</span> 
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">gallons</span><span class="o">;</span>    
+
+    <span class="kd">public</span> <span class="nf">Water</span><span class="o">(</span><span class="kt">int</span> <span class="n">gallons</span><span class="o">)</span> <span class="o">{</span> <span class="k">this</span><span class="o">.</span><span class="na">gallons</span> <span class="o">=</span> <span class="n">gallons</span><span class="o">;</span> <span class="o">}</span>     
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">gallons</span><span class="o">*</span><span class="no">PRICE_PER_GALLON</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Each class could be much more complicated, but the code shown is all
+that’s needed to implement the <code>Priceable</code> interface. Even though
+there’s no clear relationship between bananas, eggs, and water, a shopping
+cart filled with these items (and any others implementing the
+<code>Priceable</code> interface) could easily be totaled at the register. If we
+represent the shopping cart as an array of <code>Priceable</code> items, we could
+write a simple method to total the values like so.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="nf">getTotal</span><span class="o">(</span><span class="nc">Priceable</span><span class="o">[]</span> <span class="n">cart</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cart</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">cart</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getPrice</span><span class="o">();</span>
+
+    <span class="k">return</span> <span class="n">total</span><span class="o">;</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that we can pass in <code>Bananas</code>, <code>Eggs</code>, <code>Water</code>, and many other
+kinds of objects in a <code>Priceable</code> array as long as they all implement
+this interface. Even though it’s impossible to create an object with an
+interface type, we can make as many references to it as we want.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_advanced_local_and_anonymous_classes">10.4. Advanced: Local and anonymous classes</h3>
+<div class="paragraph">
+<p>If you haven’t read <a href="chap9.html#_advanced_nested_classes">Section 9.4</a>, you may want
+to look over that material to be sure you understand what nested
+classes and inner classes are. Recall that a normal inner class is
+declared inside of another class, but it’s also legal to declare a
+class inside of a method. Such a class is called a <em>local class</em>. Under
+some circumstances, it’s useful to create an inner class
+with no name, called an <em>anonymous class</em>.</p>
+</div>
+<div class="paragraph">
+<p>Both kinds of classes are inner classes. They can access fields and
+methods, even <code>private</code> ones. Like other inner classes,
+they’re not allowed to declare <code>static</code> variables other than constants.
+We bring up these special kinds of classes in this chapter because they’re
+commonly used to create a class with a narrow purpose that implements a
+required interface.</p>
+</div>
+<div class="sect3">
+<h4 id="_local_classes">10.4.1. Local classes</h4>
+<div class="paragraph">
+<p>A local class declaration looks like any other class declaration except
+that it occurs within a method. The name of a local class only has
+meaning inside the method where it’s defined. Because the scope of the
+name is only the method, a local class cannot have access modifiers such
+as <code>public</code>, <code>private</code>, or <code>protected</code> applied to it.</p>
+</div>
+<div class="paragraph">
+<p>Consider the following method in which an <code>Ellipse</code> class is defined
+locally. Recall that an ellipse (or oval) has a major (long) axis and a
+minor (short) axis. The area of an ellipse is half its major axis times
+half its minor axis times <em>π</em>. (Because the major and
+minor axes of a circle are its diameter, this formula becomes
+<em>πr</em><sup>2</sup> in that case.)</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="chapters/10-interfaces/images/ellipse.svg" alt="ellipse" width="50%">
+</div>
+<div class="title">Figure 10.1 Area of an ellipse.</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">createEllipse</span><span class="o">(</span><span class="kt">double</span> <span class="n">a1</span><span class="o">,</span> <span class="kt">double</span> <span class="n">a2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">class</span> <span class="nc">Ellipse</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kt">double</span> <span class="n">axis1</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">double</span> <span class="n">axis2</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Ellipse</span><span class="o">(</span><span class="kt">double</span> <span class="n">axis1</span><span class="o">,</span> <span class="kt">double</span> <span class="n">axis2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">axis2</span> <span class="o">=</span> <span class="n">axis2</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">axis1</span> <span class="o">=</span> <span class="n">axis1</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getArea</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">axis1</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">axis2</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+	<span class="nc">Ellipse</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Ellipse</span><span class="o">(</span><span class="n">a1</span><span class="o">,</span> <span class="n">a2</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The ellipse has area "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getArea</span><span class="o">());</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>Ellipse</code> class cannot be referred to by any other methods. Since
+an <code>Ellipse</code> class might be useful in other code, a top-level class
+would make more sense than this local class. For that reason, local
+classes are not commonly used.</p>
+</div>
+<div class="paragraph">
+<p>However, we can make local classes more useful if they implement
+interfaces. Consider the following interface which can be implemented by
+any shape that returns its area.</p>
+</div>
+<div id="AreaGettableProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">AreaGettable</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">getArea</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The method below takes an array of <code>AreaGettable</code> objects and sums their
+areas.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">double</span> <span class="nf">sumAreas</span><span class="o">(</span><span class="nc">AreaGettable</span><span class="o">[]</span> <span class="n">shapes</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">sum</span>  <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">shapes</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">shapes</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getArea</span><span class="o">();</span>
+
+    <span class="k">return</span> <span class="n">sum</span><span class="o">;</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we create a local class that implements <code>AreaGettable</code>, we can use it
+in conjunction with the <code>sumAreas()</code> method. In the following method, we expand
+the local <code>Ellipse</code> class in this way and fill an array with
+100 <code>Ellipse</code> instances, which can then be passed to <code>sumAreas()</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">createEllipses</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">class</span> <span class="nc">Ellipse</span> <span class="kd">implements</span> <span class="nc">AreaGettable</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kt">double</span> <span class="n">axis1</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">double</span> <span class="n">axis2</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">Ellipse</span><span class="o">(</span><span class="kt">double</span> <span class="n">axis1</span><span class="o">,</span> <span class="kt">double</span> <span class="n">axis2</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">axis2</span> <span class="o">=</span> <span class="n">axis2</span><span class="o">;</span>
+			<span class="k">this</span><span class="o">.</span><span class="na">axis1</span> <span class="o">=</span> <span class="n">axis1</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getArea</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="nc">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">axis1</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">axis2</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nc">AreaGettable</span><span class="o">[]</span> <span class="n">ellipses</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AreaGettable</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ellipses</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+        <span class="n">ellipses</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Ellipse</span><span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mf">25.0</span><span class="o">,</span> <span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mf">25.0</span><span class="o">);</span>
+    <span class="kt">double</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">sumAreas</span><span class="o">(</span><span class="n">ellipses</span><span class="o">);</span>
+
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The total area is "</span> <span class="o">+</span> <span class="n">sum</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even though the <code>Ellipse</code> class had the <code>getArea()</code> method before, the
+compiler wouldn’t have allowed us to store <code>Ellipse</code> references in an
+<code>AreaGettable</code> array until we marked the <code>Ellipse</code> class as implementing
+<code>AreaGettable</code>. As in <a href="chap10.html#supermarketPricingExample">Example 10.1</a>, we used
+an array with an interface type.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_anonymous_classes">10.4.2. Anonymous classes</h4>
+<div class="paragraph">
+<p>This second <code>Ellipse</code> class is more useful since objects with its type
+can be passed to other methods as an <code>AreaGettable</code> reference, but
+declaring the class locally provides few benefits over a top-level
+class. Indeed, local classes are seldom preferable to top-level classes.
+Although anonymous classes behave like local classes, they can be
+conveniently created at any point.</p>
+</div>
+<div class="paragraph">
+<p>An anonymous class has no name. It’s created on the fly from some
+interface or parent class and can be stored into a reference with that
+type. In the following example, we modify the <code>createEllipses()</code> method
+so that it creates an anonymous class which behaves exactly like the
+<code>Ellipse</code> class and implements the <code>AreaGettable</code> interface.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">createEllipses</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">AreaGettable</span><span class="o">[]</span> <span class="n">ellipses</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AreaGettable</span><span class="o">[</span><span class="mi">100</span><span class="o">];</span>
+
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="kt">double</span> <span class="n">value1</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mf">25.0</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="kt">double</span> <span class="n">value2</span> <span class="o">=</span> <span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mf">25.0</span><span class="o">;</span>
+
+        <span class="n">ellipses</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AreaGettable</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kd">private</span> <span class="kt">double</span> <span class="n">axis1</span> <span class="o">=</span> <span class="n">value1</span><span class="o">;</span>
+            <span class="kd">private</span> <span class="kt">double</span> <span class="n">axis2</span> <span class="o">=</span> <span class="n">value2</span><span class="o">;</span>
+
+            <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getArea</span><span class="o">()</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="nc">Math</span><span class="o">.</span><span class="na">PI</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">axis1</span><span class="o">*</span><span class="mf">0.5</span><span class="o">*</span><span class="n">axis2</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+    <span class="o">}</span>
+
+    <span class="kt">double</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">sumAreas</span><span class="o">(</span><span class="n">ellipses</span><span class="o">);</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The total area is "</span> <span class="o">+</span> <span class="n">sum</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The syntax for creating an anonymous class is ugly. First, you use the
+<code>new</code> keyword followed by the name of the interface or parent class you
+want to create the anonymous class from. Next, you put the arguments to
+the parent class constructor inside of parentheses or leave empty
+parentheses for an interface. Finally, you open a set of braces and fill
+in the body for your anonymous class. When defining an anonymous class,
+the entire body is crammed into a single statement, and you will often
+need to complete that statement with a semicolon (<code>;</code>).</p>
+</div>
+<div class="paragraph">
+<p>Anonymous classes don’t have constructors. If you need a constructor,
+you will have to create a local class. Constructors usually aren’t
+necessary since both local and anonymous classes can see local variables
+and fields and use those to initialize values. Although any fields can
+be used, local variables must be marked <code>final</code> (as shown above) if
+their values will be used by local or anonymous classes. This
+restriction prevents local variables from being changed in unpredictable ways by
+methods in the local class.</p>
+</div>
+<div class="paragraph">
+<p>It might not be easy to see why anonymous classes are useful. Both the
+Java API and libraries written by other programmers have many methods
+that require parameters whose type implements a particular interface.
+Without anonymous classes, you’d have to define a whole named class and
+instantiate it just for that method, even if you never use it again.</p>
+</div>
+<div class="paragraph">
+<p>Using anonymous classes, you can create such an object in one step,
+right where you need it. This practice is commonly used for creating
+<em>listeners</em> for GUIs. A listener is an object that does the right action
+when a particular event happens. If you need many different listeners in
+one program, it can be convenient to create anonymous classes that can
+handle each event rather than defining many named classes which each
+have a single, narrow purpose. We’ll use this technique in
+<a href="chap15.html">Chapter 15</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_solution_sort_it_out">10.5. Solution: Sort it out</h3>
+<div class="paragraph">
+<p>It’s not difficult to move from totaling the value of items as we did
+in <a href="chap10.html#supermarketPricingExample">Example 10.1</a> to sorting them. Refer to the
+following class diagram as we explain our solution to the sorting
+problem posed at the beginning of the chapter. Dotted lines are used to
+show the “implements” relationship.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="chapters/10-interfaces/images/ageandweight.svg" alt="ageandweight" width="100%">
+</div>
+<div class="title">Figure 10.2 Sorting relationships.</div>
+</div>
+<div class="paragraph">
+<p>We’ll start with the definitions of the two interfaces we’ll use to
+compare objects.</p>
+</div>
+<div id="AgeableProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Ageable</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="nf">getAge</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="WeighableProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Weighable</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">getWeight</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Classes implementing these two interfaces will be able to give their age
+and weight independently. The next step is to create the <code>Dog</code>, <code>Cat</code>,
+<code>Person</code>, and <code>Cheese</code> classes which implement them.</p>
+</div>
+<div class="paragraph">
+<p>We’ll see in <a href="chap11.html">Chapter 11</a> that the <code>Dog</code>, <code>Cat</code>, and
+<code>Person</code> classes could inherit from a common ancestor (such as
+<code>Creature</code> or <code>Mammal</code>) which implements the <code>Ageable</code> and <code>Weighable</code>
+interfaces. That design could reduce the total amount of code needed.
+For now, each class will have to implement both interfaces directly.</p>
+</div>
+<div id="DogProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dog</span> <span class="kd">implements</span> <span class="nc">Ageable</span><span class="o">,</span> <span class="nc">Weighable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">;</span>  
+    
+    <span class="kd">public</span> <span class="nf">Dog</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">age</span><span class="o">*</span><span class="mi">7</span><span class="o">;</span> <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getWeight</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">weight</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="kd">implements</span> <span class="nc">Ageable</span><span class="o">,</span> <span class="nc">Weighable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">;</span>  
+    
+    <span class="kd">public</span> <span class="nf">Cat</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">age</span><span class="o">/</span><span class="mi">9</span><span class="o">;</span> <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getWeight</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">weight</span><span class="o">;</span> <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="PersonProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="nc">Ageable</span><span class="o">,</span> <span class="nc">Weighable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">;</span>  
+    
+    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">age</span><span class="o">;</span> <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getWeight</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">weight</span><span class="o">;</span> <span class="o">}</span>   
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div id="CheeseProgram" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cheese</span> <span class="kd">implements</span> <span class="nc">Ageable</span><span class="o">,</span> <span class="nc">Weighable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">type</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Cheese</span><span class="o">(</span><span class="kt">int</span> <span class="n">age</span><span class="o">,</span> <span class="kt">double</span> <span class="n">weight</span><span class="o">,</span> <span class="nc">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">age</span><span class="o">;</span> <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getWeight</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">weight</span><span class="o">;</span> <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getType</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">type</span><span class="o">;</span> <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With the classes in place, we can assume that client code will
+instantiate some objects and perform operations on them. All that’s
+necessary is to write the method that will do the sorting. We can wrap
+the bubble sort code given earlier in a method body with only a few changes
+to generalize the sort beyond <code>int</code> values.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">sort</span><span class="o">(</span><span class="nc">Object</span><span class="o">[]</span> <span class="n">array</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="n">swapped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="nc">Object</span> <span class="n">temp</span><span class="o">;</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">swapped</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">swapped</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">outOfOrder</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">],</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+                <span class="n">array</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+                <span class="n">swapped</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this method, the <code>boolean</code> <code>age</code> is <code>true</code> if we’re sorting by age
+and <code>false</code> if we’re sorting by weight. Note that the array elements and <code>temp</code>
+have the <code>Object</code> type. Recall that any object can be stored in a
+reference of type <code>Object</code>.</p>
+</div>
+<div class="paragraph">
+<p>The only other change we needed was to replace the greater-than
+comparison (<code>&gt;</code>) with the <code>outOfOrder()</code> method, which we define below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">outOfOrder</span><span class="o">(</span><span class="nc">Object</span> <span class="n">o1</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">o2</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">age</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Ageable</span> <span class="n">age1</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Ageable</span><span class="o">)</span><span class="n">o1</span><span class="o">;</span>
+        <span class="nc">Ageable</span> <span class="n">age2</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Ageable</span><span class="o">)</span><span class="n">o2</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">age1</span><span class="o">.</span><span class="na">getAge</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">age2</span><span class="o">.</span><span class="na">getAge</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="o">{</span>
+        <span class="nc">Weighable</span> <span class="n">weight1</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Weighable</span><span class="o">)</span><span class="n">o1</span><span class="o">;</span>
+        <span class="nc">Weighable</span> <span class="n">weight2</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Weighable</span><span class="o">)</span><span class="n">o2</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">weight1</span><span class="o">.</span><span class="na">getWeight</span><span class="o">()</span> <span class="o">&gt;</span> <span class="n">weight2</span><span class="o">.</span><span class="na">getWeight</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even though we’ve designed our program for objects that implement both
+the <code>Ageable</code> and <code>Weighable</code> interfaces, the compiler only sees
+<code>Object</code> references in the array. Thus, we must cast each object to the
+appropriate interface type to do the comparison. There’s a danger that
+a user will pass in an array with objects which do not implement both
+<code>Ageable</code> and <code>Weighable</code>, causing a <code>ClassCastException</code>. To allow for
+universal sorting methods, the Java API defines a <code>Comparable</code> interface
+which can be implemented by any class which requires sorting. With Java
+5 and higher, the <code>Comparable</code> interface uses generics to be more
+type-safe, but we won’t discuss how to use this interface until we
+cover generics in <a href="chap18.html">Chapter 18</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concurrency_interfaces">10.6. Concurrency: Interfaces</h3>
+<div class="paragraph">
+<p>As we discussed in <a href="chap10.html#_concepts_making_a_promise">Section 10.2</a>, implementing
+an interface means promising to have public methods with the
+signatures specified in the interface definition. Making a promise seems
+only tangentially related to having multiple threads of execution.
+Indeed, interfaces and concurrency do not overlap a great deal, but
+there are two important areas where they affect one another.</p>
+</div>
+<div class="paragraph">
+<p>The first is that a special interface called the <code>Runnable</code> interface
+can be used to create new threads of execution. <code>Runnable</code> is a very
+simple interface, containing the single signature <code>void run()</code>. Essentially,
+any object with a <code>run()</code> method that takes no arguments and
+returns no values can be used to create a thread of execution. Just as a
+regular program has a single starting place,
+the <code>main()</code> method, some method needs to be marked as a starting place
+for additional threads. For more
+information about using the <code>Runnable</code> interface, refer to
+<a href="chap13.html#_the_runnable_interface">Section 13.4.5</a>.</p>
+</div>
+<div class="paragraph">
+<p>The second connection between interfaces and concurrency is more
+philosophical. What can you specify in an interface? The rules for
+interfaces in Java are relatively limited: You can require a class to
+have a public instance method with specific parameters and a specific
+return type. Java interfaces don’t allow you to require a static
+method.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="chap14.html">Chapter 14</a>, we will discuss a key way to
+make classes thread-safe by using the <code>synchronized</code> keyword.
+Like static, Java does not allow an interface to
+specify whether a method is synchronized. Thus, it’s impossible to use
+an interface to guarantee that a method will be thread-safe.</p>
+</div>
+<div class="paragraph">
+<p>As with all interface usage, this restriction cuts both ways: If you’re
+designing an interface, there’s no way to guarantee that
+implementing classes use synchronized methods. On the other hand, if
+you’re implementing an interface, the designer may hope that your class
+uses synchronized (or otherwise thread-safe) methods, but the interface
+cannot force you to do so. Whenever thread-safety is an issue, make sure
+you read (or write) the documentation carefully. Since there’s no way
+to force programmers to use the <code>synchronized</code> keyword, the
+documentation may be the only guide.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercises_10">10.7. Exercises</h3>
+<div class="paragraph">
+<p><strong>Conceptual Problems</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>What’s the purpose of an interface?</p>
+</li>
+<li>
+<p>Why implement an interface when it puts additional requirements on a
+class yet adds no functionality?</p>
+</li>
+<li>
+<p>Is it legal to have methods marked <code>private</code> or <code>protected</code> in an
+interface? Why did the designers of Java make this choice?</p>
+</li>
+<li>
+<p>What’s the <code>instanceof</code> keyword used for? Why is it useful in the
+context of interfaces?</p>
+</li>
+<li>
+<p>What kind of programming error causes a <code>ClassCastException</code>?</p>
+</li>
+<li>
+<p>Create an interface called <code>ColorWavelengths</code> that only contains
+constants storing the wavelengths in nanometers for each of the seven
+colors of light, as given below.</p>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Color</th>
+<th class="tableblock halign-center valign-top">Wavelength (nm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Red</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">680</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Orange</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">605</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Yellow</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">580</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Green</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">545</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Blue</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">473</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Indigo</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">430</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Violet</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">415</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Write an interface called <code>Clock</code> that specifies the functionality a
+clock should have. Remember that the classes that implement the clock
+may tell time in different ways (hourglass, water clock, mechanical
+movement, atomic clock), but they must share the basic functionality you specify.</p>
+</li>
+<li>
+<p>There are four compiler errors in the following interface. Name each
+one and explain why it’s an error.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Singable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="no">SOPRANO</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="no">ALTO</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sing</span><span class="o">();</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">chant</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasDeepVoice</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">hasPerfectPitch</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">tune</span><span class="o">(</span><span class="kt">int</span> <span class="n">frequency</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Consider the interface defined below.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Explodable</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="nf">explode</span><span class="o">(</span><span class="kt">double</span> <span class="n">megatons</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which of the following classes properly implement <code>Explodable</code>?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dynamite</span> <span class="kd">implements</span> <span class="nc">Explodable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">explode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"BOOM!"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AtomicBomb</span> <span class="kd">implements</span> <span class="nc">Explodable</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">explode</span><span class="o">(</span><span class="kt">double</span> <span class="n">size</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"A huge "</span> <span class="o">+</span> <span class="n">size</span> <span class="o">+</span> <span class="s">" megaton blast shakes the earth!"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Grenade</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">explode</span><span class="o">(</span><span class="kt">double</span> <span class="n">megatons</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Firecracker</span> <span class="kd">implements</span> <span class="nc">Explodable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">explode</span><span class="o">(</span><span class="kt">double</span> <span class="n">megatons</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">megatons</span> <span class="o">&lt;</span> <span class="mf">0.0000001</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Write a single class that correctly implements the following three
+interfaces.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Laughable</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="nf">laugh</span><span class="o">(</span><span class="kt">int</span> <span class="n">times</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Cryable</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">cry</span><span class="o">(</span><span class="kt">int</span> <span class="n">tears</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">moaning</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Shoutable</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">shout</span><span class="o">(</span><span class="kt">double</span> <span class="n">volume</span><span class="o">,</span> <span class="nc">String</span> <span class="n">words</span><span class="o">);</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you’re sorting a list of items <em>n</em> elements long
+using bubble sort, what’s the minimum number of passes you’d need
+to be sure the list is sorted, assuming the worst possible ordering of
+items to start with? (Hint: Imagine the list is in backward order.)
+What’s the minimum number of passes if the list is already sorted?</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Programming Practice</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="12">
+<li>
+<p>Add client code that randomly creates the objects needing sorting in
+the solution from <a href="chap10.html#_solution_sort_it_out">Section 10.5</a>. Design and include
+additional classes <code>Wine</code> and <code>Tortoise</code> that both implement <code>Ageable</code>
+and <code>Weighable</code>. Add <code>toString()</code> methods to each class so that their
+contents can be easily output. Make sure you print out the list of
+objects after sorting to test your implementation.</p>
+</li>
+<li>
+<p>Refer to the sort given as a solution in <a href="chap10.html#_solution_sort_it_out">Section 10.5</a>. Add another <code>boolean</code> to the parameters of the sort which
+specifies whether the sort is ascending or descending. Make the needed
+changes throughout the code to add this functionality.</p>
+</li>
+<li>
+<p><a id="parallelBubbleSortExercise"></a> After learning about threads in
+<a href="chap13.html">Chapter 13</a>, refer to the simple bubble
+sort from <a href="chap10.html#_problem_sort_it_out">Section 10.1</a>. The goal is now to
+parallelize the sort. Write some code which will generate an array of
+random <code>int</code> values. Design your code so that you can spawn
+<em>n</em> threads. Partition the single array into <em>n</em>
+arrays and map one partition to each thread. Use your bubble sort
+implementation to sort each partition. Finally, merge the arrays back
+together, in sorted order, into one final array. For now, use just one
+thread (ideally the main thread) to do the merge.</p>
+<div class="paragraph">
+<p>The merge operation is a simple idea, but it’s easy to make mistakes in
+its implementation. The idea is to have three indexes, one for each of
+the two arrays you’re merging and one for the result array. Always take
+the smaller (or larger, if sorting in descending order) element value from
+the two arrays and put it in the result. Then increment the index from
+the array you took the data from as well as the index of the result
+array. Be careful not to go beyond the end of the
+arrays which are being merged.  An implementation of merging can be found
+in <a href="chap19.html#mergeSortExample">Example 19.8</a>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Experiments</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="15">
+<li>
+<p>Once you have implemented the sort in parallel from
+<a href="chap10.html#parallelBubbleSortExercise">Exercise 10.14</a>, time it against the sequential
+version. Try two, four, and eight different threads. Be sure to create
+one random array and use copies of the original array for both the parallel
+and sequential versions. Be careful not to sort an array that’s already
+sorted! Try array sizes of 1,000, 100,000, and 1,000,000. Did the
+performance increase? Was it as much as you expected?</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div>
+
+<nav>
+  <a rel="prev" href="chap9.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+     </a>
+  <a rel="next" href="chap11.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+     </a>
+  <div style="clear: both"></div>
+</nav>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-05-13 21:39:09 -0300
+</div>
+</div>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-VEDGKRPMMK');
+          </script>
+
+</body>
+  <script>
+  function isInViewport(ele) {
+    const rect = ele.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+  function yPosition (ele) {
+    const rect = ele.getBoundingClientRect();
+    return (rect.top - 20); // 20px above
+  }
+  let curr = document.getElementsByClassName('current');
+  if (!isInViewport(curr[curr.length - 1])) {
+    document.getElementById('toc').scrollTo({
+      top: yPosition(curr[0]),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  /* For page navigation */
+  function gotoPage(selector) {
+    const button = document.querySelector(selector);
+    if (button)
+      window.location.href = button.href;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.shiftKey)
+      return;
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        gotoPage('.nav-next');
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        gotoPage('.nav-prev');
+        break;
+    }
+  });
+  </script>
+  </html>

@@ -1,0 +1,2971 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.22">
+<meta name="author" content="Barry Wittman, Tim Korb, Aditya Mathur">
+<title>Começando Concorrente: Uma introdução leve à Programação Concorrente</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="style0.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style1.css" type="text/css">
+<link rel="stylesheet" href="asciidoctor-chunker.css" type="text/css"></head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Começando Concorrente: Uma introdução leve à Programação Concorrente</h1>
+<div class="details">
+<span id="author" class="author">Barry Wittman</span><br>
+<span id="email" class="email"><a href="mailto:wittman1@otterbein.edu">wittman1@otterbein.edu</a></span><br>
+<span id="author2" class="author">Tim Korb</span><br>
+<span id="email2" class="email"><a href="mailto:jtk@purdue.edu">jtk@purdue.edu</a></span><br>
+<span id="author3" class="author">Aditya Mathur</span><br>
+<span id="email3" class="email"><a href="mailto:apm@purdue.edu">apm@purdue.edu</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="index.html">Start Concurrent</a></li><li><a href="index.html">1. Computer Basics</a>
+<ul class="sectlevel2">
+<li><a href="index.html#_problem_buying_a_computer">1.1. Problem: Buying a computer</a></li>
+<li><a href="index.html#_concepts_hardware_and_software">1.2. Concepts: Hardware and software</a></li>
+<li><a href="index.html#_syntax_data_representation">1.3. Syntax: Data representation</a></li>
+<li><a href="index.html#_solution_buying_a_computer">1.4. Solution: Buying a computer</a></li>
+<li><a href="index.html#_summary">1.5. Summary</a></li>
+<li><a href="index.html#_exercises">1.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap2.html">2. Problem Solving and Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap2.html#_problem_how_to_solve_problems">2.1. Problem: How to solve problems</a></li>
+<li><a href="chap2.html#_concepts_developing_software">2.2. Concepts: Developing software</a></li>
+<li><a href="chap2.html#_syntax_java_basics">2.3. Syntax: Java basics</a></li>
+<li><a href="chap2.html#_solution_how_to_solve_problems">2.4. Solution: How to solve problems</a></li>
+<li><a href="chap2.html#_concurrency_solving_problems_in_parallel">2.5. Concurrency: Solving problems in parallel</a></li>
+<li><a href="chap2.html#_summary_2">2.6. Summary</a></li>
+<li><a href="chap2.html#_exercises_2">2.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap3.html">3. Primitive Types and Strings</a>
+<ul class="sectlevel2">
+<li><a href="chap3.html#_problem_college_cost_calculator">3.1. Problem: College cost calculator</a></li>
+<li><a href="chap3.html#_concepts_types">3.2. Concepts: Types</a></li>
+<li><a href="chap3.html#_syntax_types_in_java">3.3. Syntax: Types in Java</a></li>
+<li><a href="chap3.html#_syntax_useful_libraries">3.4. Syntax: Useful libraries</a></li>
+<li><a href="chap3.html#_solution_college_cost_calculator">3.5. Solution: College cost calculator</a></li>
+<li><a href="chap3.html#_concurrency_expressions">3.6. Concurrency: Expressions</a></li>
+<li><a href="chap3.html#_summary_3">3.7. Summary</a></li>
+<li><a href="chap3.html#_exercises_3">3.8. Exercises</a></li>
+</ul>
+</li>
+<li class="current"><a href="chap4.html">4. Selection</a>
+<ul class="sectlevel2">
+<li class="current"><a href="chap4.html#_problem_monty_hall_simulation">4.1. Problem: Monty Hall simulation</a></li>
+<li class="current"><a href="chap4.html#_concepts_choosing_between_options">4.2. Concepts: Choosing between options</a></li>
+<li class="current"><a href="chap4.html#_syntax_selection_in_java">4.3. Syntax: Selection in Java</a></li>
+<li class="current"><a href="chap4.html#_solution_monty_hall">4.4. Solution: Monty Hall</a></li>
+<li class="current"><a href="chap4.html#_concurrency_selection">4.5. Concurrency: Selection</a></li>
+<li class="current"><a href="chap4.html#_exercises_4">4.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap5.html">5. Repetition</a>
+<ul class="sectlevel2">
+<li><a href="chap5.html#_problem_dna_searching">5.1. Problem: DNA searching</a></li>
+<li><a href="chap5.html#_concepts_repetition">5.2. Concepts: Repetition</a></li>
+<li><a href="chap5.html#_syntax_loops_in_java">5.3. Syntax: Loops in Java</a></li>
+<li><a href="chap5.html#_solution_dna_searching">5.4. Solution: DNA searching</a></li>
+<li><a href="chap5.html#_concurrency_loops">5.5. Concurrency: Loops</a></li>
+<li><a href="chap5.html#_exercises_5">5.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap6.html">6. Arrays</a>
+<ul class="sectlevel2">
+<li><a href="chap6.html#_introduction">6.1. Introduction</a></li>
+<li><a href="chap6.html#_problem_game_of_life">6.2. Problem: Game of Life</a></li>
+<li><a href="chap6.html#_concepts_lists_of_data">6.3. Concepts: Lists of data</a></li>
+<li><a href="chap6.html#_syntax_arrays_in_java">6.4. Syntax: Arrays in Java</a></li>
+<li><a href="chap6.html#_examples_array_usage">6.5. Examples: Array usage</a></li>
+<li><a href="chap6.html#_concepts_multidimensional_lists">6.6. Concepts: Multidimensional lists</a></li>
+<li><a href="chap6.html#_syntax_advanced_arrays_in_java">6.7. Syntax: Advanced arrays in Java</a></li>
+<li><a href="chap6.html#_examples_two_dimensional_arrays">6.8. Examples: Two-dimensional arrays</a></li>
+<li><a href="chap6.html#_advanced_special_array_tools_in_java">6.9. Advanced: Special array tools in Java</a></li>
+<li><a href="chap6.html#_solution_game_of_life">6.10. Solution: Game of Life</a></li>
+<li><a href="chap6.html#_concurrency_arrays">6.11. Concurrency: Arrays</a></li>
+<li><a href="chap6.html#_exercises_6">6.12. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap7.html">7. Simple Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap7.html#_problem_codon_extractor">7.1. Problem: Codon extractor</a></li>
+<li><a href="chap7.html#GUIBasicsIntroductionSection">7.2. Concepts: User interaction</a></li>
+<li><a href="chap7.html#_syntax_dialogs_and_the_joptionpane_class">7.3. Syntax: Dialogs and the <code>JOptionPane</code> class</a></li>
+<li><a href="chap7.html#_solution_codon_extractor">7.4. Solution: Codon extractor</a></li>
+<li><a href="chap7.html#_concurrency_simple_guis">7.5. Concurrency: Simple GUIs</a></li>
+<li><a href="chap7.html#_summary_4">7.6. Summary</a></li>
+<li><a href="chap7.html#_exercises_7">7.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap8.html">8. Methods</a>
+<ul class="sectlevel2">
+<li><a href="chap8.html#_problem_three_card_poker">8.1. Problem: Three card poker</a></li>
+<li><a href="chap8.html#_concepts_dividing_work_into_segments">8.2. Concepts: Dividing work into segments</a></li>
+<li><a href="chap8.html#_syntax_methods">8.3. Syntax: Methods</a></li>
+<li><a href="chap8.html#_examples_defining_methods">8.4. Examples: Defining methods</a></li>
+<li><a href="chap8.html#_solution_three_card_poker">8.5. Solution: Three card poker</a></li>
+<li><a href="chap8.html#_concurrency_methods">8.6. Concurrency: Methods</a></li>
+<li><a href="chap8.html#_exercises_8">8.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap9.html">9. Classes</a>
+<ul class="sectlevel2">
+<li><a href="chap9.html#_problem_nested_expressions">9.1. Problem: Nested expressions</a></li>
+<li><a href="chap9.html#_concepts_object_oriented_programming">9.2. Concepts: Object-oriented programming</a></li>
+<li><a href="chap9.html#_syntax_classes_in_java">9.3. Syntax: Classes in Java</a></li>
+<li><a href="chap9.html#_advanced_nested_classes">9.4. Advanced: Nested classes</a></li>
+<li><a href="chap9.html#_solution_nested_expressions">9.5. Solution: Nested expressions</a></li>
+<li><a href="chap9.html#_concurrency_objects">9.6. Concurrency: Objects</a></li>
+<li><a href="chap9.html#_exercises_9">9.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap10.html">10. Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap10.html#_problem_sort_it_out">10.1. Problem: Sort it out</a></li>
+<li><a href="chap10.html#_concepts_making_a_promise">10.2. Concepts: Making a promise</a></li>
+<li><a href="chap10.html#_syntax_interfaces">10.3. Syntax: Interfaces</a></li>
+<li><a href="chap10.html#_advanced_local_and_anonymous_classes">10.4. Advanced: Local and anonymous classes</a></li>
+<li><a href="chap10.html#_solution_sort_it_out">10.5. Solution: Sort it out</a></li>
+<li><a href="chap10.html#_concurrency_interfaces">10.6. Concurrency: Interfaces</a></li>
+<li><a href="chap10.html#_exercises_10">10.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap11.html">11. Inheritance</a>
+<ul class="sectlevel2">
+<li><a href="chap11.html#_problem_boolean_circuits">11.1. Problem: Boolean circuits</a></li>
+<li><a href="chap11.html#_concepts_refining_classes">11.2. Concepts: Refining classes</a></li>
+<li><a href="chap11.html#_syntax_inheritance_in_java">11.3. Syntax: Inheritance in Java</a></li>
+<li><a href="chap11.html#_examples_problem_solving_with_inheritance">11.4. Examples: Problem solving with inheritance</a></li>
+<li><a href="chap11.html#_solution_boolean_circuits">11.5. Solution: Boolean circuits</a></li>
+<li><a href="chap11.html#_concurrency_inheritance">11.6. Concurrency: Inheritance</a></li>
+<li><a href="chap11.html#_exercises_11">11.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap12.html">12. Exceptions</a>
+<ul class="sectlevel2">
+<li><a href="chap12.html#_problem_bank_burglary">12.1. Problem: Bank burglary</a></li>
+<li><a href="chap12.html#_concepts_error_handling">12.2. Concepts: Error handling</a></li>
+<li><a href="chap12.html#_syntax_exceptions_in_java">12.3. Syntax: Exceptions in Java</a></li>
+<li><a href="chap12.html#_solution_bank_burglary">12.4. Solution: Bank burglary</a></li>
+<li><a href="chap12.html#_concurrency_exceptions">12.5. Concurrency: Exceptions</a></li>
+<li><a href="chap12.html#_exercises_12">12.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap13.html">13. Concurrent Programming</a>
+<ul class="sectlevel2">
+<li><a href="chap13.html#_introduction_2">13.1. Introduction</a></li>
+<li><a href="chap13.html#_problem_deadly_virus">13.2. Problem: Deadly virus</a></li>
+<li><a href="chap13.html#_concepts_splitting_up_work">13.3. Concepts: Splitting up work</a></li>
+<li><a href="chap13.html#_syntax_threads_in_java">13.4. Syntax: Threads in Java</a></li>
+<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
+<li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
+<li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
+<li><a href="chap13.html#_summary_5">13.9. Summary</a></li>
+<li><a href="chap13.html#_exercises_13">13.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap14.html">14. Synchronization</a>
+<ul class="sectlevel2">
+<li><a href="chap14.html#_introduction_3">14.1. Introduction</a></li>
+<li><a href="chap14.html#_problem_dining_philosophers">14.2. Problem: Dining philosophers</a></li>
+<li><a href="chap14.html#_concepts_thread_interaction">14.3. Concepts: Thread interaction</a></li>
+<li><a href="chap14.html#_syntax_thread_synchronization">14.4. Syntax: Thread synchronization</a></li>
+<li><a href="chap14.html#_pitfalls_synchronization_challenges">14.5. Pitfalls: Synchronization challenges</a></li>
+<li><a href="chap14.html#_solution_dining_philosophers">14.6. Solution: Dining philosophers</a></li>
+<li><a href="chap14.html#_exercises_14">14.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap15.html">15. Constructing Graphical User Interfaces</a>
+<ul class="sectlevel2">
+<li><a href="chap15.html#_problem_math_tutor">15.1. Problem: Math tutor</a></li>
+<li><a href="chap15.html#_concepts_graphical_user_interfaces">15.2. Concepts: Graphical user interfaces</a></li>
+<li><a href="chap15.html#_syntax_guis_in_java">15.3. Syntax: GUIs in Java</a></li>
+<li><a href="chap15.html#_solution_math_tutor">15.4. Solution: Math tutor</a></li>
+<li><a href="chap15.html#_concurrency_guis">15.5. Concurrency: GUIs</a></li>
+<li><a href="chap15.html#_summary_6">15.6. Summary</a></li>
+<li><a href="chap15.html#_exercises_15">15.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap16.html">16. Testing and Debugging</a>
+<ul class="sectlevel2">
+<li><a href="chap16.html#_fixing_bugs">16.1. Fixing bugs</a></li>
+<li><a href="chap16.html#_concepts_approaches_to_debugging">16.2. Concepts: Approaches to debugging</a></li>
+<li><a href="chap16.html#_syntax_java_debugging_tools">16.3. Syntax: Java debugging tools</a></li>
+<li><a href="chap16.html#_concurrency_parallel_bugs">16.4. Concurrency: Parallel bugs</a></li>
+<li><a href="chap16.html#_finding_and_avoiding_bugs">16.5. Finding and avoiding bugs</a></li>
+<li><a href="chap16.html#_concepts_design_implementation_and_testing">16.6. Concepts: Design, implementation, and testing</a></li>
+<li><a href="chap16.html#_syntax_java_testing_tools">16.7. Syntax: Java testing tools</a></li>
+<li><a href="chap16.html#_concurrency_testing_tools">16.8. Concurrency: Testing tools</a></li>
+<li><a href="chap16.html#_examples_testing_a_class">16.9. Examples: Testing a class</a></li>
+<li><a href="chap16.html#_exercises_16">16.10. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap17.html">17. Polymorphism</a>
+<ul class="sectlevel2">
+<li><a href="chap17.html#_problem_banking_account_with_a_vengeance">17.1. Problem: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concepts_polymorphism">17.2. Concepts: Polymorphism</a></li>
+<li><a href="chap17.html#_syntax_inheritance_tools_in_java">17.3. Syntax: Inheritance tools in Java</a></li>
+<li><a href="chap17.html#_solution_banking_account_with_a_vengeance">17.4. Solution: Banking account with a vengeance</a></li>
+<li><a href="chap17.html#_concurrency_atomic_libraries">17.5. Concurrency: Atomic libraries</a></li>
+<li><a href="chap17.html#_exercises_17">17.6. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap18.html">18. Dynamic Data Structures</a>
+<ul class="sectlevel2">
+<li><a href="chap18.html#_problem_infix_conversion">18.1. Problem: Infix conversion</a></li>
+<li><a href="chap18.html#_concepts_dynamic_data_structures">18.2. Concepts: Dynamic data structures</a></li>
+<li><a href="chap18.html#_syntax_dynamic_arrays_and_linked_lists">18.3. Syntax: Dynamic arrays and linked lists</a></li>
+<li><a href="chap18.html#_syntax_abstract_data_types_adt">18.4. Syntax: Abstract data types (ADT)</a></li>
+<li><a href="chap18.html#_advanced_generic_data_structures">18.5. Advanced: Generic data structures</a></li>
+<li><a href="chap18.html#_solution_infix_conversion">18.6. Solution: Infix conversion</a></li>
+<li><a href="chap18.html#_concurrency_linked_lists_and_thread_safety">18.7. Concurrency: Linked lists and thread safety</a></li>
+<li><a href="chap18.html#_concurrency_thread_safe_libraries">18.8. Concurrency: Thread-safe libraries</a></li>
+<li><a href="chap18.html#_exercises_18">18.9. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap19.html">19. Recursion</a>
+<ul class="sectlevel2">
+<li><a href="chap19.html#_problem_maze_of_doom">19.1. Problem: Maze of doom</a></li>
+<li><a href="chap19.html#_concepts_recursive_problem_solving">19.2. Concepts: Recursive problem solving</a></li>
+<li><a href="chap19.html#_syntax_recursive_methods">19.3. Syntax: Recursive methods</a></li>
+<li><a href="chap19.html#_syntax_recursive_data_structures">19.4. Syntax: Recursive data structures</a></li>
+<li><a href="chap19.html#_solution_maze_of_doom">19.5. Solution: Maze of doom</a></li>
+<li><a href="chap19.html#_concurrency_futures">19.6. Concurrency: Futures</a></li>
+<li><a href="chap19.html#_exercises_19">19.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap20.html">20. File I/O</a>
+<ul class="sectlevel2">
+<li><a href="chap20.html#_problem_a_picture_is_worth_1000_bytes">20.1. Problem: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concepts_file_io">20.2. Concepts: File I/O</a></li>
+<li><a href="chap20.html#_syntax_file_operations_in_java">20.3. Syntax: File operations in Java</a></li>
+<li><a href="chap20.html#_examples_file_examples">20.4. Examples: File examples</a></li>
+<li><a href="chap20.html#fileChapterSolution">20.5. Solution: A picture is worth 1,000 bytes</a></li>
+<li><a href="chap20.html#_concurrency_file_io">20.6. Concurrency: File I/O</a></li>
+<li><a href="chap20.html#_exercises_20">20.7. Exercises</a></li>
+</ul>
+</li>
+<li><a href="chap21.html">21. Network Communication</a>
+<ul class="sectlevel2">
+<li><a href="chap21.html#_problem_web_server">21.1. Problem: Web server</a></li>
+<li><a href="chap21.html#_concepts_tcpip_communication">21.2. Concepts: TCP/IP communication</a></li>
+<li><a href="chap21.html#_syntax_networking_in_java">21.3. Syntax: Networking in Java</a></li>
+<li><a href="chap21.html#_solution_web_server">21.4. Solution: Web server</a></li>
+<li><a href="chap21.html#_concurrency_networking">21.5. Concurrency: Networking</a></li>
+<li><a href="chap21.html#_exercises_21">21.6. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="ch04-selection">4. Selection</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Life is a sum of all your choices.</p>
+</div>
+</blockquote>
+<div class="attribution">
+— Albert Camus
+</div>
+</div>
+<div class="sect2">
+<h3 id="_problem_monty_hall_simulation">4.1. Problem: Monty Hall simulation</h3>
+<div class="paragraph">
+<p>There’s a famous mathematical puzzle called the Monty Hall problem,
+based on the television show <em>Let’s Make a Deal</em> hosted by the eponymous
+Monty Hall. In this problem, you’re presented with three doors. Two of
+the three doors have junk behind them. One randomly selected door
+conceals something like a pile of gold. If you can choose that door, you
+win the gold. After you make an initial choice, Monty, who knows which
+door the pile of gold is behind, will open one of the two other doors,
+always picking a door with junk behind it. If you chose the gold door,
+Monty will pick between the two junk doors randomly. After opening a
+door, Monty gives you a chance to switch to the other unopened door. You
+decide to switch or not, the appropriate door is opened, and you win
+either junk or a pile of gold, depending on your luck.</p>
+</div>
+<div class="paragraph">
+<p>As it turns out, it’s always a better strategy to switch doors. If you
+keep your initial choice, you have a 1 in 3 chance to win the gold.
+However, if you switch doors, you’ll have a 2 in 3 chance. The problem is
+counterintuitive and leads many people, including mathematicians and
+people holding advanced degrees, to the incorrect answer.</p>
+</div>
+<div class="paragraph">
+<p>Think about it this way: Suppose you could pick two doors to open, and
+if the gold was behind either one of them, you’d win. Clearly, you’d have a 2
+in 3 chance of winning. Monty allows you this option. Just pick the two
+doors you want and tell Monty the third. He reveals one of your two initial
+doors as junk, and you switch to the other one.</p>
+</div>
+<div class="paragraph">
+<p>If you still aren’t convinced, that’s fine. Your goal is to write a
+program that simulates the Monty Hall dilemma, allowing a user to guess
+a door and then potentially switch. Once you’ve written the
+simulation, you can choose to play repeatedly and see how well you do if
+you switch.</p>
+</div>
+<div class="paragraph">
+<p>A Monty Hall scenario has two significant features that distinguish it
+from problems in previous chapters. First, randomness play a role.
+Generating random numbers has become an important part of computer
+science, and most languages provide programmers with tools for
+generating random or practically random numbers. Recall the <code>Random</code> class
+from <a href="chap3.html">Chapter 3</a>. With an object of
+type <code>Random</code> called <code>random</code>, you can generate a random <code>int</code> between
+<code>0</code> and <code>n - 1</code> by calling <code>random.nextInt(n)</code>.</p>
+</div>
+<div class="paragraph">
+<p>The second and much more important feature of Java in the solution to
+this problem is the element of choice. A random door is chosen to hide
+gold, and the program must react appropriately. The user chooses a door,
+and the program must carefully choose another door to open in response.
+Finally, the user must decide whether or not he or she wants to switch
+his or her choice. Inherent in this problem is the idea of <em>conditional
+execution</em>. Every program from the previous chapter runs sequentially,
+line by line. With conditional execution, only some of the code may be
+executed, depending on input from the user or the values that random
+numbers take. Previously, every program was deterministic, a series of
+inevitable consequences. Now, that linear, one-thing-follows-another
+paradigm has split into complex trees and webs of possible program
+executions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concepts_choosing_between_options">4.2. Concepts: Choosing between options</h3>
+<div class="paragraph">
+<p>Before we get to random numbers and the complex choices involved in the
+Monty Hall problem, let’s talk about the simplified approach that most
+programming languages take to conditional execution. When we come to a
+point in a program where there is a choice to be made, we can think of
+it as the question, “Do I want to perform this series of tasks?” Like
+the classic game of 20 Questions, these questions in Java generally only
+have two answers: “yes” or “no.” If the answer is “yes,” the
+program completes Task A, otherwise it completes Task B. It’s easier to
+design programming languages that can handle yes-or-no questions than
+any general question. If you’ve studied logic in the past, you have
+probably run across <em>Boolean logic</em>. Boolean logic gives a set of rules,
+similar to the rules of traditional algebra, that can be applied to a
+system with only two values: true and false.</p>
+</div>
+<div class="sect3">
+<h4 id="_simple_choices">4.2.1. Simple choices</h4>
+<div class="paragraph">
+<p>Because we want to build a system using only yes-or-no questions,
+Boolean logic is a perfect fit for computer science. To conform with
+other computer scientists, we try to think of conditions in terms of
+true and false, instead of yes and no. Thus, we can begin to formulate
+the kinds of choices we want to make:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>If it’s raining outside,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll take my umbrella.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This statement is a very simple program, even though it’s not one
+executed by a computer. The person following this program asks herself,
+“Is it raining today?” If the answer is “yes,” then she’ll take
+her umbrella. We can abstract this idea a bit further by saying that
+<em>raining outside</em> is a condition <em>p</em> and that <em>taking my
+umbrella</em> is an action <em>a</em>. In other words, if
+<em>p</em> is true, then do <em>a</em>. We haven’t specified
+what is to be done if <em>p</em> is not true, although we can
+assume that the actor in this drama will <strong>not</strong> take an umbrella.</p>
+</div>
+<div class="paragraph">
+<p>If we want to view <em>p</em> as a decision to make, we can specify
+what happens if it’s not true. For example, we could formulate another
+choice:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>If I have at least $50 in my pocket,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll eat a lobster dinner;</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><em>otherwise,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll eat fast food.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, we let <em>having at least $50</em> be condition <em>q</em>,
+<em>eating a lobster dinner</em> be action <em>b</em>, and <em>eating fast
+food</em> be action <em>c</em>. Now we’ve created a decision. If
+<em>q</em> is true, the person will do action <em>b</em>, but
+if it’s false, she’ll do action <em>c</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_boolean_operations">4.2.2. Boolean operations</h4>
+<div class="paragraph">
+<p>Even by itself, the ability to pick between two options is powerful, but
+we can augment this ability in a couple of ways. First, we don’t have to
+rely on simple conditions. Using Boolean logic, we can make arbitrarily
+complex conditions.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>If I’m bored, or it’s late and I can’t sleep,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll watch television.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Someone following this program will watch television if he’s bored or
+if it’s late and he also can’t sleep. We can break the condition into
+three sub-conditions: <em>I’m bored</em> is condition <em>x</em>, <em>it’s
+late</em> is condition <em>y</em>, and <em>I can’t sleep</em> is condition
+<em>z</em>. We have connected these three conditions together using
+the words “and” and “or.” These two simple words represent powerful
+concepts in Boolean logic, AND and OR. When two conditions are combined
+with AND, the result is true only if both conditions are true. When two
+conditions are combined with OR, the result is true if either of the
+conditions is true.</p>
+</div>
+<div class="paragraph">
+<p>We can create a table called a <em>truth table</em> to show all the possible
+values certain conditions can take. We’re going to use the symbol
+∧ to represent the concept of AND and the symbol
+∨ to represent the concept of OR. We’ll also
+abbreviate true to T and false to F.</p>
+</div>
+<div class="paragraph">
+<p>Given a condition <em>x</em>, a condition <em>y</em>, and the condition made by <em>x</em> ∧ <em>y</em>,
+this truth table shows all possible values. As stipulated, <em>x</em> ∧ <em>y</em> is true only when both <em>x</em> and <em>y</em> are true.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><em>x</em></th>
+<th class="tableblock halign-center valign-top"><em>y</em></th>
+<th class="tableblock halign-center valign-top"><em>x</em> ∧ <em>y</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This truth table gives all the values for <em>x</em> ∨ <em>y</em>. As you can see, <em>x</em> ∨ <em>y</em> is true if <em>x</em> or <em>y</em> are true.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><em>x</em></th>
+<th class="tableblock halign-center valign-top"><em>y</em></th>
+<th class="tableblock halign-center valign-top"><em>x</em> ∨ <em>y</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>There’s confusion surrounding the word “or” in English.
+Sometimes “or” is used in an exclusive sense to mean one or the other
+but not both, as in, “Would you like lemonade or iced tea with your
+meal?” In logic, this exclusive or exists as well and is called XOR.
+This difference gives another reason for a formally structured language
+like mathematics or Java to express ourselves precisely. When two
+conditions are connected with XOR, the result is true if one or the
+other but not both conditions are true. We use the symbol
+⊕ to represent the XOR operation in the truth table
+below.</p>
+</div>
+<div class="paragraph">
+<p>This truth table gives all the values for <em>x</em> ⊕ <em>y</em>.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content text-center center">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><em>x</em></th>
+<th class="tableblock halign-center valign-top"><em>y</em></th>
+<th class="tableblock halign-center valign-top"><em>x</em> ⊕ <em>y</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The operations AND, OR, and XOR are all binary operations like addition
+and multiplication. They connect two conditions together to get a
+result. There’s also a single unary operation in Boolean logic, the NOT
+operator. A NOT simply reverses a condition. If a condition is true,
+then NOT applied to that condition will yield false, and vice versa.</p>
+</div>
+<div class="paragraph">
+<p>Here’s a truth table for NOT, using the symbol ¬ to represent the NOT operation.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content text-center center">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top"><em>x</em></th>
+<th class="tableblock halign-center valign-top">¬<em>x</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">F</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">T</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Now that we’ve nailed down some notation for Boolean logic, we can
+express the complicated expression that sent us down this path in the
+first place. Recall that <em>x</em> is <em>I’m bored</em>,
+<em>y</em> is <em>it’s late</em>, and <em>z</em> is <em>I can’t sleep</em>.
+Let <em>d</em> be the action <em>I’ll watch television</em>. We can
+express the choice in this way: If <em>x</em> ∨ (<em>y</em> ∧ <em>z</em>),
+then do <em>d</em>. Using this notation, we’ve expressed
+precisely the conditions for watching television, using parentheses to
+clear up the ambiguity present in the original statement. If we can map
+individual conditions to Boolean variables, we can build conditions of
+arbitrary complexity.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_nested_choices">4.2.3. Nested choices</h4>
+<div class="paragraph">
+<p>Making one choice is all well and good, but in life and computer
+programs, we may have to make many interrelated choices. For example, if
+you choose to eat at a seafood restaurant, then you might choose between
+eating shrimp and lobster, but if you choose instead to eat at a
+steakhouse, the options of shrimp and lobster might not be available.</p>
+</div>
+<div class="paragraph">
+<p>A <em>nested</em> choice is one that sits inside of another choice you’ve
+already made. We could describe choices of restaurants and meals as
+follows.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>If I want seafood,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll eat at Sharky’s, where</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>if I have at least $50,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll order the lobster;</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><em>otherwise,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll order the shrimp.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><em>But if I don’t want seafood,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll eat at the Golden Calf, where</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>if I have at least $30,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll order the filet mignon;</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><em>otherwise,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll order the pork chops.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The previous description is long, but it precisely expresses the
+decisions our imaginary diner might make. This description in English
+has drawbacks: It’s long and repetitive, and the grouping of specific
+meal choices with specific restaurants isn’t clear.</p>
+</div>
+<div class="paragraph">
+<p>In the next section, we discuss Java syntax that allows us to
+express the same sorts of decision patterns. Unlike English, Java has
+been designed to make these sequences of decisions clear and easy to
+read.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_syntax_selection_in_java">4.3. Syntax: Selection in Java</h3>
+<div class="paragraph">
+<p>With some theoretical background on the kinds of choices we’re
+interested in making, we can now discuss the Java syntax used to
+describe these choices. It was no accident that we kept repeating the
+word “if,” because the main Java language feature for making choices
+is called an <code>if</code> statement.</p>
+</div>
+<div class="sect3">
+<h4 id="_if_statements">4.3.1. <code>if</code> statements</h4>
+<div class="paragraph">
+<p>The designers of Java studied Boolean logic and created a type called
+<code>boolean</code>. Every condition used by an <code>if</code> statement must evaluate to a
+<code>boolean</code> value, which can only be one of two things: <code>true</code> or <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, we could have a <code>boolean</code> variable called <code>raining</code>. Stored
+in this variable is the value <code>true</code> if it’s raining and <code>false</code> if it
+isn’t. Using Java syntax, we could encode our first example in which our
+actor takes her umbrella when it’s raining.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">raining</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">umbrella</span><span class="o">.</span><span class="na">take</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The action taken if it is raining is done by calling a <em>method</em> on an
+<em>object</em>. We’ll discuss objects and methods further in
+<a href="chap8.html">Chapter 8</a> and <a href="chap9.html">Chapter 9</a>. What we’re
+focusing on now is that the line <code>umbrella.take();</code> is executed <strong>only</strong> if
+<code>raining</code> has the value <code>true</code>. Nothing is done if it’s <code>false</code>.
+<a href="chap4.html#figure-if">Figure 4.1</a> shows this pattern of conditional execution
+followed by all <code>if</code> statements.</p>
+</div>
+<div id="figure-if" class="imageblock text-center">
+<div class="content">
+<img src="chapters/04-selection/images/if.svg" alt="if" width="50%">
+</div>
+<div class="title">Figure 4.1 Execution goes inside the <code>if</code> statement when its condition is <code>true</code> and skips past it otherwise.</div>
+</div>
+<div class="paragraph">
+<p>Our descriptions of logical scenarios from the previous section used the
+word “then” to mark the actions that would be done if a condition was
+true. Some languages use <code>then</code> as a keyword, but Java doesn’t.
+Instead, note the left brace (<code>{</code>) and the right brace (<code>}</code>) that
+enclose the executable line <code>umbrella.take();</code>. These braces serve the
+same role as the word “then,” clearly marking the action to be
+performed if a condition is true. Braces are unambiguous because they
+mark a start and an end. If there are many actions to be done, they can
+all be put inside the braces, and there will be no question as to which
+actions are associated with a given <code>if</code> statement.</p>
+</div>
+<div class="paragraph">
+<p>For example, we may also need to close the window and put on a raincoat
+if it’s raining. We might accomplish these tasks in Java as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">raining</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">umbrella</span><span class="o">.</span><span class="na">take</span><span class="o">();</span>
+    <span class="n">window</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="n">raincoat</span><span class="o">.</span><span class="na">putOn</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Within a matching pair of braces (<code>{ }</code>), called a <em>block</em> of code,
+execution proceeds normally, line by line. First, the JVM will cause the
+umbrella to be taken, then the window to be closed, and finally the
+raincoat to be put on.</p>
+</div>
+<div class="paragraph">
+<p>If only a single line of code is contained within a block of code, the
+braces can be left out. For example, many experienced Java programmers
+would have written our first example as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">raining</span><span class="o">)</span>
+    <span class="n">umbrella</span><span class="o">.</span><span class="na">take</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For beginning Java programmers, however, it’s a good idea to use braces
+even when you don’t need to. Without braces, code can appear to be doing
+one thing when it’s really doing another.</p>
+</div>
+<div class="paragraph">
+<p>Since programmers must often choose between two alternatives, Java
+provides an <code>else</code> statement to specify code that should be run when the
+condition of the <code>if</code> statement is false.</p>
+</div>
+<div class="paragraph">
+<p>Let <code>fiftyDollars</code> be a <code>boolean</code> variable that’s <code>true</code> if we have at
+least $50 and is <code>false</code> otherwise. Now, we can choose between two
+dining options based on how much money we have.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">fiftyDollars</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">lobsterDinner</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+    <span class="n">fastFood</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This Java code matches the logical statements we wrote before. If we
+have enough money, we’ll eat a lobster dinner; otherwise, we’ll eat fast
+food. As with an <code>if</code> statement, we use braces to mark a block of code
+for an <code>else</code> statement, too. Since a single line of code will be
+executed in each case, the braces are optional here. We could have
+written code with the same functionality as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">fiftyDollars</span><span class="o">)</span>
+    <span class="n">lobsterDinner</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+<span class="k">else</span>
+    <span class="n">fastFood</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="chap4.html#figure-else">Figure 4.2</a> shows the pattern of conditional execution
+followed by all <code>if</code> statements that have a matching <code>else</code> statement.</p>
+</div>
+<div id="figure-else" class="imageblock text-center">
+<div class="content">
+<img src="chapters/04-selection/images/else.svg" alt="else" width="50%">
+</div>
+<div class="title">Figure 4.2 Execution goes inside the <code>if</code> statement when its condition is <code>true</code> and jumps into the <code>else</code> statement otherwise.</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Pitfall: Misleading indentation</div>
+<div class="paragraph">
+<p>Indentation is used to make code more readable, but Java ignores
+whitespace, meaning that the indentation has no effect on the execution
+of the code. To demonstrate, let’s assume that our imaginary diner knows
+he’ll get a stomachache after eating fast food. Thus, he’ll take
+some Pepto-Bismol after eating it. If you added this action to the code above, which
+does not contain braces, you might get the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">fiftyDollars</span><span class="o">)</span>
+    <span class="n">lobsterDinner</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+<span class="k">else</span>
+    <span class="n">fastFood</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="n">peptoBismol</span><span class="o">.</span><span class="na">take</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Although it looks like both <code>fastFood.eat();</code> and <code>peptoBismol.take();</code>
+are within the block of the <code>else</code> statement, only <code>fastFood.eat();</code> is.
+The line <code>peptoBismol.take();</code> is not part of the <code>if</code>-<code>else</code> structure
+at all and will be executed no matter what. The correct way to program
+this decision is below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">fiftyDollars</span><span class="o">)</span>
+    <span class="n">lobsterDinner</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+<span class="k">else</span> <span class="o">{</span>
+    <span class="n">fastFood</span><span class="o">.</span><span class="na">eat</span><span class="o">();</span>
+    <span class="n">peptoBismol</span><span class="o">.</span><span class="na">take</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_the_boolean_type_and_its_operations">4.3.2. The <code>boolean</code> type and its operations</h4>
+<div class="paragraph">
+<p>Recall that Java uses the type <code>boolean</code> for values that can only be
+true or false. Just like the numerical types <code>double</code> and <code>int</code>, the
+<code>boolean</code> type has specific operations that can be used to combine them
+together. By design, these operations correspond exactly to the logical
+operations we described before. Here’s a table giving the Java
+operators equivalent to the logical Boolean operations.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-bottom">Name</th>
+<th class="tableblock halign-center valign-bottom">Math<br>
+Symbol</th>
+<th class="tableblock halign-center valign-bottom">Java<br>
+Operator</th>
+<th class="tableblock halign-left valign-bottom">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">AND</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">∧</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&amp;&amp;</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Returns <code>true</code> if both values are <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">OR</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">∨</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>||</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Returns <code>true</code> if either value is <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">XOR</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">⊕</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>^</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Returns <code>true</code> if values are different</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">NOT</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">¬</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>!</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Returns the opposite of the value</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Using these operators, we can create <code>boolean</code> values and combine them
+together.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="n">x</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">y</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">z</span> <span class="o">=</span> <span class="o">!((</span><span class="n">x</span> <span class="o">||</span> <span class="n">y</span><span class="o">)</span> <span class="o">^</span> <span class="o">(</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="o">));</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When this code is executed, the value of <code>z</code> will be <code>false</code>. Although
+it’s perfectly legal to perform <code>boolean</code> operations this way, it’s
+much more common to combine them “on the fly” inside of the condition
+of an <code>if</code> statement. Recall the statement from the previous section:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>If I’m bored, or it’s late and I can’t sleep,</em></p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><em>I’ll watch television.</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If we let <code>bored</code>, <code>late</code>, and <code>canSleep</code> be <code>boolean</code> variables whose
+values indicate if we are bored, if it is late, and if we can sleep,
+respectively, we can encode this statement in Java like so.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">bored</span> <span class="o">||</span> <span class="o">(</span><span class="n">late</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">canSleep</span><span class="o">))</span>
+    <span class="n">television</span><span class="o">.</span><span class="na">watch</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Combining the <code>||</code> operator with other <code>||</code> operators is both
+commutative and associative: order and grouping doesn’t matter.
+Likewise, combining the <code>&amp;&amp;</code> operator with other <code>&amp;&amp;</code> operators is
+also commutative and associative. However, once you start mixing <code>||</code>
+with <code>&amp;&amp;</code>, it’s a good idea to use parentheses for grouping. If, in
+the above example, <code>bored</code> is <code>true</code>, <code>late</code> is <code>false</code>, and <code>canSleep</code>
+is <code>true</code>, then the expression <code>bored || (late &amp;&amp; !canSleep)</code> will be
+<code>true</code>. However, with the same values, the expression
+<code>bored || late &amp;&amp; !canSleep</code> will be <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now that we’re discussing ordering, note that <code>||</code>
+and <code>&amp;&amp;</code> are <em>short circuit</em> operators. Short circuit means that, if
+the value of the expression can be determined without evaluating the
+rest of it, the JVM won’t bother to compute any more of the
+expression. With <code>||</code> this situation arises because <code>true</code> OR anything
+else is still <code>true</code>. With <code>&amp;&amp;</code> this situations arises because <code>false</code>
+AND anything else is still <code>false</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="kc">true</span> <span class="o">||</span> <span class="o">((</span><span class="n">late</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">canSleep</span> <span class="o">&amp;&amp;</span> <span class="n">isTired</span> <span class="o">&amp;&amp;</span> <span class="n">isHungry</span><span class="o">)</span> <span class="o">||</span>
+    <span class="o">(</span><span class="n">wantsToFindOutWhatHappensNextInHisFavoriteShow</span> <span class="o">||</span>
+    <span class="n">likesTV</span><span class="o">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The condition of this <code>if</code> statement will always evaluate to <code>true</code>, and
+its body will always be executed. Because Java knows this, it won’t
+even bother to check any of the conditions after the first <code>||</code> operator.
+This short circuit evaluation is done at run time and will work if the
+value of a variable at the beginning of an OR clause is <code>true</code>. It need
+not be the literal <code>true</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="o">((</span><span class="n">late</span> <span class="o">||</span> <span class="o">!</span><span class="n">canSleep</span> <span class="o">||</span> <span class="n">isTired</span> <span class="o">||</span> <span class="n">isHungry</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+    <span class="o">(</span><span class="n">wantsToFindOutWhatHappensNextInHisFavoriteShow</span> <span class="o">||</span>
+    <span class="n">likesTV</span><span class="o">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The condition of this <code>if</code> statement will always evaluate to <code>false</code> and
+its body won’t be executed. As before, nothing after the first <code>&amp;&amp;</code>
+will even be checked. If you’re combining literals and <code>boolean</code>
+values with the <code>||</code> and <code>&amp;&amp;</code> operators, it makes no difference that
+short circuit evaluation occurs. However, if a method call is part of
+the clauses, your code might miss valuable side-effects. For example,
+let the <code>boolean</code> variable <code>working</code> be <code>false</code> in the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">working</span> <span class="o">&amp;&amp;</span> <span class="n">doSomethingImportant</span><span class="o">())</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, the <code>doSomethingImportant()</code> method must return a
+<code>boolean</code> value to be a valid statement. Still, if <code>working</code> is <code>false</code>,
+the <code>doSomethingImportant()</code> method won’t even be called. As soon as the
+JVM realizes that it’s applying the <code>&amp;&amp;</code> operation to a <code>false</code>
+value (or an <code>||</code> to a <code>true</code>), it’ll give up. In many cases, doing so is fine. In fact,
+programmers sometimes exploit this feature to allow code in a
+method like <code>doSomethingImportant()</code> to run only if it’s safe to do so.
+In this case, if we assume that we always want to run the
+<code>doSomethingImportant()</code> method (because it does something important)
+every time the condition of the <code>if</code> statement is evaluated, we need to
+restructure the code. For example, we can reverse the order of the two
+terms in the AND clause to achieve this effect. Alternatively, Java
+provides non-short circuit versions of the <code>||</code> and <code>&amp;&amp;</code> operators,
+namely <code>|</code> and <code>&amp;</code>, if you need to force full evaluation.</p>
+</div>
+<div class="paragraph">
+<p>You might have been wondering where the majority of <code>boolean</code> values come
+from. Most computer programs don’t ask the user a long series of true
+or false questions before spitting out an answer. Most <code>boolean</code> values
+in Java programs are the result of comparisons, often of numerical data
+types.</p>
+</div>
+<div class="paragraph">
+<p>It’s can be useful to compare two numbers to see if one is larger, smaller, or
+equal to the other. For example, you might have a <code>double</code> variable
+called <code>pressure</code> that gives the water pressure in a hydraulic system.
+Perhaps you also have a constant called <code>CRITICAL_PRESSURE</code> that gives
+the maximum safe pressure for your system. You can compare these values
+using the <code>&gt;</code> operator.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">pressure</span> <span class="o">&gt;</span> <span class="no">CRITICAL_PRESSURE</span><span class="o">)</span>
+    <span class="n">emergencyShutdown</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This code allows you to call the appropriate emergency method when
+<code>pressure</code> is too high. Of course, the <code>&gt;</code> operator is not the only way
+to compare two values in Java. We list all the relational operators in
+<a href="chap3.html">Chapter 3</a>, but
+the table below shows them again in a
+mathematical context.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<caption class="title">Table 4.1 Relational operators</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-bottom">Name</th>
+<th class="tableblock halign-center valign-bottom">Math<br>
+Symbol</th>
+<th class="tableblock halign-center valign-bottom">Java<br>
+Operator</th>
+<th class="tableblock halign-left valign-bottom">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Equals</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">=</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>==</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code> if the two values are equal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Not Equals</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">≠</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>!=</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code> if the two values are not
+equal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Less Than</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&lt;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&lt;</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code> if the first value is strictly
+less than the second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Less Than or Equals</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">≤</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&lt;=</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code> if the first
+value is less than or equal to the second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Greater Than</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">&gt;</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&gt;</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code> if the first value is
+strictly greater than the second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Greater Than or Equals</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">≥</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&gt;=</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code> if the first
+value is greater than or equal to the second</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The concepts and mathematical symbols for these operators should be
+familiar from mathematics. There are a few differences from the
+mathematical versions of these ideas that are worth pointing out. First,
+only easy-to-type symbols are used for Java operators. Thus, we need two
+characters to represent most relational operators in the language. These operators
+can be used to compare any numerical type with any other numerical type,
+including <code>char</code>. In the case of mismatched types, such as an <code>int</code> and
+a <code>double</code>, the lower precision type is automatically cast to the higher
+precision type. Care should be taken when using the <code>==</code> operator with
+floating-point types because of rounding errors. For example, the
+expression <code>1.0/3.0 == 0.3333333333</code> always evaluates to <code>false</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>==</code> operator is not the same as the <code>=</code> operator from previous
+chapters. In Java, the double equal sign <code>==</code> is used to compare two
+things while the single equal sign <code>=</code> is used to assign one thing to
+another.</p>
+</div>
+<div class="paragraph">
+<p>Confusion can also arise because, in the mathematical world, relational
+symbols are used to make a statement: <em>x</em> &lt; <em>y</em> is an
+announcement or a discovery that the value contained in <em>x</em>
+is, in fact, smaller than the value contained in <em>y</em>. In the
+Java world, the statement <code>x &lt; y</code> is a <strong>test</strong> whose answer is <code>true</code> if
+the value contained in <code>x</code> is smaller than the value contained in <code>y</code>
+and <code>false</code> otherwise. Using these operators means performing a test at
+a specific point in the code, asking a question about the values that
+certain variables or literals (or the results of method calls) have at
+that moment in time. In another sense, using these comparisons is a way
+to take numerical data and convert it into the language of <code>boolean</code>
+values. Note that the following statement does not compile in Java.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="mi">4</span><span class="o">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To be used in an <code>if</code> statement, the value <code>4</code> must be first compared
+with some other numerical type to yield a <code>true</code> or <code>false</code>.<br></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Pitfall: Assignment instead of equality</div>
+<div class="paragraph">
+<p>A common pitfall is to forget one of the equal signs
+in the comparison operator.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span><span class="o">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Again, this code won’t compile. If it did, the variable <code>x</code> would be
+assigned the value <code>4</code>, which would in turn be given to the <code>if</code>
+statement, but an <code>if</code> statement doesn’t know what to do with anything
+other than a <code>boolean</code> value.</p>
+</div>
+<div class="paragraph">
+<p>Extreme care should be taken when
+comparing two <code>boolean</code> values. For example, we might have two <code>boolean</code>
+values <code>likesDogs1</code> and <code>likesDogs2</code>, corresponding to whether or not two
+different people like dogs. Let’s say that the value of each one is <code>true</code> if the
+person likes dogs and <code>false</code> otherwise. We could create an <code>if</code>
+statement that would work only if their values are the same.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">likesDogs1</span> <span class="o">==</span> <span class="n">likesDogs2</span><span class="o">)</span>
+    <span class="n">makeRoommates</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This code correctly calls the <code>makeRoommates()</code> method only if the two
+individuals feel the same way about dogs. It doesn’t matter if they both like
+or dislike dogs, but one roommate loving dogs and the other hating dogs will lead to trouble.
+However, a tiny mistake in the code could yield the following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(</span><span class="n">likesDogs1</span> <span class="o">=</span> <span class="n">likesDogs2</span><span class="o">)</span>
+    <span class="n">makeRoommates</span><span class="o">();</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, <code>likesDogs1</code> would be assigned to whatever <code>likesDogs2</code> is.
+Then, that value would be given to the <code>if</code> statement. Here, the <code>makeRoommates()</code> method will be called only if <code>likesDogs2</code>
+is <code>true</code>, meaning that the second person likes dogs. Thus, the two people will become roommates if
+the second one likes dogs, and the feelings of the first person won’t be
+considered. Unlike the <code>x = 4</code> example, this code will compile with no warning.</p>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>The next few examples illustrate the use of the <code>if</code> statement. They
+also use some methods from class <code>Math</code>.</p>
+</div>
+<div id="leapYearExample" class="exampleblock">
+<div class="title">Example 4.1 Leap year</div>
+<div class="content">
+<div class="paragraph">
+<p>In the standard Gregorian calendar, leap years occur roughly once every
+four years. During leap years, the month of February has 29 days instead
+of 28. This extra day makes up for the fact that it takes a little more than 365.24
+days for the earth to orbit the sun. Unfortunately, the orbit of the
+earth around the sun doesn’t match up in any exact way with the
+rotation of the earth, making exceptions to the rule of every
+four years.</p>
+</div>
+<div class="paragraph">
+<p>In fact, the official definition for a leap year is a year that is
+evenly divisible by 4, except for those years that are evenly divisible
+by 100, with the exception to the exception of years that are evenly
+divisible by 400. For example, 1988 was a leap year because it was
+divisible by 4. The year 1900 was not a leap year because it was
+divisible by 100 but not by 400, and the year 2000 was a leap year
+because it was divisible by 400.</p>
+</div>
+<div class="paragraph">
+<p>Recall that the mod operator (<code>%</code>) allows us to find the remainder
+after integer division. Thus, if <code>n % 100</code> gives zero, <code>n</code> has no
+remainder after being divided by <code>100</code> and must be evenly divisible by
+100.</p>
+</div>
+<div id="LeapYearProgram" class="listingblock">
+<div class="title">Program 4.1 Prompts the user for a year and then determines whether or not it is a leap year.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LeapYear</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span> <span class="nc">System</span><span class="o">.</span><span class="na">in</span> <span class="o">);</span>      
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a year: "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">year</span> <span class="o">+</span> <span class="s">" is a leap year."</span><span class="o">);</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">year</span> <span class="o">+</span> <span class="s">" is not a leap year."</span><span class="o">);</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">year</span> <span class="o">+</span> <span class="s">" is a leap year."</span><span class="o">);</span>
+        <span class="k">else</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">year</span> <span class="o">+</span> <span class="s">" is not a leap year."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As with all of the programs in this section, we begin by importing
+<code>java.util.*</code>, which is needed for the <code>Scanner</code> class for input. The
+program prompts the user for a year and reads it in. If the year is
+evenly divisible by 400, the program outputs that it’s a leap year.
+Otherwise, if the year is evenly divisible by 100, the program outputs
+that it is not a leap year. Otherwise, if the year is evenly divisible
+by 4, the program outputs that it’s a leap year. Finally, if all the
+other conditions have failed, the program outputs that the year is not a
+leap year.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4.2 Quadratic formula</div>
+<div class="content">
+<div class="paragraph">
+<p>The quadratic formula is a useful tool from mathematics. Using this
+formula, you can solve equations of the form <em>ax</em><sup>2</sup> + <em>bx</em>
++ <em>c</em> = 0. You might recall the statement of the quadratic formula given below.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="chapters/04-selection/images/quadratic.svg" alt="quadratic" width="20%">
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>b</em><sup>2</sup> - 4<em>ac</em> part of the formula is called the
+<em>discriminant</em>. If the discriminant is positive, there will be two real
+answers to the equation. If the discriminant is negative, there will be
+two complex answers to the equation. Finally, if the discriminant is
+zero, there will be a single real answer to the problem. If you want to
+write a program to solve quadratic equations for you, it should take
+these three possibilities into account.</p>
+</div>
+<div id="QuadraticProgram" class="listingblock">
+<div class="title">Program 4.2 Solves a quadratic equation.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Quadratic</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"This program solves quadratic"</span> <span class="o">+</span> 
+            <span class="s">" equations of the form ax^2 + bx + c = 0."</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a value for a: "</span><span class="o">);</span> <i class="conum" data-value="1"></i><b>(1)</b>
+        <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a value for b: "</span><span class="o">);</span>
+        <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a value for c: "</span><span class="o">);</span>
+        <span class="kt">double</span> <span class="n">c</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+        <span class="kt">double</span> <span class="n">discriminant</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="o">;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="k">if</span><span class="o">(</span><span class="n">discriminant</span> <span class="o">==</span> <span class="mf">0.0</span><span class="o">)</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The answer is x = "</span> <span class="o">+</span> <span class="o">(-</span><span class="n">b</span><span class="o">/(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">)));</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">discriminant</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="o">)</span> <i class="conum" data-value="4"></i><b>(4)</b>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The answers are x = "</span> <span class="o">+</span> <span class="o">(-</span><span class="n">b</span> <span class="o">/</span> <span class="o">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">))</span> <span class="o">+</span> <span class="s">" + "</span>
+				<span class="o">+</span> <span class="nc">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(-</span><span class="n">discriminant</span><span class="o">)</span> <span class="o">/</span> <span class="o">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">)</span> <span class="o">+</span> <span class="s">"i and x = "</span>
+				<span class="o">+</span> <span class="o">(-</span><span class="n">b</span> <span class="o">/</span> <span class="o">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">))</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="nc">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(-</span><span class="n">discriminant</span><span class="o">)</span> <span class="o">/</span> <span class="o">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">)</span> <span class="o">+</span> <span class="s">"i"</span><span class="o">);</span>
+        <span class="k">else</span> <i class="conum" data-value="5"></i><b>(5)</b>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The answers are x = "</span> <span class="o">+</span> <span class="o">(-</span><span class="n">b</span> <span class="o">+</span> <span class="nc">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">discriminant</span><span class="o">))/(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">)</span>
+				<span class="o">+</span> <span class="s">" and x = "</span> <span class="o">+</span> <span class="o">(-</span><span class="n">b</span> <span class="o">-</span> <span class="nc">Math</span><span class="o">.</span><span class="na">sqrt</span><span class="o">(</span><span class="n">discriminant</span><span class="o">))/(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This program prompts the user and reads in values for <code>a</code>,
+<code>b</code>, and <code>c</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Then, it computes the discriminant.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>In the first case, we test to see if the discriminant is zero and print the single answer.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Next, if the discriminant is negative, we compute the real and complex parts separately and output the
+two answers.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Finally, if the discriminant is positive, we find the two real
+answers and output them.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Note that braces were not needed for the <code>if</code>,
+<code>else</code>-<code>if</code>, and <code>else</code> blocks because each is composed of only a single
+line of code. Although these <code>System.out.println()</code> method calls may
+take up more than one line visually, Java interprets them as single
+lines because they each only have a single semicolon (<code>;</code>).</p>
+</div>
+<div class="paragraph">
+<p>The line <code>if(discriminant == 0.0)</code> is dangerous since we’re using
+<code>double</code> values. Because of rounding errors, the discriminant might not
+be exactly zero even if it should be, mathematically. Industrial
+strength code would probably check to see if the absolute value of the
+discriminant is less than a very small number (such as 0.00000001).
+Values that small would then be treated as if they were zero.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4.3 20 Questions</div>
+<div class="content">
+<div class="paragraph">
+<p>In the time-honored game of 20 Questions, one person mentally chooses
+something, and the other participants must guess what the thing is by
+asking questions whose answer is either “yes” or “no.” In one
+popular version, the person who chooses the thing starts by declaring
+whether it is animal, vegetable, or mineral.</p>
+</div>
+<div class="paragraph">
+<p>Using counting principles from math, 20 yes-or-no questions makes it
+possible to differentiate 2<sup>20</sup> = 1,048,576 items. If you’re also told
+whether the thing is animal, vegetable, or
+mineral, it should be possible to guess over 3 million items! At this point
+in our development as Java programmers, we’re not
+yet ready to deal with such a large range of possibilities. To keep the
+size of the code reasonable, let’s narrow the field to 10 different
+items: a lizard, an eagle, a dolphin, a human, some lead, a diamond, a
+tomato, a peach, a maple tree, and a potato.</p>
+</div>
+<div id="figure-flowchart" class="imageblock">
+<div class="content">
+<img src="chapters/04-selection/images/flowchart.svg" alt="flowchart" width="100%">
+</div>
+<div class="title">Figure 4.3 Decision tree to distinguish 10 items.</div>
+</div>
+<div class="paragraph">
+<p>Using these items, we can construct a tree of decisions,
+starting with the decision between animal, vegetable, and mineral. If
+the thing is an animal, we could then ask if it is a mammal. If it <strong>is</strong> a
+mammal, we could ask if it lives on land, deciding between human and
+dolphin. If it’s <strong>not</strong> a mammal, we could ask if it flies, deciding
+between an eagle and a lizard. We can construct similar questions for
+the things in the vegetable and mineral categories, matching
+<a href="chap4.html#figure-flowchart">Figure 4.3</a>.</p>
+</div>
+<div id="TwentyQuestionsProgram" class="listingblock">
+<div class="title">Program 4.3 Navigates the possible choices in the decision tree.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TwentyQuestions</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>      
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Is it an animal, vegetable, or mineral? (a, v, or m): "</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"a"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Is it a mammal? (y or n): "</span><span class="o">);</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span>
+                    <span class="s">"Does it live on land? (y or n): "</span><span class="o">);</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">))</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a human."</span><span class="o">);</span>                
+                <span class="k">else</span> <span class="c1">// Assume "n"</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a dolphin."</span><span class="o">);</span>              
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span> <span class="c1">// Assume "n"</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Does it fly? (y or n): "</span><span class="o">);</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">))</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's an eagle."</span><span class="o">);</span>               
+                <span class="k">else</span> <span class="c1">// Assume "n"</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a lizard."</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"v"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Is it a fruit? (y or n): "</span><span class="o">);</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span>
+                    <span class="s">"Does it grown on a vine? (y or n): "</span><span class="o">);</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">))</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a tomato."</span><span class="o">);</span>               
+                <span class="k">else</span> <span class="c1">// Assume "n"</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a peach."</span><span class="o">);</span>                
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span> <span class="c1">// Assume "n"</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Is it a tree? (y or n): "</span><span class="o">);</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">))</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a maple tree."</span><span class="o">);</span>
+                <span class="k">else</span> <span class="c1">// Assume "n"</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a potato."</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span> <span class="c1">// Assume "m"</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span>
+                    <span class="s">"Is it the hardest mineral? (y or n): "</span><span class="o">);</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">();</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">))</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's a diamond."</span><span class="o">);</span>              
+                <span class="k">else</span> <span class="c1">// Assume "n"</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"It's lead."</span><span class="o">);</span>
+        <span class="o">}</span>       
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The code in this example is straightforward, although even 10 items
+makes for a lot of <code>if</code> and <code>else</code> blocks. Other than the <code>if</code>-<code>else</code>
+statements, only simple input and output are needed to make the program
+function. For proper <code>String</code> comparison, it’s necessary to use the
+<code>equals()</code> method to test if two <code>String</code> values are the same.</p>
+</div>
+<div class="paragraph">
+<p>Note that we’ve added comments specifying what we assume is the case
+for each <code>else</code> block. If we were being more careful, we should test for
+the <code>"y"</code> and <code>"n"</code> cases and then give an error message when the user
+inputs something unexpected, like <code>"x"</code> or <code>"149"</code> or even <code>"no"</code>.
+Again, note that no braces are needed for the final <code>if</code>-<code>else</code> blocks
+in which the guess is made, since each of these guesses requires only a
+single line of code.</p>
+</div>
+<div class="paragraph">
+<p>You might be curious how to make a real 20 Questions game that could
+learn over time. To do so, many more programming tools are necessary:
+repetition, data structures (so that you can organize the questions),
+and file input and output (so that you can store new information
+permanently). These concepts are covered in later chapters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_switch_statements">4.3.3. <code>switch</code> statements</h4>
+<div class="paragraph">
+<p>The <code>if</code> statement is the workhorse of Java conditional execution. With
+enough care, you can craft code that can make any fixed sequence of
+decisions with arbitrary complexity. Even so, the <code>if</code> statement can be
+a little clumsy because it only allows you to choose between two
+alternatives. After all, a conditional can only be <code>true</code> or <code>false</code>.
+Certainly, decisions can be nested, allowing for more than two
+possibilities, but long lists of possibilities can be cumbersome and hard to read.</p>
+</div>
+<div class="paragraph">
+<p>For example, imagine that we want to create a program that determines
+the appropriate gift for a wedding anniversary. Below is a table of
+traditional categories of gifts based on the anniversary year.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">Year</th>
+<th class="tableblock halign-left valign-middle">Gift</th>
+<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-center valign-middle">Year</th>
+<th class="tableblock halign-left valign-middle">Gift</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Paper</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Lace</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Cotton</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Ivory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Leather</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Crystal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Fruit</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">China</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Wood</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Silver</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Candy / Iron</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Pearl</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Wool / Copper</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">35</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Coral</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Bronze / Pottery</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">40</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Ruby</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Pottery / Willow</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">45</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Sapphire</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Tin / Aluminum</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">50</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Gold</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Steel</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">55</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Emerald</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Silk / Linen</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">60</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Diamond</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Let <code>year</code> be a variable of type <code>int</code> containing the year in question.
+A structure of <code>if</code>-<code>else</code> statements that can determine the appropriate
+gift based on the year is below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">gift</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Paper"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Cotton"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Leather"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">4</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Fruit"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">5</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Wood"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">6</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Candy / Iron"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">7</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Wool / Copper"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">8</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Bronze / Pottery"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">9</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Pottery / Willow"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">10</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Tin / Aluminum"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">11</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Steel"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">12</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Silk / Linen"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">13</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Lace"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">14</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Ivory"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">15</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Crystal"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">20</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"China"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">25</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Silver"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">30</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Pearl"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">35</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Coral"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">40</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Ruby"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">45</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Sapphire"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">50</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Gold"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">55</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Emerald"</span><span class="o">;</span>
+<span class="k">else</span> <span class="nf">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">60</span><span class="o">)</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Diamond"</span><span class="o">;</span>
+<span class="k">else</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"No traditional gift"</span><span class="o">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This code stores the correct value in <code>gift</code>. Note that we are using the
+feature of <code>if</code> statements that treats an entire <code>if</code> statement as one
+statement. If we used braces to group things properly, the code would
+become unreadable and unmanageably large.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">gift</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">gift</span> <span class="o">=</span> <span class="s">"Paper"</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">gift</span> <span class="o">=</span> <span class="s">"Cotton"</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">else</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">gift</span> <span class="o">=</span> <span class="s">"Leather"</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">year</span> <span class="o">==</span> <span class="mi">4</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">gift</span> <span class="o">=</span> <span class="s">"Fruit"</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="o">.</span>
+            <span class="o">.</span>
+            <span class="o">.</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It appears that there’s some kind of <code>else if</code> construct in Java, but
+there isn’t. Still, careful use of the rules for braces allows us to
+write code that nicely expresses a sequence of alternatives.</p>
+</div>
+<div class="paragraph">
+<p>Another way of expressing a long sequence of alternatives is by using a
+<code>switch</code> statement. A <code>switch</code> statement takes a single integer type
+value (<code>int</code>, <code>long</code>, <code>short</code>, <code>byte</code>, <code>char</code>) or a <code>String</code> and jumps
+to a case corresponding to the input. We can recode the anniversary gift
+example using a <code>switch</code> statement as follows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">gift</span><span class="o">;</span>
+<span class="k">switch</span><span class="o">(</span><span class="n">year</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Paper"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Cotton"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Leather"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Fruit"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Wood"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Candy / Iron"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Wool / Copper"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Bronze / Pottery"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>  <span class="n">gift</span> <span class="o">=</span> <span class="s">"Pottery / Willow"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">10</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Tin / Aluminum"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">11</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Steel"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">12</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Silk / Linen"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">13</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Lace"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">14</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Ivory"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">15</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Crystal"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">20</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"China"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">25</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Silver"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">30</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Pearl"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">35</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Coral"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">40</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Ruby"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">45</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Sapphire"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">50</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Gold"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">55</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Emerald"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">60</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"Diamond"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+    <span class="k">default</span><span class="o">:</span> <span class="n">gift</span> <span class="o">=</span> <span class="s">"No traditional gift"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Just like an <code>if</code> statement, a <code>switch</code> statement always has parentheses
+enclosing some argument. Unlike an <code>if</code>, the argument of a <code>switch</code> must
+be some kind of data that can be expressed as an integer or a <code>String</code>,
+not a <code>boolean</code>. For each of the possible values you want the <code>switch</code>
+to handle, you write a <code>case</code> statement. A <code>case</code> statement consists of
+the keyword <code>case</code> followed by a constant value, either a literal or a
+named constant, then a colon. When executed, the JVM jumps to the
+matching <code>case</code> label and starts executing code there. If there is no
+matching <code>case</code> label, the JVM goes to the <code>default</code> label. If there is
+no <code>default</code> label, the entire <code>switch</code> statement is skipped.</p>
+</div>
+<div class="paragraph">
+<p>One unusual feature of <code>switch</code> statements is that execution <em>falls
+through</em> <code>case</code> statements. This means that you can use many different
+<code>case</code> statements for a single segment of executable code. The execution
+of code in a <code>switch</code> statement jumps out when it hits a <code>break</code>
+statement. However, <code>break</code> statements are not required, as shown in
+this <code>switch</code> statement that gives location information for all of the
+telephone area codes in New York state.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">location</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+<span class="k">switch</span><span class="o">(</span><span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">917</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Cellular: "</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">212</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">347</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">646</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">718</span><span class="o">:</span> <span class="n">location</span> <span class="o">+=</span> <span class="s">"New York City"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">315</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Syracuse"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">516</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Nassau County"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">518</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Albany"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">585</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Rochester"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">607</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"South Central New York"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">631</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Suffolk County"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">716</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Buffalo"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">845</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Lower Hudson Valley"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">case</span> <span class="mi">914</span><span class="o">:</span> <span class="n">location</span> <span class="o">=</span> <span class="s">"Westchester County"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+
+    <span class="k">default</span><span class="o">:</span>  <span class="n">location</span> <span class="o">=</span> <span class="s">"Unknown Area Code"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, five different area codes are used by New York City. By
+leaving out the <code>break</code> statements, values of <code>212</code>, <code>347</code>, <code>646</code>, and
+<code>718</code> all have <code>"New York City"</code> stored into <code>location</code>. Area code 917
+was originally designated for cellular phones and pagers although now it
+includes some landlines. By cleverly putting the statement for <code>917</code> ahead of
+the other New York City entries, a value of <code>917</code> first stores
+<code>"Cellular: "</code> into <code>location</code> and then falls through and appends
+<code>"New York City"</code>. For each of these five area codes, execution in the
+<code>switch</code> statement ends only when the <code>break</code> statement is reached.</p>
+</div>
+<div class="paragraph">
+<p>The remaining nine area codes are separate. Each of them does a
+single assignment and then breaks out of the <code>switch</code> block. Finally,
+the <code>default</code> label is used if the area code doesn’t match one of the
+given codes. Note that we’ve ordered the (non-NYC) area codes in
+ascending order for the sake of readability. As shown in the
+<code>917</code> example, there’s no rule about the ordering of the labels. Even
+the <code>default</code> label can occur anywhere in the <code>switch</code> block you want,
+although it’s common to put it at the end. Also, the <code>break</code> after the
+<code>default</code> label is unnecessary because execution exits the <code>switch</code>
+block anyway. Nevertheless, it’s always wise to end on a <code>break</code>, in
+the event that you add more cases in later.</p>
+</div>
+<div class="paragraph">
+<p>Carelessness is always something to watch out for in <code>switch</code>
+statements. Leaving out a <code>break</code> statement can cause disastrous and
+difficult to discover bugs. The compiler does not warn you about missing
+<code>break</code> statements, either. It’s entirely your responsibility to use them
+appropriately. Because of the dangers involved, it’s often safe to
+use <code>if</code>-<code>else</code> statements. Any <code>switch</code> statement can be rewritten as
+some combination of <code>if</code>-<code>else</code> statements, but the reverse is not true.
+The benefit of <code>switch</code> statements is their ability to list many
+alternatives clearly. Their drawbacks include the ease of making a
+mistake, an inability to express ranges of data or most types (<code>double</code>,
+<code>float</code>, or any reference type other than <code>String</code>), and limited
+expressive power. They should be used only when their benefit of clearly
+displaying a list of data outweighs the drawbacks.</p>
+</div>
+<div class="paragraph">
+<p>Next we give a number of examples to help you get more familiar with
+<code>switch</code> statements.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4.4 Days in the month</div>
+<div class="content">
+<div class="paragraph">
+<p>There are fewer uses for <code>switch</code> statements than <code>if</code> statements.
+Nevertheless, there are problems where their
+fall-through behavior can be useful. Imagine that you need to write a
+program that gives the length of each month (with the assumption that February always
+has 28 days). Given the month as a number, we can use <code>switch</code> statements to write a program
+that maps the number of the month to the number of days it contains.</p>
+</div>
+<div id="DaysInMonthProgram" class="listingblock">
+<div class="title">Program 4.4 Computes the number of days in a given month.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DaysInMonth</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span> <span class="nc">System</span><span class="o">.</span><span class="na">in</span> <span class="o">);</span>      
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please a month number (1-12): "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">days</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span> <span class="n">month</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>  <span class="n">days</span> <span class="o">=</span> <span class="mi">28</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">11</span><span class="o">:</span> <span class="n">days</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">10</span><span class="o">:</span>
+            <span class="k">case</span> <span class="mi">12</span><span class="o">:</span> <span class="n">days</span> <span class="o">=</span> <span class="mi">31</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="o">}</span>   
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The month you entered has "</span> <span class="o">+</span> <span class="n">days</span> <span class="o">+</span> <span class="s">" days."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This program has a single label for February setting <code>days</code> to 28.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Then,
+there are labels for April, June, September, and November, months that
+each have 30 days.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Finally, the large block of January, March, May,
+July, August, October, and December all set <code>days</code> to 31.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>It would be
+easy to extend this code to prompt the user for a year so that you could
+integrate the leap year code from above for the February case. Note also
+that we didn’t use a <code>default</code> label. You might want to set <code>days</code> to
+some special value (like <code>-1</code>) for invalid months.</p>
+</div>
+<div class="paragraph">
+<p>In this program it’s necessary to initialize <code>days</code> to some value, in this case <code>0</code>.
+Otherwise, the program won’t compile, since it’ll try to print out the
+value inside <code>days</code>, a value that won’t exist if <code>month</code> is not in the range 1 through 12.</p>
+</div>
+</div>
+</div>
+<div id="ordinalNumbersExample" class="exampleblock">
+<div class="title">Example 4.5 Ordinal numbers</div>
+<div class="content">
+<div class="paragraph">
+<p>The term <em>ordinal numbers</em> refers to numbers that are used for ordering
+within a set of items: first, second, third, and so on. When writing
+these numbers with numerals in English, it is common to append two
+letters to the end of the numeral to give the reader a clue that these
+numerals should be read with their ordinal names: 1st, 2nd, 3rd, and so
+on.</p>
+</div>
+<div class="paragraph">
+<p>Unlike most things in English, the rules for deciding which two letters
+are relatively simple. If the number ends in a 1, the letters “st”
+should generally be used. If the number ends in a 2, the letters “nd”
+should generally be used. If the number ends in a 3, the letters “rd”
+should generally be used. For most other numbers, the letters “th”
+should be used. We can use a <code>switch</code> statement to write a program to
+give the correct ordinal endings for most numbers as follows.</p>
+</div>
+<div id="OrdinalsProgram" class="listingblock">
+<div class="title">Program 4.5 Appends the appropriate suffix to a numeral to make it an ordinal.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ordinals</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span> <span class="nc">System</span><span class="o">.</span><span class="na">in</span> <span class="o">);</span>      
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a positive number: "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">number</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">ending</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>  <span class="n">ending</span> <span class="o">=</span> <span class="s">"st"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>  <span class="n">ending</span> <span class="o">=</span> <span class="s">"nd"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>  <span class="n">ending</span> <span class="o">=</span> <span class="s">"rd"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">default</span><span class="o">:</span> <span class="n">ending</span> <span class="o">=</span> <span class="s">"th"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>   
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Its ordinal version is "</span>
+            <span class="o">+</span> <span class="n">number</span> <span class="o">+</span> <span class="n">ending</span> <span class="o">+</span> <span class="s">"."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This program prompts and then reads in an <code>int</code> from the user. We then
+find the remainder of <code>number</code> when it’s divided by 10, yielding its
+last digit. Based on this digit, we can pick from the four possibilities
+and output the correct ordinal number in most cases. Unfortunately, the
+names for English numbers have an inconsistent naming convention between 11 and 19, inclusive,
+and the ordinals for any number ending in 11, 12, or 13 will be given the wrong
+suffix by our code. We leave a more complete solution as an exercise.</p>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><a href="chap4.html#ordinalNumbersExercise">Exercise 4.12</a></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4.6 Astrology</div>
+<div class="content">
+<div class="paragraph">
+<p>Many cultures practice astrology, a tradition that the time of a
+person’s birth impacts his or her personality or future. One important
+element of Chinese astrology is their zodiac, consisting of 12 animals.
+Each consecutive year in a 12-year cycle corresponds to an animal.
+Because this system repeats, the year one is born in modulo 12
+identifies the animal. Below is a table giving these values. For
+example, if you were born in 1979, 1979 mod 12 ≡ 11; thus, you would be a Ram.
+Note that this arrangement is based on years in the Gregorian calendar.
+Chinese astrologers do not list the Monkey as the first animal in the cycle.
+Note that the names of these animals are also sometimes translated in slightly
+different ways.</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-bottom">Animal</th>
+<th class="tableblock halign-center valign-bottom">Year<br>
+modulo 12</th>
+<th class="tableblock halign-center valign-top"></th>
+<th class="tableblock halign-left valign-bottom">Animal</th>
+<th class="tableblock halign-center valign-bottom">Year<br>
+modulo 12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Monkey</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Tiger</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Rooster</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Rabbit</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Dog</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Dragon</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Boar</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Snake</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Rat</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Horse</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Ox</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Ram</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">11</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Unfortunately, this table is not very accurate because it’s based on
+numbering from the Gregorian calendar. The years in question actually
+start and end based on Chinese New Year, which occurs between January 21
+and February 20. As a consequence, you may miscalculate your animal if
+your birthday is early in the year. Since calculating the date of
+Chinese New Year is challenging, let’s ignore this problem for the
+moment and write a program using a <code>switch</code> statement designed to
+correctly output the animal corresponding to an input birth year.</p>
+</div>
+<div id="ChineseZodiacProgram" class="listingblock">
+<div class="title">Program 4.6 Determines a Chinese zodiac animal based on birth year.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChineseZodiac</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span> <span class="nc">System</span><span class="o">.</span><span class="na">in</span> <span class="o">);</span>      
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a year: "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">year</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>        
+        <span class="nc">String</span> <span class="n">animal</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span> <span class="n">year</span> <span class="o">%</span> <span class="mi">12</span> <span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Monkey"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Rooster"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Dog"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Boar"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Rat"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Ox"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Tiger"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Rabbit"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Dragon"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>  <span class="n">animal</span> <span class="o">=</span> <span class="s">"Snake"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">10</span><span class="o">:</span> <span class="n">animal</span> <span class="o">=</span> <span class="s">"Horse"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">11</span><span class="o">:</span> <span class="n">animal</span> <span class="o">=</span> <span class="s">"Ram"</span><span class="o">;</span> <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>   
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The Chinese zodiac animal for this year is: "</span> <span class="o">+</span> <span class="n">animal</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Sign</th>
+<th class="tableblock halign-left valign-top">Symbol</th>
+<th class="tableblock halign-left valign-top">Date Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Ram</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">March 21 to April 19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Taurus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Bull</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">April 20 to May 20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gemini</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Twins</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">May 21 to June 20</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cancer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Crab</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">June 21 to July 22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Leo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Lion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">July 23 to August 22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Virgo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Virgin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">August 23 to September 22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Libra</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Scales</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">September 23 to October 22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scorpio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Scorpion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">October 23 to November 21</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sagittarius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Archer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">November 22 to December 21</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Capricorn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Sea-Goat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">December 22 to January 19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aquarius</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Water Bearer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">January 20 to February 19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pisces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Fishes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">February 20 to March 20</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>In Western astrology, an important element associated with a person’s
+birth is also called a zodiac sign. The dates for determining this kind
+of zodiac sign are given by the preceding table.</p>
+</div>
+<div class="paragraph">
+<p>If you want to implement the rules for this zodiac in code, a <code>switch</code>
+statement is a good place to start, but you also have to put <code>if</code>
+statements for each month to test the exact range of dates.</p>
+</div>
+<div id="WesternZodiacProgram" class="listingblock">
+<div class="title">Program 4.7 Determines Western zodiac signs based on birth month and day.</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WesternZodiac</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>                
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>      
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a month number (1-12): "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Please enter a day number in that month (1-31): "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">month</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Capricorn"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Aquarius"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Aquarius"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Pices"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Pices"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Aries"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Aries"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Taurus"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Taurus"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Gemini"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">6</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">21</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Gemini"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Cancer"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">7</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">23</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Cancer"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Leo"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">8</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">23</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Leo"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Virgo"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">9</span><span class="o">:</span> <span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">23</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Virgo"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Libra"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">10</span><span class="o">:</span><span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">23</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Libra"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Scorpio"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">11</span><span class="o">:</span><span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">22</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Scorpio"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Sagittarius"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="mi">12</span><span class="o">:</span><span class="k">if</span><span class="o">(</span><span class="n">day</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="o">)</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Sagittarius"</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="s">"Capricorn"</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>          
+        <span class="o">}</span>   
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The zodiac sign is: "</span> <span class="o">+</span> <span class="n">sign</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This program is just slightly more complex than the program for the
+Chinese zodiac. You still need to jump to 12 different cases (numbered
+1-12 instead of 0-11), but additional day information is needed to pin
+down the sign.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_solution_monty_hall">4.4. Solution: Monty Hall</h3>
+<div class="paragraph">
+<p>We now return to the Monty Hall simulation described at the beginning of
+the chapter. Recall that objects of the <code>Random</code> class allow us to generate all
+kinds of random values. To implement this simulation successfully, our
+program must make the decisions needed to set up the game for the
+user as well as respond to the user’s input.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MontyHall</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Random</span> <span class="n">random</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">winner</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span> <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="nc">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span> <span class="nc">System</span><span class="o">.</span><span class="na">in</span> <span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Choose a door (enter 0, 1, or 2): "</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span> <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="kt">int</span> <span class="n">alternative</span><span class="o">;</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="kt">int</span> <span class="n">open</span><span class="o">;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>We begin with the <code>import</code>
+statement needed to use both the <code>Scanner</code> and <code>Random</code> class
+and then define the <code>MontyHall</code> class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>In the <code>main()</code> method we first decide which of the three doors is the
+winner. To do so, we instantiate a <code>Random</code> object and use it to
+generate a random number that is either 0, 1, or 2 by calling the
+<code>nextInt()</code> method with an argument of <code>3</code>. We could have added 1 to
+this value to get a random choice of 1, 2, or 3, but many counting
+systems in computer science start with 0 instead of 1. We might as well
+embrace it.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Next, we prompt the user to pick from the three doors
+and read the choice.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Finally, we declare two more <code>int</code> values to keep
+track of which door to open and which door is the alternative that the
+user can choose to change over to.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Now, we have to navigate a complicated series of decisions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">        <span class="k">if</span><span class="o">(</span> <span class="n">choice</span> <span class="o">==</span> <span class="n">winner</span> <span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="kt">int</span> <span class="n">low</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">high</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span> <span class="n">choice</span> <span class="o">==</span>  <span class="mi">0</span> <span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="2"></i><b>(2)</b>
+                <span class="n">low</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="n">high</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span> <span class="n">choice</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">)</span> <span class="o">{</span>
+                <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                <span class="n">high</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span> <span class="c1">//choice == 2</span>
+                <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                <span class="n">high</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>   
+            <span class="c1">//randomly choose between other two doors</span>
+            <span class="kt">double</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="k">if</span><span class="o">(</span> <span class="n">threshold</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="4"></i><b>(4)</b>
+                <span class="n">alternative</span> <span class="o">=</span> <span class="n">low</span><span class="o">;</span>
+                <span class="n">open</span> <span class="o">=</span> <span class="n">high</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span> <i class="conum" data-value="5"></i><b>(5)</b>
+                <span class="n">alternative</span> <span class="o">=</span> <span class="n">high</span><span class="o">;</span>
+                <span class="n">open</span> <span class="o">=</span> <span class="n">low</span><span class="o">;</span>
+            <span class="o">}</span>           
+        <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>In this
+segment of code, we tackle the possibility that the user happened
+to choose the winning door. To obey the rules of the game, we must
+randomly pick which of the two other doors to open.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>First, we determine
+which are the other two doors and save them in <code>low</code> and <code>high</code>,
+respectively.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Then, we generate a random number.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>If the random number
+is less than 0.5, we keep the lower numbered door as an alternative
+choice for the user and open the higher numbered door.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>If the random number is greater than or equal to 0.5, we do the opposite.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">        <span class="k">else</span> <span class="o">{</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="n">alternative</span> <span class="o">=</span> <span class="n">winner</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span> <span class="n">choice</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span> <span class="o">{</span> <i class="conum" data-value="2"></i><b>(2)</b>
+                <span class="k">if</span><span class="o">(</span> <span class="n">winner</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">)</span>                 
+                    <span class="n">open</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>               
+                <span class="k">else</span>
+                    <span class="n">open</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>               
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="nf">if</span><span class="o">(</span> <span class="n">choice</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">winner</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span>                   
+                    <span class="n">open</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>               
+                <span class="k">else</span>
+                    <span class="n">open</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>               
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span> <span class="c1">//choice == 2 </span>
+                <span class="k">if</span><span class="o">(</span> <span class="n">winner</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">)</span>                       
+                    <span class="n">open</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>               
+                <span class="k">else</span>
+                    <span class="n">open</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>               
+            <span class="o">}</span>           
+        <span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This <code>else</code> block covers the case that the player did <strong>not</strong> pick the
+winning door the first time. Unlike the previous code segment, we no
+longer have a choice of which door to open.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Instead, we must always
+make the winner the alternative for the user to pick. Then, we simply
+determine which door is left over so that we can open it.</td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p>Note that the
+braces surrounding the blocks for each of the braces surrounding the
+blocks for each of the three possible values of <code>choice</code> are not
+necessary but are included for readability.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java">        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"We have opened Door "</span> <span class="o">+</span> <span class="n">open</span> <span class="o">+</span> <i class="conum" data-value="1"></i><b>(1)</b>
+            <span class="s">", and there is junk behind it!"</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Do you want to change to Door "</span> <span class="o">+</span> <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="n">alternative</span> <span class="o">+</span> <span class="s">" from Door "</span> <span class="o">+</span> <span class="n">choice</span> <span class="o">+</span>
+            <span class="s">"? (Enter 'y' or 'n'): "</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">change</span> <span class="o">=</span> <span class="n">in</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>      
+        <span class="k">if</span><span class="o">(</span> <span class="n">change</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"y"</span><span class="o">)</span> <span class="o">)</span>
+            <span class="n">choice</span> <span class="o">=</span> <span class="n">alternative</span><span class="o">;</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"You chose Door "</span> <span class="o">+</span> <span class="n">choice</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span> <span class="n">choice</span> <span class="o">==</span> <span class="n">winner</span> <span class="o">)</span> <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"You win a pile of gold!"</span><span class="o">);</span>
+        <span class="k">else</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"You win a pile of junk."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tbody><tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This final segment of code informs the user which door has been opened.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>It prompts the user to change his or her decision.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Depending on the
+final choice, the program says whether or not the user wins gold or
+junk.</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concurrency_selection">4.5. Concurrency: Selection</h3>
+<div class="paragraph">
+<p>Selection statements (<code>if</code> and <code>switch</code>) seem to have
+little to do with concurrency or parallelism. Selection allows you to
+choose between alternatives while concurrency is about the interaction
+between different threads of execution. As it turns out, there are two
+reasons why selection and concurrency are deeply related to each other.</p>
+</div>
+<div class="paragraph">
+<p>The first reason is that selection is one of the most basic tools in
+Java. It’s impossible to go more than a few lines of a code without
+encountering a selection statement, usually an <code>if</code>.
+Concurrent programs are not exempt from this dependence on <code>if</code>
+statements. Making decisions is at the heart of all programming
+languages running on all computers.</p>
+</div>
+<div class="paragraph">
+<p>The second, more troubling reason is related to a problem with
+some concurrent programs called a <em>race condition</em>, which is discussed
+in detail in <a href="chap14.html">Chapter 14</a>. Remember, one of
+the biggest challenges of programming a computer is thinking in a
+completely sequential and logical way. Each line of code is executed one
+after the other. Adding in <code>if</code> statements means that some code is
+executed only if a condition is true and skipped otherwise. Consider the
+following fragment of code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="k">if</span><span class="o">(!</span><span class="n">matches</span><span class="o">.</span><span class="na">areLit</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">flyingSparks</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">storageRoom</span><span class="o">.</span><span class="na">enter</span><span class="o">();</span>
+    <span class="n">dynamite</span><span class="o">.</span><span class="na">unpack</span><span class="o">();</span>
+<span class="o">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this <code>if</code> statement, an imaginary agent only enters the storage room
+and unpacks the dynamite if the matches are not lit and there are no
+flying sparks. When execution reaches the first line inside the <code>if</code>
+block, we are certain that <code>matches.areLit()</code> returned <code>false</code> and
+<code>flyingSparks</code> is <code>false</code>. This is a one-time check. If the first thing
+that happens inside the <code>if</code> block is code that lights the matches, Java
+will <strong>not</strong> jump out of the <code>if</code> statement.</p>
+</div>
+<div class="paragraph">
+<p>As always, the programmer is responsible for making an <code>if</code> statement
+that makes sense. It’s possible that entering the storage room or
+unpacking the dynamite causes sparks to fly or matches to burst into
+flames spontaneously, but it seems unlikely. If the <code>storageRoom</code> and
+<code>dynamite</code> objects were written by other people, we would expect their
+documentation to explain unusual side-effects of this kind. In a
+sequential program, the programmer can be reasonably sure that it’s
+safe to unpack the dynamite.</p>
+</div>
+<div class="paragraph">
+<p>Consider another fragment of code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="n">matches</span><span class="o">.</span><span class="na">light</span><span class="o">();</span>
+<span class="n">flyingSparks</span> <span class="o">=</span> <span class="n">sparklers</span><span class="o">.</span><span class="na">light</span><span class="o">(</span><span class="n">matches</span><span class="o">);</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This code appears to light the matches and then to use the lit matches to set
+some sparklers on fire. Presumably, if the process was successful,
+<code>flyingSparks</code> will have the value <code>true</code>. This code is reasonable and
+potentially helpful. If you were celebrating the 4<sup>th</sup> of July or needed
+to signal a passing helicopter to rescue you from a desert island,
+lighting sparklers could be a great idea. This sparkler-lighting code
+could occur before the dynamite-unpacking code or after it, but, in a sequential
+program, the protection of the <code>if</code> statement keeps our hero from being blown up if
+she tries to unpack the dynamite with lit sparklers.</p>
+</div>
+<div class="paragraph">
+<p>In a concurrent program, all bets are off. Another thread of execution
+can be operating at the very same time. It’s as if our hero is trying to
+unpack the dynamite while the villain is lighting sparklers and tossing
+them into the storage room. If the thread of execution gets to the <code>if</code>
+statement and makes sure that the matches aren’t lit and that there are
+no flying sparks, it continues onward. If sparks start flying after that
+check, it still continues onward, oblivious of the fact. Even though
+this risk of explosion exists, it depends on the timing of the two (or
+more) concurrent threads of execution. It might be possible to run a
+program 1,000 times with no problem. But if the timing is wrong on the
+1,001<sup>st</sup> time, <strong>BOOM!</strong></p>
+</div>
+<div class="paragraph">
+<p>At this point, you don’t need to worry about values inside your <code>if</code>
+statements being changed by other segments of code, but that problem is
+at the heart of why concurrent programming can be so difficult. Whether
+or not you’re programming concurrently, it’s important to keep
+in mind the assumptions your code makes and the way different parts of
+your program interact with each other.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exercises_4">4.6. Exercises</h3>
+<div class="paragraph">
+<p><strong>Conceptual Problems</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Given that <em>x</em>, <em>y</em>, and <em>z</em> are
+propositions in Boolean logic, make a truth table for the expression
+¬(<em>x</em> ∧ ¬<em>y</em>) ⊕ ¬<em>z</em>.</p>
+</li>
+<li>
+<p>What’s the value of the Boolean expression ¬( (T ⊕ F) ∧ ¬(F ∨ T) )?</p>
+</li>
+<li>
+<p>The calculation to determine the leap year given in
+<a href="chap4.html#leapYearExample">Example 4.1</a> uses three <code>if</code> statements and three
+<code>else</code> statements. Write the leap year calculation using a single <code>if</code>
+and a single <code>else</code>. Feel free to use <code>boolean</code> connectors such as <code>||</code>
+and <code>&amp;&amp;</code>.</p>
+</li>
+<li>
+<p>The XOR operator (<code>^</code>) is useful for combining <code>boolean</code> values, but
+it can be replaced with a more commonly used <strong>relational</strong> operator in
+Java. Which one?</p>
+</li>
+<li>
+<p>De Morgan’s laws are the following, which show that the process of
+negating a clause changes an AND to an OR and vice versa.</p>
+<div class="paragraph">
+<p>¬(<em>x</em> ∧ <em>y</em>) = ¬<em>x</em> ∨ ¬<em>y</em><br>
+¬(<em>x</em> ∨ <em>y</em>) = ¬<em>x</em> ∧ ¬<em>y</em></p>
+</div>
+<div class="paragraph">
+<p>Create truth tables to verify both of these statements.</p>
+</div>
+</li>
+<li>
+<p>Use De Morgan’s laws given above to rewrite the following statement
+in Java to an equivalent statement that contains no negations.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="n">value</span> <span class="o">=</span> <span class="o">!((</span><span class="n">x</span> <span class="o">!=</span> <span class="mi">4</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">));</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Consider the following fragment of code.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">)</span>
+    <span class="n">y</span><span class="o">++;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"x: "</span> <span class="o">+</span> <span class="n">x</span><span class="o">);</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"y: "</span> <span class="o">+</span> <span class="n">y</span><span class="o">);</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What’s the output? Is the output changed if the condition of the <code>if</code>
+statement is changed to <code>y &gt; 10 &amp; (x = 10) &gt; 5</code>? Why?</p>
+</div>
+</li>
+<li>
+<p>Consider the following fragment of code.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="java"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">7</span><span class="o">;</span>
+<span class="k">if</span><span class="o">(</span><span class="n">a</span><span class="o">++</span> <span class="o">==</span> <span class="mi">7</span><span class="o">)</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Seven"</span><span class="o">);</span>
+<span class="k">else</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Not seven"</span><span class="o">);</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What’s the output? Is the output changed if the condition of the <code>if</code>
+statement is changed to <code>++a == 7</code>? Why?<br>
+Note: It is generally wise to
+avoid increment, decrement, and assignment statements in the condition
+of an <code>if</code> statement because of the confusion that can arise.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Programming Practice</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="9">
+<li>
+<p>Write programs that:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Read in two <code>double</code> values and print the
+larger of the two of them.</p>
+</li>
+<li>
+<p>Read in <strong>three</strong> <code>double</code> values and print the largest of the three out.
+Note: You should use nested <code>if</code> statements.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><a id="coinNamesExercise"></a> Write programs that:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Read an <code>int</code> value from the user specifying a certain number of
+cents. Use <code>if</code> statements to print out the name of the corresponding
+coin in U.S. currency according to the table below. If the value doesn’t
+match any coin, print <code>no coin</code>.</p>
+<table class="tableblock frame-all grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Cents</th>
+<th class="tableblock halign-center valign-top">Coin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">penny</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">nickel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">dime</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">quarter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">50</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">half-dollar</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">100</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">dollar</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Read a <code>String</code> value from the user that gives one of the 6 coin
+names given in the table above. Use <code>if</code> statements to print out the
+corresponding number of cents for the input. If the name doesn’t many
+any coin, print <code>unknown coin</code>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Re-implement both parts from <a href="chap4.html#coinNamesExercise">Exercise 4.10</a> using <code>switch</code> statements instead of <code>if</code> statements.</p>
+</li>
+<li>
+<p><a id="ordinalNumbersExercise"></a> Expand the program given in
+<a href="chap4.html#ordinalNumbersExample">Example 4.5</a> to give the correct suffixes (always
+“th”) for numbers that end in 11, 12, and 13. Use the modulus operator
+to find the last two digits of the number. Using an <code>if</code>
+statement, a <code>switch</code> statement, or a combination, check for those three
+cases before going into the normal cases.</p>
+</li>
+<li>
+<p>At the bottom of <a href="chap4.html#_switch_statements">Section 4.3.3</a>, we use a
+<code>switch</code> statement to determine the location of various area codes in
+New York state. Write an equivalent fragment of code using <code>if</code>-<code>else</code>
+statements instead.</p>
+</li>
+<li>
+<p>Every member of your secret club has an ID number. These ID numbers
+are between 1 and 1,000,000 and have two special characteristics: They
+are multiples of 7 and all end with a 3 in the one’s place. For example,
+63 is the smallest such value, and 999,943 is the largest such value.
+Write a program that prompts the user for an <code>int</code> value, reads it in,
+and then says whether or not it could be used as an ID number. Note: You
+need to use the modulus operator in two different ways to test the value
+correctly.</p>
+</li>
+<li>
+<p>According to the North American Numbering Plan (NANP) used by the
+United States, Canada, and a number of smaller countries, a legal
+telephone number takes the form <code>XYY-XYY-YYYY</code>, where <code>X</code> is any digit
+2-9 and <code>Y</code> is any digit 0-9. Write a program that reads in a <code>String</code>
+from the user and verifies that it is a legal NANP phone number. The
+length of the entire <code>String</code> must be 12. The fourth and eight
+characters in the <code>String</code> (with indexes <code>3</code> and <code>7</code>) must be hyphens
+(<code>-</code>), and all the remaining digits must be in the correct range. Use
+the <code>charAt()</code> method of the <code>String</code> class to get the <code>char</code> value at
+each index. Note: There are several ways to structure the <code>if</code>
+statements you need to use, but the number of conditions may become
+large. (23 or more!)</p>
+</li>
+<li>
+<p>Re-implement the solution to the Monty Hall program given in
+<a href="chap4.html#_solution_monty_hall">Section 4.4</a> using <code>JOptionPane</code> to generate GUIs for
+input and output.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div>
+
+<nav>
+  <a rel="prev" href="chap3.html" class="nav nav-prev" title="Previous page" aria-label="Previous page" aria-keyshortcuts="Left">
+        <i class="fa fa-angle-left"></i>
+     </a>
+  <a rel="next" href="chap5.html" class="nav nav-next" title="Next page" aria-label="Next page" aria-keyshortcuts="Right">
+        <i class="fa fa-angle-right"></i>
+     </a>
+  <div style="clear: both"></div>
+</nav>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-05-13 21:39:09 -0300
+</div>
+</div>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-VEDGKRPMMK');
+          </script>
+
+</body>
+  <script>
+  function isInViewport(ele) {
+    const rect = ele.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+  function yPosition (ele) {
+    const rect = ele.getBoundingClientRect();
+    return (rect.top - 20); // 20px above
+  }
+  let curr = document.getElementsByClassName('current');
+  if (!isInViewport(curr[curr.length - 1])) {
+    document.getElementById('toc').scrollTo({
+      top: yPosition(curr[0]),
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  /* For page navigation */
+  function gotoPage(selector) {
+    const button = document.querySelector(selector);
+    if (button)
+      window.location.href = button.href;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.shiftKey)
+      return;
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        gotoPage('.nav-next');
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        gotoPage('.nav-prev');
+        break;
+    }
+  });
+  </script>
+  </html>

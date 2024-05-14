@@ -1,0 +1,96 @@
+:icons: font
+
+== README
+
+This repository contains the source for the textbook https://start-concurrent.github.io[Start Concurrent: A Gentle Introduction to Concurrent Programming].  It is licensed under  https://github.com/start-concurrent/start-concurrent.github.io/blob/master/LICENSE[Apache License 2.0].
+
+=== Software Needed
+
+==== Basic Software Needed
+
+. https://git-scm.com/downloads[Git] (and a https://github.com[GitHub] account to access the
+https://github.com/start-concurrent/start-concurrent.github.io[Start Concurrent repository])
+. https://www.ruby-lang.org/en/downloads/[Ruby]
+. https://asciidoctor.org[Asciidoctor]
+. https://github.com/asciidoctor/asciidoctor-mathematical[Asciidoctor-Mathematical] (note special instructions below for installing Mathematical on MacOS Mojave)
+
+==== Packages for Chunking the Book into a File per Chapter
+
+. https://github.com/wshito/asciidoctor-chunker[Asciidoctor Chunker] (to convert to HTML chunks)
+. https://github.com/roswell/roswell[Roswell] (needed by Asciidoctor Chunker)
+
+==== MacOS: Installing Mathematical (and Asciidoctor-Mathematical) on Mojave (10.14.x)
+
+. Fix MacOS header file location by running this command in a terminal window: `open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg`.
+. Add the Homebrew package path to PKG_CONFIG_PATH (e.g., in .bash_profile): `export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"`
+
+These instructions are highly situation dependent.  See https://stackoverflow.com/questions/51274905/brew-install-on-mojave[Brew Install on Mojave] for additional suggestions.
+
+=== Editing the Illustrations
+
+Most (all?) "`figures`" in the book are https://www.adobe.com/products/illustrator.html[Adobe Illustrator] documents saved in PDF format, and are located in the `figures` subdirectory of the chapter in which they appear.  For each PDF file, there is a corresponding SVG file located in the `images` subdirectory.  The SVG file is what is imported into the AsciiDoc file.
+
+To create a new figure or edit an existing one...
+
+. Create or edit the Illustrator file in the figures subdirectory.
+. Save changes using the default (PDF) format.
+. Temporarily, convert all text to outlines:
+.. `Select > Select All`
+.. `Type > Create Outlines`
+. Then, `Save a Copy As...`, using SVG format and deselecting the "`Preserve Illustrator Editing Capability`", to create an .SVG file in the `images` subdirectory.
+
+Note: Don't save the outlined text version back to the original PDF file!
+
+=== Generating the HTML File
+
+`$ ruby update-html.rb`
+
+Note: The https://github.com/jirutka/asciidoctor-rouge[Asciidoctor Rouge] plug-in is required for syntax highlighting.
+
+=== Generating an HTML File per Chapter
+
+. Install https://github.com/wshito/asciidoctor-chunker[Asciidoctor Chunker], including
+https://github.com/roswell/roswell[Roswell].
+. Create the full HTML version of the book: +
+`ruby update-html.rb`
+. Convert using Asciidoctor Chunker (with `ascidoctor-chunker.ros` in your path): +
+`$ asciidoctor-chunker.ros full/index.html -o chunked`
+
+A UNIX script to update both the full and chunked versions of the HTML is located in the root directory (`update-html`).
+
+=== Generating the PDF
+
+. Install the https://asciidoctor.org/docs/asciidoctor-pdf/[Asciidoctor PDF gem].
+. Run Asciidoctor PDF to do the conversion: +
+`$ (cd full; asciidoctor-pdf index.adoc -D ../pdf)`
+
+==== Special Workaround for Tables
+
+There is a bug in the https://github.com/prawnpdf/prawn-table[prawn-table] code used by Asciidoctor-PDF when formatting certain tables.  There is discussion and a (so-far incomplete) fix https://discuss.asciidoctor.org/Problem-using-Asciidoctor-PDF-to-format-wide-autowidth-table-header-cells-td7220.html[here].
+
+Steps to fix the problem (simplified to not use a Gemfile):
+
+. Download the latest prawn-table code to a separate repository.
+.. `git clone https://github.com/prawnpdf/prawn-table.git`
+.. `cd prawn-table`
+. Build and install.
+.. `gem build prawn-table.gemspec`
+.. `gem install prawn-table-0.2.3.gem`
+
+These steps do not fix all tables.  Specifically, not all tables with autowidth will work.  Advice
+from the Asciidoctor https://discuss.asciidoctor.org/Problem-using-Asciidoctor-PDF-to-format-wide-autowidth-table-header-cells-tp7220p7229.html[authority] is to use column ratios and table width.
+
+=== Generating E-Book Formats
+
+WARNING: In progress.
+
+. Update book sources to comply with required format. (One time; in progress.)
+. Install the https://asciidoctor.org/docs/asciidoctor-epub3/[AsciiDoctor EPUB3 gem].
+. Run Asciidoctor EPUB3 to do the conversion: +
+`$ (cd full; asciidoctor-epub3 index.adoc -D ../epub3)`
+. Additional steps (TBD) convert the document to Kindle format (KF8/MOBI).
+
+Other gems needed (apparently):
+
+* https://rubygems.org/gems/gepub[gepub]
+* https://rubygems.org/gems/epubcheck[epubcheck]
