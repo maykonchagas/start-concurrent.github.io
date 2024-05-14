@@ -36,7 +36,7 @@ saber quais são.
 == Nos ajude!
 
 .Atualizações recentes!
-[]
+[WARNING]
 ====
 Fizemos algumas atualizações (Junho 2023) recentes, principalmente para atender aos requisitos do Google Analytics.  Se você notar algum erro ou formatação incomum, nos informe!
 ====
