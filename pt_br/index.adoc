@@ -261,8 +261,6 @@ Sunil Prabhakar, Faisal Saied e Jan Vitek. Nós nos beneficiamos com a
 orientação, o incentivo e o apoio de vários ex-alunos e parceiros corporativos; 
 agradecimentos especiais a Kevin Kahn, Andrew Chien e Carl Murray.
 
-A number of people have played a significant role in motivating the authors to undertake the task of writing this book and in the choice of topics. First, during the spring of 2008, several faculty from the Department of Computer Science and a scientist from Purdue's ITaP, participated in early discussions related to the teaching of concurrent programming in freshman classes. Despite the multitude of issues raised, all participants seemed to agree on one point: that we ought to introduce concurrency early in the Computer Science undergraduate curriculum. Thanks to all the participants, namely, Buster Dunsmore, Ananth Grama, Suresh Jagannathan, Sunil Prabhakar, Faisal Saied, and Jan Vitek.  We benefited from advice, encouragement, and support from a number of alumni and corporate partners; special thanks to Kevin Kahn, Andrew Chien, and Carl Murray.
-
 Agradecemos aos vários revisores anônimos que leram cuidadosamente a versão 3.0 
 deste manuscrito e fizeram sugestões valiosas. Esta versão atual não existiria 
 sem as muitas sugestões e críticas desses revisores.
