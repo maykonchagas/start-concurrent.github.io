@@ -1,4 +1,11 @@
 [#ch13-concurrency]
+:example-number: 0
+:figure-number: 0
+:figure-caption: Figura
+:example-caption: Exemplo
+:table-caption: Tabela
+:section-caption: Seção
+:chapter-caption: Capítulo
 :imagesdir: chapters/13-concurrency/images
 :programsdir: chapters/13-concurrency/programs
 == Programação Concorrente
@@ -32,7 +39,7 @@ Em um processador com vários núcleos, cada núcleo é um trabalhador independe
 
 
 ****
-<<sharedThreadVariableExercise>>
+<<sharedThreadVariableExercicio>>
 ****
 
 Há duas maneiras principais de dividir o trabalho. A primeira é chamada de _decomposição de tarefas_. Nessa abordagem, cada funcionário recebe uma tarefa diferente para fazer. A segunda é chamada de _decomposição de domínio_. Nessa abordagem, os funcionários fazem o mesmo trabalho, mas com dados diferentes.
@@ -65,7 +72,8 @@ Considere um videogame simples que consiste nas seguintes tarefas
 
 [[figure-video_game_tasks]]
 [.text-center]
-.Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados. image::video-game-tasks.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
+.Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados.
+image::video-game-tasks.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
 
 Suponha que as tarefas B e D sejam independentes e possam ser executadas simultaneamente se houver dois núcleos disponíveis. A tarefa D atualiza continuamente a tela com os dados antigos até que a tarefa C atualize as informações.
 
@@ -99,36 +107,15 @@ Esses exemplos ilustram como uma tarefa pode ser dividida em duas ou mais subtar
 
 ==== Decomposição de domínio
 
-In a computer program, every task performs operations on data. This data
-is called the _domain_ of that task. In domain decomposition, the data
-is divided into smaller chunks where each chunk is assigned to a
-different core, instead of dividing a task into subtasks. Thus, each core
-executes the same task but on different data.
+Em um programa de computador, cada tarefa executa operações em dados. Esses dados são chamados de _domínio_ dessa tarefa. Na decomposição do domínio, os dados são divididos em partes menores, em que cada parte é atribuída a um núcleo diferente, em vez de dividir uma tarefa em subtarefas. Assim, cada núcleo executa a mesma tarefa, mas em dados diferentes.
 
-In the example of the dinner party, we could have used domain
-decomposition instead of (or in addition to) task decomposition. If you
-want to cook a massive batch of mashed potatoes, you could peel 24
-potatoes yourself. However, if there are four people (and each has
-a potato peeler), each person would only need to peel 6 potatoes.
+No exemplo do jantar, poderíamos ter usado a decomposição de domínio em vez de (ou além de) decomposição de tarefa. Se quiser cozinhar uma grande quantidade de purê de batatas, você mesmo pode descascar 24 batatas. Entretanto, se houver quatro pessoas (e cada uma delas tiver um descascador de batatas), cada pessoa precisará descascar apenas 6 batatas.
 
-The strategy of domain decomposition is very useful and is one of the
-major focuses of concurrency in this book. Problems in modern computing
-often use massive data, comprising millions of values or thousands of
-database records. Writing programs that can chop up data so that
-multiple cores can process smaller sections of it can greatly speed up
-the time it takes to finish computation.
+A estratégia de decomposição de domínio é muito útil e é um dos principais focos da simultaneidade neste livro. Os problemas da computação moderna geralmente usam dados maciços, que incluem milhões de valores ou milhares de registros de bancos de dados. Escrever programas que possam dividir os dados de modo que vários núcleos possam processar seções menores pode acelerar muito o tempo necessário para concluir o cálculo.
 
-In some ways, domain decomposition can be more difficult than task decomposition. The
-data must be divided evenly and fairly. Once each section of data has
-been processed, the results must be combined. Companies like Google that
-process massive amounts of information have developed terminology to
-describe this process. Dividing up the data and assigning it to workers
-is called the _map_ step. Combining the partial answers into the final
-answer is called the _reduce_ step.
+De certa forma, a decomposição de domínios pode ser mais difícil do que a decomposição de tarefas. Os dados devem ser divididos de maneira uniforme e justa. Depois que cada seção de dados tiver sido processada, os resultados deverão ser combinados. Empresas como o Google, que processam grandes quantidades de informações, desenvolveram uma terminologia para descrever esse processo. Dividir os dados e atribuí-los aos funcionários é chamado de etapa do mapa (_map_). A combinação das respostas parciais na resposta final é chamada de etapa de redução (_reduce_).
 
-We illustrate the domain decomposition strategy in the next two
-examples.
-
+Ilustramos a estratégia de decomposição de domínio nos dois exemplos a seguir.
 
 [[arraySummationPreviewExample]]
 .Array summation preview
@@ -1384,7 +1371,7 @@ minimum amount of time needed to perform all tasks with only a single
 person? What is the minimum amount of time needed to perform all tasks
 with an unlimited number of people? What's the smallest number of
 people needed to achieve this minimum time?
-. [[sharedThreadVariableExercise]] Consider the following code snippet.
+. [[sharedThreadVariableExercicio]] Consider the following code snippet.
 +
 [source,java]
 ----
