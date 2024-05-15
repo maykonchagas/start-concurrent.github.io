@@ -2,6 +2,7 @@
 Barry Wittman <wittman1@otterbein.edu>; Tim Korb <jtk@purdue.edu>; Aditya Mathur <apm@purdue.edu>
 :doctype: book
 :toc: left
+:toc-title: Sumário
 :toclevels: 2
 :source-highlighter: rouge
 :rouge-style: default
