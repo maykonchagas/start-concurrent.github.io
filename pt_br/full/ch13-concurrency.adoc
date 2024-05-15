@@ -52,11 +52,10 @@ A decomposição de tarefas geralmente é mais fácil do que a decomposição de
 Os dois exemplos a seguir mostram ilustrações simples do processo de divisão de uma tarefa em subtarefas menores no contexto da programação multicore.
 
 [[videoGameTasksExample]]
-.Tarefas de video game
+.Tarefas de videogame
 ====
 
-Considere um video game simples que consiste nas seguintes tarefas
-Consider a simple video game that consists of the following tasks.
+Considere um videogame simples que consiste nas seguintes tarefas
 
 .  Iniciar o jogo 
 .  Processar a jogada
@@ -66,51 +65,29 @@ Consider a simple video game that consists of the following tasks.
 
 [[figure-video_game_tasks]]
 [.text-center]
-.Execution of tasks in a video game. (a) Sequential execution on a single core. (b) Concurrent execution on two cores. Arrows show the flow of execution and data transfer.
-image::video-game-tasks.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
+.Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados. image::video-game-tasks.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
 
+Suponha que as tarefas B e D sejam independentes e possam ser executadas simultaneamente se houver dois núcleos disponíveis. A tarefa D atualiza continuamente a tela com os dados antigos até que a tarefa C atualize as informações.
 
-Suppose that tasks B and D are independent and can be executed
-concurrently if two cores are available. Task D continually updates the
-screen with the old data until task C updates the information.
+<<figure-video_game_tasks>>(a) e (b) mostram como as tarefas desse videogame podem ser sequenciadas, respectivamente, em um único núcleo ou em dois núcleos. Todas as tarefas são executadas sequencialmente em um processador de núcleo único. Em um processador de núcleo duplo, as tarefas B e C podem ser executadas em um núcleo enquanto a tarefa D é executada simultaneamente em outro. Observe na figura que a tarefa C envia a pontuação e qualquer outros dados para a tarefa D, que atualiza continuamente a tela. Ter dois núcleos pode permitir uma atualização mais rápida da tela, pois o processador não precisa esperar que as tarefas B ou C sejam concluídas.
 
-<<figure-video_game_tasks>>(a) and (b) show how the tasks in this
-video game can be sequenced, respectively, on a single core or on two
-cores. All tasks are executed sequentially on a single-core processor.
-In a dual-core processor tasks B and C can execute on one core while
-task D is executing concurrently on another. Note from the figure that
-task C sends the score and any other data to task D which is
-continuously updating the screen. Having two cores can allow a faster
-refresh of the display since the processor doesn't have to wait for tasks
-B or C to complete.
 
 ====
 
 [[mathExpressionTasksExample]]
-.Math expression tasks
+.Tarefas de expressão matemática
 ====
 
-Suppose we need to evaluate the mathematical expression
-2__Kate__^-{wj}__at__²^ with parameters _a_ and _K_ at a given value of
-_t_.  We can divide the expression into two terms:
-2__Kat__ and _e_^-{wj}__at__²^.
-Each of these terms can be assigned to a different task for evaluation.
-On a dual-core processor, these two tasks can be executed on separate
-cores and the results from each combined to find the value of the
-expression for the main task.
+Suponha que precisemos avaliar a expressão matemática 2__Kate__^-{wj}__at__²^ com os parâmetros _a_ e _K_ em um determinado valor de _t_. Podemos dividir a expressão em dois termos: 2__Kat__ e _e_^-{wj}__at__²^. Cada um desses termos pode ser atribuído a uma tarefa diferente para avaliação. Em um processador de dois núcleos, essas duas tarefas podem ser executadas em núcleos separados e os resultados de cada uma delas podem ser combinados para encontrar o valor da expressão para a tarefa principal.
+
 
 [[figure-math_evaluation]]
 [.text-center]
-.Evaluation of a mathematical expression (a) sequentially on a single core and (b) concurrently on two cores. Arrows show the flow of execution and data transfer. Bold typeface indicates the operation being performed.
+.Avaliação de uma expressão matemática (a) sequencialmente em um único núcleo e (b) simultaneamente em dois núcleos. As setas mostram o fluxo de execução e a transferência de dados. A fonte em destaque indica a operação que está sendo executada.
 image::mathematical-expression-evaluation.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
 
 
-<<figure-math_evaluation>> shows how this expression can be
-evaluated on single core and dual-core processors. Sometimes, using
-multiple cores to evaluate an expression like this will take less time
-than a single core. However, there's no guarantee that using multiple
-cores will always be faster since tasks take time to set up and to
-communicate with each other.
+<<figure-math_evaluation>> mostra como essa expressão pode ser avaliada em processadores de um núcleo e de dois núcleos. Às vezes, o uso de vários núcleos para avaliar uma expressão como essa levará menos tempo do que um único núcleo. No entanto, não há garantia de que o uso de vários núcleos sempre será mais rápido, pois as tarefas levam tempo para serem configuradas e para se comunicarem entre si.
 ====
 
 ****
@@ -118,12 +95,9 @@ communicate with each other.
 <<quad-coreExercise>>
 ****
 
-These examples illustrate how a task can be divided into two or more
-subtasks executed by different cores of a processor. We use a dual-core
-processor for our examples, but the same ideas can be expanded to a
-larger number of cores.
+Esses exemplos ilustram como uma tarefa pode ser dividida em duas ou mais subtarefas executadas por diferentes núcleos de um processador. Usamos um processador dual-core em nossos exemplos, mas as mesmas ideias podem ser expandidas para um número maior de núcleos.
 
-==== Domain decomposition
+==== Decomposição de domínio
 
 In a computer program, every task performs operations on data. This data
 is called the _domain_ of that task. In domain decomposition, the data
