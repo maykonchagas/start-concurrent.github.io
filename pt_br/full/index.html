@@ -27150,7 +27150,7 @@ consome, mas eu sou o fogo.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#sharedThreadVariableExercise">Exercise 13.10</a></p>
+<p><a href="#sharedThreadVariableExercicio">Exercise 13.10</a></p>
 </div>
 </div>
 </div>
@@ -27203,12 +27203,17 @@ consome, mas eu sou o fogo.</p>
 </li>
 </ol>
 </div>
-<div id="figure-video_game_tasks" class="paragraph text-center">
-<div class="title">Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados. image::video-game-tasks.svg[scaledwidth=75%,pdfwidth=75%,width=75%]</div>
+<div id="figure-video_game_tasks" class="imageblock text-center">
+<div class="content">
+<img src="chapters/13-concurrency/images/video-game-tasks.svg" alt="video game tasks" width="75%">
+</div>
+<div class="title">Figure 13.1 Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados.</div>
+</div>
+<div class="paragraph">
 <p>Suponha que as tarefas B e D sejam independentes e possam ser executadas simultaneamente se houver dois núcleos disponíveis. A tarefa D atualiza continuamente a tela com os dados antigos até que a tarefa C atualize as informações.</p>
 </div>
 <div class="paragraph">
-<p><a href="#figure-video_game_tasks">Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados. image::video-game-tasks.svg[scaledwidth=75%,pdfwidth=75%,width=75%]</a>(a) e (b) mostram como as tarefas desse videogame podem ser sequenciadas, respectivamente, em um único núcleo ou em dois núcleos. Todas as tarefas são executadas sequencialmente em um processador de núcleo único. Em um processador de núcleo duplo, as tarefas B e C podem ser executadas em um núcleo enquanto a tarefa D é executada simultaneamente em outro. Observe na figura que a tarefa C envia a pontuação e qualquer outros dados para a tarefa D, que atualiza continuamente a tela. Ter dois núcleos pode permitir uma atualização mais rápida da tela, pois o processador não precisa esperar que as tarefas B ou C sejam concluídas.</p>
+<p><a href="#figure-video_game_tasks">Figure 13.1</a>(a) e (b) mostram como as tarefas desse videogame podem ser sequenciadas, respectivamente, em um único núcleo ou em dois núcleos. Todas as tarefas são executadas sequencialmente em um processador de núcleo único. Em um processador de núcleo duplo, as tarefas B e C podem ser executadas em um núcleo enquanto a tarefa D é executada simultaneamente em outro. Observe na figura que a tarefa C envia a pontuação e qualquer outros dados para a tarefa D, que atualiza continuamente a tela. Ter dois núcleos pode permitir uma atualização mais rápida da tela, pois o processador não precisa esperar que as tarefas B ou C sejam concluídas.</p>
 </div>
 </div>
 </div>
@@ -27222,10 +27227,10 @@ consome, mas eu sou o fogo.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/mathematical-expression-evaluation.svg" alt="mathematical expression evaluation" width="75%">
 </div>
-<div class="title">Figure 13.1 Avaliação de uma expressão matemática (a) sequencialmente em um único núcleo e (b) simultaneamente em dois núcleos. As setas mostram o fluxo de execução e a transferência de dados. A fonte em destaque indica a operação que está sendo executada.</div>
+<div class="title">Figure 13.2 Avaliação de uma expressão matemática (a) sequencialmente em um único núcleo e (b) simultaneamente em dois núcleos. As setas mostram o fluxo de execução e a transferência de dados. A fonte em destaque indica a operação que está sendo executada.</div>
 </div>
 <div class="paragraph">
-<p><a href="#figure-math_evaluation">Figure 13.1</a> mostra como essa expressão pode ser avaliada em processadores de um núcleo e de dois núcleos. Às vezes, o uso de vários núcleos para avaliar uma expressão como essa levará menos tempo do que um único núcleo. No entanto, não há garantia de que o uso de vários núcleos sempre será mais rápido, pois as tarefas levam tempo para serem configuradas e para se comunicarem entre si.</p>
+<p><a href="#figure-math_evaluation">Figure 13.2</a> mostra como essa expressão pode ser avaliada em processadores de um núcleo e de dois núcleos. Às vezes, o uso de vários núcleos para avaliar uma expressão como essa levará menos tempo do que um único núcleo. No entanto, não há garantia de que o uso de vários núcleos sempre será mais rápido, pois as tarefas levam tempo para serem configuradas e para se comunicarem entre si.</p>
 </div>
 </div>
 </div>
@@ -27244,39 +27249,19 @@ consome, mas eu sou o fogo.</p>
 <div class="sect3">
 <h4 id="_decomposição_de_domínio">13.3.2. Decomposição de domínio</h4>
 <div class="paragraph">
-<p>In a computer program, every task performs operations on data. This data
-is called the <em>domain</em> of that task. In domain decomposition, the data
-is divided into smaller chunks where each chunk is assigned to a
-different core, instead of dividing a task into subtasks. Thus, each core
-executes the same task but on different data.</p>
+<p>Em um programa de computador, cada tarefa executa operações em dados. Esses dados são chamados de <em>domínio</em> dessa tarefa. Na decomposição do domínio, os dados são divididos em partes menores, em que cada parte é atribuída a um núcleo diferente, em vez de dividir uma tarefa em subtarefas. Assim, cada núcleo executa a mesma tarefa, mas em dados diferentes.</p>
 </div>
 <div class="paragraph">
-<p>In the example of the dinner party, we could have used domain
-decomposition instead of (or in addition to) task decomposition. If you
-want to cook a massive batch of mashed potatoes, you could peel 24
-potatoes yourself. However, if there are four people (and each has
-a potato peeler), each person would only need to peel 6 potatoes.</p>
+<p>No exemplo do jantar, poderíamos ter usado a decomposição de domínio em vez de (ou além de) decomposição de tarefa. Se quiser cozinhar uma grande quantidade de purê de batatas, você mesmo pode descascar 24 batatas. Entretanto, se houver quatro pessoas (e cada uma delas tiver um descascador de batatas), cada pessoa precisará descascar apenas 6 batatas.</p>
 </div>
 <div class="paragraph">
-<p>The strategy of domain decomposition is very useful and is one of the
-major focuses of concurrency in this book. Problems in modern computing
-often use massive data, comprising millions of values or thousands of
-database records. Writing programs that can chop up data so that
-multiple cores can process smaller sections of it can greatly speed up
-the time it takes to finish computation.</p>
+<p>A estratégia de decomposição de domínio é muito útil e é um dos principais focos da simultaneidade neste livro. Os problemas da computação moderna geralmente usam dados maciços, que incluem milhões de valores ou milhares de registros de bancos de dados. Escrever programas que possam dividir os dados de modo que vários núcleos possam processar seções menores pode acelerar muito o tempo necessário para concluir o cálculo.</p>
 </div>
 <div class="paragraph">
-<p>In some ways, domain decomposition can be more difficult than task decomposition. The
-data must be divided evenly and fairly. Once each section of data has
-been processed, the results must be combined. Companies like Google that
-process massive amounts of information have developed terminology to
-describe this process. Dividing up the data and assigning it to workers
-is called the <em>map</em> step. Combining the partial answers into the final
-answer is called the <em>reduce</em> step.</p>
+<p>De certa forma, a decomposição de domínios pode ser mais difícil do que a decomposição de tarefas. Os dados devem ser divididos de maneira uniforme e justa. Depois que cada seção de dados tiver sido processada, os resultados deverão ser combinados. Empresas como o Google, que processam grandes quantidades de informações, desenvolveram uma terminologia para descrever esse processo. Dividir os dados e atribuí-los aos funcionários é chamado de etapa do mapa (<em>map</em>). A combinação das respostas parciais na resposta final é chamada de etapa de redução (<em>reduce</em>).</p>
 </div>
 <div class="paragraph">
-<p>We illustrate the domain decomposition strategy in the next two
-examples.</p>
+<p>Ilustramos a estratégia de decomposição de domínio nos dois exemplos a seguir.</p>
 </div>
 <div id="arraySummationPreviewExample" class="exampleblock">
 <div class="title">Example 13.3 Array summation preview</div>
@@ -27312,12 +27297,12 @@ one more data item than the other.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/arrayDecomposition.svg" alt="arrayDecomposition" width="60%">
 </div>
-<div class="title">Figure 13.2 Computing the sum of a function of each element of an array.</div>
+<div class="title">Figure 13.3 Computing the sum of a function of each element of an array.</div>
 </div>
 <div class="paragraph">
 <p>After <em>S</em><sub>1</sub> and <em>S</em><sub>2</sub> have been computed, one of
 the cores can add these two numbers together to get <em>S</em>.
-This strategy is illustrated in <a href="#figure-array_decomposition">Figure 13.2</a>.
+This strategy is illustrated in <a href="#figure-array_decomposition">Figure 13.3</a>.
 After the two cores have completed their work on each half of the array,
 the individual sums are added together to produce the final sum.</p>
 </div>
@@ -27340,12 +27325,12 @@ time. However, a concurrent program can compute more than one element of
 <div class="content">
 <img src="chapters/13-concurrency/images/matrixDecomposition.svg" alt="matrixDecomposition" width="75%">
 </div>
-<div class="title">Figure 13.3 Data decomposition to multiply two 4 × 4 matrices. The two cores perform the same multiplication tasks but on different data from matrix <em>A</em>. The two cores compute the top two and bottom two rows of <em>C</em>, respectively.</div>
+<div class="title">Figure 13.4 Data decomposition to multiply two 4 × 4 matrices. The two cores perform the same multiplication tasks but on different data from matrix <em>A</em>. The two cores compute the top two and bottom two rows of <em>C</em>, respectively.</div>
 </div>
 <div class="paragraph">
 <p>In this problem, the task is to multiply matrices <em>A</em> and
 <em>B</em>. Through domain decomposition, we can replicate this
-task on each core. As shown in <a href="#figure-matrix_decomposition">Figure 13.3</a>,
+task on each core. As shown in <a href="#figure-matrix_decomposition">Figure 13.4</a>,
 each core computes only a portion of <em>C</em>. For example, if
 <em>A</em> and <em>B</em> are 4 × 4
 matrices, we can ask one core to compute the product of the first two
@@ -27387,18 +27372,18 @@ this chapter.</p>
 <p>Consider dividing the tasks in <a href="#videoGameTasksExample">Example 13.1</a> into
 two threads. Tasks B and C in can be packaged into thread 1, and task D
 can be packaged into thread 2. This division is shown in
-<a href="#figure-tasks_in_threads">Figure 13.4</a>(a).</p>
+<a href="#figure-tasks_in_threads">Figure 13.5</a>(a).</p>
 </div>
 <div class="paragraph">
 <p>Tasks to evaluate different subexpressions in <a href="#mathExpressionTasksExample">Example 13.2</a> can also be divided into two threads as shown in
-<a href="#figure-tasks_in_threads">Figure 13.4</a>(b). In many problems there are
+<a href="#figure-tasks_in_threads">Figure 13.5</a>(b). In many problems there are
 several reasonable ways of dividing a set of subtasks into threads.</p>
 </div>
 <div id="figure-tasks_in_threads" class="imageblock">
 <div class="content">
 <img src="chapters/13-concurrency/images/task-thread-packaging.svg" alt="task thread packaging" width="100%">
 </div>
-<div class="title">Figure 13.4 (a) Tasks in a video game shown packaged into two threads. (b) Tasks to evaluate a mathematical expression shown packaged into two threads. Each thread may or may not run on the same core as the other.</div>
+<div class="title">Figure 13.5 (a) Tasks in a video game shown packaged into two threads. (b) Tasks to evaluate a mathematical expression shown packaged into two threads. Each thread may or may not run on the same core as the other.</div>
 </div>
 <div class="paragraph">
 <p>Note that these figures look exactly like the earlier figures, except
@@ -27512,7 +27497,7 @@ applications begin with a single main thread which starts in a <code>main()</cod
 method. Additional threads must start somewhere, and that place is the
 <code>run()</code> method. A Java application will continue to run as long as at
 least one thread is active. The following example shows two threads,
-each evaluating a separate subexpression as in <a href="#figure-tasks_in_threads">Figure 13.4</a>(b).</p>
+each evaluating a separate subexpression as in <a href="#figure-tasks_in_threads">Figure 13.5</a>(b).</p>
 </div>
 <div id="threadSamplesExample" class="exampleblock">
 <div class="title">Example 13.5 Thread samples</div>
@@ -27520,7 +27505,7 @@ each evaluating a separate subexpression as in <a href="#figure-tasks_in_threads
 <div class="paragraph">
 <p>We&#8217;ll create <code>Thread1</code> and <code>Thread2</code> classes. The threads of execution
 created by instances of these classes compute, respectively, the two
-subexpressions in <a href="#figure-tasks_in_threads">Figure 13.4</a>(b) and save the
+subexpressions in <a href="#figure-tasks_in_threads">Figure 13.5</a>(b) and save the
 computed values.</p>
 </div>
 <div id="Thread1Program" class="listingblock">
@@ -27690,7 +27675,7 @@ these values, which is the result of the expression we want to evaluate.</p>
 <div class="paragraph">
 <p>We want to make it absolutely clear when threads are created, start
 executing, and finish. These details are crucial for the finer points of
-concurrent Java programming. In <a href="#figure-tasks_in_threads">Figure 13.4</a>, it
+concurrent Java programming. In <a href="#figure-tasks_in_threads">Figure 13.5</a>, it
 appears as if execution of the concurrent math expression evaluation
 begins with Thread 1 which spawns Thread 2. Although that figure
 explains the basics of task decomposition well, the details are messier
@@ -27702,7 +27687,7 @@ for real Java code.</p>
 for them to finish. Then, it reads the values from the objects after
 they&#8217;ve stopped executing. We could have put the <code>main()</code> method in
 the <code>Thread1</code> class, omitting the <code>MathExpression</code> class entirely. Doing
-so would make the execution match <a href="#figure-tasks_in_threads">Figure 13.4</a>
+so would make the execution match <a href="#figure-tasks_in_threads">Figure 13.5</a>
 more closely, but it would make the two <code>Thread</code> subclasses less
 symmetrical: The main thread and <code>thread1</code> would both independently
 execute code inside the <code>Thread1</code> class while only <code>thread2</code> would
@@ -27712,10 +27697,10 @@ execute code inside the <code>Thread2</code> class.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/thread-lifecycle.svg" alt="thread lifecycle" width="75%">
 </div>
-<div class="title">Figure 13.5 Creation, starting, and joining of threads in <code>MathExpression</code>, <code>Thread1</code>, and <code>Thread2</code>.</div>
+<div class="title">Figure 13.6 Creation, starting, and joining of threads in <code>MathExpression</code>, <code>Thread1</code>, and <code>Thread2</code>.</div>
 </div>
 <div class="paragraph">
-<p><a href="#figure-thread_execution">Figure 13.5</a> shows the execution of <code>thread1</code> and
+<p><a href="#figure-thread_execution">Figure 13.6</a> shows the execution of <code>thread1</code> and
 <code>thread2</code> and the main thread. Note that the JVM implicitly creates and starts
 the main thread which explicitly creates and starts <code>thread1</code> and <code>thread2</code>.
 Even after the threads associated with <code>thread1</code> and <code>thread2</code> have stopped running,
@@ -28578,10 +28563,10 @@ thread in the schedule.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/thread-states.svg" alt="thread states" width="80%">
 </div>
-<div class="title">Figure 13.6 Thread states and transitions.</div>
+<div class="title">Figure 13.7 Thread states and transitions.</div>
 </div>
 <div class="paragraph">
-<p><a href="#figure-thread_states">Figure 13.6</a> shows the lifecycle of a thread. A
+<p><a href="#figure-thread_states">Figure 13.7</a> shows the lifecycle of a thread. A
 thread begins its life in the New Thread state, after the constructor is
 called. When the <code>start()</code> method is called, the thread begins to run
 and transitions to the Runnable state. Being Runnable doesn&#8217;t
@@ -29036,7 +29021,7 @@ the <code>Thread.yield()</code> method each affect thread scheduling?</p>
 <a href="#mathExpressionTasksExample">Example 13.2</a>. Suppose that the multiply and
 exponentiation operations require 1 and 10 time units, respectively.
 Compute the number of time units required to evaluate the expression as
-in <a href="#figure-math_evaluation">Figure 13.1</a>(a) and (b).</p>
+in <a href="#figure-math_evaluation">Figure 13.2</a>(a) and (b).</p>
 </li>
 <li>
 <p><a id="quad-coreExercise"></a> Suppose that a computer has one
@@ -29134,7 +29119,7 @@ people needed to achieve this minimum time?</p>
 </div>
 </li>
 <li>
-<p><a id="sharedThreadVariableExercise"></a> Consider the following code snippet.</p>
+<p><a id="sharedThreadVariableExercicio"></a> Consider the following code snippet.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="n">x</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span>
@@ -29321,7 +29306,7 @@ single thread completes the summing process.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/treesummation.svg" alt="treesummation" width="100%">
 </div>
-<div class="title">Figure 13.7 Example of concurrent tree-style summation with 8 threads.</div>
+<div class="title">Figure 13.8 Example of concurrent tree-style summation with 8 threads.</div>
 </div>
 <div class="paragraph">
 <p>Update the <code>run()</code> method in the <code>SumThread</code> class so that it adds its
@@ -29335,7 +29320,7 @@ thread with a number divisible by 8 should add the partial sum from its
 neighbor, and so on. Thread 0 will perform the final summation.
 Consequently, the main thread only needs to wait for thread 0. So that
 each thread can wait for other threads, the <code>threads</code> array will need to
-be a static field. <a href="#figure-tree_summation">Figure 13.7</a> illustrates this
+be a static field. <a href="#figure-tree_summation">Figure 13.8</a> illustrates this
 process.</p>
 </div>
 <div class="paragraph">
@@ -29428,7 +29413,7 @@ chopstick.</p>
 <div class="paragraph">
 <p>This dining philosopher problem highlights some difficulties which were
 emerging toward the end of the last chapter. In
-<a href="#sharedThreadVariableExercise">Exercise 13.10</a> two snippets of code could run
+<a href="#sharedThreadVariableExercise">[sharedThreadVariableExercise]</a> two snippets of code could run
 concurrently and modify the same shared variable, potentially producing
 incorrect output. Because of the nondeterministic nature of scheduling,
 we have to assume that the code executing in two or more threads can be
@@ -46583,7 +46568,7 @@ multi-threaded versions?</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-15 11:31:30 -0300
+Last updated 2024-05-15 15:16:45 -0300
 </div>
 </div>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

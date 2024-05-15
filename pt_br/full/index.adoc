@@ -8,6 +8,7 @@ Barry Wittman <wittman1@otterbein.edu>; Tim Korb <jtk@purdue.edu>; Aditya Mathur
 :rouge-style: default
 :mathematical-format: svg
 :mathematical-ppi: 72
+:figure-caption: Figura
 :icons: font
 :xrefstyle: short
 :sectnums:
