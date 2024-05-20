@@ -1,3 +1,12 @@
+:xrefstyle: short
+:example-number: 0
+:figure-number: 0
+:figure-caption: Figura
+:example-caption: Exemplo
+:table-caption: Tabela
+:section-caption: Seção
+:chapter-caption: Capítulo
+
 [#ch20-file-io]
 :imagesdir: chapters/20-file-io/images
 :programsdir: chapters/20-file-io/programs

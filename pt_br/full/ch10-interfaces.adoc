@@ -1,3 +1,12 @@
+:xrefstyle: short
+:example-number: 0
+:figure-number: 0
+:figure-caption: Figura
+:example-caption: Exemplo
+:table-caption: Tabela
+:section-caption: Seção
+:chapter-caption: Capítulo
+
 [#ch10-interfaces]
 :imagesdir: chapters/10-interfaces/images
 :programsdir: chapters/10-interfaces/programs

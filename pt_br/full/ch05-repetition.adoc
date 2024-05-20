@@ -1,3 +1,12 @@
+:xrefstyle: short
+:example-number: 0
+:figure-number: 0
+:figure-caption: Figura
+:example-caption: Exemplo
+:table-caption: Tabela
+:section-caption: Seção
+:chapter-caption: Capítulo
+
 [#ch05-repetition]
 :imagesdir: chapters/05-repetition/images
 :programsdir: chapters/05-repetition/programs

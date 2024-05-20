@@ -1,3 +1,12 @@
+:xrefstyle: short
+:example-number: 0
+:figure-number: 0
+:figure-caption: Figura
+:example-caption: Exemplo
+:table-caption: Tabela
+:section-caption: Seção
+:chapter-caption: Capítulo
+
 [#ch07-gui-basics]
 :imagesdir: chapters/07-gui-basics/images
 :programsdir: chapters/07-gui-basics/programs

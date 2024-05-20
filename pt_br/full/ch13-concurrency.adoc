@@ -1,4 +1,4 @@
-[#ch13-concurrency]
+:xrefstyle: short
 :example-number: 0
 :figure-number: 0
 :figure-caption: Figura
@@ -6,8 +6,12 @@
 :table-caption: Tabela
 :section-caption: Seção
 :chapter-caption: Capítulo
+:lang:pt-BR
+
+[#ch13-concurrency]
 :imagesdir: chapters/13-concurrency/images
 :programsdir: chapters/13-concurrency/programs
+
 == Programação Concorrente
 
 [quote, Jorge Luis Borges]
@@ -19,38 +23,93 @@ ____
 
 === Introdução
 
-Até agora, nos concentramos principalmente em escrever programas sequenciais. A execução sequencial significa que as instruções do programa são executadas uma de cada vez em uma sequência determinada pela lógica do programa e pelos dados de entrada. No entanto, mais de uma instrução de programa pode ser executada independentemente por um processador multicore. Embora seja comum os programadores escreverem programas sequenciais, a disponibilidade generalizada de processadores de vários núcleos em um único computador levou a um aumento na demanda por programadores que possam escrever programas concorrentes.
+Até agora, nos concentramos principalmente em escrever programas sequenciais. A 
+execução sequencial significa que as instruções do programa são executadas uma 
+de cada vez em uma sequência determinada pela lógica do programa e pelos dados 
+de entrada. No entanto, mais de uma instrução de programa pode ser executada 
+independentemente por um processador multicore. Embora seja comum os programadores 
+escreverem programas sequenciais, a disponibilidade generalizada de processadores 
+de vários núcleos em um único computador levou a um aumento na demanda por 
+programadores que possam escrever programas concorrentes.
 
-Um programa concorrente é aquele em que várias instruções podem ser executadas simultaneamente por dois ou mais núcleos. Neste capítulo, mostramos como escrever programas concorrentes simples em Java que exploram o poder de um computador com vários núcleos. Começamos com um problema em que o destino do planeta está em grave perigo!
+Um programa concorrente é aquele em que várias instruções podem ser executadas 
+simultaneamente por dois ou mais núcleos. Neste capítulo, mostramos como escrever 
+programas concorrentes simples em Java que exploram o poder de um computador com 
+vários núcleos. Começamos com um problema em que o destino do planeta está em 
+grave perigo!
 
 === Problema: Vírus mortal
 
-Um vírus mortal capaz de exterminar a população mundial está prestes a ser liberado por um gênio do mal. Somente ele sabe o código de segurança que pode interromper a contagem regressiva.  O mundo está condenado. A única esperança de salvação está em você e em suas habilidades de programação em Java. Por meio das investigações de uma rede de espionagem ultrassecreta e financiada pelo governo, foi revelado que o código de segurança está vinculado ao número 59.984.005.171.248.659. Esse grande número é o produto de dois números primos, e o código de segurança é a soma deles. Tudo o que você precisa fazer é fatorar o número 59.984.005.171.248.659 em seus dois fatores primos e somá-los.
+Um vírus mortal capaz de exterminar a população mundial está prestes a ser liberado 
+por um gênio do mal. Somente ele sabe o código de segurança que pode interromper a 
+contagem regressiva.  O mundo está condenado. A única esperança de salvação está em 
+você e em suas habilidades de programação em Java. Por meio das investigações de uma 
+rede de espionagem ultrassecreta e financiada pelo governo, foi revelado que o código 
+de segurança está vinculado ao número 59.984.005.171.248.659. Esse grande número é 
+o produto de dois números primos, e o código de segurança é a soma deles. Tudo o que 
+você precisa fazer é fatorar o número 59.984.005.171.248.659 em seus dois fatores 
+primos e somá-los.
 
-É claro que há uma pegadinha.  O vírus mortal será lançado em breve, tão em breve que talvez não haja tempo suficiente para seu computador pesquisar todos os números um a um. Em vez disso, você deve usar a concorrência para verificar mais de um número por vez.
+É claro que há uma pegadinha.  O vírus mortal será lançado em breve, tão em breve que 
+talvez não haja tempo suficiente para seu computador pesquisar todos os números um a 
+um. Em vez disso, você deve usar a concorrência para verificar mais de um número por vez.
 
-Esse problema parece artificial?  Para manter a privacidade das informações enviadas pela Internet, muitos tipos de criptografia de chave pública dependem da dificuldade de fatorar números grandes. Embora a fatoração do número nesse problema não seja difícil, os números usados para criptografia de chave pública, geralmente com mais de 300 dígitos decimais, resistem à fatoração até mesmo pelos computadores mais rápidos.
+Esse problema parece artificial?  Para manter a privacidade das informações enviadas 
+pela Internet, muitos tipos de criptografia de chave pública dependem da dificuldade 
+de fatorar números grandes. Embora a fatoração do número nesse problema não seja 
+difícil, os números usados para criptografia de chave pública, geralmente com mais de 
+300 dígitos decimais, resistem à fatoração até mesmo pelos computadores mais rápidos.
 
 === Conceitos: Dividindo para conquistar
 
-O problema do vírus mortal tem uma grande tarefa (fatorar um número) a ser executada.  Como devemos dividir essa tarefa para que possamos realizá-la mais rapidamente? Dividir o trabalho a ser feito é o cerne de qualquer solução simultânea para um problema.
+O problema do vírus mortal tem uma grande tarefa (fatorar um número) a ser executada. 
+Como devemos dividir essa tarefa para que possamos realizá-la mais rapidamente? Dividir 
+o trabalho a ser feito é o cerne de qualquer solução simultânea para um problema.
 
-Em um processador com vários núcleos, cada núcleo é um trabalhador independente.  É preciso algum cuidado para coordenar esses trabalhadores. Antes de tudo, ainda precisamos obter a resposta correta. Uma solução concorrente não tem valor se estiver incorreta e, ao ler e gravar na mesma memória compartilhada, as respostas encontradas por um núcleo podem corromper as respostas encontradas por outros núcleos. A prevenção desse problema será abordada no <<ch14-synchronization#ch14-synchronization>>. Quando pudermos garantir que a solução concorrente está correta, também vamos querer melhorar o desempenho. Talvez queiramos que a tarefa seja concluída mais rapidamente. Talvez tenhamos um sistema interativo que deva continuar a lidar com as solicitações dos usuários mesmo que esteja trabalhando em uma solução em segundo plano. Novamente, se a sobrecarga de coordenar nossos trabalhadores levar mais tempo do que uma solução sequencial ou tornar o sistema menos responsivo, isso não será útil.
+Em um processador com vários núcleos, cada núcleo é um trabalhador independente. É 
+preciso algum cuidado para coordenar esses trabalhadores. Antes de tudo, ainda precisamos 
+obter a resposta correta. Uma solução concorrente não tem valor se estiver incorreta 
+e, ao ler e gravar na mesma memória compartilhada, as respostas encontradas por um 
+núcleo podem corromper as respostas encontradas por outros núcleos. A prevenção desse 
+problema será abordada no <<ch14-synchronization#ch14-synchronization>>. Quando pudermos 
+garantir que a solução concorrente está correta, também vamos querer melhorar o desempenho. 
+Talvez queiramos que a tarefa seja concluída mais rapidamente. Talvez tenhamos um sistema 
+interativo que deva continuar a lidar com as solicitações dos usuários mesmo que esteja 
+trabalhando em uma solução em segundo plano. Novamente, se a sobrecarga de coordenar nossos 
+trabalhadores levar mais tempo do que uma solução sequencial ou tornar o sistema menos 
+responsivo, isso não será útil.
 
 
 ****
 <<sharedThreadVariableExercicio>>
 ****
 
-Há duas maneiras principais de dividir o trabalho. A primeira é chamada de _decomposição de tarefas_. Nessa abordagem, cada funcionário recebe uma tarefa diferente para fazer. A segunda é chamada de _decomposição de domínio_. Nessa abordagem, os funcionários fazem o mesmo trabalho, mas com dados diferentes.
+Há duas maneiras principais de dividir o trabalho. A primeira é chamada de _decomposição 
+de tarefas_. Nessa abordagem, cada funcionário recebe uma tarefa diferente para fazer. A 
+segunda é chamada de _decomposição de domínio_. Nessa abordagem, os funcionários fazem o 
+mesmo trabalho, mas com dados diferentes.
 
-É possível usar tanto a decomposição de tarefas quanto a de domínios para resolver o mesmo problema. Com os dois tipos de decomposição, geralmente é necessário coordenar os trabalhadores para que possam compartilhar informações. Nas próximas duas subseções, descreveremos com mais detalhes a decomposição de tarefas e a decomposição de domínios. Em seguida, discutiremos o mapeamento de tarefas para _threads_ de execução e as diferentes arquiteturas de memória que podem ser usadas para programação simultânea.
+É possível usar tanto a decomposição de tarefas quanto a de domínios para resolver o mesmo 
+problema. Com os dois tipos de decomposição, geralmente é necessário coordenar os 
+trabalhadores para que possam compartilhar informações. Nas próximas duas subseções, 
+descreveremos com mais detalhes a decomposição de tarefas e a decomposição de domínios. 
+Em seguida, discutiremos o mapeamento de tarefas para _threads_ de execução e as diferentes 
+arquiteturas de memória que podem ser usadas para programação simultânea.
 
 ==== Decomposição de tarefas 
 
-A ideia de dividir uma tarefa em subtarefas menores é natural. Imagine que você está planejando um jantar. Você precisa comprar suprimentos, preparar o jantar, limpar a casa e arrumar a mesa. Se quatro de vocês estivessem planejando a festa, cada um poderia realizar uma atividade separada. Os preparativos poderiam ser muito mais rápidos do que se uma única pessoa estivesse fazendo o trabalho, mas a coordenação ainda é importante. Talvez a pessoa que estiver preparando o jantar não possa terminar até que certos suprimentos sejam comprados.
+A ideia de dividir uma tarefa em subtarefas menores é natural. Imagine que você está 
+planejando um jantar. Você precisa comprar suprimentos, preparar o jantar, limpar a casa 
+e arrumar a mesa. Se quatro de vocês estivessem planejando a festa, cada um poderia 
+realizar uma atividade separada. Os preparativos poderiam ser muito mais rápidos do que 
+se uma única pessoa estivesse fazendo o trabalho, mas a coordenação ainda é importante. 
+Talvez a pessoa que estiver preparando o jantar não possa terminar até que certos 
+suprimentos sejam comprados.
 
-A decomposição de tarefas geralmente é mais fácil do que a decomposição de domínios porque muitas tarefas têm divisões naturais. Infelizmente, essa nem sempre é uma maneira eficaz de usar vários núcleos em um computador. Se uma tarefa for concluída muito antes das outras, um núcleo poderá ficar ocioso.
+A decomposição de tarefas geralmente é mais fácil do que a decomposição de domínios porque 
+muitas tarefas têm divisões naturais. Infelizmente, essa nem sempre é uma maneira eficaz de 
+usar vários núcleos em um computador. Se uma tarefa for concluída muito antes das outras, 
+um núcleo poderá ficar ocioso.
 
 ****
 <<minimumTimeForTasksExercise>>
@@ -58,7 +117,7 @@ A decomposição de tarefas geralmente é mais fácil do que a decomposição de
 
 Os dois exemplos a seguir mostram ilustrações simples do processo de divisão de uma tarefa em subtarefas menores no contexto da programação multicore.
 
-[[videoGameTasksExample]]
+[[videoGameTasksExemplo]]
 .Tarefas de videogame
 ====
 
@@ -73,7 +132,7 @@ Considere um videogame simples que consiste nas seguintes tarefas
 [[figure-video_game_tasks]]
 [.text-center]
 .Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados.
-image::video-game-tasks.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
+image::video-game-tasks.svg[label="Figura",caption="Figura ",scaledwidth=75%,pdfwidth=75%,width=75%]
 
 Suponha que as tarefas B e D sejam independentes e possam ser executadas simultaneamente se houver dois núcleos disponíveis. A tarefa D atualiza continuamente a tela com os dados antigos até que a tarefa C atualize as informações.
 
@@ -118,12 +177,11 @@ De certa forma, a decomposição de domínios pode ser mais difícil do que a de
 Ilustramos a estratégia de decomposição de domínio nos dois exemplos a seguir.
 
 [[arraySummationPreviewExample]]
-.Array summation preview
+.Visualização da soma de matrizes
 ====
 
-Suppose we want to apply function _f_ to each element
-of an array _a_ and sum the results. Mathematically, we want
-to compute the following sum.
+Suponha que queiramos aplicar a função _f_ a cada elemento
+de uma matriz _a_ e somar os resultados. Matematicamente, queremos calcular a seguinte soma.
 
 //[stem]
 //++++
@@ -135,11 +193,7 @@ image::oneCoreSum.svg[scaledwidth=15%,pdfwidth=15%,width=15%]
 
 
 
-In this formula, _a_~_i_~ is the _i_^th^ element
-of array _a_. Let's assume we have a dual-core processor available to
-compute the sum. We split up the array so that each core performs the
-task on half of the array. Let _S_~1~ and _S_~2~
-denote the sums computed by core 1 and core 2, respectively.
+Nessa fórmula, _a_~_i_~ é o _i_^ésimo^ elemento da matriz _a_. Vamos supor que temos um processador dual-core disponível para calcular a soma. Dividimos a matriz de modo que cada núcleo execute a tarefa em metade da matriz. Sejam _S_~1~ e _S_~2~ denotem as somas calculadas pelo núcleo 1 e pelo núcleo 2, respectivamente.
 
 //[stem]
 //++++
@@ -151,197 +205,165 @@ denote the sums computed by core 1 and core 2, respectively.
 image::twoCoreSum.svg[scaledwidth=50%,pdfwidth=50%,width=50%]
 
 
-Assuming that _N_ is even, both cores process exactly the
-same amount of data. For odd _N_, one of the cores processes
-one more data item than the other.
+Supondo que _N_ seja uniforme, os dois núcleos processam exatamente a
+mesma quantidade de dados. Para _N_ ímpar, um dos núcleos processa
+um item de dados a mais do que o outro.
 
 [[figure-array_decomposition]]
 [.text-center]
-.Computing the sum of a function of each element of an array.
+.Calculando a soma de uma função de cada elemento de uma matriz.
 image::arrayDecomposition.svg[scaledwidth=60%,pdfwidth=60%,width=60%]
 
-After _S_~1~ and _S_~2~ have been computed, one of
-the cores can add these two numbers together to get _S_.
-This strategy is illustrated in <<figure-array_decomposition>>.
-After the two cores have completed their work on each half of the array,
-the individual sums are added together to produce the final sum.
+Depois que _S_~1~ e _S_~2~ tiverem sido computados, um dos
+núcleos pode somar esses dois números para obter _S_.
+Essa estratégia é ilustrada em <<figure-array_decomposition>>.
+Depois que os dois núcleos tiverem concluído seu trabalho em cada metade da matriz,
+as somas individuais são então somadas para produzir o resultado final.
 ====
 
 [[matrixMultiplicationPreviewExample]]
-.Matrix multiplication preview
+.Visualização da multiplicação de matrizes
 ====
 
-The need to multiply matrices arises in many mathematical, scientific,
-and engineering applications. Suppose we're asked to write a program to
-multiply two square matrices _A_ and _B_, which
-are both _n_ × _n_ matrices. The product matrix
-_C_ will also be _n_ × _n_. A sequential
-program will compute each element of matrix _C_ one at a
-time. However, a concurrent program can compute more than one element of
-_C_ simultaneously using multiple cores.
+A necessidade de multiplicar matrizes surge em muitas aplicações matemáticas, científicas e de engenharia. Suponha que nos peçam para escrever um programa para
+multiplicar duas matrizes quadradas _A_ e _B_, que
+são ambas matrizes _n_ × _n_. A matriz do produto
+_C_ também será _n_ × _n_. Um programa
+sequencial calculará cada elemento da matriz _C_ um de cada vez.
+vez. Entretanto, um programa simultâneo pode calcular mais de um elemento de
+_C_ simultaneamente usando vários núcleos.
 
 [[figure-matrix_decomposition]]
 [.text-center]
-.Data decomposition to multiply two 4 × 4 matrices. The two cores perform the same multiplication tasks but on different data from matrix _A_. The two cores compute the top two and bottom two rows of _C_, respectively.
+.Decomposição de dados para multiplicar duas matrizes 4 × 4. Os dois núcleos executam as mesmas tarefas de multiplicação, mas em dados diferentes da matriz _A_.Os dois núcleos calculam as duas linhas superiores e as duas linhas inferiores de _C_, respectivamente.
 image::matrixDecomposition.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
 
 
-In this problem, the task is to multiply matrices _A_ and
-_B_. Through domain decomposition, we can replicate this
-task on each core. As shown in <<figure-matrix_decomposition>>,
-each core computes only a portion of _C_. For example, if
-_A_ and _B_ are 4 × 4
-matrices, we can ask one core to compute the product of the first two
-rows of _A_ with all four columns of _B_ to
-generate the first two rows of _C_. The second core computes
-the remaining two rows of _C_. Both cores can access
-matrices _A_ and _B_.
+Neste problema, a tarefa é multiplicar as matrizes _A_ e
+_B_. Por meio da decomposição de domínio, podemos replicar essa
+tarefa em cada núcleo. Conforme mostrado na <<figure-matrix_decomposition>>,
+cada núcleo calcula apenas uma parte de _C_. Por exemplo, se
+_A_ e _B_ forem 4 × 4, podemos pedir a um núcleo que calcule o produto das duas primeiras
+linhas de _A_ com todas as quatro colunas de _B_ para
+gerar as duas primeiras linhas de _C_. O segundo núcleo calcula
+as duas linhas restantes de _C_. Ambos os núcleos podem acessar as
+matrizes _A_ e _B_.
 
 ====
 
-==== Tasks and threads
+==== Tarefas e threads
 
-It's the programmer's responsibility to divide his or her solution into
-a number of tasks and subtasks which will run on one or more cores on a
-processor. In previous sections, we described concurrent programs as if
-specific tasks could be assigned specific cores, but Java doesn't
-provide a direct way to do so.
+É responsabilidade do programador dividir sua solução em
+uma série de tarefas e subtarefas que serão executadas em um ou mais núcleos de um
+processador. Nas seções anteriores, descrevemos programas concorrentes como se
+tarefas específicas pudessem ser atribuídas a núcleos específicos, mas o Java não
+fornece uma maneira direta de fazer isso.
 
-Instead, a Java programmer must group together a set of tasks and
-subtasks into a _thread_. A thread is very much like a sequential
-program. In fact, all sequential programs are made up of a single thread.
-A thread is a segment of executing code that runs through its instructions step
-by step. Each thread can run independently. If you have a single core
-processor, only one thread can run at a time, and all the threads will
-take turns. If you have a multicore processor, as many threads as there
-are cores can execute at the same time. You can't pick which core a
-given thread will run on. In most cases, you won't even be able to
-tell which core a given thread is using.
+Em vez disso, um programador Java deve agrupar um conjunto de tarefas e
+subtarefas em uma _thread_. Uma thread é muito parecido com um programa
+sequencial. De fato, todos os programas sequenciais são compostos de uma única thread.
+Uma thread é um segmento de execução de código que percorre suas instruções passo a passo. Cada thread pode ser executado de forma independente. Se você tiver um processador de núcleo único
+apenas uma thread pode ser executada por vez, e todas as threads se revezarão. Se você tiver um processador com vários núcleos, tantas threads quantos forem os núcleos
+núcleos podem ser executados ao mesmo tempo. Não é possível escolher em qual núcleo uma
+determinada thread será executada. Na maioria dos casos, você não conseguirá nem mesmo
+saber qual núcleo uma determinada thread está usando.
 
-It takes care to package up the right set of tasks into a single thread
-of execution. Recall the previous examples of concurrent programming in
-this chapter.
+Ele tem o cuidado de empacotar o conjunto certo de tarefas em uma única thread
+de execução. Lembre-se dos exemplos anteriores de programação concorrente neste capítulo.
 
-Consider dividing the tasks in <<videoGameTasksExample>> into
-two threads. Tasks B and C in can be packaged into thread 1, and task D
-can be packaged into thread 2. This division is shown in
+Considere a possibilidade de dividir as tarefas em <<videoGameTasksExample>> em
+duas threads. As tarefas B e C podem ser agrupadas na thread 1, e a tarefa D
+pode ser empacotada na thread 2.Essa divisão é mostrada em
 <<figure-tasks_in_threads>>(a).
 
-Tasks to evaluate different subexpressions in <<mathExpressionTasksExample>> can also be divided into two threads as shown in
-<<figure-tasks_in_threads>>(b). In many problems there are
-several reasonable ways of dividing a set of subtasks into threads.
-
+As tarefas para avaliar diferentes subexpressões em <<mathExpressionTasksExample>> também podem ser divididas em duas threads, conforme mostrado em <<figure-tasks_in_threads>> (b). Em muitos problemas, há várias maneiras razoáveis de dividir um conjunto de subtarefas em threads.
 
 [[figure-tasks_in_threads]]
-.(a) Tasks in a video game shown packaged into two threads. (b) Tasks to evaluate a mathematical expression shown packaged into two threads. Each thread may or may not run on the same core as the other.
+.(a) Tarefas em um videogame mostradas agrupadas em duas threads. (b) Tarefas para avaliar uma expressão matemática mostrada empacotada em duas threads. Cada thread pode ou não ser executado no mesmo núcleo que o outro.
 image::task-thread-packaging.svg[scaledwidth=100%,pdfwidth=100%,width=100%]
 
 
-Note that these figures look exactly like the earlier figures, except
-that the tasks are grouped as threads instead of cores. This grouping 
-matches reality better, since we can control how the tasks are packaged
-into threads but not how they are assigned to cores.
+Observe que essas figuras são exatamente iguais às figuras anteriores, exceto
+que as tarefas são agrupadas como threads em vez de núcleos. Esse agrupamento 
+corresponde melhor à realidade, pois podemos controlar como as tarefas são agrupadas
+em threads, mas não como elas são atribuídas aos núcleos.
 
-In both examples, we have two threads. It's possible that some other
-thread started these threads running. Every Java program, concurrent or
-sequential, starts with one thread. We'll refer to this thread as the
-_main_ thread since it contains the `main()` method.
+Em ambos os exemplos, temos duas threads. É possível que alguma outra thread tenha iniciado a execução dessas threads. Todo programa Java, simultâneo ou
+sequencial, começa com uma thread. Vamos nos referir a essa thread como a thread
+_main_, pois ela contém o método `main()`.
 
-<<arraySummationPreviewExample>> and <<matrixMultiplicationPreviewExample>> use multiple identical tasks,
-but these tasks operate on different data. In <<arraySummationPreviewExample>>,
-the two tasks can be assigned to two threads that
-operate on different portions of the input array. The task of summing
-the results from the two threads can either be a separate thread or a
-subtask included in one of the other threads. In
-<<matrixMultiplicationPreviewExample>>, the two tasks can
-again be assigned to two distinct threads that operate on different
-parts of the input matrix _A_ to generate the corresponding
-portions of the output matrix _C_.
+<<arraySummationPreviewExample>> e <<matrixMultiplicationPreviewExample>> usam várias tarefas idênticas,
+mas essas tarefas operam em dados diferentes. Em <<arraySummationPreviewExample>>,
+as duas tarefas podem ser atribuídas a duas threads que
+operam em diferentes partes da matriz de entrada. A tarefa de somar
+os resultados das duas threads pode ser uma thread separada ou uma
+subtarefa incluída em uma das outras threads. Em
+<<matrixMultiplicationPreviewExample>>, as duas tarefas podem
+novamente ser atribuídas a duas threads distintas que operam em diferentes
+partes diferentes da matriz de entrada _A_ para gerar as partes correspondentes
+partes correspondentes da matriz de saída _C_.
 
-There can be many ways to package tasks into threads. There can also be
-many ways to decompose data into smaller chunks. The best ways to
-perform these subdivisions of tasks or data depend on the problem at
-hand and the processor architecture on which the program will be
-executed.
+Pode haver muitas maneiras de empacotar tarefas em threads. Também pode haver 
+muitas maneiras de decompor os dados em pedaços menores. As melhores maneiras de 
+executar essas subdivisões de tarefas ou dados dependem do problema em questão e 
+da arquitetura do processador em que o programa será executado.
 
-==== Memory architectures and concurrency
+==== Arquitecturas de memória e concorrência
 
-The two most important paradigms for concurrent programming are message
-passing and shared memory systems. Each paradigm handles communication
-between the various units of code running in parallel in a different
-way. Message passing systems such as MPI approach this problem
-by sending messages between otherwise independent units of code called
-processes. A process which is executing a task may have to wait until it
-receives a message from another process before it knows how to proceed.
-Messages can be sent from a single process to one other or
-broadcast to many. Message passing systems are especially useful when
-the processors doing the work do not share memory.
+Os dois paradigmas mais importantes da programação concorrente são a passagem de mensagens e os sistemas de memória compartilhada. Cada paradigma lida com a comunicação entre as várias unidades de código executadas em paralelo de uma maneira diferente. Os sistemas de passagem de mensagens, como o MPI (Message Passing Interface), abordam esse problema enviando mensagens entre unidades de código independentes, chamadas de processos. Um processo que está executando uma tarefa pode ter de esperar até receber uma mensagem de outro processo para saber como proceder. As mensagens podem ser enviadas de um único processo para outro ou transmitidas para vários. Os sistemas de passagem de mensagens são especialmente úteis quando os processadores que executam o trabalho não compartilham memória.
 
-In contrast, the built-in system for concurrency in Java uses the shared
-memory paradigm. In Java, a programmer
-can create a number of threads which share the same memory space. Each
-thread is an object which can perform work. We described threads as a
-way to package up a group of tasks, and processes are another. People
-use the term _processes_ to describe units of code executing with
-separate memory and _threads_ to describe units of code executing
-with shared memory.
 
-When you first learned to program, one of the biggest challenges was
-probably learning to solve a problem step by step. Each line of the
-program had to be executed one at a time, logically and
-deterministically. Human beings don't naturally think that way. We tend
-to jump from one thing to another, making inferences and guesses,
-thinking about two unrelated things at once, and so on. As you know
-now, it's only possible to write and debug programs because of the
-methodical way they work.
+Por outro lado, o sistema interno de concorrência em Java usa o paradigma de memória compartilhada.
+compartilhada. Em Java, um programador
+pode criar várias threads que compartilham o mesmo espaço de memória. Cada
+thread é um objeto que pode executar um trabalho. Descrevemos as threads como uma como uma forma de empacotar um grupo de tarefas, e os processos são outra forma. As pessoas
+usam o termo _processos_ para descrever unidades de código em execução com
+memória separada e _threads_ para descrever unidades de código em execução
+com memória compartilhada.
 
-You can imagine the execution of a program as an arrow that points to
-one line of code, then the next, then the next, and so on. We can think
-of the movement of this arrow as the thread of execution of the program.
-The code does the actual work, but the arrow keeps track of where
-execution in the program currently is. The code can move the arrow
-forward, it can do basic arithmetic, it can decide between choices with
-`if` statements, it can do things repeatedly with loops, it can jump
-into a method and then come back. A single thread of execution can do
-all of these things, but its arrow can't be two places at once. It can't
-be dividing two numbers in one part of the program and evaluating an
-`if` statement in another. However, there's a way to split this thread
-of execution so that two or more threads are executing different parts
-of the program, and the next section will show you how this is done in
+Quando você aprendeu a programar pela primeira vez, um dos maiores desafios foi provavelmente aprender a resolver um problema passo a passo. Cada linha do programa tinha de ser executada uma de cada vez, de forma lógica e
+deterministica. Os seres humanos não pensam naturalmente dessa forma. Temos a tendência de pular de uma coisa para outra, fazendo inferências e suposições,
+pensando em duas coisas não relacionadas ao mesmo tempo, e assim por diante. Como você sabe
+agora, só é possível escrever e depurar programas por causa da maneira metódica como eles funcionam.
+
+Você pode imaginar a execução de um programa como uma seta que aponta para uma linha de código, depois a próxima, depois a próxima e assim por diante. Podemos pensar no movimento dessa seta como a thread de execução do programa.
+O código faz o trabalho real, mas a seta mantém o controle de onde a
+execução do programa está no momento. O código pode mover a seta
+para frente, pode fazer aritmética básica, pode decidir entre escolhas com instruções pode fazer coisas repetidamente com loops, pode pular para um método e depois voltar. Uma única thread de execução pode fazer todas essas coisas, mas sua seta não pode estar em dois lugares ao mesmo tempo. Ela não pode
+dividir dois números em uma parte do programa e avaliar uma declaração `if` em outra. No entanto, há uma maneira de dividir essa thread
+de execução de modo que duas ou mais threads estejam executando partes diferentes
+do programa, e a próxima seção mostrará como isso é feito em
 Java.
 
-=== Syntax: Threads in Java
+=== Sintaxe: Threads em Java
 
-==== The `Thread` class
+==== A classe `Thread`
 
-Java, like many programming languages, includes the necessary features
-to package tasks and subtasks into threads. The `Thread` class and its
-subclasses provide the tools for creating and managing threads. For
-example, the following class definition allows objects of type
-`ThreadedTask` to be created. Such an object can be executed as a
-separate thread.
+O Java, como muitas linguagens de programação, inclui os recursos necessários para para empacotar tarefas e subtarefas em threads. A classe `Thread` e suas subclasses fornecem as ferramentas para criar e gerenciar threads. Por exemplo, a definição de classe a seguir permite que objetos do tipo
+`ThreadedTask` sejam criados. Esse objeto pode ser executado como uma thread separada.
 
 [source,java]
 ----
 public class ThreadedTask extends Thread {
-    // Add constructor and body of class
+    // Adicionar construtor e corpo da classe
 }
 ----
 
-The constructor is written just like any other constructor, but there's
-a special `run()` method in `Thread` that can be overridden by any of
-its subclasses. This method is the starting point for the thread of
-execution associated with an instance of the class. Most Java
-applications begin with a single main thread which starts in a `main()`
-method. Additional threads must start somewhere, and that place is the
-`run()` method. A Java application will continue to run as long as at
-least one thread is active. The following example shows two threads,
-each evaluating a separate subexpression as in <<figure-tasks_in_threads>>(b).
+O construtor é escrito como qualquer outro construtor, mas há um método especial
+`run()` em `Thread` que pode ser substituído por qualquer uma das 
+suas subclasses. Esse método é o ponto de partida para a thread de execução associada a uma instância da classe. A maioria dos aplicativos Java
+começa com uma única thread principal que é iniciado em um método `main()`. As threads adicionais devem começar em algum lugar, e esse lugar é o método
+ `run()`. Um aplicativo Java continuará a ser executado enquanto houver pelo menos uma thread ativa. O exemplo a seguir mostra duas threads,
+cada uma avaliando uma subexpressão separada, como em <<figure-tasks_in_threads>>(b).
 
 
 [[threadSamplesExample]]
-.Thread samples
+.Exemplos de Threads
 ====
+
+Vamos criar as classes `Thread1` e `Thread2`. As threads de execução criadas por instâncias 
+destas classes calculam, respetivamente, as duas subexpressões da <<figure-tasks_in_threads>>(b) e 
+guardam os valores calculados.
 
 We'll create `Thread1` and `Thread2` classes. The threads of execution
 created by instances of these classes compute, respectively, the two

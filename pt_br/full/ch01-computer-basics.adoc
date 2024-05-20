@@ -1,6 +1,16 @@
+:xrefstyle: short
+:example-number: 0
+:figure-number: 0
+:figure-caption: Figura
+:example-caption: Exemplo
+:table-caption: Tabela
+:section-caption: Seção
+:chapter-caption: Capítulo
+
 [#ch01-computer-basics]
 == Computer Basics
 :imagesdir: chapters/01-computer-basics/images
+:figure-caption: Figura
 
 [quote, Pablo Picasso]
 ____

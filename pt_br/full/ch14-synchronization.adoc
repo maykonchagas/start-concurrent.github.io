@@ -1,3 +1,12 @@
+:xrefstyle: short
+:example-number: 0
+:figure-number: 0
+:figure-caption: Figura
+:example-caption: Exemplo
+:table-caption: Tabela
+:section-caption: Seção
+:chapter-caption: Capítulo
+
 [#ch14-synchronization]
 :imagesdir: chapters/14-synchronization/images
 :programsdir: chapters/14-synchronization/programs

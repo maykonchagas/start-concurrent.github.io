@@ -1,6 +1,8 @@
 = Começando Concorrente: Uma Introdução Gentil à Programação Concorrente
 Barry Wittman <wittman1@otterbein.edu>; Tim Korb <jtk@purdue.edu>; Aditya Mathur <apm@purdue.edu>
 :doctype: book
+:lang: pt_BR
+:language: asciidoctor
 :toc: left
 :toc-title: Sumário
 :toclevels: 2
@@ -8,12 +10,11 @@ Barry Wittman <wittman1@otterbein.edu>; Tim Korb <jtk@purdue.edu>; Aditya Mathur
 :rouge-style: default
 :mathematical-format: svg
 :mathematical-ppi: 72
-:figure-caption: Figura
 :icons: font
 :xrefstyle: short
 :sectnums:
 :sectnumlevels: 3
-:listing-caption: Program
+:listing-caption: Listing
 ifdef::ebook-format[:leveloffset: -1]
 :google-analytics-account: G-VEDGKRPMMK
 
