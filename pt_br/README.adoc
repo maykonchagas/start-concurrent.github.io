@@ -2,95 +2,95 @@
 
 == README
 
-This repository contains the source for the textbook https://start-concurrent.github.io[Start Concurrent: A Gentle Introduction to Concurrent Programming].  It is licensed under  https://github.com/start-concurrent/start-concurrent.github.io/blob/master/LICENSE[Apache License 2.0].
+Este repositório contém o código fonte do livro https://start-concurrent.github.io[Start Concurrent: A Gentle Introduction to Concurrent Programming], essa é uma tradução livre, autorizada pelos autores https://github.com/bwittman[@bwittman] e https://github.com/jtkorb[@jtkorb], como segue na https://github.com/start-concurrent/start-concurrent.github.io/issues/145[issue #145]. Este livro está licenciado sob  https://github.com/start-concurrent/start-concurrent.github.io/blob/master/LICENSE[Apache License 2.0].
 
-=== Software Needed
+=== Softwares necessários
 
-==== Basic Software Needed
+==== Básico
 
-. https://git-scm.com/downloads[Git] (and a https://github.com[GitHub] account to access the
-https://github.com/start-concurrent/start-concurrent.github.io[Start Concurrent repository])
+. https://git-scm.com/downloads[Git] (e uma conta no https://github.com[GitHub] para acessar repositório
+https://github.com/start-concurrent/start-concurrent.github.io[Start Concurrent])
 . https://www.ruby-lang.org/en/downloads/[Ruby]
 . https://asciidoctor.org[Asciidoctor]
 . https://github.com/asciidoctor/asciidoctor-mathematical[Asciidoctor-Mathematical] (note special instructions below for installing Mathematical on MacOS Mojave)
 
-==== Packages for Chunking the Book into a File per Chapter
+==== Pacotes para dividir o livro em um arquivo por Capítulo
 
-. https://github.com/wshito/asciidoctor-chunker[Asciidoctor Chunker] (to convert to HTML chunks)
-. https://github.com/roswell/roswell[Roswell] (needed by Asciidoctor Chunker)
+. https://github.com/wshito/asciidoctor-chunker[Asciidoctor Chunker] (para converter para pedaços HTML)
+. https://github.com/roswell/roswell[Roswell] (necessário para Asciidoctor Chunker)
 
-==== MacOS: Installing Mathematical (and Asciidoctor-Mathematical) on Mojave (10.14.x)
+==== MacOS: Instalando o Mathematical (e o Asciidoctor-Mathematical) no Mojave (10.14.x)
 
-. Fix MacOS header file location by running this command in a terminal window: `open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg`.
-. Add the Homebrew package path to PKG_CONFIG_PATH (e.g., in .bash_profile): `export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"`
+. Corrija o local do arquivo de cabeçalho do MacOS executando este comando em uma janela de terminal: `open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg`.
+. Adicione o caminho do pacote Homebrew a PKG_CONFIG_PATH (por exemplo, em .bash_profile): `export PKG_CONFIG_PATH=“/usr/local/lib/pkgconfig”`
 
-These instructions are highly situation dependent.  See https://stackoverflow.com/questions/51274905/brew-install-on-mojave[Brew Install on Mojave] for additional suggestions.
+Essas instruções são altamente dependentes da situação.  Consulte https://stackoverflow.com/questions/51274905/brew-install-on-mojave[Brew Install on Mojave] para obter sugestões adicionais.
 
-=== Editing the Illustrations
+=== Editando as ilustrações
 
-Most (all?) "`figures`" in the book are https://www.adobe.com/products/illustrator.html[Adobe Illustrator] documents saved in PDF format, and are located in the `figures` subdirectory of the chapter in which they appear.  For each PDF file, there is a corresponding SVG file located in the `images` subdirectory.  The SVG file is what is imported into the AsciiDoc file.
+A maioria (todas?) das "`figuras`" no livro são feitas com o https://www.adobe.com/products/illustrator.html[Adobe Illustrator] e salvas em formato PDF, e estão localizadas na pasta `figures` de cada capítulo em que aparecem.  Para cada arquivo PDF, há um arquivo SVG correspondente localizado na pasta `images`.  O arquivo SVG é o que é importado pelo arquivo AsciiDoc.
 
-To create a new figure or edit an existing one...
+Para criar uma nova figura ou editar uma já existente...
 
-. Create or edit the Illustrator file in the figures subdirectory.
-. Save changes using the default (PDF) format.
-. Temporarily, convert all text to outlines:
+. Crie ou edite o arquivo do Illustrator no subdiretório de figuras.
+. Salvar as alterações usando o formato padrão (PDF).
+. Converter temporariamente todo o texto em contornos:
 .. `Select > Select All`
 .. `Type > Create Outlines`
-. Then, `Save a Copy As...`, using SVG format and deselecting the "`Preserve Illustrator Editing Capability`", to create an .SVG file in the `images` subdirectory.
+. Em seguida, `Save a Copy As...`, usando o formato SVG e desmarcando a opção “`Preserve Illustrator Editing Capability`”, para criar um arquivo .SVG no subdiretório `images`.
 
-Note: Don't save the outlined text version back to the original PDF file!
+Observação: não salve a versão de texto delineada de volta no arquivo PDF original!
 
-=== Generating the HTML File
+=== Gerando o arquivo HTML
 
 `$ ruby update-html.rb`
 
-Note: The https://github.com/jirutka/asciidoctor-rouge[Asciidoctor Rouge] plug-in is required for syntax highlighting.
+Observação: o plug-in https://github.com/jirutka/asciidoctor-rouge[Asciidoctor Rouge] é necessário para realçar a sintaxe.
 
-=== Generating an HTML File per Chapter
+=== Gerando um arquivo HTML por capítulo
 
-. Install https://github.com/wshito/asciidoctor-chunker[Asciidoctor Chunker], including
+. Instale https://github.com/wshito/asciidoctor-chunker[Asciidoctor Chunker], incluindo
 https://github.com/roswell/roswell[Roswell].
-. Create the full HTML version of the book: +
+. Crie a versão HTML completa do livro: +
 `ruby update-html.rb`
-. Convert using Asciidoctor Chunker (with `ascidoctor-chunker.ros` in your path): +
+. Converter usando o Asciidoctor Chunker (com `ascidoctor-chunker.ros` em seu caminho): +
 `$ asciidoctor-chunker.ros full/index.html -o chunked`
 
-A UNIX script to update both the full and chunked versions of the HTML is located in the root directory (`update-html`).
+Um script UNIX para atualizar as versões completa e em pedaços do HTML está localizado no diretório raiz (`update-html`).
 
-=== Generating the PDF
+=== Geração do PDF
 
-. Install the https://asciidoctor.org/docs/asciidoctor-pdf/[Asciidoctor PDF gem].
-. Run Asciidoctor PDF to do the conversion: +
+. Instale a gema https://asciidoctor.org/docs/asciidoctor-pdf/[Asciidoctor PDF].
+. Execute o Asciidoctor PDF para fazer a conversão: +
 `$ (cd full; asciidoctor-pdf index.adoc -D ../pdf)`
 
-==== Special Workaround for Tables
+==== Solução alternativa especial para tabelas
 
-There is a bug in the https://github.com/prawnpdf/prawn-table[prawn-table] code used by Asciidoctor-PDF when formatting certain tables.  There is discussion and a (so-far incomplete) fix https://discuss.asciidoctor.org/Problem-using-Asciidoctor-PDF-to-format-wide-autowidth-table-header-cells-td7220.html[here].
+Há um bug no código https://github.com/prawnpdf/prawn-table[prawn-table] usado pelo Asciidoctor-PDF ao formatar determinadas tabelas.  Há uma discussão e uma correção (até agora incompleta) https://discuss.asciidoctor.org/Problem-using-Asciidoctor-PDF-to-format-wide-autowidth-table-header-cells-td7220.html[aqui].
 
-Steps to fix the problem (simplified to not use a Gemfile):
+Etapas para corrigir o problema (simplificado para não usar um Gemfile):
 
-. Download the latest prawn-table code to a separate repository.
+. Baixe o código mais recente do prawn-table em um repositório separado.
 .. `git clone https://github.com/prawnpdf/prawn-table.git`
 .. `cd prawn-table`
-. Build and install.
+. Compilar e instalar.
 .. `gem build prawn-table.gemspec`
 .. `gem install prawn-table-0.2.3.gem`
 
-These steps do not fix all tables.  Specifically, not all tables with autowidth will work.  Advice
-from the Asciidoctor https://discuss.asciidoctor.org/Problem-using-Asciidoctor-PDF-to-format-wide-autowidth-table-header-cells-tp7220p7229.html[authority] is to use column ratios and table width.
+Essas etapas não corrigem todas as tabelas.  Especificamente, nem todas as tabelas com largura automática funcionarão.  Conselho
+do Asciidoctor https://discuss.asciidoctor.org/Problem-using-Asciidoctor-PDF-to-format-wide-autowidth-table-header-cells-tp7220p7229.html[authority] é usar as proporções das colunas e a largura da tabela.
 
-=== Generating E-Book Formats
+=== Geração de formatos de E-Book
 
-WARNING: In progress.
+ATENÇÃO: Em progresso.
 
-. Update book sources to comply with required format. (One time; in progress.)
-. Install the https://asciidoctor.org/docs/asciidoctor-epub3/[AsciiDoctor EPUB3 gem].
-. Run Asciidoctor EPUB3 to do the conversion: +
+. Atualizar fontes de livros para que estejam de acordo com o formato exigido. (Uma vez; em andamento.)
+. Instalar o https://asciidoctor.org/docs/asciidoctor-epub3/[AsciiDoctor EPUB3 gem].
+. Execute o Asciidoctor EPUB3 para fazer a conversão: +
 `$ (cd full; asciidoctor-epub3 index.adoc -D ../epub3)`
-. Additional steps (TBD) convert the document to Kindle format (KF8/MOBI).
+. Etapas adicionais (TBD) convertem o documento para o formato Kindle (KF8/MOBI).
 
-Other gems needed (apparently):
+Outras gemas necessárias (aparentemente):
 
 * https://rubygems.org/gems/gepub[gepub]
 * https://rubygems.org/gems/epubcheck[epubcheck]
