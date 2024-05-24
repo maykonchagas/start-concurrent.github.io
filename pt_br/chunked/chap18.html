@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -479,7 +479,7 @@ to be allocated and all the original elements copied over.</p>
 <div class="content">
 <img src="chapters/18-dynamic-data-structures/images/dynamicinsertion.svg" alt="dynamicinsertion" width="80%">
 </div>
-<div class="title">Figure 18.1 Insertion into full dynamic array requiring reallocation. Even if the array wasn’t full, all values after <code>14</code> would need to be moved back to insert <code>17</code> in order.</div>
+<div class="title">Figura 18.1 Insertion into full dynamic array requiring reallocation. Even if the array wasn’t full, all values after <code>14</code> would need to be moved back to insert <code>17</code> in order.</div>
 </div>
 <div class="paragraph">
 <p>Another drawback of dynamic arrays is that they’re poorly suited for
@@ -504,7 +504,7 @@ sequence of objects. Each object contains some data value (such as a
 <div class="content">
 <img src="chapters/18-dynamic-data-structures/images/linkedlist.svg" alt="linkedlist" width="100%">
 </div>
-<div class="title">Figure 18.2 Visualization of a linked list.</div>
+<div class="title">Figura 18.2 Visualization of a linked list.</div>
 </div>
 <div class="paragraph">
 <p>Linked lists are flexible because they have no preset size. Whenever a
@@ -591,7 +591,7 @@ once you determine that the array has more space than needed.</p>
 <div class="sect4">
 <h5 id="_a_simple_solution">A simple solution</h5>
 <div class="paragraph">
-<p><a href="chap18.html#ReadIntoFixedArrayProgram">Program 18.1</a> allocates an array of 10 <code>String</code> references
+<p><a href="chap18.html#ReadIntoFixedArrayProgram">Programa 18.1</a> allocates an array of 10 <code>String</code> references
 and reads a list of names from standard input until it reaches the end
 of the file, storing each name in successive array locations. If the
 number of names in the input is larger than the size of the array, it
@@ -606,7 +606,7 @@ than generating an exception, perhaps simply printing an explanatory
 message before exiting.</p>
 </div>
 <div id="ReadIntoFixedArrayProgram" class="listingblock">
-<div class="title">Program 18.1 Reads names into an array, sort, and print. If there are more than 10 lines in the input, an exception is generated.</div>
+<div class="title">Programa 18.1 Reads names into an array, sort, and print. If there are more than 10 lines in the input, an exception is generated.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
@@ -651,16 +651,16 @@ copying the old array into the new array, and continuing.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap18.html#fixedArrayExceptionExercise">Exercise 18.3</a></p>
+<p><a href="chap18.html#fixedArrayExceptionExercise">Exercício 18.3</a></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#ReadAndGrowArrayProgram">Program 18.2</a> begins like the previous program by
+<p><a href="chap18.html#ReadAndGrowArrayProgram">Programa 18.2</a> begins like the previous program by
 allocating a fixed-size array.</p>
 </div>
 <div id="ReadAndGrowArrayProgram" class="listingblock">
-<div class="title">Program 18.2 Reads names into an array, enlarging the array as necessary.</div>
+<div class="title">Programa 18.2 Reads names into an array, enlarging the array as necessary.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
@@ -709,7 +709,7 @@ to the current array with a reference to the new array.</td>
 </div>
 <div class="paragraph">
 <p>Note that it was necessary to refactor the code in
-<a href="chap18.html#ReadIntoFixedArrayProgram">Program 18.1</a> slightly. We added the <code>line</code> variable
+<a href="chap18.html#ReadIntoFixedArrayProgram">Programa 18.1</a> slightly. We added the <code>line</code> variable
 to hold the temporary result of reading the input line and moved the
 <code>count</code> increment outside of the <code>try</code>-<code>catch</code> block.</p>
 </div>
@@ -721,7 +721,7 @@ memory when doubling the size of the array.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap18.html#alternateGrowArrayExercise">Exercise 18.4</a></p>
+<p><a href="chap18.html#alternateGrowArrayExercise">Exercício 18.4</a></p>
 </div>
 </div>
 </div>
@@ -738,13 +738,13 @@ a new array.</p>
 <p>This line works because we know the only variable that references the
 array is <code>names</code>. If other variables referenced that array, they would
 continue to reference the old, smaller, and now out-of-date version of
-the <code>names</code> array. <a href="chap18.html#figure-dynamicproblems">Figure 18.3</a> shows this problem.</p>
+the <code>names</code> array. <a href="chap18.html#figure-dynamicproblems">Figura 18.3</a> shows this problem.</p>
 </div>
 <div id="figure-dynamicproblems" class="imageblock">
 <div class="content">
 <img src="chapters/18-dynamic-data-structures/images/dynamicproblems.svg" alt="dynamicproblems" width="100%">
 </div>
-<div class="title">Figure 18.3 A poorly designed dynamic array implementation. (a) Both <code>array1</code> and <code>array2</code> begin pointing at the same array. (b) A new array has been allocated, and <code>42</code> has been added to it. <code>array1</code> has been updated to point at the new array, but <code>array2</code> still points at the original.</div>
+<div class="title">Figura 18.3 A poorly designed dynamic array implementation. (a) Both <code>array1</code> and <code>array2</code> begin pointing at the same array. (b) A new array has been allocated, and <code>42</code> has been added to it. <code>array1</code> has been updated to point at the new array, but <code>array2</code> still points at the original.</div>
 </div>
 </div>
 <div class="sect4">
@@ -760,13 +760,13 @@ array.</p>
 <p>A solution to this problem is to create a new class whose objects
 contain the array as a private field. References to the array are then
 mediated, as usual, via accessor methods, which always refers to the
-same version of the array. <a href="chap18.html#DynamicArrayProgram">Program 18.3</a> is a simple
+same version of the array. <a href="chap18.html#DynamicArrayProgram">Programa 18.3</a> is a simple
 implementation of a dynamic array class. This class maintains an
 internal array of <code>String</code> objects, which it extends whenever a call to
 <code>set()</code> tries to write a new element just past the end of the array.</p>
 </div>
 <div id="DynamicArrayProgram" class="listingblock">
-<div class="title">Program 18.3 Class to manage a dynamic array. This array grows by doubling when more space is needed.</div>
+<div class="title">Programa 18.3 Class to manage a dynamic array. This array grows by doubling when more space is needed.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 
@@ -796,14 +796,14 @@ case this class is used by multiple threads simultaneously.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap18.html#shrinkingDynamicArrayExercise">Exercise 18.9</a><br>
-<a href="chap18.html#testUnsynchronizedDynamicArrayExercise">Exercise 18.12</a></p>
+<p><a href="chap18.html#shrinkingDynamicArrayExercise">Exercício 18.9</a><br>
+<a href="chap18.html#testUnsynchronizedDynamicArrayExercise">Exercício 18.12</a></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#UseDynamicArrayProgram">Program 18.4</a> illustrates how to modify and extend
-<a href="chap18.html#ReadIntoFixedArrayProgram">Program 18.1</a> to use this new class. Since the
+<p><a href="chap18.html#UseDynamicArrayProgram">Programa 18.4</a> illustrates how to modify and extend
+<a href="chap18.html#ReadIntoFixedArrayProgram">Programa 18.1</a> to use this new class. Since the
 array grows automatically, there is no need for the original program to
 check for out-of-bounds exceptions. Of course, the array expansion only
 works if the reference occurs exactly at the index corresponding to one
@@ -811,7 +811,7 @@ beyond the end of the array. Other out-of-bound references generate an
 exception.</p>
 </div>
 <div id="UseDynamicArrayProgram" class="listingblock">
-<div class="title">Program 18.4 Uses the <code>DynamicArray</code> class to store input read from a file.</div>
+<div class="title">Programa 18.4 Uses the <code>DynamicArray</code> class to store input read from a file.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 
@@ -867,7 +867,7 @@ three-quarters full.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap18.html#threeQuarterFullArrayExercise">Exercise 18.5</a></p>
+<p><a href="chap18.html#threeQuarterFullArrayExercise">Exercício 18.5</a></p>
 </div>
 </div>
 </div>
@@ -943,7 +943,7 @@ to read its value. Finally, we can create a <code>fillArray()</code> method that
 fills an array with the values in the list.</p>
 </div>
 <div id="LinkedListProgram" class="listingblock">
-<div class="title">Program 18.5 Basic implementation of a linked list class to hold <code>String</code> objects.</div>
+<div class="title">Programa 18.5 Basic implementation of a linked list class to hold <code>String</code> objects.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedList</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -978,13 +978,13 @@ fills an array with the values in the list.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#UseLinkedListProgram">Program 18.6</a> is a re-implementation of the
+<p><a href="chap18.html#UseLinkedListProgram">Programa 18.6</a> is a re-implementation of the
 name-reading program using class <code>LinkedList</code>. Note that no array needs
 to be pre-allocated. Instead, we capture all lines of input in a
 linked list called <code>list</code>.</p>
 </div>
 <div id="UseLinkedListProgram" class="listingblock">
-<div class="title">Program 18.6 Uses the <code>LinkedList</code> class to store input read from a file.</div>
+<div class="title">Programa 18.6 Uses the <code>LinkedList</code> class to store input read from a file.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
@@ -1019,7 +1019,7 @@ the linked list. The last node in the list, which contains the first
 <code>String</code> read in, has a <code>next</code> value of <code>null</code>.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#figure-linked_list_classes">Figure 18.4</a> shows a visualization of the contents of this
+<p><a href="chap18.html#figure-linked_list_classes">Figura 18.4</a> shows a visualization of the contents of this
 implementation of a linked list. An “X” is used in place of an arrow
 that points to <code>null</code>.</p>
 </div>
@@ -1027,12 +1027,12 @@ that points to <code>null</code>.</p>
 <div class="content">
 <img src="chapters/18-dynamic-data-structures/images/linkedlistclasses.svg" alt="linkedlistclasses" width="100%">
 </div>
-<div class="title">Figure 18.4 Visualization of linked list implementation with classes.</div>
+<div class="title">Figura 18.4 Visualization of linked list implementation with classes.</div>
 </div>
 <div class="paragraph">
 <p>Since we also increment the <code>size</code> field inside of <code>LinkedList</code> on each
 add, we know how many <code>String</code> objects it contains. Thus, we know how large of
-an array to allocate in <a href="chap18.html#UseLinkedListProgram">Program 18.6</a>. The <code>fillArray()</code> method visits
+an array to allocate in <a href="chap18.html#UseLinkedListProgram">Programa 18.6</a>. The <code>fillArray()</code> method visits
 every node in the linked list, storing its <code>value</code> into the allocated array.
 array. We sort the returned array and then print it as before.</p>
 </div>
@@ -1055,13 +1055,13 @@ the list (the one with <code>next</code> pointing to <code>null</code>) containi
 references the <em>tail</em> of the list.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#LinkedListWithTailProgram">Program 18.7</a> adds a <em>tail pointer</em> called
+<p><a href="chap18.html#LinkedListWithTailProgram">Programa 18.7</a> adds a <em>tail pointer</em> called
 <code>tail</code> to the <code>LinkedList</code> class. Note that we have changed the <code>add()</code>
 method to the <code>addFirst()</code> method, and we have also added an <code>addLast()</code>
 method to make it easy to append elements to the end of a linked list.</p>
 </div>
 <div id="LinkedListWithTailProgram" class="listingblock">
-<div class="title">Program 18.7 We can append to the end of a linked list by using an additional variable, <code>tail</code>, to reference the last element (tail) of the list.</div>
+<div class="title">Programa 18.7 We can append to the end of a linked list by using an additional variable, <code>tail</code>, to reference the last element (tail) of the list.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedListWithTail</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -1140,7 +1140,7 @@ alternative solution is to insert the elements into the linked list at
 the right point in the first place.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#SortedLinkedListProgram">Program 18.8</a> is a version of a linked list that
+<p><a href="chap18.html#SortedLinkedListProgram">Programa 18.8</a> is a version of a linked list that
 inserts elements into the linked list in sorted order. The only
 significant difference between it and the previous implementations of a
 linked list is its <code>add()</code> method. This method walks down the linked
@@ -1151,7 +1151,7 @@ empty list, inserting at the beginning, inserting in the middle, and inserting
 at the end.</p>
 </div>
 <div id="SortedLinkedListProgram" class="listingblock">
-<div class="title">Program 18.8 Linked list class in which calling the <code>add()</code> method inserts each value in sorted order.</div>
+<div class="title">Programa 18.8 Linked list class in which calling the <code>add()</code> method inserts each value in sorted order.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SortedLinkedList</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -1341,7 +1341,7 @@ are. Thus, we can specify an interface called <code>Stack</code> that requires
 these four methods.</p>
 </div>
 <div id="StackProgram" class="listingblock">
-<div class="title">Program 18.9 Interface specifying the stack ADT.</div>
+<div class="title">Programa 18.9 Interface specifying the stack ADT.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Stack</span> <span class="o">{</span>
     <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">);</span>
@@ -1356,10 +1356,10 @@ these four methods.</p>
 <div class="paragraph">
 <p>All the operations defined by the stack ADT (and interface) are
 implemented as methods in the class <code>LinkedListStack</code>, shown in
-<a href="chap18.html#LinkedListStackProgram">Program 18.10</a>.</p>
+<a href="chap18.html#LinkedListStackProgram">Programa 18.10</a>.</p>
 </div>
 <div id="LinkedListStackProgram" class="listingblock">
-<div class="title">Program 18.10 Class to implement a stack ADT using a linked list.</div>
+<div class="title">Programa 18.10 Class to implement a stack ADT using a linked list.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedListStack</span> <span class="kd">implements</span> <span class="nc">Stack</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -1438,12 +1438,12 @@ is empty. More elaborate error handling is possible by throwing an exception.</p
 <div class="sect4">
 <h5 id="_dynamic_array_implementation">Dynamic array implementation</h5>
 <div class="paragraph">
-<p>Like the dynamic array example of <a href="chap18.html#DynamicArrayProgram">Program 18.3</a>,
-<a href="chap18.html#DynamicArrayStackProgram">Program 18.11</a> implements a stack of <code>String</code>
+<p>Like the dynamic array example of <a href="chap18.html#DynamicArrayProgram">Programa 18.3</a>,
+<a href="chap18.html#DynamicArrayStackProgram">Programa 18.11</a> implements a stack of <code>String</code>
 values using a dynamic array data structure.</p>
 </div>
 <div id="DynamicArrayStackProgram" class="listingblock">
-<div class="title">Program 18.11 Illustrates a stack ADT partially implemented using a dynamic array.</div>
+<div class="title">Programa 18.11 Illustrates a stack ADT partially implemented using a dynamic array.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 
@@ -1493,12 +1493,12 @@ fully implemented.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap18.html#stackMethodsExercise">Exercise 18.7</a></p>
+<p><a href="chap18.html#stackMethodsExercise">Exercício 18.7</a></p>
 </div>
 </div>
 </div>
 <div id="postfixComputationExample" class="exampleblock">
-<div class="title">Example 18.1 Postfix computation</div>
+<div class="title">Exemplo 18.1 Postfix computation</div>
 <div class="content">
 <div class="paragraph">
 <p>At the beginning of the chapter, we introduced the problem of converting
@@ -1537,7 +1537,7 @@ infix to postfix conversion problem. By doing so, we can keep exactly
 the same definition for <code>TermStack</code> given next.</p>
 </div>
 <div id="TermStackProgram" class="listingblock">
-<div class="title">Program 18.12 Class to manage a stack of <code>Term</code> objects.</div>
+<div class="title">Programa 18.12 Class to manage a stack of <code>Term</code> objects.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TermStack</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -1582,7 +1582,7 @@ the same definition for <code>TermStack</code> given next.</p>
 </div>
 <div class="paragraph">
 <p>This class gives a linked list implementation of a stack. In fact, it’s
-virtually identical to <a href="chap18.html#LinkedListStackProgram">Program 18.10</a> with the
+virtually identical to <a href="chap18.html#LinkedListStackProgram">Programa 18.10</a> with the
 substitution of <code>Term</code> for <code>String</code>.</p>
 </div>
 <div class="paragraph">
@@ -1590,7 +1590,7 @@ substitution of <code>Term</code> for <code>String</code>.</p>
 short.</p>
 </div>
 <div id="PostfixEvaluatorProgram" class="listingblock">
-<div class="title">Program 18.13 Evaluates a postfix expression.</div>
+<div class="title">Programa 18.13 Evaluates a postfix expression.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1713,7 +1713,7 @@ Return <code>true</code> if the queue is empty and <code>false</code> otherwise.
 these four methods.</p>
 </div>
 <div id="QueueProgram" class="listingblock">
-<div class="title">Program 18.14 Interface specifying the queue ADT.</div>
+<div class="title">Programa 18.14 Interface specifying the queue ADT.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Queue</span> <span class="o">{</span>
     <span class="kt">void</span> <span class="nf">enqueue</span><span class="o">(</span><span class="nc">String</span> <span class="n">value</span><span class="o">);</span>
@@ -1726,7 +1726,7 @@ these four methods.</p>
 <div class="sect4">
 <h5 id="_linked_list_implementation_2">Linked list implementation</h5>
 <div class="paragraph">
-<p><a href="chap18.html#LinkedListQueueProgram">Program 18.15</a> shows an implementation of the queue
+<p><a href="chap18.html#LinkedListQueueProgram">Programa 18.15</a> shows an implementation of the queue
 ADT operations using a linked list. Because we need to keep track of
 nodes at both ends of the linked list, we maintain <code>head</code> and <code>tail</code>
 variables to reference these nodes. The <code>enqueue()</code> and <code>dequeue()</code>
@@ -1734,7 +1734,7 @@ methods manipulate these variables to manage the queue as values are put
 onto it and removed from it.</p>
 </div>
 <div id="LinkedListQueueProgram" class="listingblock">
-<div class="title">Program 18.15 Illustrates a queue ADT implemented using a linked list.</div>
+<div class="title">Programa 18.15 Illustrates a queue ADT implemented using a linked list.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedListQueue</span> <span class="kd">implements</span> <span class="nc">Queue</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -1799,7 +1799,7 @@ method in the latter.</p>
 <p>Most of the dynamic data structures we’ve seen in this chapter store
 values of type <code>String</code>. We’ve explored dynamic arrays of <code>String</code> values,
 linked lists of <code>String</code> objects, queues of <code>String</code> objects, and stacks
-of <code>String</code> objects. In <a href="chap18.html#postfixComputationExample">Example 18.1</a>, we
+of <code>String</code> objects. In <a href="chap18.html#postfixComputationExample">Exemplo 18.1</a>, we
 created the stack class <code>TermStack</code> to hold <code>Term</code> objects, but
 <code>TermStack</code> is identical to the existing <code>LinkedListStack</code> class with
 the substitution of <code>Term</code> for <code>String</code>.</p>
@@ -1809,7 +1809,7 @@ the substitution of <code>Term</code> for <code>String</code>.</p>
 structures? What if you wanted a stack of <code>int</code> values or a queue of
 <code>Thread</code> objects? You might think that you need to create a distinct but
 similar implementation of each ADT for each type, as we do in
-<a href="chap18.html#postfixComputationExample">Example 18.1</a>.</p>
+<a href="chap18.html#postfixComputationExample">Exemplo 18.1</a>.</p>
 </div>
 <div class="paragraph">
 <p>One possible solution is to take advantage of the fact that a variable
@@ -1817,11 +1817,11 @@ of type <code>Object</code> can hold a reference to a value of any reference typ
 since all classes are subtypes of <code>Object</code>. If we create data
 structures using <code>Object</code> as the underlying type, we can store values of
 any type in the data structure. For example,
-<a href="chap18.html#ObjectStackProgram">Program 18.16</a> is an implementation of a stack ADT with
+<a href="chap18.html#ObjectStackProgram">Programa 18.16</a> is an implementation of a stack ADT with
 an underlying data type of <code>Object</code>.</p>
 </div>
 <div id="ObjectStackProgram" class="listingblock">
-<div class="title">Program 18.16 Class that implements a stack of <code>Object</code> references.</div>
+<div class="title">Programa 18.16 Class that implements a stack of <code>Object</code> references.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ObjectStack</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -1909,7 +1909,7 @@ preserves the advantages of compile-time type checking and eliminates
 the need for run-time casting. A <em>generic class</em> is a class that gives a
 template for creating classes in which a placeholder for an underlying
 data type can be filled in when a specific instance of that class is
-created. In the case of <a href="chap18.html#postfixComputationExample">Example 18.1</a>, we need
+created. In the case of <a href="chap18.html#postfixComputationExample">Exemplo 18.1</a>, we need
 a stack that can hold <code>Term</code> objects instead of <code>String</code> objects, and a
 generic class would allow us to create a stack of <strong>any</strong> reference type.</p>
 </div>
@@ -1998,16 +1998,16 @@ a warning when raw types are used.</p>
 <p>The next two examples illustrate defining generic classes in Java.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 18.2 Defining a generic linked list</div>
+<div class="title">Exemplo 18.2 Defining a generic linked list</div>
 <div class="content">
 <div class="paragraph">
-<p><a href="chap18.html#GenericLinkedListProgram">Program 18.17</a> defines a generic version of the
+<p><a href="chap18.html#GenericLinkedListProgram">Programa 18.17</a> defines a generic version of the
 <code>LinkedList</code> class shown earlier. Note that it’s necessary to include
 the type parameter <code>T</code> on the outer class as well as the nested class
 <code>Node</code>.</p>
 </div>
 <div id="GenericLinkedListProgram" class="listingblock">
-<div class="title">Program 18.17 Class that implements a generic linked list.</div>
+<div class="title">Programa 18.17 Class that implements a generic linked list.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericLinkedList</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
@@ -2042,7 +2042,7 @@ the type parameter <code>T</code> on the outer class as well as the nested class
 </div>
 </div>
 <div class="paragraph">
-<p>This class is almost indistinguishable from <a href="chap18.html#LinkedListProgram">Program 18.5</a> except that
+<p>This class is almost indistinguishable from <a href="chap18.html#LinkedListProgram">Programa 18.5</a> except that
 is uses type <code>T</code> instead of <code>String</code>.</p>
 </div>
 <div class="paragraph">
@@ -2065,12 +2065,12 @@ class. For example, if you want to create an instance of the
 <code>new GenericClass&lt;String&gt;()</code>.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#UseGenericLinkedListProgram">Program 18.18</a> uses the generic class
+<p><a href="chap18.html#UseGenericLinkedListProgram">Programa 18.18</a> uses the generic class
 <code>GenericLinkedList</code> parameterized by <code>String</code> to re-implement
-<a href="chap18.html#UseLinkedListProgram">Program 18.6</a>.</p>
+<a href="chap18.html#UseLinkedListProgram">Programa 18.6</a>.</p>
 </div>
 <div id="UseGenericLinkedListProgram" class="listingblock">
-<div class="title">Program 18.18 Uses the generic class <code>GenericLinkedList</code> to create and use a linked list of Strings.</div>
+<div class="title">Programa 18.18 Uses the generic class <code>GenericLinkedList</code> to create and use a linked list of Strings.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
@@ -2142,7 +2142,7 @@ object and a <code>Set</code> (returned by the <code>entrySet()</code> method of
 used as targets of enhanced <code>for</code> loops.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 18.3 Vectors</div>
+<div class="title">Exemplo 18.3 Vectors</div>
 <div class="content">
 <div class="paragraph">
 <p>A <code>Vector</code> (<code>java.util.Vector</code>) implements an array of objects that can
@@ -2156,14 +2156,14 @@ Arbitrary elements can also be deleted from the <code>Vector</code> using the <c
 method.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#VectorExampleProgram">Program 18.19</a> illustrates a use of the <code>Vector</code>
+<p><a href="chap18.html#VectorExampleProgram">Programa 18.19</a> illustrates a use of the <code>Vector</code>
 class. The program creates an empty <code>Vector</code> and generates random
 integers between 1 and 10, appending them to the end of the vector,
 until their sum is at least 100. Then, it prints the integers, their
 sum, and how many were generated.</p>
 </div>
 <div id="VectorExampleProgram" class="listingblock">
-<div class="title">Program 18.19 Illustrates the use of the Vector class.</div>
+<div class="title">Programa 18.19 Illustrates the use of the Vector class.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Random</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Vector</span><span class="o">;</span>
@@ -2189,7 +2189,7 @@ sum, and how many were generated.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Output from a typical run of <a href="chap18.html#VectorExampleProgram">Program 18.19</a> is shown
+<p>Output from a typical run of <a href="chap18.html#VectorExampleProgram">Programa 18.19</a> is shown
 below:</p>
 </div>
 <div class="literalblock">
@@ -2215,7 +2215,7 @@ below:</p>
 </div>
 </div>
 <div id="mapsExample" class="exampleblock">
-<div class="title">Example 18.4 Maps</div>
+<div class="title">Exemplo 18.4 Maps</div>
 <div class="content">
 <div class="paragraph">
 <p>The <code>HashMap</code>(<code>java.util.HashMap</code>) is a very useful, general-purpose
@@ -2225,7 +2225,7 @@ associates unique keys with values. You can think of it as <em>mapping</em> a
 arbitrary Java classes.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#HashMapExampleProgram">Program 18.20</a> reads a sequence of lines containing
+<p><a href="chap18.html#HashMapExampleProgram">Programa 18.20</a> reads a sequence of lines containing
 names and ages. For simplicity, each name is one word, and each age is a
 simple integer. It stores these (name, age) pairs in a
 <code>HashMap&lt;String,Integer&gt;</code> data structure. Once all the input is read and
@@ -2234,7 +2234,7 @@ simple integer. It stores these (name, age) pairs in a
 ages of each person in the input file.</p>
 </div>
 <div id="HashMapExampleProgram" class="listingblock">
-<div class="title">Program 18.20 Illustrates using a <code>HashMap</code> dictionary to store a mapping from names to ages.</div>
+<div class="title">Programa 18.20 Illustrates using a <code>HashMap</code> dictionary to store a mapping from names to ages.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
@@ -2315,7 +2315,7 @@ Hamcost -&gt; 2</pre>
 <h3 id="_solution_infix_conversion">18.6. Solution: Infix conversion</h3>
 <div class="paragraph">
 <p>Here we give our solution to the infix conversion problem from the
-beginning of the chapter. As in <a href="chap18.html#postfixComputationExample">Example 18.1</a>,
+beginning of the chapter. As in <a href="chap18.html#postfixComputationExample">Exemplo 18.1</a>,
 we use a stack of <code>Term</code> objects to solve the problem. However, we
 expand the <code>Term</code> class to hold both operands and operators. We only add
 methods and fields to the earlier definition, taking nothing away. In
@@ -2408,7 +2408,7 @@ parenthesis <code>(</code>.</p>
 <p>With this updated <code>Term</code> class, we can create <code>Term</code> objects that hold
 either an operator or an operand and allow the precedence of operators
 to be compared. We use exactly the same <code>TermStack</code> class from
-<a href="chap18.html#postfixComputationExample">Example 18.1</a> for our stack. All that remains
+<a href="chap18.html#postfixComputationExample">Exemplo 18.1</a> for our stack. All that remains
 is the client code that parses the input.</p>
 </div>
 <div class="listingblock">
@@ -2521,7 +2521,7 @@ stack and add them to the output.</td>
 </div>
 <div class="paragraph">
 <p>The output from this program could be used as the input to the postfix
-evaluator program from <a href="chap18.html#postfixComputationExample">Example 18.1</a>. A more complex program
+evaluator program from <a href="chap18.html#postfixComputationExample">Exemplo 18.1</a>. A more complex program
 that did both the conversion and the calculation might want to store
 everything in a queue of <code>Term</code> objects instead of producing <code>String</code> output and
 then recreating <code>Term</code> objects.</p>
@@ -2538,12 +2538,12 @@ elements. As you’ve seen, multiple threads operating on the same data
 can produce unexpected results.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#UseLinkedListQueueProgram">Program 18.21</a> is a simple multi-threaded
+<p><a href="chap18.html#UseLinkedListQueueProgram">Programa 18.21</a> is a simple multi-threaded
 program to test (and break!) the thread safety of the queue
-implementation in <a href="chap18.html#LinkedListQueueProgram">Program 18.15</a>.</p>
+implementation in <a href="chap18.html#LinkedListQueueProgram">Programa 18.15</a>.</p>
 </div>
 <div id="UseLinkedListQueueProgram" class="listingblock">
-<div class="title">Program 18.21 Tests the queue implementation, including its thread safety.</div>
+<div class="title">Programa 18.21 Tests the queue implementation, including its thread safety.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UseLinkedListQueue</span> <span class="kd">extends</span> <span class="nc">Thread</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">THREADS</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
@@ -2671,7 +2671,7 @@ Thread ID removed from queue: null</pre>
 <div class="paragraph">
 <p>How does this implementation fail? Consider the situation in which two
 threads are attempting to put a value in the queue simultaneously by calling
-the <code>enqueue()</code> method in <a href="chap18.html#LinkedListQueueProgram">Program 18.15</a>. Suppose
+the <code>enqueue()</code> method in <a href="chap18.html#LinkedListQueueProgram">Programa 18.15</a>. Suppose
 the first thread tests the queue and finds it empty (<code>isEmpty()</code> returns
 <code>true</code>) but is then interrupted. If a second thread gets control, it will
 also see that the queue’s empty, set the <code>head</code> and <code>tail</code>
@@ -2703,7 +2703,7 @@ modify the state of the queue at any point after the <code>isEmpty()</code>
 method is called anyway.</p>
 </div>
 <div id="LinkedListQueueSafeProgram" class="listingblock">
-<div class="title">Program 18.22 Synchronized version of the queue class that allows thread-safe use.</div>
+<div class="title">Programa 18.22 Synchronized version of the queue class that allows thread-safe use.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LinkedListQueueSafe</span> <span class="kd">implements</span> <span class="nc">Queue</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
@@ -2755,7 +2755,7 @@ method is called anyway.</p>
 </div>
 <div class="paragraph">
 <p>With both <code>enqueue()</code> and <code>dequeue()</code> methods synchronized as in
-<a href="chap18.html#LinkedListQueueSafeProgram">Program 18.22</a>, a typical output generated by the
+<a href="chap18.html#LinkedListQueueSafeProgram">Programa 18.22</a>, a typical output generated by the
 program is shown below.</p>
 </div>
 <div class="literalblock">
@@ -2798,7 +2798,7 @@ implement, has subinterfaces <code>Set</code>, <code>List</code>, and <code>Queu
 basic operations in Java that are needed to implement a set, list, or
 queue of items. The <code>Map</code> interface gives the basic operations for a
 dictionary, a collection of key-value pairs, one implementation of which
-is the <code>HashMap</code> from <a href="chap18.html#mapsExample">Example 18.4</a>.</p>
+is the <code>HashMap</code> from <a href="chap18.html#mapsExample">Exemplo 18.4</a>.</p>
 </div>
 <div class="paragraph">
 <p>As we mentioned in <a href="chap10.html">Chapter 10</a>, an interface can’t
@@ -2808,7 +2808,7 @@ interface it implements. The programmer must read the documentation
 carefully in order to know if a container is thread safe and react accordingly.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 18.5 ArrayList</div>
+<div class="title">Exemplo 18.5 ArrayList</div>
 <div class="content">
 <div class="paragraph">
 <p>An <code>ArrayList</code> is like a <code>Vector</code>, with essentially the same interface
@@ -2818,11 +2818,11 @@ internal state of the <code>ArrayList</code> might become corrupt, or the result
 incorrect.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap18.html#ArrayListExampleProgram">Program 18.23</a> is an example of synchronizing updates to the
+<p><a href="chap18.html#ArrayListExampleProgram">Programa 18.23</a> is an example of synchronizing updates to the
 <code>ArrayList</code> class with multiple threads.</p>
 </div>
 <div id="ArrayListExampleProgram" class="listingblock">
-<div class="title">Program 18.23 Example of thread-safe use of an <code>ArrayList</code>.</div>
+<div class="title">Programa 18.23 Example of thread-safe use of an <code>ArrayList</code>.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 
@@ -2983,7 +2983,7 @@ tools.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap18.html#vectorTimingExercise">Exercise 18.16</a></p>
+<p><a href="chap18.html#vectorTimingExercise">Exercício 18.16</a></p>
 </div>
 </div>
 </div>
@@ -3005,22 +3005,22 @@ situations is it better to use a linked list? Explain why in each case.</p>
 </li>
 <li>
 <p><a id="fixedArrayExceptionExercise"></a> On which line in
-<a href="chap18.html#ReadIntoFixedArrayProgram">Program 18.1</a> is an exception generated? Why?</p>
+<a href="chap18.html#ReadIntoFixedArrayProgram">Programa 18.1</a> is an exception generated? Why?</p>
 </li>
 <li>
 <p><a id="alternateGrowArrayExercise"></a> In
-<a href="chap18.html#ReadAndGrowArrayProgram">Program 18.2</a>, is it possible to post-increment
+<a href="chap18.html#ReadAndGrowArrayProgram">Programa 18.2</a>, is it possible to post-increment
 <code>count</code> inside the <code>try</code> clause rather than at the bottom of the <code>while</code>
 loop?</p>
 </li>
 <li>
 <p><a id="threeQuarterFullArrayExercise"></a> Explain why the array inside the <code>names</code>
-object in <a href="chap18.html#UseDynamicArrayProgram">Program 18.4</a> is, on average, only three-quarters
+object in <a href="chap18.html#UseDynamicArrayProgram">Programa 18.4</a> is, on average, only three-quarters
 full.</p>
 </li>
 <li>
 <p>Based on the stack implementation in
-<a href="chap18.html#LinkedListStackProgram">Program 18.10</a>, draw a picture of the linked list
+<a href="chap18.html#LinkedListStackProgram">Programa 18.10</a>, draw a picture of the linked list
 structure after each of the following statements.</p>
 <div class="listingblock">
 <div class="content">
@@ -3038,11 +3038,11 @@ structure after each of the following statements.</p>
 <li>
 <p><a id="stackMethodsExercise"></a> Implement the methods <code>top()</code> and
 <code>isEmpty()</code> for the dynamic array implementation of the stack in
-<a href="chap18.html#DynamicArrayStackProgram">Program 18.11</a>.</p>
+<a href="chap18.html#DynamicArrayStackProgram">Programa 18.11</a>.</p>
 </li>
 <li>
 <p>Based on queue implementation in
-<a href="chap18.html#LinkedListQueueProgram">Program 18.15</a>, draw a picture of the linked list
+<a href="chap18.html#LinkedListQueueProgram">Programa 18.15</a>, draw a picture of the linked list
 structure after each of the following statements.</p>
 <div class="listingblock">
 <div class="content">
@@ -3066,13 +3066,13 @@ structure after each of the following statements.</p>
 <ol class="arabic" start="9">
 <li>
 <p><a id="shrinkingDynamicArrayExercise"></a> Implement a version of
-<code>DynamicArray</code> from <a href="chap18.html#DynamicArrayProgram">Program 18.3</a> that shrinks the size of its
+<code>DynamicArray</code> from <a href="chap18.html#DynamicArrayProgram">Programa 18.3</a> that shrinks the size of its
 internal storage array to half its size when only one quarter of its capacity
 is being used. This design can save significant amounts of space if a large
 number of items are added to the dynamic array at once and then removed.</p>
 </li>
 <li>
-<p>Consider <a href="chap18.html#LinkedListWithTailProgram">Program 18.7</a> which defines the
+<p>Consider <a href="chap18.html#LinkedListWithTailProgram">Programa 18.7</a> which defines the
 <code>LinkedListWithTail</code> class for storing a linked list of <code>String</code> values.
 Add a <code>reverse()</code> method to the class which reverses the order of
 the nodes in the linked list. The key idea is make a new linked list
@@ -3106,7 +3106,7 @@ fastest way to sort a linked list. We introduce a faster approach in
 <li>
 <p><a id="testUnsynchronizedDynamicArrayExercise"></a> Create JUnit test cases to
 verify that the <code>synchronized</code> keywords are needed on the <code>set()</code> and
-<code>sort()</code> methods of the <code>DynamicArray</code> example from <a href="chap18.html#DynamicArrayProgram">Program 18.3</a>.
+<code>sort()</code> methods of the <code>DynamicArray</code> example from <a href="chap18.html#DynamicArrayProgram">Programa 18.3</a>.
 To test the <code>set()</code> method, you can create one thread that repeatedly sets,
 gets, and tests a changing value at a fixed location (e.g., 0) and another
 thread that continuously appends to the array (causing it to grow by copy
@@ -3187,7 +3187,7 @@ How much slower are the adds to the <code>Vector&lt;Integer&gt;</code> container
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

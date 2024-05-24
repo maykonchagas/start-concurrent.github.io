@@ -1,12 +1,3 @@
-:xrefstyle: short
-:example-number: 0
-:figure-number: 0
-:figure-caption: Figura
-:example-caption: Exemplo
-:table-caption: Tabela
-:section-caption: Seção
-:chapter-caption: Capítulo
-
 [#ch09-classes]
 :imagesdir: chapters/09-classes/images
 :programsdir: chapters/09-classes/programs

@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -588,7 +588,7 @@ some developers assume that it takes ten times as much effort to fix a
 problem at the current step than it would have at the previous step.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2.1 Rising costs of fixing an error</div>
+<div class="title">Exemplo 2.1 Rising costs of fixing an error</div>
 <div class="content">
 <div class="paragraph">
 <p>Imagine that your company works on computer-aided design (CAD) software.
@@ -628,7 +628,7 @@ look at an example using the sample ball bouncing problem to walk
 some of its steps.</p>
 </div>
 <div id="ballBouncingProblemExample" class="exampleblock">
-<div class="title">Example 2.2 Ball bouncing problem and plan</div>
+<div class="title">Exemplo 2.2 Ball bouncing problem and plan</div>
 <div class="content">
 <div class="paragraph">
 <p>Recall the statement of the problem from the <strong>Problem</strong> section:</p>
@@ -652,7 +652,7 @@ calculating the next bounce. Thus, it will bounce to a height of
 <em>hc</em><sup>2</sup> the second time. By examining this pattern for
 the third and fourth bounce, it becomes clear that the ball will bounce
 to a height of <em>hc</em><sup><em>k</em></sup> on the
-<em>k</em><sup>th</sup> time. See <a href="chap2.html#bouncingBallFigure">Figure 2.1</a>
+<em>k</em><sup>th</sup> time. See <a href="chap2.html#bouncingBallFigure">Figura 2.1</a>
 for a graphic description of this process.</p>
 </div>
 <div class="paragraph">
@@ -666,7 +666,7 @@ we don’t need to worry about any other details.</p>
 <div class="content">
 <img src="chapters/02-intro/images/bouncingBall.svg" alt="bouncingBall" width="75%">
 </div>
-<div class="title">Figure 2.1 A ball is dropped from height <em>h</em>. The ball rises to height <em>hc</em> after the first bounce and to <em>hc</em><sup>2</sup> after the second.</div>
+<div class="title">Figura 2.1 A ball is dropped from height <em>h</em>. The ball rises to height <em>hc</em> after the first bounce and to <em>hc</em><sup>2</sup> after the second.</div>
 </div>
 </li>
 <li>
@@ -692,7 +692,7 @@ bounce.</p>
 <p>Display the calculated height.</p>
 <div class="paragraph">
 <p>The solution to each of the three subproblems requires input and
-generates an output. <a href="chap2.html#subProblemRelationFigure">Figure 2.2</a> shows how these
+generates an output. <a href="chap2.html#subProblemRelationFigure">Figura 2.2</a> shows how these
 solutions are connected. The first box in this figure represents the
 solution to subproblem 1. It asks a user to input values of parameters
 <em>h</em>, <em>c</em>, and <em>k</em>. It sends these
@@ -705,7 +705,7 @@ solution to subproblem 3. This third box displays the calculated height.</p>
 <div class="content">
 <img src="chapters/02-intro/images/subProblemRelation.svg" alt="subProblemRelation" width="75%">
 </div>
-<div class="title">Figure 2.2 Connections between solutions to the three subproblems in the bouncing ball problem.</div>
+<div class="title">Figura 2.2 Connections between solutions to the three subproblems in the bouncing ball problem.</div>
 </div>
 </dd>
 </dl>
@@ -896,7 +896,7 @@ nothing.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap2.html#javaKeywordsExercise">Exercise 2.7</a></p>
+<p><a href="chap2.html#javaKeywordsExercise">Exercício 2.7</a></p>
 </div>
 </div>
 </div>
@@ -1165,20 +1165,20 @@ introduces and solves a new problem.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap2.html#integerSumExercise">Exercise 2.13</a></p>
+<p><a href="chap2.html#integerSumExercise">Exercício 2.13</a></p>
 </div>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2.3 Command line input</div>
+<div class="title">Exemplo 2.3 Command line input</div>
 <div class="content">
 <div class="paragraph">
 <p>Subproblem 1 requires us to get the height, coefficient of restitution,
-and number of bounces from the user. <a href="chap2.html#GetInputCLIProgram">Program 2.1</a>
+and number of bounces from the user. <a href="chap2.html#GetInputCLIProgram">Programa 2.1</a>
 shows a Java program to solve this subproblem.</p>
 </div>
 <div id="GetInputCLIProgram" class="listingblock">
-<div class="title">Program 2.1 A Java program to get the height, coefficient of restitution, and number of bounces from the command line.</div>
+<div class="title">Programa 2.1 A Java program to get the height, coefficient of restitution, and number of bounces from the command line.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
 
@@ -1256,14 +1256,14 @@ problem. We haven’t added the code to compute the answer or display it.</td>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap2.html#importExercise">Exercise 2.8</a></p>
+<p><a href="chap2.html#importExercise">Exercício 2.8</a></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div id="inputForDistanceComputationExample" class="exampleblock">
-<div class="title">Example 2.4 Input for distance computation</div>
+<div class="title">Exemplo 2.4 Input for distance computation</div>
 <div class="content">
 <div class="paragraph">
 <p>Let’s write a program that takes as input the speed of a moving object
@@ -1288,11 +1288,11 @@ three subproblems.</p>
 </dl>
 </div>
 <div class="paragraph">
-<p><a href="chap2.html#DistanceProgram">Program 2.2</a> solves each of these subproblems in order,
+<p><a href="chap2.html#DistanceProgram">Programa 2.2</a> solves each of these subproblems in order,
 using the command-line input and output tools we have just discussed.</p>
 </div>
 <div id="DistanceProgram" class="listingblock">
-<div class="title">Program 2.2 Computes the distance a moving object travels.</div>
+<div class="title">Programa 2.2 Computes the distance a moving object travels.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
 
@@ -1408,13 +1408,13 @@ dialog.</td>
 </tbody></table>
 </div>
 <div class="paragraph">
-<p><a href="chap2.html#showMessageDialogFigure">Figure 2.3</a> shows what the resulting GUI might look like.</p>
+<p><a href="chap2.html#showMessageDialogFigure">Figura 2.3</a> shows what the resulting GUI might look like.</p>
 </div>
 <div id="showMessageDialogFigure" class="imageblock text-text-center text-center">
 <div class="content">
 <img src="chapters/02-intro/images/showMessageDialog.png" alt="showMessageDialog" width="45%">
 </div>
-<div class="title">Figure 2.3 Example of <code>showMessageDialog()</code> used for output.</div>
+<div class="title">Figura 2.3 Example of <code>showMessageDialog()</code> used for output.</div>
 </div>
 <div class="paragraph">
 <p>One way to do input with a GUI uses the <code>showInputDialog()</code> method,
@@ -1444,14 +1444,14 @@ it again using a <code>showMessageDialog()</code> method.</p>
 <div class="paragraph">
 <p>Note that whatever the user typed in will be stored in <code>word</code>. Finally,
 the last line of the program displays this information with
-<code>showMessageDialog()</code>. <a href="chap2.html#showInputDialogFigure">Figure 2.4</a> shows the
+<code>showMessageDialog()</code>. <a href="chap2.html#showInputDialogFigure">Figura 2.4</a> shows the
 GUI as the user is entering input.</p>
 </div>
 <div id="showInputDialogFigure" class="imageblock text-text-center text-center">
 <div class="content">
 <img src="chapters/02-intro/images/showInputDialog.png" alt="showInputDialog" width="45%">
 </div>
-<div class="title">Figure 2.4 Example of <code>showInputDialog()</code> used for input.</div>
+<div class="title">Figura 2.4 Example of <code>showInputDialog()</code> used for input.</div>
 </div>
 <div class="paragraph">
 <p>Remember that the value returned from the <code>showInputDialog()</code> method is
@@ -1496,15 +1496,15 @@ from <code>JOptionPane</code> in a GUI-based solution to subproblem 1 of the
 bouncing ball problem.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2.5 GUI input</div>
+<div class="title">Exemplo 2.5 GUI input</div>
 <div class="content">
 <div class="paragraph">
-<p>We can change the solution given in <a href="chap2.html#GetInputCLIProgram">Program 2.1</a> to
+<p>We can change the solution given in <a href="chap2.html#GetInputCLIProgram">Programa 2.1</a> to
 use the GUI-based input tools in <code>JOptionPane</code>.
-<a href="chap2.html#GetInputGUIProgram">Program 2.3</a> is the equivalent GUI-based Java program.</p>
+<a href="chap2.html#GetInputGUIProgram">Programa 2.3</a> is the equivalent GUI-based Java program.</p>
 </div>
 <div id="GetInputGUIProgram" class="listingblock">
-<div class="title">Program 2.3 Gets the height, coefficient of restitution, and number of bounces using a GUI.</div>
+<div class="title">Programa 2.3 Gets the height, coefficient of restitution, and number of bounces using a GUI.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
 
@@ -1605,7 +1605,7 @@ To find a square root, we pass a number to the <code>Math.sqrt()</code> method.<
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2.6 Compute height</div>
+<div class="title">Exemplo 2.6 Compute height</div>
 <div class="content">
 <div class="paragraph">
 <p>We compute the final height of the ball in subproblem 2 of the bouncing
@@ -1614,7 +1614,7 @@ coefficient of restitution raised to the power of the number of bounces.
 The following program does so, using the <code>Math.pow()</code> method.</p>
 </div>
 <div id="ComputeHeightProgram" class="listingblock">
-<div class="title">Program 2.4 Computes height of a ball after bounces.</div>
+<div class="title">Programa 2.4 Computes height of a ball after bounces.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComputeHeight</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -1629,7 +1629,7 @@ The following program does so, using the <code>Math.pow()</code> method.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="chap2.html#ComputeHeightProgram">Program 2.4</a> is only focusing on subproblem 2, but,
+<p><a href="chap2.html#ComputeHeightProgram">Programa 2.4</a> is only focusing on subproblem 2, but,
 if we want to test it, we need to supply some dummy values for <code>height</code>,
 <code>coefficient</code>, and <code>bounces</code>, since these are read in by the solution to
 subproblem 1. Likewise, the output statement on the last line of the
@@ -1669,7 +1669,7 @@ output. Here are a few examples of <code>String</code> concatenation.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2.7 Display height</div>
+<div class="title">Exemplo 2.7 Display height</div>
 <div class="content">
 <div class="paragraph">
 <p>With <code>String</code> concatenation, subproblem 3 becomes a bit easier. We
@@ -1677,7 +1677,7 @@ concatenate the results together with an appropriate message and then
 use the <code>System.out.println()</code> method for output.</p>
 </div>
 <div id="DisplayHeightCLIProgram" class="listingblock">
-<div class="title">Program 2.5 Displays height of a ball using the command line.</div>
+<div class="title">Programa 2.5 Displays height of a ball using the command line.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DisplayHeightCLI</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
@@ -1692,7 +1692,7 @@ use the <code>System.out.println()</code> method for output.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="chap2.html#DisplayHeightCLIProgram">Program 2.5</a> is only focusing on subproblem 3,
+<p><a href="chap2.html#DisplayHeightCLIProgram">Programa 2.5</a> is only focusing on subproblem 3,
 but if we want to test it, we need to supply dummy values for <code>bounces</code>
 and <code>bounceHeight</code>, since these are generated by the solution to earlier
 subproblems.</p>
@@ -1703,7 +1703,7 @@ difference is the use of<br>
 <code>JOptionPane.showMessageDialog()</code> instead of <code>System.out.println()</code>.</p>
 </div>
 <div id="DisplayHeightGUIProgram" class="listingblock">
-<div class="title">Program 2.6 Displays height of a ball using a GUI.</div>
+<div class="title">Programa 2.6 Displays height of a ball using a GUI.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
 
@@ -2009,15 +2009,15 @@ development lifecycle.</p>
 <div class="sect3">
 <h4 id="_bouncing_ball_solution_command_line_version">2.4.1. Bouncing ball solution (command line version)</h4>
 <div class="paragraph">
-<p>In <a href="chap2.html#ballBouncingProblemExample">Example 2.2</a>, we made sure
+<p>In <a href="chap2.html#ballBouncingProblemExample">Exemplo 2.2</a>, we made sure
 we understood the problem and then formed a three-part plan to read in
 the input, compute the height of the bounce, and then output it.</p>
 </div>
 <div class="paragraph">
-<p>In <a href="chap2.html#GetInputCLIProgram">Program 2.1</a>, we implemented subproblem 1, reading
-the input from the command line. In <a href="chap2.html#ComputeHeightProgram">Program 2.4</a>,
+<p>In <a href="chap2.html#GetInputCLIProgram">Programa 2.1</a>, we implemented subproblem 1, reading
+the input from the command line. In <a href="chap2.html#ComputeHeightProgram">Programa 2.4</a>,
 we implemented subproblem 2, computing the height of the final bounce.
-In <a href="chap2.html#DisplayHeightCLIProgram">Program 2.5</a>, we implemented subproblem 3,
+In <a href="chap2.html#DisplayHeightCLIProgram">Programa 2.5</a>, we implemented subproblem 3,
 displaying the height that was computed. In the final, integrated
 program, the portion of the code that corresponds to solving subproblem
 1 is below.</p>
@@ -2079,12 +2079,12 @@ more lines.</p>
 <div class="paragraph">
 <p>If you prefer a GUI for your input and output, we can integrate the
 GUI-based versions of the solutions to subproblems 1, 2, and 3 from
-<a href="chap2.html#GetInputCLIProgram">Program 2.1</a>, <a href="chap2.html#ComputeHeightProgram">Program 2.4</a>, and
-<a href="chap2.html#DisplayHeightGUIProgram">Program 2.6</a>. The final program is below. It only
+<a href="chap2.html#GetInputCLIProgram">Programa 2.1</a>, <a href="chap2.html#ComputeHeightProgram">Programa 2.4</a>, and
+<a href="chap2.html#DisplayHeightGUIProgram">Programa 2.6</a>. The final program is below. It only
 differs from the command line version in a few details.</p>
 </div>
 <div id="BouncingBallGUIProgram" class="listingblock">
-<div class="title">Program 2.7 Full program to compute the height of the final bounce of a ball and display the result with a GUI.</div>
+<div class="title">Programa 2.7 Full program to compute the height of the final bounce of a ball and display the result with a GUI.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
 
@@ -2199,13 +2199,13 @@ people, including you, have mastered their language, Lellarapian. To
 save the people of Earth, it’s imperative that you translate their
 demands as quickly as possible so world leaders can choose
 a course of action. If you do it alone, as illustrated in
-<a href="chap2.html#documentTranslationFigure">Figure 2.5</a>(a), the Lellaraps might attack
+<a href="chap2.html#documentTranslationFigure">Figura 2.5</a>(a), the Lellaraps might attack
 before you finish.</p>
 </div>
 <div class="paragraph">
 <p>In order to finish the work faster, you hire a second translator whose
 skills in Lellarap are as good as yours. As shown in
-<a href="chap2.html#documentTranslationFigure">Figure 2.5</a>(b), you divide the document into
+<a href="chap2.html#documentTranslationFigure">Figura 2.5</a>(b), you divide the document into
 two nearly equal parts, Document A and Document B. You translate
 Document A, and your colleague translates Document B. When both
 translations are complete, you merge the two, check the translation, and
@@ -2215,7 +2215,7 @@ send the result to the world’s leaders.</p>
 <div class="content">
 <img src="chapters/02-intro/images/documentTranslationFigure.svg" alt="documentTranslationFigure" width="100%">
 </div>
-<div class="title">Figure 2.5 (a)&nbsp;Translation by one translator. Time <em>t</em><sub><em>s</em></sub> gives the sequential time taken. (b)&nbsp;Translation by translators A and B. Times <em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>, <em>t</em><sub>3</sub>, and <em>t</em><sub>4</sub> give the times needed to do each component of the concurrent approach.</div>
+<div class="title">Figura 2.5 (a)&nbsp;Translation by one translator. Time <em>t</em><sub><em>s</em></sub> gives the sequential time taken. (b)&nbsp;Translation by translators A and B. Times <em>t</em><sub>1</sub>, <em>t</em><sub>2</sub>, <em>t</em><sub>3</sub>, and <em>t</em><sub>4</sub> give the times needed to do each component of the concurrent approach.</div>
 </div>
 <div class="paragraph">
 <p>Translating the demands alone is a <em>sequential</em> approach. In this
@@ -2228,7 +2228,7 @@ together.</p>
 <p>If you wrote a computer program to translate the demands using
 the sequential approach, you’d produce a <em>sequential program</em>. If
 you wrote a computer program that uses the approach shown in
-<a href="chap2.html#documentTranslationFigure">Figure 2.5</a>(b), it would be a <em>concurrent
+<a href="chap2.html#documentTranslationFigure">Figura 2.5</a>(b), it would be a <em>concurrent
 program</em>. A concurrent program is also referred to as a <em>multi-threaded</em>
 program. <em>Threads</em> are sequences of code that can execute independently
 and access each other’s memory. Imagine you’re one thread of execution
@@ -2238,16 +2238,16 @@ divide up the document or merge it back together.</p>
 </div>
 <div class="paragraph">
 <p>Because we’re interested in the time the process takes, we’ve labeled
-different tasks in <a href="chap2.html#documentTranslationFigure">Figure 2.5</a> with their
+different tasks in <a href="chap2.html#documentTranslationFigure">Figura 2.5</a> with their
 running times. We let <em>t</em><sub><em>s</em></sub> be the time for one person to
 complete the translation. The times <em>t</em><sub>1</sub> through
 <em>t</em><sub>4</sub> mark the times needed to complete tasks 1 through 4,
-indicated in <a href="chap2.html#documentTranslationFigure">Figure 2.5</a>(b).</p>
+indicated in <a href="chap2.html#documentTranslationFigure">Figura 2.5</a>(b).</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap2.html#parallelTimeExercise">Exercise 2.10</a></p>
+<p><a href="chap2.html#parallelTimeExercise">Exercício 2.10</a></p>
 </div>
 </div>
 </div>
@@ -2271,19 +2271,19 @@ is assigned a different task that needs to be done. The following two
 examples explore each of these approaches.</p>
 </div>
 <div id="domainDecompositionExample" class="exampleblock">
-<div class="title">Example 2.8 Domain decomposition</div>
+<div class="title">Exemplo 2.8 Domain decomposition</div>
 <div class="content">
 <div class="paragraph">
 <p>Suppose we have an autonomous robot called the Room Rating Robot or
 R<sup>3</sup>. The R<sup>3</sup> can measure the area of any home. Suppose that we want to
 use an R<sup>3</sup> to measure the area of the home with two floors sketched in
-<a href="chap2.html#figure-floorPlan">Figure 2.6</a>.</p>
+<a href="chap2.html#figure-floorPlan">Figura 2.6</a>.</p>
 </div>
 <div id="figure-floorPlan" class="imageblock text-center">
 <div class="content">
 <img src="chapters/02-intro/images/floorPlan.svg" alt="floorPlan" width="60%">
 </div>
-<div class="title">Figure 2.6 A home with two floors.</div>
+<div class="title">Figura 2.6 A home with two floors.</div>
 </div>
 <div class="paragraph">
 <p>One way to measure the area is to put an R<sup>3</sup> at the entrance of the
@@ -2334,7 +2334,7 @@ up the time it takes to measure the area.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap2.html#domainDecompositionRobotsExercise">Exercise 2.11</a></p>
+<p><a href="chap2.html#domainDecompositionRobotsExercise">Exercício 2.11</a></p>
 </div>
 </div>
 </div>
@@ -2353,7 +2353,7 @@ robots is necessary.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap2.html#domainDecompositionConcurrentExercise">Exercise 2.12</a></p>
+<p><a href="chap2.html#domainDecompositionConcurrentExercise">Exercício 2.12</a></p>
 </div>
 </div>
 </div>
@@ -2365,10 +2365,10 @@ coordination of the tasks must be done to generate the final result. The
 next example illustrates such a division.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 2.9 Task decomposition</div>
+<div class="title">Exemplo 2.9 Task decomposition</div>
 <div class="content">
 <div class="paragraph">
-<p>Let’s expand the problem given in <a href="chap2.html#domainDecompositionExample">Example 2.8</a>. R<sup>3</sup> robots can do more than just measure area. In
+<p>Let’s expand the problem given in <a href="chap2.html#domainDecompositionExample">Exemplo 2.8</a>. R<sup>3</sup> robots can do more than just measure area. In
 addition to calculating the living area of a home, we want an R<sup>3</sup> robot
 to check if the electrical outlets are in working condition. The robot
 should give us the area of the house as well as a list of electrical
@@ -2437,13 +2437,13 @@ computer, what problem is solved by the programmer and what problem is
 solved by the program written by the programmer? Are they the same?</p>
 </li>
 <li>
-<p>In <a href="chap2.html#DistanceProgram">Program 2.2</a>, we declared all variables to be of type
+<p>In <a href="chap2.html#DistanceProgram">Programa 2.2</a>, we declared all variables to be of type
 <code>double</code>. How would the program behave differently if we had declared
 all the variables with type <code>int</code>?</p>
 </li>
 <li>
 <p>What is the purpose of the statement <code>Scanner in = new Scanner(System.in);</code> in
-<a href="chap2.html#GetInputCLIProgram">Program 2.1</a>?</p>
+<a href="chap2.html#GetInputCLIProgram">Programa 2.1</a>?</p>
 </li>
 <li>
 <p>Explain the difference between a declaration and an assignment
@@ -2451,7 +2451,7 @@ statement.</p>
 </li>
 <li>
 <p>Is the following
-statement from <a href="chap2.html#BouncingBallGUIProgram">Program 2.7</a> a declaration, an assignment, or a
+statement from <a href="chap2.html#BouncingBallGUIProgram">Programa 2.7</a> a declaration, an assignment, or a
 combination of the two?</p>
 <div class="listingblock">
 <div class="content">
@@ -2468,12 +2468,12 @@ using <code>JOptionPane</code>?</p>
 </li>
 <li>
 <p><a id="javaKeywordsExercise"></a> Review
-<a href="chap2.html#BouncingBallGUIProgram">Program 2.7</a> and identify all the Java keywords
+<a href="chap2.html#BouncingBallGUIProgram">Programa 2.7</a> and identify all the Java keywords
 used in it.</p>
 </li>
 <li>
 <p><a id="importExercise"></a> Try to recompile
-<a href="chap2.html#BouncingBallGUIProgram">Program 2.7</a> after removing the <code>import</code>
+<a href="chap2.html#BouncingBallGUIProgram">Programa 2.7</a> after removing the <code>import</code>
 statement at the top. Read and explain the error message generated by
 the compiler.</p>
 </li>
@@ -2485,7 +2485,7 @@ and tasks that are both.</p>
 </li>
 <li>
 <p><a id="parallelTimeExercise"></a> Refer to
-<a href="chap2.html#documentTranslationFigure">Figure 2.5</a>. Suppose that you and your
+<a href="chap2.html#documentTranslationFigure">Figura 2.5</a>. Suppose that you and your
 colleague translate from English to Lellarapian at the rate of 200 words
 per hour. Suppose that the list of demands contains 10,000 words.</p>
 <div class="olist loweralpha">
@@ -2527,12 +2527,12 @@ increasing as you add more translators? Explain your answer.</p>
 </li>
 <li>
 <p><a id="domainDecompositionRobotsExercise"></a> In
-<a href="chap2.html#domainDecompositionExample">Example 2.8</a>, what aspect of a multicore
+<a href="chap2.html#domainDecompositionExample">Exemplo 2.8</a>, what aspect of a multicore
 system do the robots represent?</p>
 </li>
 <li>
 <p><a id="domainDecompositionConcurrentExercise"></a> In
-<a href="chap2.html#domainDecompositionExample">Example 2.8</a>, suppose that you have two R<sup>3</sup>
+<a href="chap2.html#domainDecompositionExample">Exemplo 2.8</a>, suppose that you have two R<sup>3</sup>
 robots available. You’d like to use them to measure the living area
 of a single-floor home. Suggest how two robots could be programmed to
 work concurrently to measure the living area faster than one.</p>
@@ -2553,32 +2553,32 @@ values and print it to the screen using <code>System.out.print()</code> or
 </li>
 <li>
 <p><a id="integerAverageExercise"></a> Expand the program from
-<a href="chap2.html#integerSumExercise">Exercise 2.13</a> so that it finds the average of
+<a href="chap2.html#integerSumExercise">Exercício 2.13</a> so that it finds the average of
 the three numbers instead of the sum. (Hint: Try dividing by <code>3.0</code>
 instead of <code>3</code> to get an average with a fractional part. Then, store the
 result in a variable of type <code>double</code>.)</p>
 </li>
 <li>
-<p>Rewrite your solution to <a href="chap2.html#integerAverageExercise">Exercise 2.14</a> so
+<p>Rewrite your solution to <a href="chap2.html#integerAverageExercise">Exercício 2.14</a> so
 that it uses a <code>JOptionPane</code>-based GUI instead of <code>Scanner</code> and
 <code>System.out.print()</code>.</p>
 </li>
 <li>
 <p><a id="runCLIProgramExercise"></a> Copy and paste
-<a href="chap2.html#GetInputCLIProgram">Program 2.1</a> into the Java IDE you prefer. Compile
+<a href="chap2.html#GetInputCLIProgram">Programa 2.1</a> into the Java IDE you prefer. Compile
 and run it and make sure that the program executes as intended. Then,
 add statements to prompt the user for the color of the ball and read it
 in. Store the color in a <code>String</code> value. Add an output statement that
 mentions the color of the ball.</p>
 </li>
 <li>
-<p>Rewrite your solution to <a href="chap2.html#runCLIProgramExercise">Exercise 2.16</a>
+<p>Rewrite your solution to <a href="chap2.html#runCLIProgramExercise">Exercício 2.16</a>
 so that it uses a <code>JOptionPane</code>-based GUI instead of <code>Scanner</code> and
 <code>System.out.print()</code>.</p>
 </li>
 <li>
-<p>In <a href="chap2.html#inputForDistanceComputationExample">Example 2.4</a>, we assumed that the speed is given in miles
-per hour and the time in hours. Change <a href="chap2.html#DistanceProgram">Program 2.2</a> to
+<p>In <a href="chap2.html#inputForDistanceComputationExample">Exemplo 2.4</a>, we assumed that the speed is given in miles
+per hour and the time in hours. Change <a href="chap2.html#DistanceProgram">Programa 2.2</a> to
 compute the distance traveled by a moving object given its speed in
 miles per hour but time in seconds. You will need to perform a
 conversion from seconds to hours before you can find the distance.</p>
@@ -2637,7 +2637,7 @@ error handling be different from an audience of architects?</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

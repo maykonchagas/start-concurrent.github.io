@@ -1,17 +1,9 @@
 :xrefstyle: short
-:example-number: 0
-:figure-number: 0
-:figure-caption: Figura
-:example-caption: Exemplo
-:table-caption: Tabela
-:section-caption: Seção
 :chapter-caption: Capítulo
-:lang:pt-BR
 
 [#ch13-concurrency]
 :imagesdir: chapters/13-concurrency/images
 :programsdir: chapters/13-concurrency/programs
-
 == Programação Concorrente
 
 [quote, Jorge Luis Borges]
@@ -81,7 +73,7 @@ responsivo, isso não será útil.
 
 
 ****
-<<sharedThreadVariableExercicio>>
+<<sharedThreadVariableExercise>>
 ****
 
 Há duas maneiras principais de dividir o trabalho. A primeira é chamada de _decomposição 
@@ -117,7 +109,7 @@ um núcleo poderá ficar ocioso.
 
 Os dois exemplos a seguir mostram ilustrações simples do processo de divisão de uma tarefa em subtarefas menores no contexto da programação multicore.
 
-[[videoGameTasksExemplo]]
+[[videoGameTasksExample]]
 .Tarefas de videogame
 ====
 
@@ -361,14 +353,9 @@ cada uma avaliando uma subexpressão separada, como em <<figure-tasks_in_threads
 .Exemplos de Threads
 ====
 
-Vamos criar as classes `Thread1` e `Thread2`. As threads de execução criadas por instâncias 
-destas classes calculam, respetivamente, as duas subexpressões da <<figure-tasks_in_threads>>(b) e 
-guardam os valores calculados.
-
-We'll create `Thread1` and `Thread2` classes. The threads of execution
-created by instances of these classes compute, respectively, the two
-subexpressions in <<figure-tasks_in_threads>>(b) and save the
-computed values.
+Vamos criar as classes `Thread1` e `Thread2`. As threads de execução criadas por 
+instâncias destas classes calculam, respetivamente, as duas subexpressões da 
+<<figure-tasks_in_threads>>(b) e guardam os valores calculados.
 
 [source, java]
 [[Thread1Program]]
@@ -383,82 +370,82 @@ include::{programsdir}/Thread1.java[]
 include::{programsdir}/Thread2.java[]
 ----
 
+O método `run()` em cada thread acima calcula uma subexpressão e salva seu 
+valor. Mostramos como essas threads podem ser executados para resolver o problema 
+da expressão matemática em <<mathExpressionThreadsExample>>.
 
-The `run()` method in each thread above computes a subexpression and
-saves its value. We show how these threads can be executed to solve the
-math expression problem in <<mathExpressionThreadsExample>>.
 
 ====
 
-==== Creating a thread object
+==== Criando um objeto thread
 
-Creating an object from a subclass of `Thread` is the same as creating
-any other object in Java. For example, we can instantiate the `Thread1`
-class above to create an object called `thread1`.
+Criar um objeto a partir de uma subclasse `Thread` é o mesmo que criar
+qualquer outro objeto em Java. Por exemplo, podemos instanciar a classe `Thread1`
+acima para criar um objeto chamado `thread1`.
 
 [source,java]
 ----
 Thread1 thread1 = new Thread1(15.1, 2.8, 7.53);
 ----
 
-Using the `new` keyword to invoke the constructor creates a `Thread1`
-object, but it doesn't start executing it as a new thread. As with all
-other classes, the constructor initializes the values inside of the new
-object. A subclass of `Thread` can have many different constructors with
-whatever parameters its designer thinks appropriate.
+O uso da palavra-chave `new` para invocar o construtor cria um objeto `Thread1`,
+mas não começa a executá-lo como uma nova thread. Como em todas as
+outras classes, o construtor inicializa os valores dentro do novo objeto
+objeto. Uma subclasse de `Thread` pode ter muitos construtores diferentes com
+qualquer parâmetros que seu projetista considere apropriados.
 
-==== Starting a thread
+==== Iniciando uma thread
 
-To start the thread object executing, its `start()` method must be
-called. For example, the `thread1` object created above can be started
-as follows.
+Para iniciar a execução do objeto thread, seu método `start()` deve ser
+chamado. Por exemplo, o objeto `thread1` criado acima pode ser iniciado
+da seguinte forma.
 
 [source,java]
 ----
 thread1.start();
 ----
 
-Once started, a thread executes independently.  Calling the `start()`
-method automatically calls the object's `run()` method behind the
-scenes. When a thread needs to share data with another thread, it
-might have to wait.
+Uma vez iniciado, uma thread é executada de forma independente.  A chamada do método `start()`
+chama automaticamente o método `run()` do objeto nos bastidores.
+Quando uma thread precisa compartilhar dados com outra thread, ela
+pode ter que esperar.
 
-==== Waiting for a thread
+==== Aguardando por uma thread
 
-Often some thread, main or otherwise, needs to wait for another thread
-before proceeding further with its execution. The `join()` method is
-used to wait for a thread to finish executing. For example, whichever
-thread executes the following code will wait for `thread1` to complete.
+Muitas vezes, alguma thread, principal ou não, precisa esperar por outra thread
+antes de prosseguir com sua execução. O método `join()` é usado para esperar 
+que uma thread termine a execução. Por exemplo, qualquer thread que executar o 
+código a seguir aguardará a conclusão da `thread1`.
 
 [source,java]
 ----
 thread1.join();
 ----
 
-Calling `join()` is a _blocking_ call, meaning that the code calling
-this method will wait until it returns. Since it can throw a a checked
-`InterruptedException` while the code's waiting, the `join()` method
-is generally used within a `try`-`catch` block. We can add a
-`try`-`catch` block to the `thread1` example so that we can recover from
-being interrupted while waiting for `thread1` to finish.
+A chamada `join()` é uma chamada _bloqueante_, o que significa que o código que chama
+esse método aguardará até que ele retorne. Como ele pode lançar uma
+`InterruptedException` verificada enquanto o código estiver aguardando, o método `join()`
+é geralmente usado em um bloco `try`-`catch`. Podemos adicionar um bloco `try`-`catch` 
+ao exemplo `thread1` para que possamos nos recuperar de
+sermos interrompidos enquanto aguardamos a conclusão do `thread1`.
 
 [source,java]
 ----
 try {
-	System.out.println("Waiting for thread 1...");
+	System.out.println("Aguardando pela thread 1...");
 	thread1.join();
-	System.out.println("Thread 1 finished!");
+	System.out.println("Thread 1 finalizada!");
 }
 catch (InterruptedException e) {
-	System.out.println("Thread 1 didn't finish!");
+	System.out.println("Thread 1 não acabou!");
 }
 ----
 
-Note that the `InterruptedException` is thrown because the main thread
-was interrupted while waiting for `thread1` to finish. If the `join()`
-call returns, then `thread1` must have finished, and we inform the user.
-If an `InterruptedException` is thrown, some outside thread must have
-interrupted the main thread, forcing it to stop waiting for `thread1`.
+Observe que a `InterruptedException` é lançada porque a thread principal
+foi interrompida enquanto aguardava a conclusão da `thread1`. Se a chamada `join()`
+retornar, então `thread1` deve ter terminado e informaremos o usuário.
+Se uma `InterruptedException` for lançada, alguma thread externa deve ter
+interrompido a thread principal, forçando-a a parar de esperar pela `thread1`.
 
 In earlier versions of Java, there was a `stop()` method which would
 stop an executing thread. Although this method still exists, it's been
@@ -470,17 +457,16 @@ in an unexpected way.
 ****
 
 [[mathExpressionThreadsExample]]
-.Math expression threads
+.Cálculos matemáticos com threads
 ====
 
-Now that we have the syntax to start threads and wait for them to
-finish, we can use the threads defined in <<threadSamplesExample>> with a
-main thread to make our first complete concurrent
-program. The main thread in class `MathExpression` creates and starts
-the worker threads `thread1` and `thread2` and waits for their
-completion. When the two threads complete their execution, we can ask
-each for its computed value. The main thread then prints the product of
-these values, which is the result of the expression we want to evaluate.
+Agora que temos a sintaxe para iniciar threads e esperar que eles terminem, podemos 
+usar as threads definidos em <<threadSamplesExample>> com uma thread principal 
+para criar nosso primeiro programa concorrente completo.  A thread principal na 
+classe `MathExpression` cria e inicia as threads de trabalho `thread1` e `thread2` 
+e aguarda sua conclusão. Quando as duas threads concluem sua execução, podemos 
+solicitar a cada uma delas o valor calculado. A thread principal imprime o 
+produto desses valores, que é o resultado da expressão que queremos avaliar.
 
 [source, java]
 [[MathExpressionProgram]]
@@ -489,50 +475,47 @@ include::{programsdir}/MathExpression.java[]
 ----
 
 
-We want to make it absolutely clear when threads are created, start
-executing, and finish. These details are crucial for the finer points of
-concurrent Java programming. In <<figure-tasks_in_threads>>, it
-appears as if execution of the concurrent math expression evaluation
-begins with Thread 1 which spawns Thread 2. Although that figure
-explains the basics of task decomposition well, the details are messier
-for real Java code.
+Queremos deixar absolutamente claro quando os threads são criados, começam
+a execução e terminam. Esses detalhes são cruciais para os pontos mais finos da
+programação Java simultânea. Na <<figure-tasks_in_threads>>, parece que a execução da avaliação da expressão matemática 
+começa com a Thread 1, que gera a Thread 2. Embora essa figura
+explique bem os conceitos básicos da decomposição de tarefas, os detalhes são mais confusos para o código Java real.
 
-In the code above, execution starts with the `main()` method in
-`MathExpression`. It creates `Thread1` and `Thread2` objects and waits
-for them to finish. Then, it reads the values from the objects after
-they've stopped executing. We could have put the `main()` method in
-the `Thread1` class, omitting the `MathExpression` class entirely. Doing
-so would make the execution match <<figure-tasks_in_threads>>
-more closely, but it would make the two `Thread` subclasses less
-symmetrical: The main thread and `thread1` would both independently
-execute code inside the `Thread1` class while only `thread2` would
-execute code inside the `Thread2` class.
+
+No código acima, a execução começa com o método `main()` em
+`MathExpression`. Ele cria os objetos `Thread1` e `Thread2` e aguarda
+que eles terminem. Em seguida, ele lê os valores dos objetos depois que 
+eles pararam de ser executados. Poderíamos ter colocado o método `main()` na classe `Thread1`, omitindo totalmente a classe `MathExpression`. Desta forma isso faria com que a execução correspondesse mais de perto à <<figure-tasks_in_threads>>
+mais próxima, mas tornaria as duas subclasses `Thread` menos
+simétricas: a thread principal e a `thread1` executariam independentemente o código dentro da `Thread1`.
+executariam independentemente o código dentro da classe `Thread1`, enquanto somente `thread2` executaria
+executaria código dentro da classe `Thread2`.
+
 
 [[figure-thread_execution]]
 [.text-center]
-.Creation, starting, and joining of threads in `MathExpression`, `Thread1`, and `Thread2`.
+.Criando, iniciando, e mesclando as threads em `MathExpression`, `Thread1`, and `Thread2`.
 image::thread-lifecycle.svg[scaledwidth=75%,pdfwidth=75%,width=75%]
 
 
-<<figure-thread_execution>> shows the execution of `thread1` and
-`thread2` and the main thread. Note that the JVM implicitly creates and starts
-the main thread which explicitly creates and starts `thread1` and `thread2`.
-Even after the threads associated with `thread1` and `thread2` have stopped running,
-the objects associated with them continue to exist. Their methods and fields can still be
-accessed.
+<<figure-thread_execution>> mostra a execução de `thread1` e
+`thread2` e a thread principal. Observe que a JVM cria e inicia implicitamente
+o thread principal, que cria e inicia explicitamente a `thread1` e a `thread2`.
+Mesmo depois que as threads associados a `thread1` e `thread2` pararem de ser executados, 
+os objetos associados a eles continuam a existir. Seus métodos e campos ainda podem ser acessados.
 
 ====
 
-==== The `Runnable` interface
+==== A interface `Runnable`
 
-Although it's possible to create Java threads by inheriting from the
-`Thread` class directly, the Java API allows the programmer to use an
-interface instead.
+Embora seja possível criar threads em Java herdando diretamente da classe
+`Thread` diretamente, a API Java permite que o programador use uma
+interface em vez disso.
 
-As an example, the `Summer` class takes an array of `int` values and
-sums them up within a given range. If multiple instances of this class
-are executed as separate threads, each one can sum up different parts of
-an array.
+Como exemplo, a classe `Summer` pega uma matriz de valores `int` e os soma dentro 
+de um determinado intervalo. Se várias instâncias dessa classe
+forem executadas como threads separadas, cada uma delas poderá somar diferentes partes de
+uma matriz.
 
 [source, java]
 ----
@@ -540,17 +523,15 @@ include::{programsdir}/Summer.java[]
 ----
 
 
-This class is very similar to one that inherits from `Thread`. Imagine
-for a moment that the code following `Summer` is `extends Thread`
-instead of `implements Runnable`. The key thing a class derived from
-`Thread` needs is an overridden `run()` method. Since only the `run()`
-method is important, the designers of Java provided a way to create a
-thread using the `Runnable` interface. To implement this interface, only
-a `public void run()` method is required.
+Essa classe é muito semelhante a uma classe que herda de `Thread`. Imagine
+por um momento que o código que segue `Summer` é `extends Thread`
+em vez de `implements Runnable`. A principal coisa que uma classe derivada de
+`Thread` precisa é de um método `run()` sobrescrito. Como somente o método `run()`
+é importante, os projetistas do Java forneceram uma maneira de criar uma
+thread usando a interface `Runnable`. Para implementar essa interface, é necessário apenas
+um método `public void run()`.
 
-When creating a new thread, there are some differences in syntax between
-the two styles. The familiar way of creating and running a thread from a
-`Thread` subclass is as follows.
+Ao criar uma nova thread, há algumas diferenças de sintaxe entre os dois estilos. A maneira conhecida de criar e executar um thread a partir de uma subclasse `Thread` é a seguinte.
 
 [source,java]
 ----
@@ -558,10 +539,7 @@ Summer summer = new Summer(array, lower, upper);
 summer.start();
 ----
 
-Since `Summer` doesn't inherit from `Thread`, it doesn't have a
-`start()` method, and this code won't compile. When a class only
-implements `Runnable`, it's still necessary to create a `Thread` object
-and call its `start()` method. Thus, an extra step is needed.
+Como o `Summer` não herda de `Thread`, ele não tem um método `start()`, e esse código não será compilado. Quando uma classe apenas implementa `Runnable`, ainda é necessário criar um objeto `Thread` e chamar seu método `start()`. Portanto, é necessária uma etapa extra.
 
 [source,java]
 ----
@@ -570,25 +548,22 @@ Thread thread = new Thread(summer);
 thread.start();
 ----
 
-This alternate way of implementing the `Runnable` interface seems more
-cumbersome than inheriting directly from `Thread`, since you have to
-instantiate a separate `Thread` object. However, most developers prefer
-to design classes that implement `Runnable` instead of inheriting from
-`Thread`. Why? Java only allows for single inheritance. If your class
-implements `Runnable`, it's free to inherit from another parent class
-with features you might want.
+Essa forma alternativa de implementar a interface `Runnable` parece mais incômoda do que herdar diretamente da `Thread`, já que é necessário
+instanciar um objeto `Thread` separado. Entretanto, a maioria dos desenvolvedores prefere projetar classes que implementem `Runnable` em vez de herdar de
+`Thread`. Por quê? O Java só permite herança única. Se sua classe
+implementar `Runnable`, ela estará livre para herdar de outra super classe 
+com os recursos que você desejar.
 
 ****
 <<extendingThreadExercise>>
 ****
 
 [[arrayOfThreadsExample]]
-.Array of threads
+.Conjunto de threads
 ====
 
-In domain decomposition, we often need to create multiple threads, all
-from the same class. As an example, consider the following thread
-declaration.
+Na decomposição de domínios, muitas vezes precisamos criar várias threads, todas
+a partir da mesma classe. Como exemplo, considere a seguinte declaração de thread.
 
 [source, java]
 [[NumberedThreadProgram]]
@@ -597,8 +572,8 @@ include::{programsdir}/NumberedThread.java[]
 ----
 
 
-Now, suppose we want to create 10 thread objects of type
-`NumberedThread`, start them, and then wait for them to complete.
+Agora, suponha que desejemos criar 10 objetos de thread do tipo
+`NumberedThread`, então iniciá-los e por fim esperar que sejam concluídos.
 
 [source,java]
 ----
@@ -615,54 +590,46 @@ catch(InterruptedException e) {
     System.out.println("A thread didn't finish!");
 }
 ----
-<.> First, we declare an array to hold references to `NumberedThread`
-objects. Like any other type, we can make an array to hold objects that
-inherit from `Thread`.
-<.> The first line of the `for` loop instantiates a
-new `NumberedThread` object, invoking the constructor which stores the
-current iteration of the loop into the `value` field. The reference to
-each `NumberedThread` object is stored in the array. Remember that the
-constructor does *not* start a new thread running.
-<.> The second line of the `for` loop does that.
-<.> We're also interested in when the threads stop. Calling the `join()`
-method forces the main thread to wait for each thread to finish.
+<.> Primeiro, declaramos uma matriz para manter referências aos objetos `NumberedThread`. Como qualquer outro tipo, podemos criar uma matriz para armazenar objetos que
+herdam de `Thread`.
+<.> A primeira linha do loop `for` instancia um novo objeto `NumberedThread`, invocando o construtor que armazena a
+iteração atual do loop no campo `value`. A referência a
+cada objeto `NumberedThread` é armazenada na matriz. Lembre-se de que o construtor
+ *não* inicia a execução de uma nova thread.
+<.> A segunda linha do loop `for` faz isso.
+<.> Também estamos interessados em saber quando as threads param. A chamada do método `join()`
+força a thread principal a aguardar a conclusão de cada thread.
 
-The entire second `for` loop is nested inside of a `try` block. If the
-main thread is interrupted while waiting for any of the threads to
-finish, an `InterruptedException` will be caught. As before, we warn the
-user that a thread didn't finish. For production-quality code, the
-`catch` block should handle the exception in such a way that the thread
-can recover and do useful work even though it didn't get what it was
-waiting for.
+Todo o segundo loop `for` está aninhado dentro de um bloco `try`. Se a thread principal for interrompida enquanto estiver aguardando a conclusão de qualquer uma das threads terminar, uma `InterruptedException` será capturada. Como antes, avisamos o usuário
+que uma thread não foi concluída. Para código com qualidade de produção, o bloco
+bloco `catch` deve tratar a exceção de forma que a thread possa se recuperar e fazer um trabalho útil, mesmo que não tenha obtido o resultado esperado.
 
 ====
 
-=== Examples: Concurrency and speedup
+=== Exemplos: Concorrência e aceleração
 
-Speedup is one of the strongest motivations for writing concurrent
-programs. To understand speedup, let's assume we have a problem to
-solve. We write two programs to solve this problem, one that's
-sequential and another that's concurrent and, hence, able to exploit
-multiple cores. Let _t_~_s_~ be the average time to execute
-the sequential program and _t_~_c_~ the average time to execute
-the concurrent program. So that the comparison is
-meaningful, assume that both programs are executed on the same computer.
-The speedup obtained from concurrent programming is defined as _t_~_s_~/_t_~_c_~.
+A aceleração é uma das maiores motivações para escrever programas
+concorrentes. Para entender o aumento de velocidade, vamos supor que temos um problema para
+resolver. Escrevemos dois programas para resolver esse problema, um que é
+sequencial e outro que é concorrente e, portanto, capaz de explorar
+vários núcleos. Seja _t_~_s_~ o tempo médio de execução do
+o programa sequencial e _t_~_c_~ o tempo médio de execução do programa concorrente. Para que a comparação seja
+significativa, suponha que ambos os programas sejam executados no mesmo computador.
+O aumento de velocidade obtido com a programação concorrente é definido como _t_~_s_~/_t_~_c_~.
 
-Speedup measures how much faster the concurrent program executes
-relative to the sequential program. Ideally, we expect
-_t_~_c_~ < _t_~_s_~, making the speedup greater than 1. However,
-simply writing a concurrent program doesn't guarantee that it's faster
-than the sequential version.
+A aceleração mede quanto tempo leva para o programa concorrente ser executado em relação ao programa sequencial. Idealmente, esperamos que
+_t_~_c_~ < _t_~_s_~, tornando a aceleração maior que 1. No entanto,
+simplesmente escrever um programa concorrente não garante que ele seja mais rápido
+do que a versão sequencial.
 
 ****
 <<speedupExercise>> +
 <<AmdahlLawExercise>>
 ****
 
-To determine speedup, we need to measure _t_~_s_~ and
-_t_~_c_~. Time in a Java program can easily be measured with
-the following two static methods in the `System` class.
+Para determinar o aumento de velocidade, precisamos medir _t_~_s_~ e _t_~_c_~. O 
+tempo em um programa Java pode ser facilmente medido com
+os dois métodos estáticos a seguir na classe `System`.
 
 [source,java]
 ----
@@ -670,26 +637,22 @@ public static long currentTimeMillis()
 public static long nanoTime()
 ----
 
-The first of these methods returns the current time in milliseconds
-(ms). A _millisecond_ is 0.001 seconds. This method gives the difference
-between the current time on your computer's clock and midnight of
-January 1, 1970 Coordinated Universal Time (UTC). This point in time is
-used for many timing features on many computer platforms and is called
-the _Unix epoch_. The other method returns the current time in
-nanoseconds (ns). A _nanosecond_ is 0.000000001 or 10^-9^ seconds. This method also
-gives the difference between the current time and some fixed time, which
-is system dependent and not necessarily the Unix epoch. The
-`System.nanoTime()` method can be used when you want timing precision
-finer than milliseconds; however, the level of accuracy it returns is
-again system dependent. The next example show how to use these methods
-to measure execution time.
+O primeiro desses métodos retorna a hora atual em milissegundos (ms).
+Um _millisecond_ equivale a 0,001 segundos. Esse método fornece a diferença
+entre a hora atual no relógio de seu computador e a meia-noite de
+1º de janeiro de 1970, horário universal coordenado (UTC). Esse ponto no tempo é
+usado para muitos recursos de tempo em muitas plataformas de computador e é chamado de _epoch Unix_. O outro método retorna a hora atual em
+nanossegundos (ns). Um _nanossegundo_ equivale a 0,000000001 ou 10^-9^ segundos. 
+Esse método também fornece a diferença entre a hora atual e uma hora fixa, que depende do sistema e não necessariamente do _epoch_. 
+O método `System.nanoTime()` pode ser usado quando você quiser uma precisão de tempo
+mais fina do que milissegundos; entretanto, o nível de precisão que ele retorna é
+novamente dependente do sistema. O próximo exemplo mostra como usar esses métodos
+para medir o tempo de execução.
 
-.Measuring execution time
+.Medindo o tempo de execução
 ====
 
-Suppose we want to measure the execution time of a piece of Java code.
-For convenience, we can assume this code is contained in the `work()`
-method. The following code snippet measures the time to execute
+Suponha que desejemos medir o tempo de execução de um trecho de código Java. Por conveniência, podemos supor que esse código esteja contido no método `work()`. O trecho de código a seguir mede o tempo de execução de
 `work()`.
 
 [source,java]
@@ -697,12 +660,12 @@ method. The following code snippet measures the time to execute
 long start = System.currentTimeMillis();
 work();
 long end = System.currentTimeMillis();
-System.out.println("Elapsed time: " + (end - start) + " ms");
+System.out.println("Tempo decorrido: " + (end - start) + " ms");
 ----
 
-The output will give the execution time for `work()` measured in
-milliseconds. To get the execution time in nanoseconds, use the
-`System.nanoTime()` method instead.
+A saída fornecerá o tempo de execução de `work()` medido em
+milissegundos. Para obter o tempo de execução em nanossegundos, use o método
+`System.nanoTime()` em vez de `System.currentTimeMillis()`.
 ====
 
 ****
@@ -710,21 +673,21 @@ milliseconds. To get the execution time in nanoseconds, use the
 <<threadOverheadExercise>>
 ****
 
-Now that we have the tools to measure execution time, we can measure
-speedup. The next few examples show the speedup (or lack of it) that we
-can achieve using a concurrent solution to a few simple problems.
+Agora que temos as ferramentas para medir o tempo de execução, podemos medir o
+aumento de velocidade. Os próximos exemplos mostram o aumento de velocidade (ou a falta dele) que podemos
+podemos obter usando uma solução simultânea para alguns problemas simples.
 
-.Math expression speedup
+.Acelerando o cálculo matemático
 ====
 
-Recall the concurrent program in <<mathExpressionThreadsExample>> to evaluate a simple mathematical expression. This program
-uses two threads. We executed this multi-threaded program on an iMac
-computer with an Intel Core 2 Duo running at 2.16 Ghz. The execution
-time was measured at 1,660,000 nanoseconds. We also wrote a simple
-sequential program to evaluate the same expression. It took 4,100
-nanoseconds to execute this program on the same computer. Plugging in
-these values for _t_~_c_~ and _t_~_s_~, we can find
-the speedup.
+Lembre-se do programa concorrente em <<mathExpressionThreadsExample>> para avaliar uma expressão matemática simples. Esse programa
+usa duas threads. Executamos esse programa multithread em um computador iMac
+com um Intel Core 2 Duo rodando a 2,16 Ghz. O tempo de execução
+O tempo de execução foi medido em 1.660.000 nanossegundos. Também escrevemos um programa
+programa sequencial simples para avaliar a mesma expressão. Foram necessários 4.100
+nanossegundos para executar esse programa no mesmo computador. Ao inserir
+esses valores para _t_~_c_~ e _t_~_s_~, podemos encontrar
+a aceleração.
 
 //[stem]
 //++++
@@ -734,11 +697,11 @@ the speedup.
 [.text-center]
 image::speedup.svg[scaledwidth=45%,pdfwidth=45%,width=45%]
 
-This speedup is much less than 1. Although this result might be surprising,
-the concurrent program with two threads executes slower than the
-sequential program. In this example, the cost of creating, running, and
-joining threads outweighs the benefits of concurrent calculation on two
-cores.
+Essa aceleração é muito menor que 1. Embora esse resultado possa ser surpreendente,
+o programa concorrente com duas threads é executado mais lentamente do que o programa 
+sequencial. Nesse exemplo, o custo de criar, executar e
+processar as threads supera os benefícios do cálculo simultâneo em dois
+núcleos.
 ====
 
 ****
@@ -746,7 +709,7 @@ cores.
 ****
 
 [[arraySummationExample]]
-.Array summation
+.Somatório de matrizes
 ====
 
 In <<arraySummationPreviewExample>>, we introduced the
@@ -1393,7 +1356,7 @@ minimum amount of time needed to perform all tasks with only a single
 person? What is the minimum amount of time needed to perform all tasks
 with an unlimited number of people? What's the smallest number of
 people needed to achieve this minimum time?
-. [[sharedThreadVariableExercicio]] Consider the following code snippet.
+. [[sharedThreadVariableExercise]] Consider the following code snippet.
 +
 [source,java]
 ----

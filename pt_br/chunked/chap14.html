@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -336,13 +336,13 @@ that are periodically filled with rice. Between adjacent philosophers
 are single chopsticks so that there are exactly the same number of
 chopsticks as there are philosophers. These philosophers only think and
 eat. In order to eat, a philosopher must pick up both the chopstick on
-her left and the chopstick on her right. <a href="chap14.html#figure-dining">Figure 14.1</a> illustrates this situation.</p>
+her left and the chopstick on her right. <a href="chap14.html#figure-dining">Figura 14.1</a> illustrates this situation.</p>
 </div>
 <div id="figure-dining" class="imageblock text-center">
 <div class="content">
 <img src="chapters/14-synchronization/images/diners.svg" alt="diners" width="50%">
 </div>
-<div class="title">Figure 14.1 Table for five dining philosophers.</div>
+<div class="title">Figura 14.1 Table for five dining philosophers.</div>
 </div>
 <div class="paragraph">
 <p>Your goal is to write a class called <code>DiningPhilosopher</code> which extends
@@ -366,7 +366,7 @@ chopstick.</p>
 <div class="paragraph">
 <p>This dining philosopher problem highlights some difficulties which were
 emerging toward the end of the last chapter. In
-<a href="#sharedThreadVariableExercise" class="target-missing">[sharedThreadVariableExercise]</a> two snippets of code could run
+<a href="chap13.html#sharedThreadVariableExercise">Exercício 13.10</a> two snippets of code could run
 concurrently and modify the same shared variable, potentially producing
 incorrect output. Because of the nondeterministic nature of scheduling,
 we have to assume that the code executing in two or more threads can be
@@ -375,7 +375,7 @@ changes depending on the order of thread execution, it’s called a <em>race
 condition</em>. Below is a simple example of a race condition in Java.</p>
 </div>
 <div id="RaceConditionProgram" class="listingblock">
-<div class="title">Program 14.1 Short example of a race condition.</div>
+<div class="title">Programa 14.1 Short example of a race condition.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RaceCondition</span> <span class="kd">extends</span> <span class="nc">Thread</span> <span class="o">{</span>     
     <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> 
@@ -418,8 +418,8 @@ the answer should always be correct.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#raceConditionExercise">Exercise 14.6</a><br>
-<a href="chap14.html#threadTimeSliceExercise">Exercise 14.14</a></p>
+<p><a href="chap14.html#raceConditionExercise">Exercício 14.6</a><br>
+<a href="chap14.html#threadTimeSliceExercise">Exercício 14.14</a></p>
 </div>
 </div>
 </div>
@@ -482,7 +482,7 @@ language, you may need to brush up on its mutual exclusion features.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#restaurantSynchronizationExercise">Exercise 14.5</a></p>
+<p><a href="chap14.html#restaurantSynchronizationExercise">Exercício 14.5</a></p>
 </div>
 </div>
 </div>
@@ -520,7 +520,7 @@ beginning of <code>message</code>, but you might have fewer.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#synchronizedKeywordExercise">Exercise 14.1</a></p>
+<p><a href="chap14.html#synchronizedKeywordExercise">Exercício 14.1</a></p>
 </div>
 </div>
 </div>
@@ -536,7 +536,7 @@ which call other synchronized methods.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#lockTimingExercise">Exercise 14.13</a></p>
+<p><a href="chap14.html#lockTimingExercise">Exercício 14.13</a></p>
 </div>
 </div>
 </div>
@@ -566,8 +566,8 @@ time for that object.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#constructorLeakExercise">Exercise 14.2</a><br>
-<a href="chap14.html#synchronizedThreadIncrementExercise">Exercise 14.7</a></p>
+<p><a href="chap14.html#constructorLeakExercise">Exercício 14.2</a><br>
+<a href="chap14.html#synchronizedThreadIncrementExercise">Exercício 14.7</a></p>
 </div>
 </div>
 </div>
@@ -737,13 +737,13 @@ if you only rely on <code>notify()</code>.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#waitNotifyExercise">Exercise 14.3</a><br>
-<a href="chap14.html#notifyAllExercise">Exercise 14.4</a></p>
+<p><a href="chap14.html#waitNotifyExercise">Exercício 14.3</a><br>
+<a href="chap14.html#notifyAllExercise">Exercício 14.4</a></p>
 </div>
 </div>
 </div>
 <div id="producerConsumerExample" class="exampleblock">
-<div class="title">Example 14.1 Producer/consumer</div>
+<div class="title">Exemplo 14.1 Producer/consumer</div>
 <div class="content">
 <div class="paragraph">
 <p>To illustrate the use of <code>wait()</code> and <code>notify()</code> calls inside of
@@ -762,7 +762,7 @@ synchronization on this buffer. Many different threads can share this
 buffer, but all accesses will be controlled.</p>
 </div>
 <div id="BufferProgram" class="listingblock">
-<div class="title">Program 14.2 Example of a synchronized buffer.</div>
+<div class="title">Programa 14.2 Example of a synchronized buffer.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Buffer</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="no">SIZE</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
@@ -836,12 +836,12 @@ threads back to parallel execution as quickly as possible.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#twoLockProducerConsumerExercise">Exercise 14.10</a></p>
+<p><a href="chap14.html#twoLockProducerConsumerExercise">Exercício 14.10</a></p>
 </div>
 </div>
 </div>
 <div id="bankAccountExample" class="exampleblock">
-<div class="title">Example 14.2 Bank account</div>
+<div class="title">Exemplo 14.2 Bank account</div>
 <div class="content">
 <div class="paragraph">
 <p>Although producer/consumer is a good model to keep in mind, there are
@@ -1031,7 +1031,7 @@ circular chain of dependency.</p>
 </ol>
 </div>
 <div id="deadlockPhilosophersExample" class="exampleblock">
-<div class="title">Example 14.3 Deadlock philosophers</div>
+<div class="title">Exemplo 14.3 Deadlock philosophers</div>
 <div class="content">
 <div class="paragraph">
 <p>We illustrate deadlock with an example of how <strong>not</strong> to solve the dining
@@ -1181,7 +1181,7 @@ above, we’ve already gotten ourselves into trouble.</p>
 </div>
 </div>
 <div id="deadlockSumExample" class="exampleblock">
-<div class="title">Example 14.4 Deadlock sum</div>
+<div class="title">Exemplo 14.4 Deadlock sum</div>
 <div class="content">
 <div class="paragraph">
 <p>Here’s another example of deadlock. We emphasize deadlock because it’s
@@ -1314,7 +1314,7 @@ is an elegant solution.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#deadlockExercise">Exercise 14.8</a></p>
+<p><a href="chap14.html#deadlockExercise">Exercício 14.8</a></p>
 </div>
 </div>
 </div>
@@ -1335,7 +1335,7 @@ chopsticks, that philosopher will quite literally starve.</p>
 </div>
 <div class="paragraph">
 <p>Starvation doesn’t necessarily mean deadlock, however. Examine the
-implementation in <a href="chap14.html#bankAccountExample">Example 14.2</a> for the bank account.
+implementation in <a href="chap14.html#bankAccountExample">Exemplo 14.2</a> for the bank account.
 That solution is correct in the sense that it preserves mutual
 exclusion. No combination of balance checks, deposits, or withdrawals
 will cause the balance to be incorrect. Money will neither be created
@@ -1349,7 +1349,7 @@ waiting to make deposits and withdrawals will wait forever.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#concurrentReadExercise">Exercise 14.11</a></p>
+<p><a href="chap14.html#concurrentReadExercise">Exercício 14.11</a></p>
 </div>
 </div>
 </div>
@@ -1364,7 +1364,7 @@ hear what the other has to say. After exactly one second, they both
 begin again and immediately stop. Lather, rinse, repeat.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 14.5 Livelock party preparations</div>
+<div class="title">Exemplo 14.5 Livelock party preparations</div>
 <div class="content">
 <div class="paragraph">
 <p>Imagine three friends going to a party. Each of them starts
@@ -1537,7 +1537,7 @@ answer but doesn’t exploit any parallelism.</p>
 </div>
 <div class="paragraph">
 <p>For example, we can take the <code>run()</code> method from the parallel
-implementation of matrix multiply given in <a href="chap13.html#matrixMultiplicationExample">Example 13.11</a>
+implementation of matrix multiply given in <a href="chap13.html#matrixMultiplicationExample">Exemplo 13.11</a>
 and use the <code>synchronized</code> keyword to lock on the matrix itself.</p>
 </div>
 <div class="listingblock">
@@ -1587,8 +1587,8 @@ CPU time the low priority thread has to finish its task.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#priorityInversionExercise">Exercise 14.9</a><br>
-<a href="chap14.html#priorityiInversionExperimentExercise">Exercise 14.15</a></p>
+<p><a href="chap14.html#priorityInversionExercise">Exercício 14.9</a><br>
+<a href="chap14.html#priorityiInversionExperimentExercise">Exercício 14.15</a></p>
 </div>
 </div>
 </div>
@@ -1628,7 +1628,7 @@ either pick up both chopsticks or neither.</p>
 </div>
 <div class="paragraph">
 <p>We begin with a similar setup as the deadlocking version given in
-<a href="chap14.html#deadlockPhilosophersExample">Example 14.3</a>.</p>
+<a href="chap14.html#deadlockPhilosophersExample">Exemplo 14.3</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1731,7 +1731,7 @@ deterministic.</td>
 <tbody><tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>The real place where deadlock is prevented is in the <code>getChopsticks()</code>
-method. As in <a href="chap14.html#deadlockPhilosophersExample">Example 14.3</a>, we mod by <code>SEATS</code> so that the last philosopher
+method. As in <a href="chap14.html#deadlockPhilosophersExample">Exemplo 14.3</a>, we mod by <code>SEATS</code> so that the last philosopher
 tries to get the first chopstick in the array.</td>
 </tr>
 <tr>
@@ -1817,7 +1817,7 @@ years, and research continues to find better solutions.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap14.html#fairDiningPhilosophersExercise">Exercise 14.12</a></p>
+<p><a href="chap14.html#fairDiningPhilosophersExercise">Exercício 14.12</a></p>
 </div>
 </div>
 </div>
@@ -1886,7 +1886,7 @@ method as follows.</p>
 </li>
 <li>
 <p><a id="deadlockExercise"></a> Examine our deadlock example from
-<a href="chap14.html#deadlockSumExample">Example 14.4</a>. Explain why this example fulfills all
+<a href="chap14.html#deadlockSumExample">Exemplo 14.4</a>. Explain why this example fulfills all
 four conditions for deadlock. Be specific about which threads and which
 resources are needed to show each condition.</p>
 </li>
@@ -1903,7 +1903,7 @@ a low priority thread holding a lock be particularly problematic?</p>
 <ol class="arabic" start="10">
 <li>
 <p><a id="twoLockProducerConsumerExercise"></a> In
-<a href="chap14.html#producerConsumerExample">Example 14.1</a> the <code>Buffer</code> class used to
+<a href="chap14.html#producerConsumerExample">Exemplo 14.1</a> the <code>Buffer</code> class used to
 implement a solution to the producer/consumer problem only has a single
 lock. When the buffer is empty and a producer puts an item in it, both
 producers and consumers are woken up. A similar situation happens
@@ -1913,7 +1913,7 @@ empty buffer only wakes up consumers and a consumer removing an item
 from a full buffer only wakes up producers.</p>
 </li>
 <li>
-<p><a id="concurrentReadExercise"></a> In <a href="chap14.html#bankAccountExample">Example 14.2</a>
+<p><a id="concurrentReadExercise"></a> In <a href="chap14.html#bankAccountExample">Exemplo 14.2</a>
 we used the class <code>SynchronizedAccount</code> to solve a bank account problem.
 As we mention in <a href="chap14.html#_starvation_and_livelock">Section 14.5.2</a>, depositing
 and withdrawing threads can be starved out by a steady supply of balance
@@ -2019,7 +2019,7 @@ you set the priorities of these new threads to <code>MAX_PRIORITY</code> or
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

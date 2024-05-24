@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -465,8 +465,8 @@ compile time by reference type.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap17.html#staticBindingExercise">Exercise 17.1</a><br>
-<a href="chap17.html#staticBindingExampleExercise">Exercise 17.2</a></p>
+<p><a href="chap17.html#staticBindingExercise">Exercício 17.1</a><br>
+<a href="chap17.html#staticBindingExampleExercise">Exercício 17.2</a></p>
 </div>
 </div>
 </div>
@@ -639,7 +639,7 @@ class that will be used directly.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap17.html#abstractClassesAndInterfacesExercise">Exercise 17.3</a></p>
+<p><a href="chap17.html#abstractClassesAndInterfacesExercise">Exercício 17.3</a></p>
 </div>
 </div>
 </div>
@@ -710,7 +710,7 @@ can force the programmer who’s extending them to implement particular methods,
 but unlike interfaces they can also define fields and methods of any kind.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 17.1 Bank account abstract class</div>
+<div class="title">Exemplo 17.1 Bank account abstract class</div>
 <div class="content">
 <div class="paragraph">
 <p>Here’s a more involved example of an abstract class that gives a first
@@ -982,7 +982,7 @@ class <code>RocketShip</code> and not for objects of a child class like
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap17.html#instanceofExercise">Exercise 17.6</a></p>
+<p><a href="chap17.html#instanceofExercise">Exercício 17.6</a></p>
 </div>
 </div>
 </div>
@@ -1055,12 +1055,12 @@ will still work.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap17.html#polymorphismExceptionsExercise">Exercise 17.7</a></p>
+<p><a href="chap17.html#polymorphismExceptionsExercise">Exercício 17.7</a></p>
 </div>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 17.2 More human than human</div>
+<div class="title">Exemplo 17.2 More human than human</div>
 <div class="content">
 <div class="paragraph">
 <p>Here we have a few additional examples in a somewhat larger class
@@ -1070,7 +1070,7 @@ hierarchy.</p>
 <div class="content">
 <img src="chapters/17-polymorphism/images/animals.svg" alt="animals" width="75%">
 </div>
-<div class="title">Figure 17.1 Animal class hierarchy.</div>
+<div class="title">Figura 17.1 Animal class hierarchy.</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1217,10 +1217,10 @@ chapter and give its solution. We’ve already given you the
 <div class="content">
 <img src="chapters/17-polymorphism/images/accounts.svg" alt="accounts" width="75%">
 </div>
-<div class="title">Figure 17.2 Bank account class hierarchy.</div>
+<div class="title">Figura 17.2 Bank account class hierarchy.</div>
 </div>
 <div id="CheckingAccountProgram" class="listingblock">
-<div class="title">Program 17.1 Child class of <code>BankAccount</code> that models a normal checking account.</div>
+<div class="title">Programa 17.1 Child class of <code>BankAccount</code> that models a normal checking account.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheckingAccount</span> <span class="kd">extends</span> <span class="nc">BankAccount</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">FEE</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
@@ -1269,7 +1269,7 @@ Instead, we call the <code>getFee()</code> method. The reason for this decision 
 due to the next class.</p>
 </div>
 <div id="DirectDepositAccountProgram" class="listingblock">
-<div class="title">Program 17.2 Child class of <code>CheckingAccount</code> that models the behavior of accounts with direct deposits.</div>
+<div class="title">Programa 17.2 Child class of <code>CheckingAccount</code> that models the behavior of accounts with direct deposits.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Calendar</span><span class="o">;</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DirectDepositAccount</span> <span class="kd">extends</span> <span class="nc">CheckingAccount</span> <span class="o">{</span>
@@ -1311,7 +1311,7 @@ the <code>update()</code> method defined in <code>CheckingAccount</code> will ca
 overridden <code>getFee()</code> method for <code>DirectDepositAccount</code> objects.</p>
 </div>
 <div id="SavingsAccountProgram" class="listingblock">
-<div class="title">Program 17.3 Child class of <code>BankAccount</code> that models the behavior of a savings account.</div>
+<div class="title">Programa 17.3 Child class of <code>BankAccount</code> that models the behavior of a savings account.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SavingsAccount</span> <span class="kd">extends</span> <span class="nc">BankAccount</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">MINIMUM</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
@@ -1380,20 +1380,20 @@ classes with certain operations guaranteed to execute atomically. For example,
 the <code>AtomicInteger</code> class encapsulates the functionality of an <code>int</code> variable
 with atomic accesses. One of its methods is <code>incrementAndGet()</code>, which will
 atomically increment its internal value by 1 and return the result. Recall from
-<a href="chap14.html#RaceConditionProgram">Program 14.1</a> that even an operation as simple as
+<a href="chap14.html#RaceConditionProgram">Programa 14.1</a> that even an operation as simple as
 <code>++</code> isn’t atomic. If many different threads try to increment a single
 variable, some of those increments can get lost, causing the final value
 to be less than it should be.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 17.3 AtomicInteger</div>
+<div class="title">Exemplo 17.3 AtomicInteger</div>
 <div class="content">
 <div class="paragraph">
 <p>We can use the <code>AtomicInteger</code> class to rewrite
-<a href="chap14.html#RaceConditionProgram">Program 14.1</a> so that no race condition occurs.</p>
+<a href="chap14.html#RaceConditionProgram">Programa 14.1</a> so that no race condition occurs.</p>
 </div>
 <div id="NoRaceConditionProgram" class="listingblock">
-<div class="title">Program 17.4 Demonstrates the use of <code>AtomicInteger</code>.</div>
+<div class="title">Programa 17.4 Demonstrates the use of <code>AtomicInteger</code>.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.concurrent.atomic.*</span><span class="o">;</span>
 
@@ -1426,7 +1426,7 @@ to be less than it should be.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This program is identical to <a href="chap14.html#RaceConditionProgram">Program 14.1</a>, except
+<p>This program is identical to <a href="chap14.html#RaceConditionProgram">Programa 14.1</a>, except
 that the type of <code>counter</code> has been changed from <code>int</code> to
 <code>AtomicInteger</code> (and an appropriate <code>import</code> has been added).
 Consequently, the <code>++</code> operation was changed to an <code>incrementAndGet()</code>
@@ -1439,7 +1439,7 @@ value. If you run this program, the final answer should always be
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap17.html#atomicClassExercise">Exercise 17.10</a></p>
+<p><a href="chap17.html#atomicClassExercise">Exercício 17.10</a></p>
 </div>
 </div>
 </div>
@@ -1467,7 +1467,7 @@ applications depends on CAS implementations.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap17.html#atomicTimingExercise">Exercise 17.11</a></p>
+<p><a href="chap17.html#atomicTimingExercise">Exercício 17.11</a></p>
 </div>
 </div>
 </div>
@@ -1681,7 +1681,7 @@ they don’t have to pay tax on the first $50,000 of income.</p>
 </li>
 <li>
 <p><a id="atomicClassExercise"></a> Re-implement the original
-<code>SynchronizedAccount</code> class from <a href="chap14.html#bankAccountExample">Example 14.2</a> using
+<code>SynchronizedAccount</code> class from <a href="chap14.html#bankAccountExample">Exemplo 14.2</a> using
 atomic classes. For simplicity, you can change the <code>balance</code> type from
 <code>double</code> to <code>AtomicInteger</code> since there’s no <code>AtomicDouble</code> class. How
 much has this simplified the implementation? Is the <code>readers</code> field
@@ -1695,11 +1695,11 @@ still necessary? Why or why not?</p>
 <div class="olist arabic">
 <ol class="arabic" start="11">
 <li>
-<p><a id="atomicTimingExercise"></a> Take <a href="chap17.html#NoRaceConditionProgram">Program 17.4</a>
+<p><a id="atomicTimingExercise"></a> Take <a href="chap17.html#NoRaceConditionProgram">Programa 17.4</a>
 and increase <code>COUNT</code> to <code>100000000</code>. Run it several times and time how
 long it takes to run to completion.</p>
 <div class="paragraph">
-<p>Then, take <a href="chap14.html#RaceConditionProgram">Program 14.1</a> and increase its <code>COUNT</code> to
+<p>Then, take <a href="chap14.html#RaceConditionProgram">Programa 14.1</a> and increase its <code>COUNT</code> to
 <code>100000000</code> as well. Change the body of the <code>for</code> loop inside the
 <code>run()</code> method so that <code>count++;</code> is inside of a <code>synchronized</code> block
 that uses <code>RaceCondition.class</code> as the lock. (The choice of
@@ -1731,7 +1731,7 @@ the implementation of locks and CAS on your OS and hardware platform.</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

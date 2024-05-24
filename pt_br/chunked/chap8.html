@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -961,7 +961,7 @@ For example, the following class includes a method called <code>record()</code>
 that increases the class variable <code>counter</code> every time it’s called.</p>
 </div>
 <div id="BookkeeperProgram" class="listingblock">
-<div class="title">Program 8.1 Keeps track of the number of times the <code>record()</code> method is called.</div>
+<div class="title">Programa 8.1 Keeps track of the number of times the <code>record()</code> method is called.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Bookkeeper</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
@@ -1009,7 +1009,7 @@ the class name can be dropped. A class constant is declared like a class
 variable, but with the addition of the <code>final</code> keyword.</p>
 </div>
 <div id="gravitationalAttractionExample" class="exampleblock">
-<div class="title">Example 8.1 Gravitational attraction</div>
+<div class="title">Exemplo 8.1 Gravitational attraction</div>
 <div class="content">
 <div class="paragraph">
 <p>The following class allows a user to compute the one-dimensional force due to gravity.
@@ -1027,7 +1027,7 @@ distance between their centers, and <em>G</em> is the gravitational
 constant, 6.673 × 10<sup>-11</sup> N⋅m<sup>2</sup>⋅kg<sup>-2</sup>.</p>
 </div>
 <div id="GravityProgram" class="listingblock">
-<div class="title">Program 8.2 Calculates the attraction due to gravity between two masses.</div>
+<div class="title">Programa 8.2 Calculates the attraction due to gravity between two masses.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 
@@ -1073,7 +1073,7 @@ testing for palindromes, and converting a <code>String</code> representation of 
 <code>int</code> to an <code>int</code>.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8.2 Euclidean distance</div>
+<div class="title">Exemplo 8.2 Euclidean distance</div>
 <div class="content">
 <div class="paragraph">
 <p>The Euclidean distance between two points is the length of a straight
@@ -1113,7 +1113,7 @@ any other variables or program state.</p>
 </div>
 </div>
 <div id="palindromeTestingExample" class="exampleblock">
-<div class="title">Example 8.3 Palindrome testing</div>
+<div class="title">Exemplo 8.3 Palindrome testing</div>
 <div class="content">
 <div class="paragraph">
 <p>A palindrome is a word or phrase (or even a number) that’s the same
@@ -1174,12 +1174,12 @@ statement jumps out of the method without completing the loop.</td>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap8.html#palindromeExercise">Exercise 8.11</a></p>
+<p><a href="chap8.html#palindromeExercise">Exercício 8.11</a></p>
 </div>
 </div>
 </div>
 <div id="parsingANumberExample" class="exampleblock">
-<div class="title">Example 8.4 Parsing a number</div>
+<div class="title">Exemplo 8.4 Parsing a number</div>
 <div class="content">
 <div class="paragraph">
 <p>When you read in a number using an object of the <code>Scanner</code> class, it
@@ -1276,7 +1276,7 @@ precision errors.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap8.html#scientificNotationExercise">Exercise 8.12</a></p>
+<p><a href="chap8.html#scientificNotationExercise">Exercício 8.12</a></p>
 </div>
 </div>
 </div>
@@ -1588,7 +1588,7 @@ can all affect the same class variable, perhaps in conflicting ways.
 With multiple threads, even the <strong>same</strong> method can interfere with itself.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8.5 LCG without thread safety</div>
+<div class="title">Exemplo 8.5 LCG without thread safety</div>
 <div class="content">
 <div class="paragraph">
 <p>A linear congruential generator (LCG) allows you to create a sequence of
@@ -1597,7 +1597,7 @@ pseudorandom numbers using the equation
 previous one, and so on.</p>
 </div>
 <div id="UnsafeRandomProgram" class="listingblock">
-<div class="title">Program 8.3 Implements an LCG similar to one sometimes used in the function <code>rand()</code> used in the C language.</div>
+<div class="title">Programa 8.3 Implements an LCG similar to one sometimes used in the function <code>rand()</code> used in the C language.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UnsafeRandom</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">next</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
@@ -1624,7 +1624,7 @@ sequence. In that way, there’s no shared state. Remember that using a
 possible.</p>
 </div>
 <div id="SafeRandomProgram" class="listingblock">
-<div class="title">Program 8.4 Implements the same LCG safely by requiring the caller to supply the previous random number.</div>
+<div class="title">Programa 8.4 Implements the same LCG safely by requiring the caller to supply the previous random number.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SafeRandom</span> <span class="o">{</span>   
     <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="no">A</span> <span class="o">=</span> <span class="mi">1103515245</span><span class="o">;</span>
@@ -1640,7 +1640,7 @@ possible.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8.6 Unpredictable methods</div>
+<div class="title">Exemplo 8.6 Unpredictable methods</div>
 <div class="content">
 <div class="paragraph">
 <p>By forcing each thread to carry its own state, we fixed the previous
@@ -1650,7 +1650,7 @@ time. When that happens, very curious effects are possible. Consider the
 following program.</p>
 </div>
 <div id="AlwaysEvenProgram" class="listingblock">
-<div class="title">Program 8.5 The <code>print()</code> method always prints <code>"Even"</code> when run with a single thread but can sometimes print <code>"Odd"</code> if called repeatedly with multiple threads.</div>
+<div class="title">Programa 8.5 The <code>print()</code> method always prints <code>"Even"</code> when run with a single thread but can sometimes print <code>"Odd"</code> if called repeatedly with multiple threads.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AlwaysEven</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
@@ -1875,13 +1875,13 @@ various input values of <em>n</em>.</p>
 </li>
 <li>
 <p><a id="palindromeExercise"></a> Write a method that tests palindromes like
-the method from <a href="chap8.html#palindromeTestingExample">Example 8.3</a> but also ignores
+the method from <a href="chap8.html#palindromeTestingExample">Exemplo 8.3</a> but also ignores
 punctuation and spaces. Thus, <code>"A man, a plan, a canal: Panama"</code> should
 be counted as a palindrome by this new method.</p>
 </li>
 <li>
 <p><a id="scientificNotationExercise"></a> Add to the <code>parseDouble()</code> method from
-<a href="chap8.html#parsingANumberExample">Example 8.4</a> so that it can also handle numbers in standard Java
+<a href="chap8.html#parsingANumberExample">Exemplo 8.4</a> so that it can also handle numbers in standard Java
 scientific notation, such as <code>7.239e-14</code>.  Note that the <code>e</code> can be uppercase
 or lowercase, and the exponent can begin with a minus sign (<code>-</code>), a plus sign (<code>+</code>),
 or neither.</p>
@@ -2020,7 +2020,7 @@ method.</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

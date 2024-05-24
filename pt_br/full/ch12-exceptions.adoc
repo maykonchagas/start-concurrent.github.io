@@ -1,12 +1,3 @@
-:xrefstyle: short
-:example-number: 0
-:figure-number: 0
-:figure-caption: Figura
-:example-caption: Exemplo
-:table-caption: Tabela
-:section-caption: Seção
-:chapter-caption: Capítulo
-
 [#ch12-exceptions]
 :imagesdir: chapters/12-exceptions/images
 :programsdir: chapters/12-exceptions/programs

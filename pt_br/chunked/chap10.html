@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -332,7 +332,7 @@ use 1/9 of its calendar age. The age we use for
 <code>Person</code> and <code>Cheese</code> objects is simply their calendar age.</p>
 </div>
 <div class="paragraph">
-<p>As we discussed in <a href="chap6.html#selectionSortExample">Example 6.2</a>, sorting is one of
+<p>As we discussed in <a href="chap6.html#selectionSortExample">Exemplo 6.2</a>, sorting is one of
 the most fundamental tools for computer scientists. In that
 example, we introduced selection sort. Here we’re going to use another
 sort called <em>bubble sort</em>. We introduce bubble sort to expose you to
@@ -778,7 +778,7 @@ Nevertheless, constants are allowed in interfaces, and the Java API uses
 them in many cases.</p>
 </div>
 <div id="supermarketPricingExample" class="exampleblock">
-<div class="title">Example 10.1 Supermarket pricing</div>
+<div class="title">Exemplo 10.1 Supermarket pricing</div>
 <div class="content">
 <div class="paragraph">
 <p>Interface names often include the suffix <em>-able</em>, for example,
@@ -925,7 +925,7 @@ minor axes of a circle are its diameter, this formula becomes
 <div class="content">
 <img src="chapters/10-interfaces/images/ellipse.svg" alt="ellipse" width="50%">
 </div>
-<div class="title">Figure 10.1 Area of an ellipse.</div>
+<div class="title">Figura 10.1 Area of an ellipse.</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1018,7 +1018,7 @@ the local <code>Ellipse</code> class in this way and fill an array with
 <p>Even though the <code>Ellipse</code> class had the <code>getArea()</code> method before, the
 compiler wouldn’t have allowed us to store <code>Ellipse</code> references in an
 <code>AreaGettable</code> array until we marked the <code>Ellipse</code> class as implementing
-<code>AreaGettable</code>. As in <a href="chap10.html#supermarketPricingExample">Example 10.1</a>, we used
+<code>AreaGettable</code>. As in <a href="chap10.html#supermarketPricingExample">Exemplo 10.1</a>, we used
 an array with an interface type.</p>
 </div>
 </div>
@@ -1106,7 +1106,7 @@ have a single, narrow purpose. We’ll use this technique in
 <h3 id="_solution_sort_it_out">10.5. Solution: Sort it out</h3>
 <div class="paragraph">
 <p>It’s not difficult to move from totaling the value of items as we did
-in <a href="chap10.html#supermarketPricingExample">Example 10.1</a> to sorting them. Refer to the
+in <a href="chap10.html#supermarketPricingExample">Exemplo 10.1</a> to sorting them. Refer to the
 following class diagram as we explain our solution to the sorting
 problem posed at the beginning of the chapter. Dotted lines are used to
 show the “implements” relationship.</p>
@@ -1115,7 +1115,7 @@ show the “implements” relationship.</p>
 <div class="content">
 <img src="chapters/10-interfaces/images/ageandweight.svg" alt="ageandweight" width="100%">
 </div>
-<div class="title">Figure 10.2 Sorting relationships.</div>
+<div class="title">Figura 10.2 Sorting relationships.</div>
 </div>
 <div class="paragraph">
 <p>We’ll start with the definitions of the two interfaces we’ll use to
@@ -1304,7 +1304,7 @@ regular program has a single starting place,
 the <code>main()</code> method, some method needs to be marked as a starting place
 for additional threads. For more
 information about using the <code>Runnable</code> interface, refer to
-<a href="chap13.html#_the_runnable_interface">Section 13.4.5</a>.</p>
+<a href="#The <code>Runnable</code> interface" class="target-missing">[The <code>Runnable</code> interface]</a>.</p>
 </div>
 <div class="paragraph">
 <p>The second connection between interfaces and concurrency is more
@@ -1545,7 +1545,7 @@ the two arrays and put it in the result. Then increment the index from
 the array you took the data from as well as the index of the result
 array. Be careful not to go beyond the end of the
 arrays which are being merged.  An implementation of merging can be found
-in <a href="chap19.html#mergeSortExample">Example 19.8</a>.</p>
+in <a href="chap19.html#mergeSortExample">Exemplo 19.8</a>.</p>
 </div>
 </li>
 </ol>
@@ -1557,7 +1557,7 @@ in <a href="chap19.html#mergeSortExample">Example 19.8</a>.</p>
 <ol class="arabic" start="15">
 <li>
 <p>Once you have implemented the sort in parallel from
-<a href="chap10.html#parallelBubbleSortExercise">Exercise 10.14</a>, time it against the sequential
+<a href="chap10.html#parallelBubbleSortExercise">Exercício 10.14</a>, time it against the sequential
 version. Try two, four, and eight different threads. Be sure to create
 one random array and use copies of the original array for both the parallel
 and sequential versions. Be careful not to sort an array that’s already
@@ -1581,7 +1581,7 @@ performance increase? Was it as much as you expected?</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

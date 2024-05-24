@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -613,14 +613,14 @@ parentheses with a block of code surrounded by braces (<code>{ }</code>)
 afterward. This similarity is not accidental. The only difference
 between the two is that the body of the <code>if</code> statement will run a only
 single time, while the body of the <code>while</code> loop will run as long as the
-condition remains <code>true</code>. <a href="chap5.html#figure-while">Figure 5.1</a> shows the pattern of
+condition remains <code>true</code>. <a href="chap5.html#figure-while">Figura 5.1</a> shows the pattern of
 execution for <code>while</code> loops.</p>
 </div>
 <div id="figure-while" class="imageblock text-center">
 <div class="content">
 <img src="chapters/05-repetition/images/while.svg" alt="while" width="75%">
 </div>
-<div class="title">Figure 5.1 If the condition is <code>true</code>, all of the statements in the body of the loop are executed, and then the condition is checked again. When the check is <code>false</code>, execution skips past the body of the loop.</div>
+<div class="title">Figura 5.1 If the condition is <code>true</code>, all of the statements in the body of the loop are executed, and then the condition is checked again. When the check is <code>false</code>, execution skips past the body of the loop.</div>
 </div>
 <div class="paragraph">
 <p>If we assume that the <code>boolean</code> value <code>atDoor</code> says whether or not we
@@ -704,7 +704,7 @@ could have written equivalent code as follows.</p>
 binary representation of a number.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5.1 Binary Conversion</div>
+<div class="title">Exemplo 5.1 Binary Conversion</div>
 <div class="content">
 <div class="paragraph">
 <p>As we discussed in <a href="index.html">Chapter 1</a>, binary numbers
@@ -738,7 +738,7 @@ process will print a 0 for every power of 2 that’s not in
 definition of a number written in base 2.</p>
 </div>
 <div id="DecimalToBinaryProgram" class="listingblock">
-<div class="title">Program 5.1 Outputs a binary representation of a decimal number.</div>
+<div class="title">Programa 5.1 Outputs a binary representation of a decimal number.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -828,14 +828,14 @@ follows.</p>
 <div class="paragraph">
 <p>The header of a <code>for</code> loop consists of those three parts: the
 initialization, the condition, and the update, all separated by
-semicolons. <a href="chap5.html#figure-for">Figure 5.2</a> shows the pattern of execution for
+semicolons. <a href="chap5.html#figure-for">Figura 5.2</a> shows the pattern of execution for
 <code>for</code> loops.</p>
 </div>
 <div id="figure-for" class="imageblock text-center">
 <div class="content">
 <img src="chapters/05-repetition/images/for.svg" alt="for" width="75%">
 </div>
-<div class="title">Figure 5.2 The loop is initialized. If the condition is <code>true</code>, all of the statements in the body of the loop are executed, followed by the increment step. Then the condition is checked again. When the check is <code>false</code>, execution skips past the body of the loop.</div>
+<div class="title">Figura 5.2 The loop is initialized. If the condition is <code>true</code>, all of the statements in the body of the loop are executed, followed by the increment step. Then the condition is checked again. When the check is <code>false</code>, execution skips past the body of the loop.</div>
 </div>
 <div class="paragraph">
 <p>You may have noticed that we changed the variable name used within
@@ -980,7 +980,7 @@ the hanzi and kanji of Chinese and Japanese. Regardless, using the
 applications, since it’s more general and more readable.</p>
 </div>
 <div id="primalityTestingExample" class="exampleblock">
-<div class="title">Example 5.2 Primality testing</div>
+<div class="title">Exemplo 5.2 Primality testing</div>
 <div class="content">
 <div class="paragraph">
 <p>Prime numbers are integers greater than 1 whose only factors are 1 and themselves.
@@ -998,7 +998,7 @@ and <em>n</em> - 1. If none of the numbers divide it evenly, it
 must be prime. Here is this basic solution.</p>
 </div>
 <div id="PrimalityTester0Program" class="listingblock">
-<div class="title">Program 5.2 Gives a naive approach for testing if a number is prime.</div>
+<div class="title">Programa 5.2 Gives a naive approach for testing if a number is prime.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1033,7 +1033,7 @@ after checking 2, we don’t have to divide it by any even numbers. So, we
 can do half the checking with a few simple modifications.</p>
 </div>
 <div id="PrimalityTester1Program" class="listingblock">
-<div class="title">Program 5.3 Gives a slightly cleverer approach for testing if a number is prime.</div>
+<div class="title">Programa 5.3 Gives a slightly cleverer approach for testing if a number is prime.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1080,7 +1080,7 @@ is as follows.</p>
 the square root of <em>n</em>, which will save much more time.</p>
 </div>
 <div id="PrimalityTester2Program" class="listingblock">
-<div class="title">Program 5.4 Gives a much faster approach for testing if a number is prime.</div>
+<div class="title">Programa 5.4 Gives a much faster approach for testing if a number is prime.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1111,12 +1111,12 @@ because there’s the possibility that <code>number</code> is a perfect square.<
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap5.html#primeEfficiencyExercise">Exercise 5.2</a></p>
+<p><a href="chap5.html#primeEfficiencyExercise">Exercício 5.2</a></p>
 </div>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5.3 DNA reverse complement</div>
+<div class="title">Exemplo 5.3 DNA reverse complement</div>
 <div class="content">
 <div class="paragraph">
 <p>DNA is usually double stranded, with each base paired to another
@@ -1175,7 +1175,7 @@ and T. We’ll store this sequence as a <code>String</code> and perform some
 manipulations on it to get the reverse complement.</p>
 </div>
 <div id="ReverseComplementProgram" class="listingblock">
-<div class="title">Program 5.5 Finds the reverse complement of a DNA sequence.</div>
+<div class="title">Programa 5.5 Finds the reverse complement of a DNA sequence.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1223,7 +1223,7 @@ complementary base at the <strong>end</strong> of <code>complement</code>. If we
 a separate step.</p>
 </div>
 <div id="CleverReverseComplementProgram" class="listingblock">
-<div class="title">Program 5.6 More cleverly finds the reverse complement of a DNA sequence.</div>
+<div class="title">Programa 5.6 More cleverly finds the reverse complement of a DNA sequence.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1268,14 +1268,14 @@ will always run at least once. Neither of the other two loops give you
 that guarantee. The syntax for a <code>do</code>-<code>while</code> loop is a <code>do</code> at the top of
 a loop body enclosed in braces, with a normal <code>while</code> header at the end,
 including a condition in parentheses, followed by a semicolon.
-<a href="chap5.html#figure-do-while">Figure 5.3</a> shows the pattern of execution for <code>do</code>-<code>while</code>
+<a href="chap5.html#figure-do-while">Figura 5.3</a> shows the pattern of execution for <code>do</code>-<code>while</code>
 loops.</p>
 </div>
 <div id="figure-do-while" class="imageblock text-center">
 <div class="content">
 <img src="chapters/05-repetition/images/dowhile.svg" alt="dowhile" width="75%">
 </div>
-<div class="title">Figure 5.3 The statements in the body of the loop are executed, and then the condition is checked. When the check is <code>false</code>, execution skips past the body of the loop. A <code>do</code>-<code>while</code> loop is guaranteed to run at least once.</div>
+<div class="title">Figura 5.3 The statements in the body of the loop are executed, and then the condition is checked. When the check is <code>false</code>, execution skips past the body of the loop. A <code>do</code>-<code>while</code> loop is guaranteed to run at least once.</div>
 </div>
 <div class="paragraph">
 <p>We can use a <code>do</code>-<code>while</code> loop to print out the first 10 perfect squares
@@ -1363,7 +1363,7 @@ Every 12 iterations, the inner loop will stop, and an extra blank line
 will be added by the <code>System.out.println()</code> method in the outer loop.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 5.4 Triangular numbers</div>
+<div class="title">Exemplo 5.4 Triangular numbers</div>
 <div class="content">
 <div class="paragraph">
 <p>The sequence consisting of 1, 3, 6, 10, 15, and so on is known as the
@@ -1377,7 +1377,7 @@ natural way, if you use a number of dots equal to the number.</p>
 triangular numbers, where <em>n</em> is specified by the user.</p>
 </div>
 <div id="TriangularNumbersProgram" class="listingblock">
-<div class="title">Program 5.7 Prints out triangular numbers.</div>
+<div class="title">Programa 5.7 Prints out triangular numbers.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1408,7 +1408,7 @@ that we can keep track of the previous triangular number and add
 <em>i</em> to it, as <em>i</em> increases.</p>
 </div>
 <div id="CleverTriangularNumbersProgram" class="listingblock">
-<div class="title">Program 5.8 Prints out triangular numbers more cleverly.</div>
+<div class="title">Programa 5.8 Prints out triangular numbers more cleverly.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1867,7 +1867,7 @@ to replace the inner <code>for</code> loop. We leave that approach as an exercis
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap5.html#indexOfSearchExercise">Exercise 5.8</a></p>
+<p><a href="chap5.html#indexOfSearchExercise">Exercício 5.8</a></p>
 </div>
 </div>
 </div>
@@ -1968,7 +1968,7 @@ running at the exactly the same time and potentially interacting. Using
 only the power of loops, you can see parallelism in action now.</p>
 </div>
 <div id="parallelismWithoutThreadsExample" class="exampleblock">
-<div class="title">Example 5.5 Parallelism without threads</div>
+<div class="title">Exemplo 5.5 Parallelism without threads</div>
 <div class="content">
 <div class="paragraph">
 <p>Consider the problem of computing the sum of the sines of a range of
@@ -1986,7 +1986,7 @@ out the sum, we need to make a program with a little bit of input and
 output around this loop.</p>
 </div>
 <div id="SumSinesProgram" class="listingblock">
-<div class="title">Program 5.9 Adds the sines of all integers in a range specified by the user.</div>
+<div class="title">Programa 5.9 Adds the sines of all integers in a range specified by the user.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
 
@@ -2049,7 +2049,7 @@ threads to change from one core to another while running if the OS needs
 to balance out the workload.</p>
 </div>
 <div class="paragraph">
-<p>This sines example is similar to <a href="chap13.html#arraySummationExample">Example 13.10</a> in <a href="chap13.html">Chapter 13</a>.
+<p>This sines example is similar to <a href="chap13.html#arraySummationExample">Exemplo 13.10</a> in <a href="chap13.html">Chapter 13</a>.
 As you may have noticed, running four programs simultaneously is not convenient.
 You have to open several windows, you have to type starting and ending points
 very carefully, and you have to combine the answers at the end since
@@ -2062,7 +2062,7 @@ execution at a time without the need to run multiple programs by hand.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap5.html#parallelPrimesExercise">Exercise 5.15</a></p>
+<p><a href="chap5.html#parallelPrimesExercise">Exercício 5.15</a></p>
 </div>
 </div>
 </div>
@@ -2080,7 +2080,7 @@ the number of words in the text that begin with the letter <code>'m'</code>, whi
 of the three kinds of loops would you use, and why?</p>
 </li>
 <li>
-<p><a id="primeEfficiencyExercise"></a> In <a href="chap5.html#primalityTestingExample">Example 5.2</a>,
+<p><a id="primeEfficiencyExercise"></a> In <a href="chap5.html#primalityTestingExample">Exemplo 5.2</a>,
 our last version of the primality tester <code>PrimalityTester2</code> computes the
 square root of the number being tested. Instead of computing this value
 before the loop, how would performance be affected by changing the head
@@ -2226,7 +2226,7 @@ much longer would your code take to run if you used a <code>long</code> instead 
 an <code>int</code>?</p>
 </li>
 <li>
-<p>In <a href="chap5.html#primalityTestingExample">Example 5.2</a>, we gave three programs to
+<p>In <a href="chap5.html#primalityTestingExample">Exemplo 5.2</a>, we gave three programs to
 test a number for primality. Run each of these prime testers on a large
 prime such as 982,451,653 and time them. Is there a significant
 difference in the running time of <code>PrimalityTester0</code> and
@@ -2234,9 +2234,9 @@ difference in the running time of <code>PrimalityTester0</code> and
 <code>PrimalityTester2</code>?</p>
 </li>
 <li>
-<p><a id="parallelPrimesExercise"></a> In <a href="chap5.html#parallelismWithoutThreadsExample">Example 5.5</a>, we ran four programs at the same time to solve a
+<p><a id="parallelPrimesExercise"></a> In <a href="chap5.html#parallelismWithoutThreadsExample">Exemplo 5.5</a>, we ran four programs at the same time to solve a
 problem in parallel. Use the same framework (combined with your
-knowledge of primes from <a href="chap5.html#primalityTestingExample">Example 5.2</a>) to write
+knowledge of primes from <a href="chap5.html#primalityTestingExample">Exemplo 5.2</a>) to write
 a program that can see how many prime numbers are in a user specified
 range of integers. Then, use it to find the total number of primes
 between 2 and 500,000,000. Now, run two copies of the program with one
@@ -2264,7 +2264,7 @@ pieces run significantly faster or slower than the others?</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

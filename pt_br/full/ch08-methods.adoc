@@ -1,12 +1,3 @@
-:xrefstyle: short
-:example-number: 0
-:figure-number: 0
-:figure-caption: Figura
-:example-caption: Exemplo
-:table-caption: Tabela
-:section-caption: Seção
-:chapter-caption: Capítulo
-
 [#ch08-methods]
 :imagesdir: chapters/08-methods/images
 :programsdir: chapters/08-methods/programs

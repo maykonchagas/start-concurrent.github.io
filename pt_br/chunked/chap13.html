@@ -164,7 +164,7 @@
 <li class="current"><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li class="current"><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li class="current"><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li class="current"><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li class="current"><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li class="current"><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li class="current"><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li class="current"><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -373,7 +373,7 @@ responsivo, isso não será útil.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#sharedThreadVariableExercicio">Exercise 13.10</a></p>
+<p><a href="chap13.html#sharedThreadVariableExercise">Exercício 13.10</a></p>
 </div>
 </div>
 </div>
@@ -411,15 +411,15 @@ um núcleo poderá ficar ocioso.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#minimumTimeForTasksExercise">Exercise 13.9</a></p>
+<p><a href="chap13.html#minimumTimeForTasksExercise">Exercício 13.9</a></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
 <p>Os dois exemplos a seguir mostram ilustrações simples do processo de divisão de uma tarefa em subtarefas menores no contexto da programação multicore.</p>
 </div>
-<div id="videoGameTasksExemplo" class="exampleblock">
-<div class="title">Example 13.1 Tarefas de videogame</div>
+<div id="videoGameTasksExample" class="exampleblock">
+<div class="title">Exemplo 13.1 Tarefas de videogame</div>
 <div class="content">
 <div class="paragraph">
 <p>Considere um videogame simples que consiste nas seguintes tarefas</p>
@@ -447,18 +447,18 @@ um núcleo poderá ficar ocioso.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/video-game-tasks.svg" alt="video game tasks" width="75%">
 </div>
-<div class="title">Figure 13.1 Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados.</div>
+<div class="title">Figura 13.1 Execução de tarefas em um vídeogame. (a) Execução sequencial em um núcleo. (b) Execução concorrente em dois núcleos. As setas indicam o fluxo de execução e de transferência de dados.</div>
 </div>
 <div class="paragraph">
 <p>Suponha que as tarefas B e D sejam independentes e possam ser executadas simultaneamente se houver dois núcleos disponíveis. A tarefa D atualiza continuamente a tela com os dados antigos até que a tarefa C atualize as informações.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap13.html#figure-video_game_tasks">Figure 13.1</a>(a) e (b) mostram como as tarefas desse videogame podem ser sequenciadas, respectivamente, em um único núcleo ou em dois núcleos. Todas as tarefas são executadas sequencialmente em um processador de núcleo único. Em um processador de núcleo duplo, as tarefas B e C podem ser executadas em um núcleo enquanto a tarefa D é executada simultaneamente em outro. Observe na figura que a tarefa C envia a pontuação e qualquer outros dados para a tarefa D, que atualiza continuamente a tela. Ter dois núcleos pode permitir uma atualização mais rápida da tela, pois o processador não precisa esperar que as tarefas B ou C sejam concluídas.</p>
+<p><a href="chap13.html#figure-video_game_tasks">Figura 13.1</a>(a) e (b) mostram como as tarefas desse videogame podem ser sequenciadas, respectivamente, em um único núcleo ou em dois núcleos. Todas as tarefas são executadas sequencialmente em um processador de núcleo único. Em um processador de núcleo duplo, as tarefas B e C podem ser executadas em um núcleo enquanto a tarefa D é executada simultaneamente em outro. Observe na figura que a tarefa C envia a pontuação e qualquer outros dados para a tarefa D, que atualiza continuamente a tela. Ter dois núcleos pode permitir uma atualização mais rápida da tela, pois o processador não precisa esperar que as tarefas B ou C sejam concluídas.</p>
 </div>
 </div>
 </div>
 <div id="mathExpressionTasksExample" class="exampleblock">
-<div class="title">Example 13.2 Tarefas de expressão matemática</div>
+<div class="title">Exemplo 13.2 Tarefas de expressão matemática</div>
 <div class="content">
 <div class="paragraph">
 <p>Suponha que precisemos avaliar a expressão matemática 2<em>Kate</em><sup>-⁠<em>at</em>²</sup> com os parâmetros <em>a</em> e <em>K</em> em um determinado valor de <em>t</em>. Podemos dividir a expressão em dois termos: 2<em>Kat</em> e <em>e</em><sup>-⁠<em>at</em>²</sup>. Cada um desses termos pode ser atribuído a uma tarefa diferente para avaliação. Em um processador de dois núcleos, essas duas tarefas podem ser executadas em núcleos separados e os resultados de cada uma delas podem ser combinados para encontrar o valor da expressão para a tarefa principal.</p>
@@ -467,18 +467,18 @@ um núcleo poderá ficar ocioso.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/mathematical-expression-evaluation.svg" alt="mathematical expression evaluation" width="75%">
 </div>
-<div class="title">Figure 13.2 Avaliação de uma expressão matemática (a) sequencialmente em um único núcleo e (b) simultaneamente em dois núcleos. As setas mostram o fluxo de execução e a transferência de dados. A fonte em destaque indica a operação que está sendo executada.</div>
+<div class="title">Figura 13.2 Avaliação de uma expressão matemática (a) sequencialmente em um único núcleo e (b) simultaneamente em dois núcleos. As setas mostram o fluxo de execução e a transferência de dados. A fonte em destaque indica a operação que está sendo executada.</div>
 </div>
 <div class="paragraph">
-<p><a href="chap13.html#figure-math_evaluation">Figure 13.2</a> mostra como essa expressão pode ser avaliada em processadores de um núcleo e de dois núcleos. Às vezes, o uso de vários núcleos para avaliar uma expressão como essa levará menos tempo do que um único núcleo. No entanto, não há garantia de que o uso de vários núcleos sempre será mais rápido, pois as tarefas levam tempo para serem configuradas e para se comunicarem entre si.</p>
+<p><a href="chap13.html#figure-math_evaluation">Figura 13.2</a> mostra como essa expressão pode ser avaliada em processadores de um núcleo e de dois núcleos. Às vezes, o uso de vários núcleos para avaliar uma expressão como essa levará menos tempo do que um único núcleo. No entanto, não há garantia de que o uso de vários núcleos sempre será mais rápido, pois as tarefas levam tempo para serem configuradas e para se comunicarem entre si.</p>
 </div>
 </div>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#mathExpressionTimingExercise">Exercise 13.4</a><br>
-<a href="chap13.html#quad-coreExercise">Exercise 13.5</a></p>
+<p><a href="chap13.html#mathExpressionTimingExercise">Exercício 13.4</a><br>
+<a href="chap13.html#quad-coreExercise">Exercício 13.5</a></p>
 </div>
 </div>
 </div>
@@ -504,7 +504,7 @@ um núcleo poderá ficar ocioso.</p>
 <p>Ilustramos a estratégia de decomposição de domínio nos dois exemplos a seguir.</p>
 </div>
 <div id="arraySummationPreviewExample" class="exampleblock">
-<div class="title">Example 13.3 Visualização da soma de matrizes</div>
+<div class="title">Exemplo 13.3 Visualização da soma de matrizes</div>
 <div class="content">
 <div class="paragraph">
 <p>Suponha que queiramos aplicar a função <em>f</em> a cada elemento
@@ -532,19 +532,19 @@ um item de dados a mais do que o outro.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/arrayDecomposition.svg" alt="arrayDecomposition" width="60%">
 </div>
-<div class="title">Figure 13.3 Calculando a soma de uma função de cada elemento de uma matriz.</div>
+<div class="title">Figura 13.3 Calculando a soma de uma função de cada elemento de uma matriz.</div>
 </div>
 <div class="paragraph">
 <p>Depois que <em>S</em><sub>1</sub> e <em>S</em><sub>2</sub> tiverem sido computados, um dos
 núcleos pode somar esses dois números para obter <em>S</em>.
-Essa estratégia é ilustrada em <a href="chap13.html#figure-array_decomposition">Figure 13.3</a>.
+Essa estratégia é ilustrada em <a href="chap13.html#figure-array_decomposition">Figura 13.3</a>.
 Depois que os dois núcleos tiverem concluído seu trabalho em cada metade da matriz,
 as somas individuais são então somadas para produzir o resultado final.</p>
 </div>
 </div>
 </div>
 <div id="matrixMultiplicationPreviewExample" class="exampleblock">
-<div class="title">Example 13.4 Visualização da multiplicação de matrizes</div>
+<div class="title">Exemplo 13.4 Visualização da multiplicação de matrizes</div>
 <div class="content">
 <div class="paragraph">
 <p>A necessidade de multiplicar matrizes surge em muitas aplicações matemáticas, científicas e de engenharia. Suponha que nos peçam para escrever um programa para
@@ -559,12 +559,12 @@ vez. Entretanto, um programa simultâneo pode calcular mais de um elemento de
 <div class="content">
 <img src="chapters/13-concurrency/images/matrixDecomposition.svg" alt="matrixDecomposition" width="75%">
 </div>
-<div class="title">Figure 13.4 Decomposição de dados para multiplicar duas matrizes 4 × 4. Os dois núcleos executam as mesmas tarefas de multiplicação, mas em dados diferentes da matriz <em>A</em>.Os dois núcleos calculam as duas linhas superiores e as duas linhas inferiores de <em>C</em>, respectivamente.</div>
+<div class="title">Figura 13.4 Decomposição de dados para multiplicar duas matrizes 4 × 4. Os dois núcleos executam as mesmas tarefas de multiplicação, mas em dados diferentes da matriz <em>A</em>.Os dois núcleos calculam as duas linhas superiores e as duas linhas inferiores de <em>C</em>, respectivamente.</div>
 </div>
 <div class="paragraph">
 <p>Neste problema, a tarefa é multiplicar as matrizes <em>A</em> e
 <em>B</em>. Por meio da decomposição de domínio, podemos replicar essa
-tarefa em cada núcleo. Conforme mostrado na <a href="chap13.html#figure-matrix_decomposition">Figure 13.4</a>,
+tarefa em cada núcleo. Conforme mostrado na <a href="chap13.html#figure-matrix_decomposition">Figura 13.4</a>,
 cada núcleo calcula apenas uma parte de <em>C</em>. Por exemplo, se
 <em>A</em> e <em>B</em> forem 4 × 4, podemos pedir a um núcleo que calcule o produto das duas primeiras
 linhas de <em>A</em> com todas as quatro colunas de <em>B</em> para
@@ -599,19 +599,19 @@ saber qual núcleo uma determinada thread está usando.</p>
 de execução. Lembre-se dos exemplos anteriores de programação concorrente neste capítulo.</p>
 </div>
 <div class="paragraph">
-<p>Considere a possibilidade de dividir as tarefas em <a href="#videoGameTasksExample" class="target-missing">[videoGameTasksExample]</a> em
+<p>Considere a possibilidade de dividir as tarefas em <a href="chap13.html#videoGameTasksExample">Exemplo 13.1</a> em
 duas threads. As tarefas B e C podem ser agrupadas na thread 1, e a tarefa D
 pode ser empacotada na thread 2.Essa divisão é mostrada em
-<a href="chap13.html#figure-tasks_in_threads">Figure 13.5</a>(a).</p>
+<a href="chap13.html#figure-tasks_in_threads">Figura 13.5</a>(a).</p>
 </div>
 <div class="paragraph">
-<p>As tarefas para avaliar diferentes subexpressões em <a href="chap13.html#mathExpressionTasksExample">Example 13.2</a> também podem ser divididas em duas threads, conforme mostrado em <a href="chap13.html#figure-tasks_in_threads">Figure 13.5</a> (b). Em muitos problemas, há várias maneiras razoáveis de dividir um conjunto de subtarefas em threads.</p>
+<p>As tarefas para avaliar diferentes subexpressões em <a href="chap13.html#mathExpressionTasksExample">Exemplo 13.2</a> também podem ser divididas em duas threads, conforme mostrado em <a href="chap13.html#figure-tasks_in_threads">Figura 13.5</a> (b). Em muitos problemas, há várias maneiras razoáveis de dividir um conjunto de subtarefas em threads.</p>
 </div>
 <div id="figure-tasks_in_threads" class="imageblock">
 <div class="content">
 <img src="chapters/13-concurrency/images/task-thread-packaging.svg" alt="task thread packaging" width="100%">
 </div>
-<div class="title">Figure 13.5 (a)&nbsp;Tarefas em um videogame mostradas agrupadas em duas threads. (b) Tarefas para avaliar uma expressão matemática mostrada empacotada em duas threads. Cada thread pode ou não ser executado no mesmo núcleo que o outro.</div>
+<div class="title">Figura 13.5 (a)&nbsp;Tarefas em um videogame mostradas agrupadas em duas threads. (b) Tarefas para avaliar uma expressão matemática mostrada empacotada em duas threads. Cada thread pode ou não ser executado no mesmo núcleo que o outro.</div>
 </div>
 <div class="paragraph">
 <p>Observe que essas figuras são exatamente iguais às figuras anteriores, exceto
@@ -625,13 +625,13 @@ sequencial, começa com uma thread. Vamos nos referir a essa thread como a threa
 <em>main</em>, pois ela contém o método <code>main()</code>.</p>
 </div>
 <div class="paragraph">
-<p><a href="chap13.html#arraySummationPreviewExample">Example 13.3</a> e <a href="chap13.html#matrixMultiplicationPreviewExample">Example 13.4</a> usam várias tarefas idênticas,
-mas essas tarefas operam em dados diferentes. Em <a href="chap13.html#arraySummationPreviewExample">Example 13.3</a>,
+<p><a href="chap13.html#arraySummationPreviewExample">Exemplo 13.3</a> e <a href="chap13.html#matrixMultiplicationPreviewExample">Exemplo 13.4</a> usam várias tarefas idênticas,
+mas essas tarefas operam em dados diferentes. Em <a href="chap13.html#arraySummationPreviewExample">Exemplo 13.3</a>,
 as duas tarefas podem ser atribuídas a duas threads que
 operam em diferentes partes da matriz de entrada. A tarefa de somar
 os resultados das duas threads pode ser uma thread separada ou uma
 subtarefa incluída em uma das outras threads. Em
-<a href="chap13.html#matrixMultiplicationPreviewExample">Example 13.4</a>, as duas tarefas podem
+<a href="chap13.html#matrixMultiplicationPreviewExample">Exemplo 13.4</a>, as duas tarefas podem
 novamente ser atribuídas a duas threads distintas que operam em diferentes
 partes diferentes da matriz de entrada <em>A</em> para gerar as partes correspondentes
 partes correspondentes da matriz de saída <em>C</em>.</p>
@@ -696,21 +696,15 @@ Java.</p>
 suas subclasses. Esse método é o ponto de partida para a thread de execução associada a uma instância da classe. A maioria dos aplicativos Java
 começa com uma única thread principal que é iniciado em um método <code>main()</code>. As threads adicionais devem começar em algum lugar, e esse lugar é o método
  <code>run()</code>. Um aplicativo Java continuará a ser executado enquanto houver pelo menos uma thread ativa. O exemplo a seguir mostra duas threads,
-cada uma avaliando uma subexpressão separada, como em <a href="chap13.html#figure-tasks_in_threads">Figure 13.5</a>(b).</p>
+cada uma avaliando uma subexpressão separada, como em <a href="chap13.html#figure-tasks_in_threads">Figura 13.5</a>(b).</p>
 </div>
 <div id="threadSamplesExample" class="exampleblock">
-<div class="title">Example 13.5 Exemplos de Threads</div>
+<div class="title">Exemplo 13.5 Exemplos de Threads</div>
 <div class="content">
 <div class="paragraph">
-<p>Vamos criar as classes <code>Thread1</code> e <code>Thread2</code>. As threads de execução criadas por instâncias
-destas classes calculam, respetivamente, as duas subexpressões da <a href="chap13.html#figure-tasks_in_threads">Figure 13.5</a>(b) e
-guardam os valores calculados.</p>
-</div>
-<div class="paragraph">
-<p>We’ll create <code>Thread1</code> and <code>Thread2</code> classes. The threads of execution
-created by instances of these classes compute, respectively, the two
-subexpressions in <a href="chap13.html#figure-tasks_in_threads">Figure 13.5</a>(b) and save the
-computed values.</p>
+<p>Vamos criar as classes <code>Thread1</code> e <code>Thread2</code>. As threads de execução criadas por
+instâncias destas classes calculam, respetivamente, as duas subexpressões da
+<a href="chap13.html#figure-tasks_in_threads">Figura 13.5</a>(b) e guardam os valores calculados.</p>
 </div>
 <div id="Thread1Program" class="listingblock">
 <div class="content">
@@ -742,19 +736,19 @@ computed values.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>run()</code> method in each thread above computes a subexpression and
-saves its value. We show how these threads can be executed to solve the
-math expression problem in <a href="chap13.html#mathExpressionThreadsExample">Example 13.6</a>.</p>
+<p>O método <code>run()</code> em cada thread acima calcula uma subexpressão e salva seu
+valor. Mostramos como essas threads podem ser executados para resolver o problema
+da expressão matemática em <a href="chap13.html#mathExpressionThreadsExample">Exemplo 13.6</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_creating_a_thread_object">13.4.2. Creating a thread object</h4>
+<h4 id="_criando_um_objeto_thread">13.4.2. Criando um objeto thread</h4>
 <div class="paragraph">
-<p>Creating an object from a subclass of <code>Thread</code> is the same as creating
-any other object in Java. For example, we can instantiate the <code>Thread1</code>
-class above to create an object called <code>thread1</code>.</p>
+<p>Criar um objeto a partir de uma subclasse <code>Thread</code> é o mesmo que criar
+qualquer outro objeto em Java. Por exemplo, podemos instanciar a classe <code>Thread1</code>
+acima para criar um objeto chamado <code>thread1</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -762,19 +756,19 @@ class above to create an object called <code>thread1</code>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Using the <code>new</code> keyword to invoke the constructor creates a <code>Thread1</code>
-object, but it doesn’t start executing it as a new thread. As with all
-other classes, the constructor initializes the values inside of the new
-object. A subclass of <code>Thread</code> can have many different constructors with
-whatever parameters its designer thinks appropriate.</p>
+<p>O uso da palavra-chave <code>new</code> para invocar o construtor cria um objeto <code>Thread1</code>,
+mas não começa a executá-lo como uma nova thread. Como em todas as
+outras classes, o construtor inicializa os valores dentro do novo objeto
+objeto. Uma subclasse de <code>Thread</code> pode ter muitos construtores diferentes com
+qualquer parâmetros que seu projetista considere apropriados.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_starting_a_thread">13.4.3. Starting a thread</h4>
+<h4 id="_iniciando_uma_thread">13.4.3. Iniciando uma thread</h4>
 <div class="paragraph">
-<p>To start the thread object executing, its <code>start()</code> method must be
-called. For example, the <code>thread1</code> object created above can be started
-as follows.</p>
+<p>Para iniciar a execução do objeto thread, seu método <code>start()</code> deve ser
+chamado. Por exemplo, o objeto <code>thread1</code> criado acima pode ser iniciado
+da seguinte forma.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -782,19 +776,19 @@ as follows.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Once started, a thread executes independently.  Calling the <code>start()</code>
-method automatically calls the object’s <code>run()</code> method behind the
-scenes. When a thread needs to share data with another thread, it
-might have to wait.</p>
+<p>Uma vez iniciado, uma thread é executada de forma independente.  A chamada do método <code>start()</code>
+chama automaticamente o método <code>run()</code> do objeto nos bastidores.
+Quando uma thread precisa compartilhar dados com outra thread, ela
+pode ter que esperar.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_waiting_for_a_thread">13.4.4. Waiting for a thread</h4>
+<h4 id="_aguardando_por_uma_thread">13.4.4. Aguardando por uma thread</h4>
 <div class="paragraph">
-<p>Often some thread, main or otherwise, needs to wait for another thread
-before proceeding further with its execution. The <code>join()</code> method is
-used to wait for a thread to finish executing. For example, whichever
-thread executes the following code will wait for <code>thread1</code> to complete.</p>
+<p>Muitas vezes, alguma thread, principal ou não, precisa esperar por outra thread
+antes de prosseguir com sua execução. O método <code>join()</code> é usado para esperar
+que uma thread termine a execução. Por exemplo, qualquer thread que executar o
+código a seguir aguardará a conclusão da <code>thread1</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -802,31 +796,31 @@ thread executes the following code will wait for <code>thread1</code> to complet
 </div>
 </div>
 <div class="paragraph">
-<p>Calling <code>join()</code> is a <em>blocking</em> call, meaning that the code calling
-this method will wait until it returns. Since it can throw a a checked
-<code>InterruptedException</code> while the code’s waiting, the <code>join()</code> method
-is generally used within a <code>try</code>-<code>catch</code> block. We can add a
-<code>try</code>-<code>catch</code> block to the <code>thread1</code> example so that we can recover from
-being interrupted while waiting for <code>thread1</code> to finish.</p>
+<p>A chamada <code>join()</code> é uma chamada <em>bloqueante</em>, o que significa que o código que chama
+esse método aguardará até que ele retorne. Como ele pode lançar uma
+<code>InterruptedException</code> verificada enquanto o código estiver aguardando, o método <code>join()</code>
+é geralmente usado em um bloco <code>try</code>-<code>catch</code>. Podemos adicionar um bloco <code>try</code>-<code>catch</code>
+ao exemplo <code>thread1</code> para que possamos nos recuperar de
+sermos interrompidos enquanto aguardamos a conclusão do <code>thread1</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="k">try</span> <span class="o">{</span>
-	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Waiting for thread 1..."</span><span class="o">);</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Aguardando pela thread 1..."</span><span class="o">);</span>
 	<span class="n">thread1</span><span class="o">.</span><span class="na">join</span><span class="o">();</span>
-	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Thread 1 finished!"</span><span class="o">);</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Thread 1 finalizada!"</span><span class="o">);</span>
 <span class="o">}</span>
 <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Thread 1 didn't finish!"</span><span class="o">);</span>
+	<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Thread 1 não acabou!"</span><span class="o">);</span>
 <span class="o">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the <code>InterruptedException</code> is thrown because the main thread
-was interrupted while waiting for <code>thread1</code> to finish. If the <code>join()</code>
-call returns, then <code>thread1</code> must have finished, and we inform the user.
-If an <code>InterruptedException</code> is thrown, some outside thread must have
-interrupted the main thread, forcing it to stop waiting for <code>thread1</code>.</p>
+<p>Observe que a <code>InterruptedException</code> é lançada porque a thread principal
+foi interrompida enquanto aguardava a conclusão da <code>thread1</code>. Se a chamada <code>join()</code>
+retornar, então <code>thread1</code> deve ter terminado e informaremos o usuário.
+Se uma <code>InterruptedException</code> for lançada, alguma thread externa deve ter
+interrompido a thread principal, forçando-a a parar de esperar pela <code>thread1</code>.</p>
 </div>
 <div class="paragraph">
 <p>In earlier versions of Java, there was a <code>stop()</code> method which would
@@ -837,22 +831,21 @@ in an unexpected way.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#threadMethodsExercise">Exercise 13.1</a></p>
+<p><a href="chap13.html#threadMethodsExercise">Exercício 13.1</a></p>
 </div>
 </div>
 </div>
 <div id="mathExpressionThreadsExample" class="exampleblock">
-<div class="title">Example 13.6 Math expression threads</div>
+<div class="title">Exemplo 13.6 Cálculos matemáticos com threads</div>
 <div class="content">
 <div class="paragraph">
-<p>Now that we have the syntax to start threads and wait for them to
-finish, we can use the threads defined in <a href="chap13.html#threadSamplesExample">Example 13.5</a> with a
-main thread to make our first complete concurrent
-program. The main thread in class <code>MathExpression</code> creates and starts
-the worker threads <code>thread1</code> and <code>thread2</code> and waits for their
-completion. When the two threads complete their execution, we can ask
-each for its computed value. The main thread then prints the product of
-these values, which is the result of the expression we want to evaluate.</p>
+<p>Agora que temos a sintaxe para iniciar threads e esperar que eles terminem, podemos
+usar as threads definidos em <a href="chap13.html#threadSamplesExample">Exemplo 13.5</a> com uma thread principal
+para criar nosso primeiro programa concorrente completo.  A thread principal na
+classe <code>MathExpression</code> cria e inicia as threads de trabalho <code>thread1</code> e <code>thread2</code>
+e aguarda sua conclusão. Quando as duas threads concluem sua execução, podemos
+solicitar a cada uma delas o valor calculado. A thread principal imprime o
+produto desses valores, que é o resultado da expressão que queremos avaliar.</p>
 </div>
 <div id="MathExpressionProgram" class="listingblock">
 <div class="content">
@@ -877,55 +870,50 @@ these values, which is the result of the expression we want to evaluate.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>We want to make it absolutely clear when threads are created, start
-executing, and finish. These details are crucial for the finer points of
-concurrent Java programming. In <a href="chap13.html#figure-tasks_in_threads">Figure 13.5</a>, it
-appears as if execution of the concurrent math expression evaluation
-begins with Thread 1 which spawns Thread 2. Although that figure
-explains the basics of task decomposition well, the details are messier
-for real Java code.</p>
+<p>Queremos deixar absolutamente claro quando os threads são criados, começam
+a execução e terminam. Esses detalhes são cruciais para os pontos mais finos da
+programação Java simultânea. Na <a href="chap13.html#figure-tasks_in_threads">Figura 13.5</a>, parece que a execução da avaliação da expressão matemática
+começa com a Thread 1, que gera a Thread 2. Embora essa figura
+explique bem os conceitos básicos da decomposição de tarefas, os detalhes são mais confusos para o código Java real.</p>
 </div>
 <div class="paragraph">
-<p>In the code above, execution starts with the <code>main()</code> method in
-<code>MathExpression</code>. It creates <code>Thread1</code> and <code>Thread2</code> objects and waits
-for them to finish. Then, it reads the values from the objects after
-they’ve stopped executing. We could have put the <code>main()</code> method in
-the <code>Thread1</code> class, omitting the <code>MathExpression</code> class entirely. Doing
-so would make the execution match <a href="chap13.html#figure-tasks_in_threads">Figure 13.5</a>
-more closely, but it would make the two <code>Thread</code> subclasses less
-symmetrical: The main thread and <code>thread1</code> would both independently
-execute code inside the <code>Thread1</code> class while only <code>thread2</code> would
-execute code inside the <code>Thread2</code> class.</p>
+<p>No código acima, a execução começa com o método <code>main()</code> em
+<code>MathExpression</code>. Ele cria os objetos <code>Thread1</code> e <code>Thread2</code> e aguarda
+que eles terminem. Em seguida, ele lê os valores dos objetos depois que
+eles pararam de ser executados. Poderíamos ter colocado o método <code>main()</code> na classe <code>Thread1</code>, omitindo totalmente a classe <code>MathExpression</code>. Desta forma isso faria com que a execução correspondesse mais de perto à <a href="chap13.html#figure-tasks_in_threads">Figura 13.5</a>
+mais próxima, mas tornaria as duas subclasses <code>Thread</code> menos
+simétricas: a thread principal e a <code>thread1</code> executariam independentemente o código dentro da <code>Thread1</code>.
+executariam independentemente o código dentro da classe <code>Thread1</code>, enquanto somente <code>thread2</code> executaria
+executaria código dentro da classe <code>Thread2</code>.</p>
 </div>
 <div id="figure-thread_execution" class="imageblock text-center">
 <div class="content">
 <img src="chapters/13-concurrency/images/thread-lifecycle.svg" alt="thread lifecycle" width="75%">
 </div>
-<div class="title">Figure 13.6 Creation, starting, and joining of threads in <code>MathExpression</code>, <code>Thread1</code>, and <code>Thread2</code>.</div>
+<div class="title">Figura 13.6 Criando, iniciando, e mesclando as threads em <code>MathExpression</code>, <code>Thread1</code>, and <code>Thread2</code>.</div>
 </div>
 <div class="paragraph">
-<p><a href="chap13.html#figure-thread_execution">Figure 13.6</a> shows the execution of <code>thread1</code> and
-<code>thread2</code> and the main thread. Note that the JVM implicitly creates and starts
-the main thread which explicitly creates and starts <code>thread1</code> and <code>thread2</code>.
-Even after the threads associated with <code>thread1</code> and <code>thread2</code> have stopped running,
-the objects associated with them continue to exist. Their methods and fields can still be
-accessed.</p>
+<p><a href="chap13.html#figure-thread_execution">Figura 13.6</a> mostra a execução de <code>thread1</code> e
+<code>thread2</code> e a thread principal. Observe que a JVM cria e inicia implicitamente
+o thread principal, que cria e inicia explicitamente a <code>thread1</code> e a <code>thread2</code>.
+Mesmo depois que as threads associados a <code>thread1</code> e <code>thread2</code> pararem de ser executados,
+os objetos associados a eles continuam a existir. Seus métodos e campos ainda podem ser acessados.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_the_runnable_interface">13.4.5. The <code>Runnable</code> interface</h4>
+<h4 id="_a_interface_runnable">13.4.5. A interface <code>Runnable</code></h4>
 <div class="paragraph">
-<p>Although it’s possible to create Java threads by inheriting from the
-<code>Thread</code> class directly, the Java API allows the programmer to use an
-interface instead.</p>
+<p>Embora seja possível criar threads em Java herdando diretamente da classe
+<code>Thread</code> diretamente, a API Java permite que o programador use uma
+interface em vez disso.</p>
 </div>
 <div class="paragraph">
-<p>As an example, the <code>Summer</code> class takes an array of <code>int</code> values and
-sums them up within a given range. If multiple instances of this class
-are executed as separate threads, each one can sum up different parts of
-an array.</p>
+<p>Como exemplo, a classe <code>Summer</code> pega uma matriz de valores <code>int</code> e os soma dentro
+de um determinado intervalo. Se várias instâncias dessa classe
+forem executadas como threads separadas, cada uma delas poderá somar diferentes partes de
+uma matriz.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -951,18 +939,16 @@ an array.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This class is very similar to one that inherits from <code>Thread</code>. Imagine
-for a moment that the code following <code>Summer</code> is <code>extends Thread</code>
-instead of <code>implements Runnable</code>. The key thing a class derived from
-<code>Thread</code> needs is an overridden <code>run()</code> method. Since only the <code>run()</code>
-method is important, the designers of Java provided a way to create a
-thread using the <code>Runnable</code> interface. To implement this interface, only
-a <code>public void run()</code> method is required.</p>
+<p>Essa classe é muito semelhante a uma classe que herda de <code>Thread</code>. Imagine
+por um momento que o código que segue <code>Summer</code> é <code>extends Thread</code>
+em vez de <code>implements Runnable</code>. A principal coisa que uma classe derivada de
+<code>Thread</code> precisa é de um método <code>run()</code> sobrescrito. Como somente o método <code>run()</code>
+é importante, os projetistas do Java forneceram uma maneira de criar uma
+thread usando a interface <code>Runnable</code>. Para implementar essa interface, é necessário apenas
+um método <code>public void run()</code>.</p>
 </div>
 <div class="paragraph">
-<p>When creating a new thread, there are some differences in syntax between
-the two styles. The familiar way of creating and running a thread from a
-<code>Thread</code> subclass is as follows.</p>
+<p>Ao criar uma nova thread, há algumas diferenças de sintaxe entre os dois estilos. A maneira conhecida de criar e executar um thread a partir de uma subclasse <code>Thread</code> é a seguinte.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -971,10 +957,7 @@ the two styles. The familiar way of creating and running a thread from a
 </div>
 </div>
 <div class="paragraph">
-<p>Since <code>Summer</code> doesn’t inherit from <code>Thread</code>, it doesn’t have a
-<code>start()</code> method, and this code won’t compile. When a class only
-implements <code>Runnable</code>, it’s still necessary to create a <code>Thread</code> object
-and call its <code>start()</code> method. Thus, an extra step is needed.</p>
+<p>Como o <code>Summer</code> não herda de <code>Thread</code>, ele não tem um método <code>start()</code>, e esse código não será compilado. Quando uma classe apenas implementa <code>Runnable</code>, ainda é necessário criar um objeto <code>Thread</code> e chamar seu método <code>start()</code>. Portanto, é necessária uma etapa extra.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -984,28 +967,25 @@ and call its <code>start()</code> method. Thus, an extra step is needed.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This alternate way of implementing the <code>Runnable</code> interface seems more
-cumbersome than inheriting directly from <code>Thread</code>, since you have to
-instantiate a separate <code>Thread</code> object. However, most developers prefer
-to design classes that implement <code>Runnable</code> instead of inheriting from
-<code>Thread</code>. Why? Java only allows for single inheritance. If your class
-implements <code>Runnable</code>, it’s free to inherit from another parent class
-with features you might want.</p>
+<p>Essa forma alternativa de implementar a interface <code>Runnable</code> parece mais incômoda do que herdar diretamente da <code>Thread</code>, já que é necessário
+instanciar um objeto <code>Thread</code> separado. Entretanto, a maioria dos desenvolvedores prefere projetar classes que implementem <code>Runnable</code> em vez de herdar de
+<code>Thread</code>. Por quê? O Java só permite herança única. Se sua classe
+implementar <code>Runnable</code>, ela estará livre para herdar de outra super classe
+com os recursos que você desejar.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#extendingThreadExercise">Exercise 13.2</a></p>
+<p><a href="chap13.html#extendingThreadExercise">Exercício 13.2</a></p>
 </div>
 </div>
 </div>
 <div id="arrayOfThreadsExample" class="exampleblock">
-<div class="title">Example 13.7 Array of threads</div>
+<div class="title">Exemplo 13.7 Conjunto de threads</div>
 <div class="content">
 <div class="paragraph">
-<p>In domain decomposition, we often need to create multiple threads, all
-from the same class. As an example, consider the following thread
-declaration.</p>
+<p>Na decomposição de domínios, muitas vezes precisamos criar várias threads, todas
+a partir da mesma classe. Como exemplo, considere a seguinte declaração de thread.</p>
 </div>
 <div id="NumberedThreadProgram" class="listingblock">
 <div class="content">
@@ -1021,8 +1001,8 @@ declaration.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Now, suppose we want to create 10 thread objects of type
-<code>NumberedThread</code>, start them, and then wait for them to complete.</p>
+<p>Agora, suponha que desejemos criar 10 objetos de thread do tipo
+<code>NumberedThread</code>, então iniciá-los e por fim esperar que sejam concluídos.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1044,74 +1024,66 @@ declaration.</p>
 <table>
 <tbody><tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>First, we declare an array to hold references to <code>NumberedThread</code>
-objects. Like any other type, we can make an array to hold objects that
-inherit from <code>Thread</code>.</td>
+<td>Primeiro, declaramos uma matriz para manter referências aos objetos <code>NumberedThread</code>. Como qualquer outro tipo, podemos criar uma matriz para armazenar objetos que
+herdam de <code>Thread</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The first line of the <code>for</code> loop instantiates a
-new <code>NumberedThread</code> object, invoking the constructor which stores the
-current iteration of the loop into the <code>value</code> field. The reference to
-each <code>NumberedThread</code> object is stored in the array. Remember that the
-constructor does <strong>not</strong> start a new thread running.</td>
+<td>A primeira linha do loop <code>for</code> instancia um novo objeto <code>NumberedThread</code>, invocando o construtor que armazena a
+iteração atual do loop no campo <code>value</code>. A referência a
+cada objeto <code>NumberedThread</code> é armazenada na matriz. Lembre-se de que o construtor
+ <strong>não</strong> inicia a execução de uma nova thread.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The second line of the <code>for</code> loop does that.</td>
+<td>A segunda linha do loop <code>for</code> faz isso.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>We’re also interested in when the threads stop. Calling the <code>join()</code>
-method forces the main thread to wait for each thread to finish.</td>
+<td>Também estamos interessados em saber quando as threads param. A chamada do método <code>join()</code>
+força a thread principal a aguardar a conclusão de cada thread.</td>
 </tr>
 </tbody></table>
 </div>
 <div class="paragraph">
-<p>The entire second <code>for</code> loop is nested inside of a <code>try</code> block. If the
-main thread is interrupted while waiting for any of the threads to
-finish, an <code>InterruptedException</code> will be caught. As before, we warn the
-user that a thread didn’t finish. For production-quality code, the
-<code>catch</code> block should handle the exception in such a way that the thread
-can recover and do useful work even though it didn’t get what it was
-waiting for.</p>
+<p>Todo o segundo loop <code>for</code> está aninhado dentro de um bloco <code>try</code>. Se a thread principal for interrompida enquanto estiver aguardando a conclusão de qualquer uma das threads terminar, uma <code>InterruptedException</code> será capturada. Como antes, avisamos o usuário
+que uma thread não foi concluída. Para código com qualidade de produção, o bloco
+bloco <code>catch</code> deve tratar a exceção de forma que a thread possa se recuperar e fazer um trabalho útil, mesmo que não tenha obtido o resultado esperado.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</h3>
+<h3 id="_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</h3>
 <div class="paragraph">
-<p>Speedup is one of the strongest motivations for writing concurrent
-programs. To understand speedup, let’s assume we have a problem to
-solve. We write two programs to solve this problem, one that’s
-sequential and another that’s concurrent and, hence, able to exploit
-multiple cores. Let <em>t</em><sub><em>s</em></sub> be the average time to execute
-the sequential program and <em>t</em><sub><em>c</em></sub> the average time to execute
-the concurrent program. So that the comparison is
-meaningful, assume that both programs are executed on the same computer.
-The speedup obtained from concurrent programming is defined as <em>t</em><sub><em>s</em></sub>/<em>t</em><sub><em>c</em></sub>.</p>
+<p>A aceleração é uma das maiores motivações para escrever programas
+concorrentes. Para entender o aumento de velocidade, vamos supor que temos um problema para
+resolver. Escrevemos dois programas para resolver esse problema, um que é
+sequencial e outro que é concorrente e, portanto, capaz de explorar
+vários núcleos. Seja <em>t</em><sub><em>s</em></sub> o tempo médio de execução do
+o programa sequencial e <em>t</em><sub><em>c</em></sub> o tempo médio de execução do programa concorrente. Para que a comparação seja
+significativa, suponha que ambos os programas sejam executados no mesmo computador.
+O aumento de velocidade obtido com a programação concorrente é definido como <em>t</em><sub><em>s</em></sub>/<em>t</em><sub><em>c</em></sub>.</p>
 </div>
 <div class="paragraph">
-<p>Speedup measures how much faster the concurrent program executes
-relative to the sequential program. Ideally, we expect
-<em>t</em><sub><em>c</em></sub> &lt; <em>t</em><sub><em>s</em></sub>, making the speedup greater than 1. However,
-simply writing a concurrent program doesn’t guarantee that it’s faster
-than the sequential version.</p>
+<p>A aceleração mede quanto tempo leva para o programa concorrente ser executado em relação ao programa sequencial. Idealmente, esperamos que
+<em>t</em><sub><em>c</em></sub> &lt; <em>t</em><sub><em>s</em></sub>, tornando a aceleração maior que 1. No entanto,
+simplesmente escrever um programa concorrente não garante que ele seja mais rápido
+do que a versão sequencial.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#speedupExercise">Exercise 13.6</a><br>
-<a href="chap13.html#AmdahlLawExercise">Exercise 13.8</a></p>
+<p><a href="chap13.html#speedupExercise">Exercício 13.6</a><br>
+<a href="chap13.html#AmdahlLawExercise">Exercício 13.8</a></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>To determine speedup, we need to measure <em>t</em><sub><em>s</em></sub> and
-<em>t</em><sub><em>c</em></sub>. Time in a Java program can easily be measured with
-the following two static methods in the <code>System</code> class.</p>
+<p>Para determinar o aumento de velocidade, precisamos medir <em>t</em><sub><em>s</em></sub> e <em>t</em><sub><em>c</em></sub>. O
+tempo em um programa Java pode ser facilmente medido com
+os dois métodos estáticos a seguir na classe <code>System</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1120,27 +1092,23 @@ the following two static methods in the <code>System</code> class.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The first of these methods returns the current time in milliseconds
-(ms). A <em>millisecond</em> is 0.001 seconds. This method gives the difference
-between the current time on your computer’s clock and midnight of
-January&nbsp;1,&nbsp;1970 Coordinated Universal Time (UTC). This point in time is
-used for many timing features on many computer platforms and is called
-the <em>Unix epoch</em>. The other method returns the current time in
-nanoseconds (ns). A <em>nanosecond</em> is 0.000000001 or 10<sup>-9</sup> seconds. This method also
-gives the difference between the current time and some fixed time, which
-is system dependent and not necessarily the Unix epoch. The
-<code>System.nanoTime()</code> method can be used when you want timing precision
-finer than milliseconds; however, the level of accuracy it returns is
-again system dependent. The next example show how to use these methods
-to measure execution time.</p>
+<p>O primeiro desses métodos retorna a hora atual em milissegundos (ms).
+Um <em>millisecond</em> equivale a 0,001 segundos. Esse método fornece a diferença
+entre a hora atual no relógio de seu computador e a meia-noite de
+1º de janeiro de 1970, horário universal coordenado (UTC). Esse ponto no tempo é
+usado para muitos recursos de tempo em muitas plataformas de computador e é chamado de <em>epoch Unix</em>. O outro método retorna a hora atual em
+nanossegundos (ns). Um <em>nanossegundo</em> equivale a 0,000000001 ou 10<sup>-9</sup> segundos.
+Esse método também fornece a diferença entre a hora atual e uma hora fixa, que depende do sistema e não necessariamente do <em>epoch</em>.
+O método <code>System.nanoTime()</code> pode ser usado quando você quiser uma precisão de tempo
+mais fina do que milissegundos; entretanto, o nível de precisão que ele retorna é
+novamente dependente do sistema. O próximo exemplo mostra como usar esses métodos
+para medir o tempo de execução.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13.8 Measuring execution time</div>
+<div class="title">Exemplo 13.8 Medindo o tempo de execução</div>
 <div class="content">
 <div class="paragraph">
-<p>Suppose we want to measure the execution time of a piece of Java code.
-For convenience, we can assume this code is contained in the <code>work()</code>
-method. The following code snippet measures the time to execute
+<p>Suponha que desejemos medir o tempo de execução de um trecho de código Java. Por conveniência, podemos supor que esse código esteja contido no método <code>work()</code>. O trecho de código a seguir mede o tempo de execução de
 <code>work()</code>.</p>
 </div>
 <div class="listingblock">
@@ -1148,41 +1116,41 @@ method. The following code snippet measures the time to execute
 <pre class="rouge highlight"><code data-lang="java"><span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
 <span class="n">work</span><span class="o">();</span>
 <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
-<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Elapsed time: "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">" ms"</span><span class="o">);</span></code></pre>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tempo decorrido: "</span> <span class="o">+</span> <span class="o">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="o">)</span> <span class="o">+</span> <span class="s">" ms"</span><span class="o">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The output will give the execution time for <code>work()</code> measured in
-milliseconds. To get the execution time in nanoseconds, use the
-<code>System.nanoTime()</code> method instead.</p>
+<p>A saída fornecerá o tempo de execução de <code>work()</code> medido em
+milissegundos. Para obter o tempo de execução em nanossegundos, use o método
+<code>System.nanoTime()</code> em vez de <code>System.currentTimeMillis()</code>.</p>
 </div>
 </div>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#executionVariationExercise">Exercise 13.15</a><br>
-<a href="chap13.html#threadOverheadExercise">Exercise 13.16</a></p>
+<p><a href="chap13.html#executionVariationExercise">Exercício 13.15</a><br>
+<a href="chap13.html#threadOverheadExercise">Exercício 13.16</a></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Now that we have the tools to measure execution time, we can measure
-speedup. The next few examples show the speedup (or lack of it) that we
-can achieve using a concurrent solution to a few simple problems.</p>
+<p>Agora que temos as ferramentas para medir o tempo de execução, podemos medir o
+aumento de velocidade. Os próximos exemplos mostram o aumento de velocidade (ou a falta dele) que podemos
+podemos obter usando uma solução simultânea para alguns problemas simples.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13.9 Math expression speedup</div>
+<div class="title">Exemplo 13.9 Acelerando o cálculo matemático</div>
 <div class="content">
 <div class="paragraph">
-<p>Recall the concurrent program in <a href="chap13.html#mathExpressionThreadsExample">Example 13.6</a> to evaluate a simple mathematical expression. This program
-uses two threads. We executed this multi-threaded program on an iMac
-computer with an Intel Core 2 Duo running at 2.16 Ghz. The execution
-time was measured at 1,660,000 nanoseconds. We also wrote a simple
-sequential program to evaluate the same expression. It took 4,100
-nanoseconds to execute this program on the same computer. Plugging in
-these values for <em>t</em><sub><em>c</em></sub> and <em>t</em><sub><em>s</em></sub>, we can find
-the speedup.</p>
+<p>Lembre-se do programa concorrente em <a href="chap13.html#mathExpressionThreadsExample">Exemplo 13.6</a> para avaliar uma expressão matemática simples. Esse programa
+usa duas threads. Executamos esse programa multithread em um computador iMac
+com um Intel Core 2 Duo rodando a 2,16 Ghz. O tempo de execução
+O tempo de execução foi medido em 1.660.000 nanossegundos. Também escrevemos um programa
+programa sequencial simples para avaliar a mesma expressão. Foram necessários 4.100
+nanossegundos para executar esse programa no mesmo computador. Ao inserir
+esses valores para <em>t</em><sub><em>c</em></sub> e <em>t</em><sub><em>s</em></sub>, podemos encontrar
+a aceleração.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -1190,26 +1158,26 @@ the speedup.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This speedup is much less than 1. Although this result might be surprising,
-the concurrent program with two threads executes slower than the
-sequential program. In this example, the cost of creating, running, and
-joining threads outweighs the benefits of concurrent calculation on two
-cores.</p>
+<p>Essa aceleração é muito menor que 1. Embora esse resultado possa ser surpreendente,
+o programa concorrente com duas threads é executado mais lentamente do que o programa
+sequencial. Nesse exemplo, o custo de criar, executar e
+processar as threads supera os benefícios do cálculo simultâneo em dois
+núcleos.</p>
 </div>
 </div>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#speedupLimitationsExercise">Exercise 13.7</a></p>
+<p><a href="chap13.html#speedupLimitationsExercise">Exercício 13.7</a></p>
 </div>
 </div>
 </div>
 <div id="arraySummationExample" class="exampleblock">
-<div class="title">Example 13.10 Array summation</div>
+<div class="title">Exemplo 13.10 Somatório de matrizes</div>
 <div class="content">
 <div class="paragraph">
-<p>In <a href="chap13.html#arraySummationPreviewExample">Example 13.3</a>, we introduced the
+<p>In <a href="chap13.html#arraySummationPreviewExample">Exemplo 13.3</a>, we introduced the
 problem of applying a function to every value in an array and then
 summing the results. Let’s say that we want to apply the sine function
 to each value. To solve this problem concurrently, we partition the
@@ -1391,17 +1359,17 @@ thread to complete, the stack trace is printed.</td>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#parallelAudioProcessingExercise">Exercise 13.12</a><br>
-<a href="chap13.html#arraySummingSpeedupExercise">Exercise 13.19</a><br>
-<a href="chap13.html#treeSummationExercise">Exercise 13.20</a></p>
+<p><a href="chap13.html#parallelAudioProcessingExercise">Exercício 13.12</a><br>
+<a href="chap13.html#arraySummingSpeedupExercise">Exercício 13.19</a><br>
+<a href="chap13.html#treeSummationExercise">Exercício 13.20</a></p>
 </div>
 </div>
 </div>
 <div id="matrixMultiplicationExample" class="exampleblock">
-<div class="title">Example 13.11 Matrix multiplication</div>
+<div class="title">Exemplo 13.11 Matrix multiplication</div>
 <div class="content">
 <div class="paragraph">
-<p>In <a href="chap13.html#matrixMultiplicationPreviewExample">Example 13.4</a>, we discussed the
+<p>In <a href="chap13.html#matrixMultiplicationPreviewExample">Exemplo 13.4</a>, we discussed the
 importance of matrix operations in many applications. Now that we know
 the necessary Java syntax, we can write a concurrent program to multiply
 two square matrices <em>A</em> and <em>B</em> and compute the
@@ -1598,8 +1566,8 @@ became worse.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#parallelPiApproximationExercise">Exercise 13.14</a><br>
-<a href="chap13.html#matrixSpeedupExercise">Exercise 13.17</a></p>
+<p><a href="chap13.html#parallelPiApproximationExercise">Exercício 13.14</a><br>
+<a href="chap13.html#matrixSpeedupExercise">Exercício 13.17</a></p>
 </div>
 </div>
 </div>
@@ -1662,13 +1630,13 @@ threads, and both programs are complex mountains of code which try to
 balance many factors. If you create three threads, there’s no guarantee
 that the first will run first, the second second, and the third third,
 even if it happens that way the first 10 times you run the program.
-<a href="chap13.html#executionOrderExercise">Exercise 13.18</a> shows that the pattern of thread
+<a href="chap13.html#executionOrderExercise">Exercício 13.18</a> shows that the pattern of thread
 execution can vary a lot.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#executionOrderExercise">Exercise 13.18</a></p>
+<p><a href="chap13.html#executionOrderExercise">Exercício 13.18</a></p>
 </div>
 </div>
 </div>
@@ -1727,7 +1695,7 @@ the reasons why we need better techniques for thread communication.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#pollingArraySumExercise">Exercise 13.11</a></p>
+<p><a href="chap13.html#pollingArraySumExercise">Exercício 13.11</a></p>
 </div>
 </div>
 </div>
@@ -1758,8 +1726,8 @@ thread in the schedule.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap13.html#sleepAndYieldMethodsExercise">Exercise 13.3</a><br>
-<a href="chap13.html#sleepTimerExercise">Exercise 13.13</a></p>
+<p><a href="chap13.html#sleepAndYieldMethodsExercise">Exercício 13.3</a><br>
+<a href="chap13.html#sleepTimerExercise">Exercício 13.13</a></p>
 </div>
 </div>
 </div>
@@ -1767,10 +1735,10 @@ thread in the schedule.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/thread-states.svg" alt="thread states" width="80%">
 </div>
-<div class="title">Figure 13.7 Thread states and transitions.</div>
+<div class="title">Figura 13.7 Thread states and transitions.</div>
 </div>
 <div class="paragraph">
-<p><a href="chap13.html#figure-thread_states">Figure 13.7</a> shows the lifecycle of a thread. A
+<p><a href="chap13.html#figure-thread_states">Figura 13.7</a> shows the lifecycle of a thread. A
 thread begins its life in the New Thread state, after the constructor is
 called. When the <code>start()</code> method is called, the thread begins to run
 and transitions to the Runnable state. Being Runnable doesn’t
@@ -1812,7 +1780,7 @@ effects are not always predictable. Be aware that priorities exist, but
 don’t use them unless and until you have a good reason.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13.12 Military marching</div>
+<div class="title">Exemplo 13.12 Military marching</div>
 <div class="content">
 <div class="paragraph">
 <p>Let’s apply the ideas discussed above to a lighthearted example. You
@@ -2068,7 +2036,7 @@ We begin with the worker class <code>FactorThread</code> that can be spawned as 
 thread.</p>
 </div>
 <div id="FactorThreadProgram" class="listingblock">
-<div class="title">Program 13.1 Thread class used to find the sum of the two factors of a large odd composite.</div>
+<div class="title">Programa 13.1 Thread class used to find the sum of the two factors of a large odd composite.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FactorThread</span> <span class="kd">extends</span> <span class="nc">Thread</span> <span class="o">{</span>  
     <span class="kd">private</span> <span class="kt">long</span> <span class="n">lower</span><span class="o">;</span>
@@ -2106,7 +2074,7 @@ prime factors would have to be more flexible. Next, let’s examine the
 driver program <code>Factor</code>.</p>
 </div>
 <div id="FactorProgram" class="listingblock">
-<div class="title">Program 13.2 Driver class which creates threads to lower the average search time for the factors of a large odd composite.</div>
+<div class="title">Programa 13.2 Driver class which creates threads to lower the average search time for the factors of a large odd composite.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Factor</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">THREADS</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span> <i class="conum" data-value="1"></i><b>(1)</b>
@@ -2222,19 +2190,19 @@ the <code>Thread.yield()</code> method each affect thread scheduling?</p>
 </li>
 <li>
 <p><a id="mathExpressionTimingExercise"></a> Consider the expression in
-<a href="chap13.html#mathExpressionTasksExample">Example 13.2</a>. Suppose that the multiply and
+<a href="chap13.html#mathExpressionTasksExample">Exemplo 13.2</a>. Suppose that the multiply and
 exponentiation operations require 1 and 10 time units, respectively.
 Compute the number of time units required to evaluate the expression as
-in <a href="chap13.html#figure-math_evaluation">Figure 13.2</a>(a) and (b).</p>
+in <a href="chap13.html#figure-math_evaluation">Figura 13.2</a>(a) and (b).</p>
 </li>
 <li>
 <p><a id="quad-coreExercise"></a> Suppose that a computer has one
-quad-core processor. Can the tasks in <a href="#videoGameTasksExample" class="target-missing">[videoGameTasksExample]</a> and <a href="chap13.html#mathExpressionTasksExample">Example 13.2</a> be further subdivided to
+quad-core processor. Can the tasks in <a href="chap13.html#videoGameTasksExample">Exemplo 13.1</a> and <a href="chap13.html#mathExpressionTasksExample">Exemplo 13.2</a> be further subdivided to
 improve performance on four cores? Why or why not?</p>
 </li>
 <li>
 <p><a id="speedupExercise"></a> Consider the definition of speedup from
-<a href="chap13.html#_examples_concurrency_and_speedup">Section 13.5</a>. Let’s assume you have a
+<a href="#Examples: Concurrency and speedup" class="target-missing">[Examples: Concurrency and speedup]</a>. Let’s assume you have a
 job 1,000,000 units in size. A thread can process 10,000 units of work
 every second. It takes an additional 100 units of work to create a new
 thread. What’s the speedup if you have a dual-core processor and create
@@ -2323,7 +2291,7 @@ people needed to achieve this minimum time?</p>
 </div>
 </li>
 <li>
-<p><a id="sharedThreadVariableExercicio"></a> Consider the following code snippet.</p>
+<p><a id="sharedThreadVariableExercise"></a> Consider the following code snippet.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="n">x</span> <span class="o">=</span> <span class="mi">13</span><span class="o">;</span>
@@ -2355,7 +2323,7 @@ of these snippets can be interleaved in <strong>any</strong> way.</p>
 <ol class="arabic" start="11">
 <li>
 <p><a id="pollingArraySumExercise"></a> Re-implement the array summing problem from
-<a href="chap13.html#arraySummationExample">Example 13.10</a> using polling instead of <code>join()</code>
+<a href="chap13.html#arraySummationExample">Exemplo 13.10</a> using polling instead of <code>join()</code>
 calls. Your program should not use a single call to <code>join()</code>. Polling is
 not an ideal way to solve this problem, but it’s worth thinking about the technique.</p>
 </li>
@@ -2458,7 +2426,7 @@ your system, on average.</p>
 <li>
 <p><a id="matrixSpeedupExercise"></a> Create serial and concurrent
 implementations of matrix multiplication like those described in
-<a href="chap13.html#matrixMultiplicationExample">Example 13.11</a>.</p>
+<a href="chap13.html#matrixMultiplicationExample">Exemplo 13.11</a>.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -2475,7 +2443,7 @@ speedup you can expect to obtain?</p>
 </li>
 <li>
 <p><a id="executionOrderExercise"></a> Repeatedly run the code in
-<a href="chap13.html#arrayOfThreadsExample">Example 13.7</a> which creates several
+<a href="chap13.html#arrayOfThreadsExample">Exemplo 13.7</a> which creates several
 <code>NumberedThread</code> objects. Can you discover any patterns in the order
 that the threads print? Add a loop and some additional instrumentation
 to the <code>NumberedThread</code> class which will allow you to measure how long
@@ -2483,7 +2451,7 @@ each thread runs before the next thread has a turn.</p>
 </li>
 <li>
 <p><a id="arraySummingSpeedupExercise"></a> Create serial and parallel implementations of
-the array summing problem solved in <a href="chap13.html#arraySummationExample">Example 13.10</a>.
+the array summing problem solved in <a href="chap13.html#arraySummationExample">Exemplo 13.10</a>.
 Experiment with different array sizes and thread counts to see how
 performance changes. How does the speedup differ from matrix multiply?
 What happens if you simply sum the numbers instead of taking the sine
@@ -2491,7 +2459,7 @@ first?</p>
 </li>
 <li>
 <p><a id="treeSummationExercise"></a> The solution to the array summing problem in
-<a href="chap13.html#arraySummationExample">Example 13.10</a> seems to use concurrency
+<a href="chap13.html#arraySummationExample">Exemplo 13.10</a> seems to use concurrency
 half-heartedly. After all the threads have computed their sums, the main
 thread sums up the partial sums sequentially.</p>
 <div class="paragraph">
@@ -2510,7 +2478,7 @@ single thread completes the summing process.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/treesummation.svg" alt="treesummation" width="100%">
 </div>
-<div class="title">Figure 13.8 Example of concurrent tree-style summation with 8 threads.</div>
+<div class="title">Figura 13.8 Example of concurrent tree-style summation with 8 threads.</div>
 </div>
 <div class="paragraph">
 <p>Update the <code>run()</code> method in the <code>SumThread</code> class so that it adds its
@@ -2524,7 +2492,7 @@ thread with a number divisible by 8 should add the partial sum from its
 neighbor, and so on. Thread 0 will perform the final summation.
 Consequently, the main thread only needs to wait for thread 0. So that
 each thread can wait for other threads, the <code>threads</code> array will need to
-be a static field. <a href="chap13.html#figure-tree_summation">Figure 13.8</a> illustrates this
+be a static field. <a href="chap13.html#figure-tree_summation">Figura 13.8</a> illustrates this
 process.</p>
 </div>
 <div class="paragraph">
@@ -2551,7 +2519,7 @@ wait and which threads terminate.</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

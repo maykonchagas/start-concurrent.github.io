@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -461,7 +461,7 @@ each one of those characteristics, such as Albert Einstein, March 14,
 <div class="content">
 <img src="chapters/09-classes/images/class.svg" alt="class" width="100%">
 </div>
-<div class="title">Figure 9.1 Example of a class serving as a template for an object.</div>
+<div class="title">Figura 9.1 Example of a class serving as a template for an object.</div>
 </div>
 <div class="paragraph">
 <p>This idea of a class as a template is key because it means that an
@@ -574,7 +574,7 @@ fields, it doesn’t know what object we’re talking about. If we
 actually want to use an object, we’ll have to create one.</p>
 </div>
 <div id="HumanProgram" class="listingblock">
-<div class="title">Program 9.1 Class encapsulating the attributes of a human being.</div>
+<div class="title">Programa 9.1 Class encapsulating the attributes of a human being.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Human</span> <span class="o">{</span>    
     <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
@@ -638,7 +638,7 @@ values, but the value for <code>population</code> would only be stored in the cl
 <div class="content">
 <img src="chapters/09-classes/images/staticvalue.svg" alt="staticvalue" width="100%">
 </div>
-<div class="title">Figure 9.2 Class variables (static fields) are stored with the class, not with individual objects.</div>
+<div class="title">Figura 9.2 Class variables (static fields) are stored with the class, not with individual objects.</div>
 </div>
 </div>
 <div class="sect3">
@@ -1004,7 +1004,7 @@ of OOP in Java, here’s an example showing how
 objects can be used to make a roster of students.</p>
 </div>
 <div id="studentRosterExample" class="exampleblock">
-<div class="title">Example 9.1 Student roster</div>
+<div class="title">Exemplo 9.1 Student roster</div>
 <div class="content">
 <div class="paragraph">
 <p>We’re going to create a <code>Student</code> class so that we can store objects
@@ -1213,7 +1213,7 @@ object.</p>
 <div class="content">
 <img src="chapters/09-classes/images/nested.svg" alt="nested" width="80%">
 </div>
-<div class="title">Figure 9.3 A static nested class object is allowed to access data from outer class objects even though there’s no direct relationship between them.</div>
+<div class="title">Figura 9.3 A static nested class object is allowed to access data from outer class objects even though there’s no direct relationship between them.</div>
 </div>
 <div class="paragraph">
 <p>Static nested classes can be used when the class you need is only useful
@@ -1242,7 +1242,7 @@ modifiers control which code can access or instantiate static nested
 classes using the sames access rules for fields and methods.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9.2 Static nested class for testing</div>
+<div class="title">Exemplo 9.2 Static nested class for testing</div>
 <div class="content">
 <div class="paragraph">
 <p>One application for static nested classes is testing. You can write code
@@ -1367,7 +1367,7 @@ the same outer class object.</p>
 <div class="content">
 <img src="chapters/09-classes/images/inner.svg" alt="inner" width="80%">
 </div>
-<div class="title">Figure 9.4 An inner class object is always associated with a specific outer class object.</div>
+<div class="title">Figura 9.4 An inner class object is always associated with a specific outer class object.</div>
 </div>
 <div class="paragraph">
 <p>Another issue with inner classes (as opposed to static nested classes)
@@ -1385,7 +1385,7 @@ anonymous classes are special kinds of inner classes. Because of the way
 they’re created and used, we’ll discuss them in <a href="chap10.html#_advanced_local_and_anonymous_classes">Section 10.4</a></p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9.3 Inner class objects as iterators</div>
+<div class="title">Exemplo 9.3 Inner class objects as iterators</div>
 <div class="content">
 <div class="paragraph">
 <p>If you create a data structure for other programmers to use, a useful
@@ -1487,7 +1487,7 @@ values. The <code>SymbolStack</code> class allows us to perform the push, pop, a
 stack operations with methods of the same names.</p>
 </div>
 <div id="SymbolStackProgram" class="listingblock">
-<div class="title">Program 9.2 Simple stack class to hold symbols from an input expression.</div>
+<div class="title">Programa 9.2 Simple stack class to hold symbols from an input expression.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SymbolStack</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kt">char</span><span class="o">[]</span> <span class="n">symbols</span><span class="o">;</span>
@@ -1655,8 +1655,8 @@ nested based on the value of <code>correct</code>.</td>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap9.html#publicMembersExercise">Exercise 9.9</a><br>
-<a href="chap9.html#nestedExpressionsGUIExercise">Exercise 9.14</a></p>
+<p><a href="chap9.html#publicMembersExercise">Exercício 9.9</a><br>
+<a href="chap9.html#nestedExpressionsGUIExercise">Exercício 9.14</a></p>
 </div>
 </div>
 </div>
@@ -1685,7 +1685,7 @@ the cat. Consider the class below that keeps track of the lives a cat
 has, losing one every time it becomes curious.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9.4 Thread safety</div>
+<div class="title">Exemplo 9.4 Thread safety</div>
 <div class="content">
 <div class="paragraph">
 <p>If the relationship between curiosity and mortality is the only feature
@@ -1700,7 +1700,7 @@ lose more than 9 lives.</p>
 pause in executing the <code>useCuriosity()</code> method.</p>
 </div>
 <div id="CatProgram" class="listingblock">
-<div class="title">Program 9.3 Records the number of lives a cat has left. Each <code>Cat</code> object starts with 9, but loses one each time it uses its curiosity. If no more lives remain, an error message is output.</div>
+<div class="title">Programa 9.3 Records the number of lives a cat has left. Each <code>Cat</code> object starts with 9, but loses one each time it uses its curiosity. If no more lives remain, an error message is output.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cat</span> <span class="o">{</span>
     <span class="kd">private</span> <span class="kt">int</span> <span class="n">lives</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
@@ -1996,7 +1996,7 @@ it takes to call a constructor and allocate a new object?</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

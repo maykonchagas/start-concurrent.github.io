@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -624,7 +624,7 @@ enable or disable assertions for specific packages or classes.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap16.html#assertExercise">Exercise 16.1</a></p>
+<p><a href="chap16.html#assertExercise">Exercício 16.1</a></p>
 </div>
 </div>
 </div>
@@ -855,7 +855,7 @@ same mistake again. To make it easier to spot some of these mistakes, we give a
 few examples corresponding to the common bugs listed in <a href="chap16.html#_fixing_bugs">Section 16.1</a>.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.1 Precision errors</div>
+<div class="title">Exemplo 16.1 Precision errors</div>
 <div class="content">
 <div class="paragraph">
 <p>Floating-point precision can cause subtle errors.
@@ -889,7 +889,7 @@ test for a range rather than a single value. For example, the condition
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.2 Overflow and underflow</div>
+<div class="title">Exemplo 16.2 Overflow and underflow</div>
 <div class="content">
 <div class="paragraph">
 <p>As you know, the <code>int</code> and <code>long</code> types have limited bits for
@@ -974,7 +974,7 @@ too unwieldy.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.3 Casting errors</div>
+<div class="title">Exemplo 16.3 Casting errors</div>
 <div class="content">
 <div class="paragraph">
 <p>The previous example about scaling color component values shows one of the
@@ -1052,7 +1052,7 @@ express incorrect code. Here are examples of a few of the most common loop
 errors.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.4 Off-by-one errors</div>
+<div class="title">Exemplo 16.4 Off-by-one errors</div>
 <div class="content">
 <div class="paragraph">
 <p>Computer scientists often use zero-based counting. This departure from
@@ -1117,7 +1117,7 @@ throughly in the second half of this chapter which deals with testing.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.5 Infinite loops</div>
+<div class="title">Exemplo 16.5 Infinite loops</div>
 <div class="content">
 <div class="paragraph">
 <p>Infinite loops come in many different flavors, from the <code>char</code> overflow
@@ -1204,7 +1204,7 @@ not infinite) time, until it overflows.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.6 Zero loops</div>
+<div class="title">Exemplo 16.6 Zero loops</div>
 <div class="content">
 <div class="paragraph">
 <p>On the other end of the spectrum, a bad condition can make a loop
@@ -1282,7 +1282,7 @@ write incorrect code that gives some semblance of being correct.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.7 Equivalence testing errors</div>
+<div class="title">Exemplo 16.7 Equivalence testing errors</div>
 <div class="content">
 <div class="paragraph">
 <p>Equivalence is tricky in Java. Very inexperienced programmers confuse
@@ -1352,7 +1352,7 @@ value. It seems nit-picky to mention this issue, but many real-world
 applications depend on the efficient and correct operation of hash
 tables.  Hash tables are data structures used to store and
 retrieve a key and an associated value.  We’ll discuss them briefly
-in <a href="chap18.html#mapsExample">Example 18.4</a>.</p>
+in <a href="chap18.html#mapsExample">Exemplo 18.4</a>.</p>
 </div>
 </div>
 </div>
@@ -1368,7 +1368,7 @@ unusual course of events is responsible for the bug cropping up and you have
 to reconstruct what it is.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.8 Out of bounds</div>
+<div class="title">Exemplo 16.8 Out of bounds</div>
 <div class="content">
 <div class="paragraph">
 <p>We have all experienced an <code>ArrayIndexOutOfBoundsException</code>. Either a
@@ -1419,7 +1419,7 @@ of error checking is rarely a bad idea.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.9 Uninitialized object arrays</div>
+<div class="title">Exemplo 16.9 Uninitialized object arrays</div>
 <div class="content">
 <div class="paragraph">
 <p>Another simple mistake that can occur with arrays is failing to
@@ -1463,7 +1463,7 @@ intuition about them is sometimes wrong. Which variable you’re
 accessing at any given time can appear obvious, even if it really isn’t.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.10 Shadowing variables</div>
+<div class="title">Exemplo 16.10 Shadowing variables</div>
 <div class="content">
 <div class="paragraph">
 <p>Java allows variables in different scopes to be declared with the same
@@ -1592,7 +1592,7 @@ two different outcomes.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.11 Reference vs. value</div>
+<div class="title">Exemplo 16.11 Reference vs. value</div>
 <div class="content">
 <div class="paragraph">
 <p>The final category of scope error we’ll talk about occurs when using
@@ -2068,7 +2068,7 @@ of data quickly or while remaining responsive is tested.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap16.html#zuneExercise">Exercise 16.8</a></p>
+<p><a href="chap16.html#zuneExercise">Exercício 16.8</a></p>
 </div>
 </div>
 </div>
@@ -2109,7 +2109,7 @@ conditions in addition to normal operation.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap16.html#blackBoxTestingExercise">Exercise 16.7</a></p>
+<p><a href="chap16.html#blackBoxTestingExercise">Exercício 16.7</a></p>
 </div>
 </div>
 </div>
@@ -2309,14 +2309,14 @@ of this method for other primitive types and <code>Object</code>. Note that the 
 including a delta threshold in case the values don’t match exactly.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.12 JUnit math testing</div>
+<div class="title">Exemplo 16.12 JUnit math testing</div>
 <div class="content">
 <div class="paragraph">
 <p>Using these methods, we can finally write a complete (though simple)
 implementation of <code>MathTest.java</code>.</p>
 </div>
 <div id="MathTestProgram" class="listingblock">
-<div class="title">Program 16.1 Simple testing suite.</div>
+<div class="title">Programa 16.1 Simple testing suite.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">org.junit.jupiter.api.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">jupiter</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.*;</span>
@@ -2554,7 +2554,7 @@ the space to explain a complex testing example, but we can provide another
 example of JUnit testing.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.13 A broken class</div>
+<div class="title">Exemplo 16.13 A broken class</div>
 <div class="content">
 <div class="paragraph">
 <p>Using an example from physics, we can create a <code>PointCharge</code> class that has
@@ -2564,7 +2564,7 @@ errors should be obvious. Nevertheless, we’ve picked reasonable errors that
 might come up in real development.</p>
 </div>
 <div id="PointChargeProgram" class="listingblock">
-<div class="title">Program 16.2 Physics class with errors.</div>
+<div class="title">Programa 16.2 Physics class with errors.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PointCharge</span> <span class="o">{</span>  
     <span class="kd">private</span> <span class="kt">double</span> <span class="n">charge</span><span class="o">;</span>  <span class="c1">// C</span>
@@ -2657,7 +2657,7 @@ electric field <em>E</em> at a given location due to a charge
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.14 Testing the distance methods</div>
+<div class="title">Exemplo 16.14 Testing the distance methods</div>
 <div class="content">
 <div class="paragraph">
 <p>Let’s come up with a test for the <code>distance()</code> methods first. We’re
@@ -2753,7 +2753,7 @@ simple, but it also illustrates the importance of thorough testing.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16.15 Testing the field magnitude method</div>
+<div class="title">Exemplo 16.15 Testing the field magnitude method</div>
 <div class="content">
 <div class="paragraph">
 <p>Finally, let’s test the value of the <code>fieldMagnitude()</code> method. For
@@ -2783,7 +2783,7 @@ mechanism, each JUnit test method stops once a failure has happened.</p>
 <code>FixedPointCharge</code>.</p>
 </div>
 <div id="FixedPointChargeProgram" class="listingblock">
-<div class="title">Program 16.3 Corrected version of <code>PointCharge</code>.</div>
+<div class="title">Programa 16.3 Corrected version of <code>PointCharge</code>.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FixedPointCharge</span> <span class="o">{</span>  
 	<span class="kd">private</span> <span class="kt">double</span> <span class="n">charge</span><span class="o">;</span>  <span class="c1">// C</span>
@@ -2831,7 +2831,7 @@ mechanism, each JUnit test method stops once a failure has happened.</p>
 class.</p>
 </div>
 <div id="TestPointChargeProgram" class="listingblock">
-<div class="title">Program 16.4 Class for testing <code>PointCharge</code>.</div>
+<div class="title">Programa 16.4 Class for testing <code>PointCharge</code>.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">org.junit.jupiter.api.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">jupiter</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.*;</span>
@@ -3055,7 +3055,7 @@ execute contentious code in parallel.</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>

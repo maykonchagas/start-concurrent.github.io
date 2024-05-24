@@ -164,7 +164,7 @@
 <li><a href="chap13.html#_problema_vírus_mortal">13.2. Problema: Vírus mortal</a></li>
 <li><a href="chap13.html#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="chap13.html#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
-<li><a href="chap13.html#_examples_concurrency_and_speedup">13.5. Examples: Concurrency and speedup</a></li>
+<li><a href="chap13.html#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
 <li><a href="chap13.html#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
 <li><a href="chap13.html#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
 <li><a href="chap13.html#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
@@ -804,14 +804,14 @@ actor takes her umbrella when it’s raining.</p>
 <a href="chap8.html">Chapter 8</a> and <a href="chap9.html">Chapter 9</a>. What we’re
 focusing on now is that the line <code>umbrella.take();</code> is executed <strong>only</strong> if
 <code>raining</code> has the value <code>true</code>. Nothing is done if it’s <code>false</code>.
-<a href="chap4.html#figure-if">Figure 4.1</a> shows this pattern of conditional execution
+<a href="chap4.html#figure-if">Figura 4.1</a> shows this pattern of conditional execution
 followed by all <code>if</code> statements.</p>
 </div>
 <div id="figure-if" class="imageblock text-center">
 <div class="content">
 <img src="chapters/04-selection/images/if.svg" alt="if" width="50%">
 </div>
-<div class="title">Figure 4.1 Execution goes inside the <code>if</code> statement when its condition is <code>true</code> and skips past it otherwise.</div>
+<div class="title">Figura 4.1 Execution goes inside the <code>if</code> statement when its condition is <code>true</code> and skips past it otherwise.</div>
 </div>
 <div class="paragraph">
 <p>Our descriptions of logical scenarios from the previous section used the
@@ -897,14 +897,14 @@ written code with the same functionality as follows.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="chap4.html#figure-else">Figure 4.2</a> shows the pattern of conditional execution
+<p><a href="chap4.html#figure-else">Figura 4.2</a> shows the pattern of conditional execution
 followed by all <code>if</code> statements that have a matching <code>else</code> statement.</p>
 </div>
 <div id="figure-else" class="imageblock text-center">
 <div class="content">
 <img src="chapters/04-selection/images/else.svg" alt="else" width="50%">
 </div>
-<div class="title">Figure 4.2 Execution goes inside the <code>if</code> statement when its condition is <code>true</code> and jumps into the <code>else</code> statement otherwise.</div>
+<div class="title">Figura 4.2 Execution goes inside the <code>if</code> statement when its condition is <code>true</code> and jumps into the <code>else</code> statement otherwise.</div>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1151,7 +1151,7 @@ the table below shows them again in a
 mathematical context.</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content center">
-<caption class="title">Table 4.1 Relational operators</caption>
+<caption class="title">Tabela 4.1 Relational operators</caption>
 <colgroup>
 <col>
 <col>
@@ -1321,7 +1321,7 @@ considered. Unlike the <code>x = 4</code> example, this code will compile with n
 also use some methods from class <code>Math</code>.</p>
 </div>
 <div id="leapYearExample" class="exampleblock">
-<div class="title">Example 4.1 Leap year</div>
+<div class="title">Exemplo 4.1 Leap year</div>
 <div class="content">
 <div class="paragraph">
 <p>In the standard Gregorian calendar, leap years occur roughly once every
@@ -1348,7 +1348,7 @@ remainder after being divided by <code>100</code> and must be evenly divisible b
 100.</p>
 </div>
 <div id="LeapYearProgram" class="listingblock">
-<div class="title">Program 4.1 Prompts the user for a year and then determines whether or not it is a leap year.</div>
+<div class="title">Programa 4.1 Prompts the user for a year and then determines whether or not it is a leap year.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1383,7 +1383,7 @@ leap year.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4.2 Quadratic formula</div>
+<div class="title">Exemplo 4.2 Quadratic formula</div>
 <div class="content">
 <div class="paragraph">
 <p>The quadratic formula is a useful tool from mathematics. Using this
@@ -1405,7 +1405,7 @@ write a program to solve quadratic equations for you, it should take
 these three possibilities into account.</p>
 </div>
 <div id="QuadraticProgram" class="listingblock">
-<div class="title">Program 4.2 Solves a quadratic equation.</div>
+<div class="title">Programa 4.2 Solves a quadratic equation.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1479,7 +1479,7 @@ Values that small would then be treated as if they were zero.</p>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4.3 20 Questions</div>
+<div class="title">Exemplo 4.3 20 Questions</div>
 <div class="content">
 <div class="paragraph">
 <p>In the time-honored game of 20 Questions, one person mentally chooses
@@ -1503,7 +1503,7 @@ tomato, a peach, a maple tree, and a potato.</p>
 <div class="content">
 <img src="chapters/04-selection/images/flowchart.svg" alt="flowchart" width="100%">
 </div>
-<div class="title">Figure 4.3 Decision tree to distinguish 10 items.</div>
+<div class="title">Figura 4.3 Decision tree to distinguish 10 items.</div>
 </div>
 <div class="paragraph">
 <p>Using these items, we can construct a tree of decisions,
@@ -1513,10 +1513,10 @@ mammal, we could ask if it lives on land, deciding between human and
 dolphin. If it’s <strong>not</strong> a mammal, we could ask if it flies, deciding
 between an eagle and a lizard. We can construct similar questions for
 the things in the vegetable and mineral categories, matching
-<a href="chap4.html#figure-flowchart">Figure 4.3</a>.</p>
+<a href="chap4.html#figure-flowchart">Figura 4.3</a>.</p>
 </div>
 <div id="TwentyQuestionsProgram" class="listingblock">
-<div class="title">Program 4.3 Navigates the possible choices in the decision tree.</div>
+<div class="title">Programa 4.3 Navigates the possible choices in the decision tree.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -1956,7 +1956,7 @@ displaying a list of data outweighs the drawbacks.</p>
 <code>switch</code> statements.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4.4 Days in the month</div>
+<div class="title">Exemplo 4.4 Days in the month</div>
 <div class="content">
 <div class="paragraph">
 <p>There are fewer uses for <code>switch</code> statements than <code>if</code> statements.
@@ -1967,7 +1967,7 @@ has 28 days). Given the month as a number, we can use <code>switch</code> statem
 that maps the number of the month to the number of days it contains.</p>
 </div>
 <div id="DaysInMonthProgram" class="listingblock">
-<div class="title">Program 4.4 Computes the number of days in a given month.</div>
+<div class="title">Programa 4.4 Computes the number of days in a given month.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -2032,7 +2032,7 @@ value inside <code>days</code>, a value that won’t exist if <code>month</code>
 </div>
 </div>
 <div id="ordinalNumbersExample" class="exampleblock">
-<div class="title">Example 4.5 Ordinal numbers</div>
+<div class="title">Exemplo 4.5 Ordinal numbers</div>
 <div class="content">
 <div class="paragraph">
 <p>The term <em>ordinal numbers</em> refers to numbers that are used for ordering
@@ -2052,7 +2052,7 @@ should be used. We can use a <code>switch</code> statement to write a program to
 give the correct ordinal endings for most numbers as follows.</p>
 </div>
 <div id="OrdinalsProgram" class="listingblock">
-<div class="title">Program 4.5 Appends the appropriate suffix to a numeral to make it an ordinal.</div>
+<div class="title">Programa 4.5 Appends the appropriate suffix to a numeral to make it an ordinal.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -2088,12 +2088,12 @@ suffix by our code. We leave a more complete solution as an exercise.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="chap4.html#ordinalNumbersExercise">Exercise 4.12</a></p>
+<p><a href="chap4.html#ordinalNumbersExercise">Exercício 4.12</a></p>
 </div>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 4.6 Astrology</div>
+<div class="title">Exemplo 4.6 Astrology</div>
 <div class="content">
 <div class="paragraph">
 <p>Many cultures practice astrology, a tradition that the time of a
@@ -2183,7 +2183,7 @@ moment and write a program using a <code>switch</code> statement designed to
 correctly output the animal corresponding to an input birth year.</p>
 </div>
 <div id="ChineseZodiacProgram" class="listingblock">
-<div class="title">Program 4.6 Determines a Chinese zodiac animal based on birth year.</div>
+<div class="title">Programa 4.6 Determines a Chinese zodiac animal based on birth year.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -2299,7 +2299,7 @@ statement is a good place to start, but you also have to put <code>if</code>
 statements for each month to test the exact range of dates.</p>
 </div>
 <div id="WesternZodiacProgram" class="listingblock">
-<div class="title">Program 4.7 Determines Western zodiac signs based on birth month and day.</div>
+<div class="title">Programa 4.7 Determines Western zodiac signs based on birth month and day.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
@@ -2705,7 +2705,7 @@ propositions in Boolean logic, make a truth table for the expression
 </li>
 <li>
 <p>The calculation to determine the leap year given in
-<a href="chap4.html#leapYearExample">Example 4.1</a> uses three <code>if</code> statements and three
+<a href="chap4.html#leapYearExample">Exemplo 4.1</a> uses three <code>if</code> statements and three
 <code>else</code> statements. Write the leap year calculation using a single <code>if</code>
 and a single <code>else</code>. Feel free to use <code>boolean</code> connectors such as <code>||</code>
 and <code>&amp;&amp;</code>.</p>
@@ -2851,11 +2851,11 @@ any coin, print <code>unknown coin</code>.</p>
 </div>
 </li>
 <li>
-<p>Re-implement both parts from <a href="chap4.html#coinNamesExercise">Exercise 4.10</a> using <code>switch</code> statements instead of <code>if</code> statements.</p>
+<p>Re-implement both parts from <a href="chap4.html#coinNamesExercise">Exercício 4.10</a> using <code>switch</code> statements instead of <code>if</code> statements.</p>
 </li>
 <li>
 <p><a id="ordinalNumbersExercise"></a> Expand the program given in
-<a href="chap4.html#ordinalNumbersExample">Example 4.5</a> to give the correct suffixes (always
+<a href="chap4.html#ordinalNumbersExample">Exemplo 4.5</a> to give the correct suffixes (always
 “th”) for numbers that end in 11, 12, and 13. Use the modulus operator
 to find the last two digits of the number. Using an <code>if</code>
 statement, a <code>switch</code> statement, or a combination, check for those three
@@ -2913,7 +2913,7 @@ input and output.</p>
 </nav>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-20 16:28:33 -0300
+Last updated 2024-05-20 18:00:47 -0300
 </div>
 </div>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VEDGKRPMMK"></script>
