@@ -14,7 +14,7 @@ Barry Wittman <wittman1@otterbein.edu>; Tim Korb <jtk@purdue.edu>; Aditya Mathur
 :xrefstyle: short
 :sectnums:
 :sectnumlevels: 3
-:listing-caption: Listing
+:listing-caption: Programa
 ifdef::ebook-format[:leveloffset: -1]
 :google-analytics-account: G-VEDGKRPMMK
 
