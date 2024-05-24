@@ -59,11 +59,12 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 
     # Captions should we use.
     captions = {
-      :section => (document.attr 'autoxref-sectcaption', "Section %d.%d"),
-      :image => (document.attr 'autoxref-imagecaption', "Figure %d.%d"),
-      :listing => (document.attr 'autoxref-listingcaption', "Program %d.%d"),
-      :table => (document.attr 'autoxref-tablecaption', "Table %d.%d"),
-	  :example => (document.attr 'autoxref-examplecaption', "Example %d.%d")
+      :chapter => (document.attr 'autoxref-chapcaption', "Capítulo "),
+      :section => (document.attr 'autoxref-sectcaption', "Seção %d.%d"),
+      :image => (document.attr   'autoxref-imagecaption', "Figura %d.%d"),
+      :listing => (document.attr 'autoxref-listingcaption', "Programa %d.%d"),
+      :table => (document.attr   'autoxref-tablecaption', "Tabela %d.%d"),
+	    :example => (document.attr 'autoxref-examplecaption', "Exemplo %d.%d")
     }
 
     # Reference number counter.  Reference numbers are reset by chapters.
@@ -96,13 +97,13 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
           :image => 1,
           :listing => 1,
           :table => 1,
-		  :example => 1
+		      :example => 1
         }
       )	  
 	   
 
       # Scan for sections, titled images/listings/tables in the chapter.
-      [:section, :image, :listing, :table, :example].each do |type|
+      [:chapter, :section, :image, :listing, :table, :example].each do |type|
         chapter.find_by(context: type).each do |el|
           # Generate RNBCs for eligible targets and update reference table in the document.  For non-sections, we also overwrite their captions with RNBCs.
           if type != :section then
@@ -164,7 +165,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 	end
 	
 	# Update xrefs inside titles (which are what appear as captions in text).
-	[:section, :image, :listing, :table, :example].each do |type|
+	[:chapter, :section, :image, :listing, :table, :example].each do |type|
 		document.find_by(context: type).each do |item|			
 			if item.title? then
 				# Same tricks as above.
@@ -184,7 +185,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
     text.scan(pattern).each do |match|		
 		unless match.include? ","						
 			id = match[2, match.length - 4]				
-			document.references[:ids][id] = "Exercise " + number
+			document.references[:ids][id] = "Exercício " + number
 		end		
 	end
   end
