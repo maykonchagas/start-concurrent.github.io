@@ -64,16 +64,16 @@ para explorar todo o poder dos chips com vários núcleos quando ingressar no me
 de trabalho.
 
 Os processadores multicore são onipresentes. Quer você use um desktop, um laptop ou 
-até mesmo um smartphone, é bem provável que seu computador tenha um chip multicore 
+até mesmo um _smartphone_, é bem provável que seu computador tenha um chip multicore 
 em seu coração. Computadores paralelos de baixo custo foram profetizados durante anos. 
 Esse momento chegou. Os computadores paralelos estão em nossas mãos e em nossos bolsos. 
 Esse progresso na tecnologia de microprocessadores lançou um desafio aos educadores: __Como 
-podemos ensinar programação simultânea?__
+podemos ensinar programação concorrente?__
 
 A programação de computadores tem sido ensinada no meio acadêmico há décadas. No 
 entanto, o objetivo não escrito em quase todas as aulas de programação para iniciantes 
 tem sido ensinar os alunos a escrever, compilar, testar e depurar programas *sequenciais*. 
-O material relacionado à programação simultânea geralmente é deixado para cursos sobre 
+O material relacionado à programação concorrente geralmente é deixado para cursos sobre 
 sistemas operacionais e linguagens de programação ou cursos de computação de alto 
 desempenho. Agora que os computadores paralelos estão em toda parte, devemos considerar 
 introduzir os fundamentos da programação simultânea em aulas para iniciantes em programação?

@@ -712,73 +712,71 @@ núcleos.
 .Somatório de matrizes
 ====
 
-In <<arraySummationPreviewExample>>, we introduced the
-problem of applying a function to every value in an array and then
-summing the results. Let's say that we want to apply the sine function
-to each value. To solve this problem concurrently, we partition the
-array evenly among a number of threads, using the domain decomposition
-strategy. Each thread finds the sum of the sines of the values in its
-part of the array. One factor that determines whether or not we achieve
-speedup is the complexity of the function, in this case sine, that we
-apply. Although we may achieve speedup with sine, a simpler function
-such as doubling the value might not create enough work to justify the
-overhead of using threads.
+Em <<arraySummationPreviewExample>>, apresentamos o
+problema de aplicar uma função a cada valor em uma matriz e depois
+somar os resultados. Digamos que queiramos aplicar a função seno
+a cada valor. Para resolver esse problema de forma concorrente, particionamos 
+a matriz uniformemente entre várias threads, usando a estratégia de decomposição de domínio.
+Cada thread encontra a soma dos senos dos valores em sua
+parte da matriz. Um fator que determina se conseguimos ou não
+velocidade é a complexidade da função, nesse caso o seno, que aplicamos.
+aplicamos. Embora possamos obter um aumento de velocidade com o seno, uma função mais simples
+como dobrar o valor pode não gerar trabalho suficiente para justificar a
+sobrecarga do uso de threads.
 
-We create class `SumThread` whose `run()` method sums the sines of those
-elements of the array in its assigned partition.
+Criamos a classe `SumThread` cujo método `run()` soma os senos dos
+elementos da matriz em sua partição atribuída.
 
 [source, java]
 ----
 include::{programsdir}/SumThread.java[lines=1..15]
 ----
-<.> First, we set up all the fields that the class will need.
-<.> Note that every `SumThread` object will have its own reference to the array of data.
-<.> We fix the
-array size at 1,000,000 and the number of threads at 8, but these values
-could easily be changed or read as input instead.
-<.> In its constructor, a `SumThread` takes a reference to the array of data
-and the lower and upper bounds of its partition. Like most
-ranges we discuss, the lower bound is inclusive though the upper bound
-is exclusive.
+<.> Primeiro, configuramos todos os campos de que a classe precisará.
+<.> Observe que cada objeto `SumThread` terá sua própria referência à matriz de dados.
+<.> Fixamos o tamanho da matriz em 1.000.000 e o número de threads em 8, mas esses valores
+podem ser facilmente alterados ou lidos como entrada.
+<.> Em seu construtor, um `SumThread` recebe uma referência à matriz de dados
+e os limites inferior e superior de sua partição. Como a maioria dos
+intervalos que discutimos, o limite inferior é inclusivo, embora o limite superior
+seja exclusivo.
 
 [source, java]
 ----
 include::{programsdir}/SumThread.java[lines=17..22]
 ----
-<.> In the `for` loop of the `run()` method, the `SumThread` finds the sine
-of each number in its array partition and adds that value to its running
-sum.
-<.> The `getSum()` method is an accessor that allows the running sum to
-be retrieved.
+<.> No loop `for` do método `run()`, a `SumThread` encontra o seno
+de cada número em sua partição da matriz e adiciona esse valor à sua
+soma. 
+<.> O método `getSum()` é um acessório que permite que a soma em execução seja
+seja recuperada.
 
 [source, java]
 ----
 include::{programsdir}/SumThread.java[lines=24..40]
 ----
-<.> The `main()` method begins by instantiating the array.
-<.> It fills it with random values.
-<.> Then, each thread is created by passing in a reference to the array and
-lower and upper bounds that mark the thread's partition of the array. If the
-process using the array length and the number of threads to determine
-upper and lower bounds doesn't make sense, refer to
-<<Concurrency: Arrays>> which describes the fair division of work
-to threads. If the length of the array is not divisible by the number of
-threads, simple division isn't enough.
-<.> After each thread is created, its `start()` method is called.
+<.> O método `main()` começa instanciando a matriz.
+<.> Ele o preenche com valores aleatórios.
+<.> Em seguida, cada thread é criado passando uma referência para o vetor e os limites 
+inferior e superior que marcam a partição da thread na matriz. Se o
+processo que usa o comprimento da matriz e o número de threads para determinar
+os limites superior e inferior não fizer sentido, consulte
+<<Concurrency: Arrays>> que descreve a divisão justa do trabalho
+para as threads. Se o comprimento da matriz não for divisível pelo número de
+threads, a divisão simples não será suficiente.
+<.> Depois que cada thread é criada, seu método `start()` é chamado.
 
 [source, java]
 ----
 include::{programsdir}/SumThread.java[lines=42..54]
 ----
-<.> Once the threads have started working, the main thread creates its own
-running total.
-<.> It iterates through each thread waiting for it to
-complete. 
-<.> When each thread is done, its value is added to
-the running total.
-<.> Finally, the sum is printed out.
-<.> If the main thread is interrupted while waiting for a
-thread to complete, the stack trace is printed. 
+<.> Depois que as threads começam a trabalhar, a thread principal cria seu próprio
+total em execução.
+<.> Ele itera através de cada thread esperando que seja concluído. 
+<.> Quando cada thread é concluída, seu valor é adicionado ao
+ao total em execução.
+<.> Finalmente, a soma é impressa.
+<.> Se a thread principal for interrompida enquanto estiver aguardando a conclusão de uma
+thread, o rastreamento da pilha será impresso. 
 ====
 
 ****
@@ -788,16 +786,16 @@ thread to complete, the stack trace is printed.
 ****
 
 [[matrixMultiplicationExample]]
-.Matrix multiplication
+.Multiplicação de matrizes
 ====
 
-In <<matrixMultiplicationPreviewExample>>, we discussed the
-importance of matrix operations in many applications. Now that we know
-the necessary Java syntax, we can write a concurrent program to multiply
-two square matrices _A_ and _B_ and compute the
-resultant matrix _C_. If these matrices have _n_
-rows and _n_ columns, the value at the _i_^th^
-row and _j_^th^ column of _C_ is
+Em <<matrixMultiplicationPreviewExample>>, discutimos a
+a importância das operações de matriz em muitos aplicativos. Agora que conhecemos
+a sintaxe Java necessária, podemos escrever um programa concorrente para multiplicar
+duas matrizes quadradas _A_ e _B_ e calcular a matriz
+resultante _C_. Se essas matrizes tiverem _n_
+linhas e _n_ colunas, o valor na _i_^ésima^
+linha e _j_^^ coluna de _C_ é
 
 //[stem]
 //++++
@@ -807,13 +805,13 @@ row and _j_^th^ column of _C_ is
 [.text-center]
 image::matrixValue.svg[scaledwidth=55%,pdfwidth=55%,width=55%]
 
-In Java, it's natural for us to store matrices as 2-dimensional arrays.
-To do this multiplication sequentially, the simplest approach uses three
-nested `for` loops. The code below is a direct translation of the
-mathematical notation, but we do have to be careful about bookkeeping.
-Note that mathematical notation often uses uppercase letters to
-represent matrices though the Java convention is to start all variable
-names with lowercase letters.
+Em Java, é natural armazenarmos as matrizes como matrizes bidimensionais.
+Para fazer essa multiplicação sequencialmente, a abordagem mais simples usa três
+loops `for` aninhados. O código abaixo é uma tradução direta da 
+notação matemática, mas temos de ter cuidado com a contagem.
+Observe que a notação matemática geralmente usa letras maiúsculas para
+para representar matrizes, embora a convenção Java seja iniciar todos os nomes de variáveis
+com letras minúsculas.
 
 [source,java]
 ----
@@ -823,33 +821,30 @@ for(int i = 0; i < c.length; i++)
             c[i][j] += a[i][k] * b[k][j];
 ----
 
-The first step in making a concurrent solution to this problem is to
-create a `Thread` subclass which will do some part of the matrix
-multiplication. Below is the `MatrixThread` class which will compute a
-number of rows in the answer matrix `c`.
+A primeira etapa para criar uma solução concorrente para esse problema é
+criar uma subclasse `Thread` que fará alguma parte da 
+multiplicação da matriz. Abaixo está a classe `MatrixThread` que calculará um 
+número de linhas na matriz de resposta `c`.
 
 [source, java]
 [[MatrixThreadProgram]]
 ----
 include::{programsdir}/MatrixThread.java[]
 ----
-<.> The constructor for `MatrixThread` stores references to the arrays
-corresponding to matrices _A_, _B_, and
-_C_ as well as lower and upper bounds on the rows of
-_C_ to compute.
-<.> The body of the `run()` method is identical
-to the sequential solution except that its outermost loop runs only from
-`lower` to `upper` instead of through all the rows of the result. It's
-critical that each thread is assigned a set of rows that does not
-overlap with the rows another thread has. Not only would having multiple
-threads compute the same row be inefficient, it would very likely lead
-to an incorrect result, as we'll see in
+<.> O construtor de `MatrixThread` armazena referências às matrizes
+correspondentes às matrizes _A_, _B_ e _C_, bem como os limites inferior e superior das linhas de
+_C_ a serem computadas. 
+<.> O corpo do método `run()` é idêntico ao da solução sequencial, exceto pelo fato de que seu `loop` mais externo é executado somente de
+`lower` a `upper` em vez de percorrer todas as linhas do resultado.
+É fundamental que a cada thread seja atribuído um conjunto de linhas que não se
+se sobreponha às linhas que outra thread possui. Não só o fato de 
+várias threads calcularem a mesma linha seria ineficiente, mas muito provavelmente levaria
+a um resultado incorreto, como veremos em
 <<ch14-synchronization#ch14-synchronization>>.
 
-The following client code uses an array of `MatrixThread` objects to
-perform a matrix multiplication. We assume that an `int` constant named
-`THREADS` has been defined which gives the number of threads we want to
-create.
+O código cliente a seguir usa uma matriz de objetos `MatrixThread` para
+realizar uma multiplicação de matriz. Supomos que uma constante `int` denominada
+`THREADS` tenha sido definida, o que dá o número de threads que queremos criar. 
 
 [source,java]
 ----
@@ -873,27 +868,25 @@ catch(InterruptedException e) {
     e.printStackTrace();
 }
 ----
-<.> We loop through the array, creating a `MatrixThread` object for each
-location. As in the previous example, we use the approach described in
-<<Concurrency: Arrays>> to allocate rows to each thread fairly.
-Each new `MatrixThread` object is given a reference to each of the three
-matrices as well as an inclusive starting and an exclusive ending row.
-<.> After the `MatrixThread` objects are created, we start them running with
-the next line of code.
-<.> Next, there's a familiar `for` loop with the `join()` calls that force
-the main thread to wait for the other threads to finish.
+<.> Fazemos um `loop` pela matriz, criando um objeto `MatrixThread` para cada
+posição. Como no exemplo anterior, usamos a abordagem descrita em
+<<Concurrency: Arrays>> para alocar linhas para cada thread de forma justa.
+Cada novo objeto `MatrixThread` recebe uma referência a cada uma das três
+matrizes, bem como uma linha inicial inclusiva e uma linha final exclusiva.
+<.> Depois que os objetos `MatrixThread` são criados, começamos a executá-los com a próxima linha de código.
+<.> Em seguida, há um `loop` `for` familiar com as chamadas `join()` 
+que forçam a thread principal a esperar que as outras threads terminem.
 
-Presumably,
-code following this snippet will print the values of the result matrix
-or use it for other calculations. If we didn't use the `join()`
-calls to be sure the threads have finished, we might print out a result
-matrix that's only been partially filled in.
+Presumivelmente,
+o código após esse trecho imprimirá os valores da matriz de resultados
+ou a usará para outros cálculos. Se não tivermos usado as chamadas `join()`
+para garantir que as threads tenham terminado, poderíamos imprimir uma matriz de resultados que foi preenchida apenas parcialmente.
 
-We completed the code for threaded matrix multiplication and executed it
-on an iMac computer with an Intel Core 2 Duo running at 2.16 Ghz. The program
-was executed for matrices of different sizes (_n_ × _n_).
-For each size, the sequential and concurrent execution times in seconds
-and the corresponding speedup are listed in the following table.
+Concluímos o código da multiplicação de matrizes com threads e o executamos
+em um computador iMac com um Intel Core 2 Duo rodando a 2,16 Ghz. O programa
+foi executado para matrizes de diferentes tamanhos (_n_ × _n_). Para cada tamanho, os 
+tempos de execução sequencial e concorrente em segundos
+e o tempo de execucação correspondente estão listados na tabela a seguir.
 
 [.center%autowidth%header,cols="4*<",]
 |=======================================================================
@@ -906,10 +899,9 @@ and the corresponding speedup are listed in the following table.
 |1,000 |15.6 |10.7 |1.45^*^
 |=======================================================================
 
-Only with 1,000 × 1,000 matrices did we see improved
-performance when using two threads. In that case, we achieved a speedup
-of 1.45, marked with an asterisk. In the other two cases, performance
-became worse.
+Somente com matrizes de 1.000 × 1.000 observamos um melhor
+desempenho ao usar duas threads. Nesse caso, obtivemos um aumento de velocidade
+de 1,45, marcado com um asterisco. Nos outros dois casos, o desempenho piorou.
 ====
 
 ****
@@ -917,134 +909,129 @@ became worse.
 <<matrixSpeedupExercise>>
 ****
 
-=== Concepts: Thread scheduling
+=== Conteitos: Agendamento de thread
 
-Now that we've seen how multiple threads can be used together, a
-number of questions arise: Who decides when
-these threads run? How is processor time shared between threads? Can we
-make any assumptions about the order in which the threads run? Can
-we affect this order?
+Agora que vimos como várias threads podem ser usadas juntas, 
+várias perguntas surgem: Quem decide quando
+essas threads são executadas? Como o tempo do processador é compartilhado 
+entre as threads? Podemos fazer alguma suposição sobre a ordem de execução 
+das threads? Podemos afetar essa ordem?
 
-These questions focus on thread scheduling. Because different concurrent
-systems handle scheduling differently, we'll only describe scheduling
-in Java. Although sequential programming is all about precise control
-over what happens *next*, concurrency takes much of this control away
-from the programmer. When threads are scheduled and which processor they
-run on is handled by a combination of the JVM and the OS. With normal
-JVMs, there's no explicit way to access the scheduling and alter it to
-your liking.
+Essas perguntas se concentram no agendamento de threads. Como diferentes sistemas 
+concorrente lidam com o agendamento de forma diferente, descreveremos apenas o agendamento
+em Java. Embora a programação sequencial tenha tudo a ver com o controle preciso
+sobre o que acontece *depois*, a concorrência tira grande parte desse controle do 
+programador. Quando os threads são agendados e em qual processador eles são executados, isso 
+é feito por uma combinação da JVM e do sistema operacional. Com as
+JVMs normais, não há uma maneira explícita de acessar o agendamento e alterá-lo a seu
+seu agrado.
 
-Of course, there are a number of implicit ways a programmer can affect
-scheduling. In Java, as in several other languages and programming
-systems, threads have _priorities_. Higher priority threads run more
-often than lower priority threads. Some threads are performing
-mission-critical operations which must be carried out as quickly as
-possible, and some threads are just doing periodic tasks in the
-background. A programmer can set thread priorities accordingly.
+Obviamente, há várias maneiras implícitas pelas quais um programador pode manipular a
+a programação. Em Java, como em várias outras linguagens
+e sistemas de programação, as threads têm _prioridades_. As threads de prioridade mais 
+alta são executadas com mais frequência do que as de prioridade mais baixa. Algumas 
+threads estão executando operações de missão crítica que devem ser executadas o mais 
+rápido possível, e algumas threads estão apenas realizando tarefas periódicas 
+em segundo plano. Um programador pode definir as prioridades das threads de acordo com essas prioridades.
 
-Setting priorities gives only a very general way of controlling which
-thread will run. The threads themselves might have more specific
-information about when they will and won't need processor time. A
-thread may need to wait for a specific event and won't need to run
-until then. Java allows threads to interact with the scheduler through
-`Thread.sleep()` and `Thread.yield()`, which we'll discuss in
-<<Syntax: Thread states>>, and through the `wait()`, method which
-we'll discuss in <<ch14-synchronization#ch14-synchronization>>.
+A definição de prioridades oferece apenas uma maneira muito geral de controlar 
+qual thread será executada. As próprias threads podem ter informações mais específicas 
+sobre quando precisarão ou não de tempo de processador. A thread pode precisar esperar 
+por um evento específico e não precisará ser executada
+até lá. O Java permite que as threads interajam com o agendador por meio dos 
+métodos `Thread.sleep()` e `Thread.yield()`, que discutiremos em <<Syntax: Thread states>> e 
+por meio do método `wait()`, que discutiremos em <<ch14-synchronization#ch14-synchronization>>.
 
-==== Nondeterminism
+==== Não determinismo
 
-In Java, the mapping of a thread inside the JVM to a thread in the OS
-varies. Some implementations give each Java thread an OS thread, some
-put all Java threads on a single OS thread (with the side effect of
-preventing parallel execution), and some allow for the possibility of changing
-which OS thread a Java thread uses. Thus, the performance and, in some
-cases, the correctness of your program might vary, depending on which
-system you're running. This is, yet again, one of those times when Java
-is platform independent...but not entirely.
+Em Java, o mapeamento de uma thread dentro da JVM para uma thread no sistema operacional
+varia. Algumas implementações dão a cada thread Java uma thread do sistema operacional, outras
+colocam todas as threads Java em uma única thread do sistema operacional (com o efeito 
+colateral de impedir a execução paralela), e algumas permitem a possibilidade de alterar
+qual thread do sistema operacional uma thread Java usa. Assim, o desempenho e, em alguns 
+casos, a correção de seu programa podem variar, dependendo do sistema que você estiver executando.
+Esse é, mais uma vez, um daqueles momentos em que o Java
+é independente de plataforma... mas não totalmente.
 
-Unfortunately, the situation is even more complicated. Making threads
-part of your program means that the same program could run differently
-on the *same* system. The JVM and the OS have to cooperate to schedule
-threads, and both programs are complex mountains of code which try to
-balance many factors. If you create three threads, there's no guarantee
-that the first will run first, the second second, and the third third,
-even if it happens that way the first 10 times you run the program.
-<<executionOrderExercise>> shows that the pattern of thread
-execution can vary a lot.
+Infelizmente, a situação é ainda mais complicada. Tornar as threads
+parte de seu programa significa que o mesmo programa pode ser executado de forma diferente
+no *mesmo* sistema. A JVM e o sistema operacional precisam cooperar para agendar as threads
+e ambos os programas são montanhas complexas de código que tentam equilibrar muitos fatores. 
+Se você criar três threads, não há garantia
+que o primeiro será executado primeiro, o segundo segundo e o terceiro terceiro,
+mesmo que isso aconteça nas primeiras 10 vezes em que você executar o programa. O 
+<<executionOrderExercise>> mostra que o padrão de execução das threads pode variar muito.
 
 ****
 <<executionOrderExercise>>
 ****
 
-In all the programs before this chapter, the same sequence of input
-would always produce the same sequence of output. Perhaps the biggest
-hurdle created by this nondeterminism is that programmers must shift
-their paradigm considerably. The processor can switch between executions
-of threads at any time, even in the middle of operations. Every possible
-interleaving of thread execution could crop up at some point. Unless you
-can be sure that your program behaves properly for all of them, you might
-never be able to debug your code completely. What's so insidious about
-nondeterministic bugs is that they can occur rarely and be almost
-impossible to reproduce. In this chapter, we've introduced how to create and
-run threads, but making these threads interact properly is a major
-problem we tackle in subsequent chapters.
+Em todos os programas anteriores a este capítulo, a mesma sequência de entrada
+sempre produziria a mesma sequência de saída. Talvez o maior
+obstáculo criado por esse não determinismo seja o fato de os programadores 
+terem de mudar seu paradigma consideravelmente. O processador pode alternar 
+entre execuções de de threads a qualquer momento, mesmo no meio das operações. Todas as possíveis
+intercalações de execução de thread pode surgir em algum momento. A menos 
+que você tenha certeza de que seu programa se comporta adequadamente em todos 
+eles, talvez você nunca conseguirá depurar seu código completamente. O que é tão insidioso nos
+bugs não determinísticos é que eles podem ocorrer raramente e ser quase
+impossíveis de reproduzir. Neste capítulo, apresentamos como criar e executar 
+threads, mas fazer com que essas threads interajam adequadamente é um
+problema importante que abordaremos nos capítulos seguintes.
 
-After those dire words of warning, we'd like to remind you that
-nondeterminism is not in itself a bad thing. Many threaded applications
-with a lot of input and output, such as server applications, necessarily
-exist in a nondeterministic world. For these programs, many different
-sequences of thread execution may be perfectly valid. Each individual
-program may have a different definition of correctness. For example, if
-a stock market server receives two requests to buy the last share of a
-particular stock at almost the same time from two threads corresponding
-to two different clients, it might be correct for either one of them to
-get that last share. However, it would never be correct for *both* of
-them to get it.
+Depois dessas terríveis palavras de advertência, gostaríamos de lembrá-lo de que
+o não determinismo não é em si uma coisa ruim. Muitos aplicativos com threads
+com muitas entradas e saídas, como os servidores de aplicação, necessariamente
+existem em um mundo não determinístico. Para esses programas, muitas diferentes 
+sequências de threads em execução podem ser perfeitamente válidas. Cada programa 
+individual pode ter uma definição diferente de correção. Por exemplo, se um servidor 
+do mercado de ações receber duas solicitações para comprar a última ação de uma 
+determinada empresa quase ao mesmo tempo de duas threads correspondentes a dois 
+clientes diferentes, pode ser correto que qualquer um deles
+obtenha a última ação. No entanto, nunca seria correto que *ambos* a recebam.
 
-==== Polling
+==== Votação
 
-So far the only mechanism we've introduced for coordinating different
-threads is using the `join()` method to wait for a thread to end.
-Another technique is _polling_, or _busy waiting_. The idea is to keep
-checking the state of one thread until it changes.
+Até agora, o único mecanismo que introduzimos para coordenar diferentes
+threads é usar o método `join()` para aguardar o término de uma thread.
+Outra técnica é _polling_, ou _busy waiting_. A ideia é continuar
+verificando o estado de uma thread até que ela mude.
 
-There are a number of problems with this approach. The first is that it
-wastes CPU cycles. Those cycles spent by the waiting thread continually
-checking could have been used productively by some other thread in the
-system. The second problem is that we have to be certain that the state
-of the thread we're waiting for won't change back to the original state
-or to some other state. Because of the unpredictability of scheduling,
-there's no guarantee that the waiting thread will read the state of the
-other thread when it has the correct value.
+Há vários problemas com essa abordagem. O primeiro é que ela
+desperdiça ciclos da CPU. Os ciclos gastos pela thread em espera continuamente
+poderiam ter sido usados de forma produtiva por alguma outra thread no sistema. O 
+segundo problema é que precisamos ter certeza de que o estado da thread que 
+estamos esperando não voltará ao estado original ou para algum outro estado. Devido 
+à imprevisibilidade do agendamento,
+não há garantia de que a thread em espera lerá o estado da outra thread quando 
+ela tiver o valor correto.
 
-We bring up polling partly because it has a historical importance to
-parallel programming, partly because it can be useful in solving some
-problems in this chapter, and partly because we want you to understand
-the reasons why we need better techniques for thread communication.
+Mencionamos a votação em parte porque ela tem uma importância histórica para a
+programação paralela, em parte porque pode ser útil na solução de alguns
+problemas deste capítulo e, em parte, porque queremos que você entenda
+os motivos pelos quais precisamos de técnicas melhores para a comunicação entre threads.
 
 ****
 <<pollingArraySumExercise>>
 ****
 
-=== Syntax: Thread states
+=== Sintaxe: Estados da thread
 
-A widely used Java tool for manipulating scheduling is the
-`Thread.sleep()` method. This method can be called any time you want a
-thread to do nothing for a set period of time. Until the sleep timer
-expires, the thread will not be scheduled for any CPU time, unless it's
-interrupted. To make a thread of execution sleep, call `Thread.sleep()`
-in that thread of execution with a number of milliseconds as a
-parameter. For example, calling `Thread.sleep(2000)` will make the
-calling thread sleep for two full seconds.
+Uma ferramenta Java amplamente utilizada para manipular o agendamento é o método `Thread.sleep()`. Esse método pode ser chamado sempre que você quiser que uma
+thread não faça nada por um determinado período de tempo. Até que o temporizador `sleep`
+expire, a thread não será agendada para nenhum tempo de CPU, a menos que seja
+interrompida. Para fazer uma thread de execução dormir, chame `Thread.sleep()`
+nessa thread de execução com um número de milissegundos como parâmetro. Por exemplo, chamar `Thread.sleep(2000)` fará com que a
+thread chamada dormirá por dois segundos completos.
 
-Another useful tool is the `Thread.yield()` method. It gives up use of
-the CPU so that the next waiting thread can run. To use it, a thread
-calls `Thread.yield()`. This method is useful in practice, but
-according to official documentation, the JVM doesn't *have* to do to
-anything when a `Thread.yield()` call happens. The Java specification
-doesn't demand a particular implementation. A JVM could ignore a
-`Thread.yield()` call completely, but most JVMs will move on to the next
-thread in the schedule.
+Outra ferramenta útil é o método `Thread.yield()`. Ele abre mão do uso da
+CPU para que a próxima thread em espera possa ser executada. Para usá-lo, uma thread
+chama `Thread.yield()`. Esse método é útil na prática, mas
+de acordo com a documentação oficial, a JVM não *tem* que fazer nada quando 
+um `Thread.yield()` é executado. A especificação Java não exige uma implementação 
+específica. Uma JVM poderia ignorar uma chamada
+chamada `Thread.yield()` completamente, mas a maioria das JVMs passará para a 
+próxima thread no cronograma.
 
 ****
 <<sleepAndYieldMethodsExercise>> +
@@ -1053,58 +1040,54 @@ thread in the schedule.
 
 [[figure-thread_states]]
 [.text-center]
-.Thread states and transitions.
+.Estados e transições da thread.
 image::thread-states.svg[scaledwidth=80%,pdfwidth=80%,width=80%]
 
 
-<<figure-thread_states>> shows the lifecycle of a thread. A
-thread begins its life in the New Thread state, after the constructor is
-called. When the `start()` method is called, the thread begins to run
-and transitions to the Runnable state. Being Runnable doesn't
-necessarily mean that the thread is executing at any given moment but
-that it's ready to run at any time. When in the Runnable state, a
-thread may call `Thread.yield()`, relinquishing use of the processor,
-but it will still remain Runnable.
+<<figure-thread_states>> mostra o ciclo de vida de uma thread. A
+thread começa sua vida no estado `New Thread`, depois que o construtor 
+é chamado. Quando o método `start()` é chamado, a thread começa a ser executada
+e faz a transição para o estado `Runnable. Ser executável não significa
+necessariamente que a thread está sendo executada em um determinado momento, mas
+que ela está pronta para ser executada a qualquer momento. Quando estiver no 
+estado `Runnable`, uma thread pode chamar `Thread.yield()`, deixando de usar o processador,
+mas ainda permanecerá `Runnable`.
 
-However, if a thread goes to sleep with a `Thread.sleep()` call, waits
-for a condition to be true using a `wait()` call, or performs a blocking
-I/O operation, the thread will transition to the Not Runnable state. Not
-Runnable threads cannot be scheduled for processor time until they wake
-up, finish waiting, or complete their I/O. The final state is
-Terminated. A thread becomes Terminated when its `run()` method
-finishes. A Terminated thread cannot become Runnable again and is no
-longer a separate thread of execution.
+No entanto, se uma thread for dormir com uma chamada `Thread.sleep()`, aguardará
+para que uma condição seja verdadeira usando uma chamada `wait()` ou executar uma operação de
+de E/S bloqueante, a thread fará a transição para o estado `Not Runnable`. As 
+threads não executáveis não podem ser agendadas para o tempo de processador até que 
+acordem, terminem de esperar ou concluam sua E/S. O estado final é
+`Terminated`. Uma thread se torna terminada quando seu método `run()`
+termina. Uma thread terminada não pode se tornar executável novamente e 
+não é mais uma thread de execução separado.
 
-Any object with a type that's a subclass of `Thread` can tell you its
-current state using the `getState()` method. This method returns an
-_enum_ type, whose value must come from a fixed list of constant
-objects. These objects are `Thread.State.NEW`, `Thread.State.RUNNABLE`,
-`Thread.State.BLOCKED`, `Thread.State.WAITING`,
-`Thread.State.TIMED_WAITING`, and `Thread.State.TERMINATED`. Although
-the others are self explanatory, we lump the `Thread.State.BLOCKED`,
-`Thread.State.WAITING`, and `Thread.State.TIMED_WAITING` values into
-the Not Runnable state, since the distinction between the three isn't
-important for us.
+Qualquer objeto com um tipo que seja uma subclasse de `Thread` pode informar seu
+estado atual usando o método `getState()`. Esse método retorna um tipo _enum_, cujo 
+valor deve vir de uma lista fixa de objetos constantes. Esses objetos são `Thread.State.NEW`, 
+`Thread.State.RUNNABLE`, `Thread.State.BLOCKED`, `Thread.State.WAITING`,
+`Thread.State.TIMED_WAITING` e `Thread.State.TERMINATED`. Embora os outros sejam 
+autoexplicativos, agrupamos o `Thread.State.BLOCKED`,
+`Thread.State.WAITING` e `Thread.State.TIMED_WAITING` no estado `Not Runnable`, já que 
+a distinção entre os três não é importante para nós.
 
-Threads also have priorities in Java. When an object that's a subclass
-of `Thread` is created in Java, its priority is initially the same as
-the thread that creates it. Usually, this priority is
-`Thread.NORM_PRIORITY`, but there are some special cases when it's a
-good idea to raise or lower this priority. Avoid changing thread
-priorities because it increases platform dependence and because the
-effects are not always predictable. Be aware that priorities exist, but
-don't use them unless and until you have a good reason.
+As threads também têm prioridades em Java. Quando um objeto que é uma subclasse
+de `Thread` é criado em Java, sua prioridade é inicialmente a mesma da thread que o cria. 
+Normalmente, essa prioridade é `Thread.NORM_PRIORITY`, mas há alguns casos especiais em que é uma
+boa ideia aumentar ou diminuir essa prioridade. Evite alterar as prioridades de thread
+porque isso aumenta a dependência da plataforma e porque os efeitos nem sempre são previsíveis. Esteja 
+ciente de que as prioridades existem, mas não as use a menos que você tenha um bom motivo.
 
-.Military marching
+.Marcha militar
 ====
 
-Let's apply the ideas discussed above to a lighthearted example. You
-might be familiar with sound of soldiers marching: "`Left, Left, Left,
-Right, Left!`" We can design a thread that prints `Left` and another
-thread that prints `Right`. We can combine the two to print the correct
-sequence for marching and loop the whole thing 10 times so that we can
-see how accurately we can place the words. We want to use the scheduling tools
-discussed above to get the timing right. Let's try `Thread.sleep()`
+Vamos aplicar as ideias discutidas acima a um exemplo leve. Você
+talvez esteja familiarizado com o som de soldados marchando: “`Esquerda, esquerda, esquerda,
+direita, esquerda!`” Podemos criar uma thread que imprima "Esquerda" e outra que imprima "Direita".
+Podemos combinar as duas para imprimir a sequência correta
+para marchar e repetir tudo 10 vezes para que possamos
+ver com que precisão podemos posicionar as palavras. Queremos usar as ferramentas de agendamento
+discutidas acima para obter o tempo correto. Vamos tentar `Thread.sleep()`
 first.
 
 [source, java]
@@ -1112,22 +1095,22 @@ first.
 ----
 include::{programsdir}/LeftThread.java[]
 ----
-<.> Inside, the `for` loop, this thread prints out `Left` three times.
-<.> The, it waits for 10 milliseconds.
-<.> Finally, it prints out `Left` again and repeats the loop.
+<.> Dentro do loop `for`, essa thread imprime `Left` três vezes.
+<.> Em seguida, ele aguarda 10 milissegundos.
+<.> Finalmente, ele imprime `Esquerda` novamente e repete o loop.
 
 [source, java]
 [[RightThreadProgram]]
 ----
 include::{programsdir}/RightThread.java[]
 ----
-<.> This thread waits for 5 milliseconds to get synchronized.
-<.> Inside its `for` loop, it prints out `Right`.
-<.> Then, it waits for 10 milliseconds and repeats the loop.
+<.> Essa thread aguarda 5 milissegundos para ser sincronizada.
+<.> Dentro de seu loop `for`, ele imprime `Right`.
+<.> Em seguida, ela aguarda 10 milissegundos e repete o loop.
 
-The driver program below creates a thread for each of these
-classes and then starts them. If you run this program, you should see 10
-lines of `Left Left Left Right Left`, but there are a few problems.
+O programa de driver abaixo cria uma thread para cada uma dessas
+classes e, em seguida, as inicia. Se você executar esse programa, verá 10
+linhas de `Left Left Left Right Left`, mas há alguns problemas.
 
 [source, java]
 [[MilitaryMarchingProgram]]
@@ -1136,14 +1119,14 @@ include::{programsdir}/MilitaryMarching.java[]
 ----
 
 
-The first problem is that we have to wait some amount of time between
-calls. We could shorten the `Thread.sleep()` calls, but there are limits
-on the resolution of the timer. The bigger problem is that the two
-threads can sometimes get out of sync. If you run the program many
-times, you might see a `Right` out of place once in a while. If you
-increase the repetitions of the `for` loops to a larger number, the
-errors will become more likely. Whether or not you see errors is somewhat system
-dependent. We can try `Thread.yield()` instead of `Thread.sleep()`.
+O primeiro problema é que temos que esperar algum tempo entre as
+chamadas. Poderíamos encurtar as chamadas `Thread.sleep()`, mas há limites
+na resolução do cronômetro. O maior problema é que as duas
+threads podem, às vezes, ficar fora de sincronia. Se você executar o programa muitas
+vezes, você poderá ver um `Right` fora do lugar de vez em quando. Se você
+aumentar as repetições dos loops `for` para um número maior, os
+erros se tornarão mais prováveis. O fato de você ver ou não os erros depende um 
+depende do sistema. Podemos tentar `Thread.yield()` em vez de `Thread.sleep()`.
 
 [source, java]
 [[LeftYieldThreadProgram]]
@@ -1159,24 +1142,23 @@ include::{programsdir}/RightYieldThread.java[]
 ----
 
 
-These new versions of the two classes have essentially replaced calls to
-`Thread.sleep()` with calls to `Thread.yield()`. Without the need for
-exception handling, the code is simpler, but we've traded one set of
-problems for another. If there are other threads operating in the same
-application, they'll be scheduled in ways that will interfere with the
-pattern of yielding. If you're running this code on a machine
-with a single processor and a single core, you have a good chance of
-seeing something which matches the expected output. However, if you're running
-it on multiple cores, everything will be jumbled. It's likely that
-the `LeftYieldThread` will be running on one processor with the
-`RightYieldThread` on another. In that case, neither has any competition
-to yield to.
+Essas novas versões das duas classes basicamente substituíram as chamadas para
+`Thread.sleep()` por chamadas para `Thread.yield()`. Sem a necessidade de
+tratamento de exceções, o código é mais simples, mas trocamos um conjunto de
+problemas por outro. Se houver outras threads operando na mesma aplicação, eles 
+serão agendadas de forma a interferir no padrão de rendimento. Se você estiver 
+executando esse código em uma máquina
+com um único processador e um único núcleo, você terá uma boa chance de
+ver algo que corresponda ao resultado esperado. No entanto, se estiver executando 
+em vários núcleos, tudo ficará confuso. É provável que
+a `LeftYieldThread` esteja sendo executada em um processador com a
+`RightYieldThread` em outro. Nesse caso, nenhuma delas tem concorrência
+para ceder.
 
-Finally, let's look at a polling solution which still falls short of
-the mark. To do this, we need state variables inside of each class to
-keep track of whether or not it's done. Each thread needs a reference
-to the other thread to make queries, and the driver program must be
-updated to add these in before starting the threads.
+
+Por fim, vamos dar uma olhada em uma solução de pesquisa de opinião que ainda não é suficiente. Para fazer isso, precisamos de variáveis de estado dentro de cada classe para
+para saber se ela foi concluída ou não. Cada thread precisa de uma referência
+para a outra thread para fazer consultas, e o programa controlador deve ser atualizado para adicioná-las antes de iniciar as threads.
 
 [source, java]
 [[LeftPollingThreadProgram]]
@@ -1192,36 +1174,37 @@ include::{programsdir}/RightPollingThread.java[]
 ----
 
 
-Whether single core or multicore, this solution will always give the
-right output. Or it should. Java experts will point out that we are
-violating a technicality of the Java Memory Model. Because we're not
-using synchronization tools, we have no guarantee that the change of the
-`done` variable will even be *visible* from one thread to another. In
-practice, this problem should affect you rarely, but to be safe, both of
-the `done` variables should be declared with the keyword `volatile`.
-This keyword makes Java aware that the value may be accessed at any time
-from arbitrary threads.
+Seja com um único núcleo ou com vários núcleos, essa solução sempre fornecerá 
+a saída correta. Ou deveria. Os especialistas em Java apontarão que estamos
+violando um aspecto técnico do modelo de memória Java. Como não estamos 
+usando ferramentas de sincronização, não temos garantia de que a alteração da variável
+`done` será sequer *visível* de uma thread para outra. Na prática, esse 
+problema raramente o afetará, mas, por segurança, ambas as variáveis
+as variáveis `done` devem ser declaradas com a palavra-chave `volatile`.
+Essa palavra-chave faz com que o Java saiba que o valor pode ser acessado 
+a qualquer momento por threads arbitrárias.
 
-Another issue is that there's *no* parallel execution. Each thread must wait
-for the other to complete. Of course, this problem does not benefit from
-a parallelism, but applying this solution to problems which can
-benefit from parallelism might cause performance problems. Each thread
-wastes time busy waiting in a `while` loop for the other to be done,
-consuming CPU cycles while it does so. You'll notice that the code
-must still be carefully written. Each thread must set the other thread's
-`done` value to `false`. If threads were responsible for setting their
-own `done` values to `false`, one thread might print its information and
-go back to the top of the `for` loop before the other thread had reset
-its own `done` to `false`.
 
-In short, coordinating two or more threads together is a difficult
-problem. None of the solutions we give here are fully acceptable. We
-introduce better tools for coordination and synchronization in
+Outro problema é que não há *nenhuma* execução paralela. Cada thread deve esperar
+para que o outro seja concluído.É claro que esse problema não se beneficia de
+paralelismo, mas aplicar essa solução a problemas que podem se beneficiar do 
+paralelismo pode causar problemas de desempenho. Cada thread
+desperdiça tempo ocupado esperando em um loop `while` que o outro seja concluído,
+consumindo ciclos de CPU enquanto faz isso. Você perceberá que o código
+ainda deve ser escrito com cuidado. Cada thread deve definir o valor`done` da 
+outra thread para `false`. Se as threads fossem responsáveis por definir seus
+próprios valores `done` para `false`, uma thread poderia imprimir suas 
+informações e voltar para o topo da tabela `for` antes que a outra thread 
+tivesse redefinido seu próprio `done` para `false`.
+
+Em resumo, a coordenação de duas ou mais threads é um problema difícil.
+Nenhuma das soluções que apresentamos aqui é totalmente aceitável. Nós 
+apresentamos ferramentas melhores para coordenação e sincronização em 
 <<ch14-synchronization#ch14-synchronization>>.
 
 ====
 
-=== Solution: Deadly virus
+=== Solução: Vírus mortal
 
 Finally, we give the solution to the deadly virus problem. By this
 point, the threaded part of this problem should not seem very difficult.

@@ -726,9 +726,9 @@ pre.rouge .err {
 <li><a href="#_conceitos_dividindo_para_conquistar">13.3. Conceitos: Dividindo para conquistar</a></li>
 <li><a href="#_sintaxe_threads_em_java">13.4. Sintaxe: Threads em Java</a></li>
 <li><a href="#_exemplos_concorrência_e_aceleração">13.5. Exemplos: Concorrência e aceleração</a></li>
-<li><a href="#_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</a></li>
-<li><a href="#_syntax_thread_states">13.7. Syntax: Thread states</a></li>
-<li><a href="#_solution_deadly_virus">13.8. Solution: Deadly virus</a></li>
+<li><a href="#_conteitos_agendamento_de_thread">13.6. Conteitos: Agendamento de thread</a></li>
+<li><a href="#_sintaxe_estados_da_thread">13.7. Sintaxe: Estados da thread</a></li>
+<li><a href="#_solução_vírus_mortal">13.8. Solução: Vírus mortal</a></li>
 <li><a href="#_summary_5">13.9. Summary</a></li>
 <li><a href="#_exercises_13">13.10. Exercises</a></li>
 </ul>
@@ -27992,21 +27992,21 @@ núcleos.</p>
 <div class="title">Exemplo 13.10 Somatório de matrizes</div>
 <div class="content">
 <div class="paragraph">
-<p>In <a href="#arraySummationPreviewExample">Exemplo 13.3</a>, we introduced the
-problem of applying a function to every value in an array and then
-summing the results. Let&#8217;s say that we want to apply the sine function
-to each value. To solve this problem concurrently, we partition the
-array evenly among a number of threads, using the domain decomposition
-strategy. Each thread finds the sum of the sines of the values in its
-part of the array. One factor that determines whether or not we achieve
-speedup is the complexity of the function, in this case sine, that we
-apply. Although we may achieve speedup with sine, a simpler function
-such as doubling the value might not create enough work to justify the
-overhead of using threads.</p>
+<p>Em <a href="#arraySummationPreviewExample">Exemplo 13.3</a>, apresentamos o
+problema de aplicar uma função a cada valor em uma matriz e depois
+somar os resultados. Digamos que queiramos aplicar a função seno
+a cada valor. Para resolver esse problema de forma concorrente, particionamos
+a matriz uniformemente entre várias threads, usando a estratégia de decomposição de domínio.
+Cada thread encontra a soma dos senos dos valores em sua
+parte da matriz. Um fator que determina se conseguimos ou não
+velocidade é a complexidade da função, nesse caso o seno, que aplicamos.
+aplicamos. Embora possamos obter um aumento de velocidade com o seno, uma função mais simples
+como dobrar o valor pode não gerar trabalho suficiente para justificar a
+sobrecarga do uso de threads.</p>
 </div>
 <div class="paragraph">
-<p>We create class <code>SumThread</code> whose <code>run()</code> method sums the sines of those
-elements of the array in its assigned partition.</p>
+<p>Criamos a classe <code>SumThread</code> cujo método <code>run()</code> soma os senos dos
+elementos da matriz em sua partição atribuída.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -28031,24 +28031,23 @@ elements of the array in its assigned partition.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>First, we set up all the fields that the class will need.</td>
+<td>Primeiro, configuramos todos os campos de que a classe precisará.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Note that every <code>SumThread</code> object will have its own reference to the array of data.</td>
+<td>Observe que cada objeto <code>SumThread</code> terá sua própria referência à matriz de dados.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We fix the
-array size at 1,000,000 and the number of threads at 8, but these values
-could easily be changed or read as input instead.</td>
+<td>Fixamos o tamanho da matriz em 1.000.000 e o número de threads em 8, mas esses valores
+podem ser facilmente alterados ou lidos como entrada.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>In its constructor, a <code>SumThread</code> takes a reference to the array of data
-and the lower and upper bounds of its partition. Like most
-ranges we discuss, the lower bound is inclusive though the upper bound
-is exclusive.</td>
+<td>Em seu construtor, um <code>SumThread</code> recebe uma referência à matriz de dados
+e os limites inferior e superior de sua partição. Como a maioria dos
+intervalos que discutimos, o limite inferior é inclusivo, embora o limite superior
+seja exclusivo.</td>
 </tr>
 </table>
 </div>
@@ -28066,14 +28065,14 @@ is exclusive.</td>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In the <code>for</code> loop of the <code>run()</code> method, the <code>SumThread</code> finds the sine
-of each number in its array partition and adds that value to its running
-sum.</td>
+<td>No loop <code>for</code> do método <code>run()</code>, a <code>SumThread</code> encontra o seno
+de cada número em sua partição da matriz e adiciona esse valor à sua
+soma.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <code>getSum()</code> method is an accessor that allows the running sum to
-be retrieved.</td>
+<td>O método <code>getSum()</code> é um acessório que permite que a soma em execução seja
+seja recuperada.</td>
 </tr>
 </table>
 </div>
@@ -28102,25 +28101,25 @@ be retrieved.</td>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>main()</code> method begins by instantiating the array.</td>
+<td>O método <code>main()</code> começa instanciando a matriz.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>It fills it with random values.</td>
+<td>Ele o preenche com valores aleatórios.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Then, each thread is created by passing in a reference to the array and
-lower and upper bounds that mark the thread&#8217;s partition of the array. If the
-process using the array length and the number of threads to determine
-upper and lower bounds doesn&#8217;t make sense, refer to
-<a href="#_concurrency_arrays">Section 6.11</a> which describes the fair division of work
-to threads. If the length of the array is not divisible by the number of
-threads, simple division isn&#8217;t enough.</td>
+<td>Em seguida, cada thread é criado passando uma referência para o vetor e os limites
+inferior e superior que marcam a partição da thread na matriz. Se o
+processo que usa o comprimento da matriz e o número de threads para determinar
+os limites superior e inferior não fizer sentido, consulte
+<a href="#_concurrency_arrays">Section 6.11</a> que descreve a divisão justa do trabalho
+para as threads. Se o comprimento da matriz não for divisível pelo número de
+threads, a divisão simples não será suficiente.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>After each thread is created, its <code>start()</code> method is called.</td>
+<td>Depois que cada thread é criada, seu método <code>start()</code> é chamado.</td>
 </tr>
 </table>
 </div>
@@ -28145,27 +28144,26 @@ threads, simple division isn&#8217;t enough.</td>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Once the threads have started working, the main thread creates its own
-running total.</td>
+<td>Depois que as threads começam a trabalhar, a thread principal cria seu próprio
+total em execução.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>It iterates through each thread waiting for it to
-complete.</td>
+<td>Ele itera através de cada thread esperando que seja concluído.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>When each thread is done, its value is added to
-the running total.</td>
+<td>Quando cada thread é concluída, seu valor é adicionado ao
+ao total em execução.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Finally, the sum is printed out.</td>
+<td>Finalmente, a soma é impressa.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>If the main thread is interrupted while waiting for a
-thread to complete, the stack trace is printed.</td>
+<td>Se a thread principal for interrompida enquanto estiver aguardando a conclusão de uma
+thread, o rastreamento da pilha será impresso.</td>
 </tr>
 </table>
 </div>
@@ -28181,16 +28179,16 @@ thread to complete, the stack trace is printed.</td>
 </div>
 </div>
 <div id="matrixMultiplicationExample" class="exampleblock">
-<div class="title">Exemplo 13.11 Matrix multiplication</div>
+<div class="title">Exemplo 13.11 Multiplicação de matrizes</div>
 <div class="content">
 <div class="paragraph">
-<p>In <a href="#matrixMultiplicationPreviewExample">Exemplo 13.4</a>, we discussed the
-importance of matrix operations in many applications. Now that we know
-the necessary Java syntax, we can write a concurrent program to multiply
-two square matrices <em>A</em> and <em>B</em> and compute the
-resultant matrix <em>C</em>. If these matrices have <em>n</em>
-rows and <em>n</em> columns, the value at the <em>i</em><sup>th</sup>
-row and <em>j</em><sup>th</sup> column of <em>C</em> is</p>
+<p>Em <a href="#matrixMultiplicationPreviewExample">Exemplo 13.4</a>, discutimos a
+a importância das operações de matriz em muitos aplicativos. Agora que conhecemos
+a sintaxe Java necessária, podemos escrever um programa concorrente para multiplicar
+duas matrizes quadradas <em>A</em> e <em>B</em> e calcular a matriz
+resultante <em>C</em>. Se essas matrizes tiverem <em>n</em>
+linhas e <em>n</em> colunas, o valor na <em>i</em><sup>ésima</sup>
+linha e <em>j</em>^^ coluna de <em>C</em> é</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -28198,13 +28196,13 @@ row and <em>j</em><sup>th</sup> column of <em>C</em> is</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In Java, it&#8217;s natural for us to store matrices as 2-dimensional arrays.
-To do this multiplication sequentially, the simplest approach uses three
-nested <code>for</code> loops. The code below is a direct translation of the
-mathematical notation, but we do have to be careful about bookkeeping.
-Note that mathematical notation often uses uppercase letters to
-represent matrices though the Java convention is to start all variable
-names with lowercase letters.</p>
+<p>Em Java, é natural armazenarmos as matrizes como matrizes bidimensionais.
+Para fazer essa multiplicação sequencialmente, a abordagem mais simples usa três
+loops <code>for</code> aninhados. O código abaixo é uma tradução direta da
+notação matemática, mas temos de ter cuidado com a contagem.
+Observe que a notação matemática geralmente usa letras maiúsculas para
+para representar matrizes, embora a convenção Java seja iniciar todos os nomes de variáveis
+com letras minúsculas.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -28215,10 +28213,10 @@ names with lowercase letters.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The first step in making a concurrent solution to this problem is to
-create a <code>Thread</code> subclass which will do some part of the matrix
-multiplication. Below is the <code>MatrixThread</code> class which will compute a
-number of rows in the answer matrix <code>c</code>.</p>
+<p>A primeira etapa para criar uma solução concorrente para esse problema é
+criar uma subclasse <code>Thread</code> que fará alguma parte da
+multiplicação da matriz. Abaixo está a classe <code>MatrixThread</code> que calculará um
+número de linhas na matriz de resposta <code>c</code>.</p>
 </div>
 <div id="MatrixThreadProgram" class="listingblock">
 <div class="content">
@@ -28251,29 +28249,26 @@ number of rows in the answer matrix <code>c</code>.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The constructor for <code>MatrixThread</code> stores references to the arrays
-corresponding to matrices <em>A</em>, <em>B</em>, and
-<em>C</em> as well as lower and upper bounds on the rows of
-<em>C</em> to compute.</td>
+<td>O construtor de <code>MatrixThread</code> armazena referências às matrizes
+correspondentes às matrizes <em>A</em>, <em>B</em> e <em>C</em>, bem como os limites inferior e superior das linhas de
+<em>C</em> a serem computadas.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The body of the <code>run()</code> method is identical
-to the sequential solution except that its outermost loop runs only from
-<code>lower</code> to <code>upper</code> instead of through all the rows of the result. It&#8217;s
-critical that each thread is assigned a set of rows that does not
-overlap with the rows another thread has. Not only would having multiple
-threads compute the same row be inefficient, it would very likely lead
-to an incorrect result, as we&#8217;ll see in
+<td>O corpo do método <code>run()</code> é idêntico ao da solução sequencial, exceto pelo fato de que seu <code>loop</code> mais externo é executado somente de
+<code>lower</code> a <code>upper</code> em vez de percorrer todas as linhas do resultado.
+É fundamental que a cada thread seja atribuído um conjunto de linhas que não se
+se sobreponha às linhas que outra thread possui. Não só o fato de
+várias threads calcularem a mesma linha seria ineficiente, mas muito provavelmente levaria
+a um resultado incorreto, como veremos em
 <a href="#ch14-synchronization">Chapter 14</a>.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following client code uses an array of <code>MatrixThread</code> objects to
-perform a matrix multiplication. We assume that an <code>int</code> constant named
-<code>THREADS</code> has been defined which gives the number of threads we want to
-create.</p>
+<p>O código cliente a seguir usa uma matriz de objetos <code>MatrixThread</code> para
+realizar uma multiplicação de matriz. Supomos que uma constante <code>int</code> denominada
+<code>THREADS</code> tenha sido definida, o que dá o número de threads que queremos criar.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -28302,37 +28297,35 @@ create.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We loop through the array, creating a <code>MatrixThread</code> object for each
-location. As in the previous example, we use the approach described in
-<a href="#_concurrency_arrays">Section 6.11</a> to allocate rows to each thread fairly.
-Each new <code>MatrixThread</code> object is given a reference to each of the three
-matrices as well as an inclusive starting and an exclusive ending row.</td>
+<td>Fazemos um <code>loop</code> pela matriz, criando um objeto <code>MatrixThread</code> para cada
+posição. Como no exemplo anterior, usamos a abordagem descrita em
+<a href="#_concurrency_arrays">Section 6.11</a> para alocar linhas para cada thread de forma justa.
+Cada novo objeto <code>MatrixThread</code> recebe uma referência a cada uma das três
+matrizes, bem como uma linha inicial inclusiva e uma linha final exclusiva.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>After the <code>MatrixThread</code> objects are created, we start them running with
-the next line of code.</td>
+<td>Depois que os objetos <code>MatrixThread</code> são criados, começamos a executá-los com a próxima linha de código.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Next, there&#8217;s a familiar <code>for</code> loop with the <code>join()</code> calls that force
-the main thread to wait for the other threads to finish.</td>
+<td>Em seguida, há um <code>loop</code> <code>for</code> familiar com as chamadas <code>join()</code>
+que forçam a thread principal a esperar que as outras threads terminem.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Presumably,
-code following this snippet will print the values of the result matrix
-or use it for other calculations. If we didn&#8217;t use the <code>join()</code>
-calls to be sure the threads have finished, we might print out a result
-matrix that&#8217;s only been partially filled in.</p>
+<p>Presumivelmente,
+o código após esse trecho imprimirá os valores da matriz de resultados
+ou a usará para outros cálculos. Se não tivermos usado as chamadas <code>join()</code>
+para garantir que as threads tenham terminado, poderíamos imprimir uma matriz de resultados que foi preenchida apenas parcialmente.</p>
 </div>
 <div class="paragraph">
-<p>We completed the code for threaded matrix multiplication and executed it
-on an iMac computer with an Intel Core 2 Duo running at 2.16 Ghz. The program
-was executed for matrices of different sizes (<em>n</em> × <em>n</em>).
-For each size, the sequential and concurrent execution times in seconds
-and the corresponding speedup are listed in the following table.</p>
+<p>Concluímos o código da multiplicação de matrizes com threads e o executamos
+em um computador iMac com um Intel Core 2 Duo rodando a 2,16 Ghz. O programa
+foi executado para matrizes de diferentes tamanhos (<em>n</em> × <em>n</em>). Para cada tamanho, os
+tempos de execução sequencial e concorrente em segundos
+e o tempo de execucação correspondente estão listados na tabela a seguir.</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content center">
 <colgroup>
@@ -28371,10 +28364,9 @@ and the corresponding speedup are listed in the following table.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p>Only with 1,000 × 1,000 matrices did we see improved
-performance when using two threads. In that case, we achieved a speedup
-of 1.45, marked with an asterisk. In the other two cases, performance
-became worse.</p>
+<p>Somente com matrizes de 1.000 × 1.000 observamos um melhor
+desempenho ao usar duas threads. Nesse caso, obtivemos um aumento de velocidade
+de 1,45, marcado com um asterisco. Nos outros dois casos, o desempenho piorou.</p>
 </div>
 </div>
 </div>
@@ -28388,65 +28380,63 @@ became worse.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_concepts_thread_scheduling">13.6. Concepts: Thread scheduling</h3>
+<h3 id="_conteitos_agendamento_de_thread">13.6. Conteitos: Agendamento de thread</h3>
 <div class="paragraph">
-<p>Now that we&#8217;ve seen how multiple threads can be used together, a
-number of questions arise: Who decides when
-these threads run? How is processor time shared between threads? Can we
-make any assumptions about the order in which the threads run? Can
-we affect this order?</p>
+<p>Agora que vimos como várias threads podem ser usadas juntas,
+várias perguntas surgem: Quem decide quando
+essas threads são executadas? Como o tempo do processador é compartilhado
+entre as threads? Podemos fazer alguma suposição sobre a ordem de execução
+das threads? Podemos afetar essa ordem?</p>
 </div>
 <div class="paragraph">
-<p>These questions focus on thread scheduling. Because different concurrent
-systems handle scheduling differently, we&#8217;ll only describe scheduling
-in Java. Although sequential programming is all about precise control
-over what happens <strong>next</strong>, concurrency takes much of this control away
-from the programmer. When threads are scheduled and which processor they
-run on is handled by a combination of the JVM and the OS. With normal
-JVMs, there&#8217;s no explicit way to access the scheduling and alter it to
-your liking.</p>
+<p>Essas perguntas se concentram no agendamento de threads. Como diferentes sistemas
+concorrente lidam com o agendamento de forma diferente, descreveremos apenas o agendamento
+em Java. Embora a programação sequencial tenha tudo a ver com o controle preciso
+sobre o que acontece <strong>depois</strong>, a concorrência tira grande parte desse controle do
+programador. Quando os threads são agendados e em qual processador eles são executados, isso
+é feito por uma combinação da JVM e do sistema operacional. Com as
+JVMs normais, não há uma maneira explícita de acessar o agendamento e alterá-lo a seu
+seu agrado.</p>
 </div>
 <div class="paragraph">
-<p>Of course, there are a number of implicit ways a programmer can affect
-scheduling. In Java, as in several other languages and programming
-systems, threads have <em>priorities</em>. Higher priority threads run more
-often than lower priority threads. Some threads are performing
-mission-critical operations which must be carried out as quickly as
-possible, and some threads are just doing periodic tasks in the
-background. A programmer can set thread priorities accordingly.</p>
+<p>Obviamente, há várias maneiras implícitas pelas quais um programador pode manipular a
+a programação. Em Java, como em várias outras linguagens
+e sistemas de programação, as threads têm <em>prioridades</em>. As threads de prioridade mais
+alta são executadas com mais frequência do que as de prioridade mais baixa. Algumas
+threads estão executando operações de missão crítica que devem ser executadas o mais
+rápido possível, e algumas threads estão apenas realizando tarefas periódicas
+em segundo plano. Um programador pode definir as prioridades das threads de acordo com essas prioridades.</p>
 </div>
 <div class="paragraph">
-<p>Setting priorities gives only a very general way of controlling which
-thread will run. The threads themselves might have more specific
-information about when they will and won&#8217;t need processor time. A
-thread may need to wait for a specific event and won&#8217;t need to run
-until then. Java allows threads to interact with the scheduler through
-<code>Thread.sleep()</code> and <code>Thread.yield()</code>, which we&#8217;ll discuss in
-<a href="#_syntax_thread_states">Section 13.7</a>, and through the <code>wait()</code>, method which
-we&#8217;ll discuss in <a href="#ch14-synchronization">Chapter 14</a>.</p>
+<p>A definição de prioridades oferece apenas uma maneira muito geral de controlar
+qual thread será executada. As próprias threads podem ter informações mais específicas
+sobre quando precisarão ou não de tempo de processador. A thread pode precisar esperar
+por um evento específico e não precisará ser executada
+até lá. O Java permite que as threads interajam com o agendador por meio dos
+métodos <code>Thread.sleep()</code> e <code>Thread.yield()</code>, que discutiremos em <a href="#Syntax: Thread states">[Syntax: Thread states]</a> e
+por meio do método <code>wait()</code>, que discutiremos em <a href="#ch14-synchronization">Chapter 14</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="_nondeterminism">13.6.1. Nondeterminism</h4>
+<h4 id="_não_determinismo">13.6.1. Não determinismo</h4>
 <div class="paragraph">
-<p>In Java, the mapping of a thread inside the JVM to a thread in the OS
-varies. Some implementations give each Java thread an OS thread, some
-put all Java threads on a single OS thread (with the side effect of
-preventing parallel execution), and some allow for the possibility of changing
-which OS thread a Java thread uses. Thus, the performance and, in some
-cases, the correctness of your program might vary, depending on which
-system you&#8217;re running. This is, yet again, one of those times when Java
-is platform independent&#8230;&#8203;but not entirely.</p>
+<p>Em Java, o mapeamento de uma thread dentro da JVM para uma thread no sistema operacional
+varia. Algumas implementações dão a cada thread Java uma thread do sistema operacional, outras
+colocam todas as threads Java em uma única thread do sistema operacional (com o efeito
+colateral de impedir a execução paralela), e algumas permitem a possibilidade de alterar
+qual thread do sistema operacional uma thread Java usa. Assim, o desempenho e, em alguns
+casos, a correção de seu programa podem variar, dependendo do sistema que você estiver executando.
+Esse é, mais uma vez, um daqueles momentos em que o Java
+é independente de plataforma&#8230;&#8203; mas não totalmente.</p>
 </div>
 <div class="paragraph">
-<p>Unfortunately, the situation is even more complicated. Making threads
-part of your program means that the same program could run differently
-on the <strong>same</strong> system. The JVM and the OS have to cooperate to schedule
-threads, and both programs are complex mountains of code which try to
-balance many factors. If you create three threads, there&#8217;s no guarantee
-that the first will run first, the second second, and the third third,
-even if it happens that way the first 10 times you run the program.
-<a href="#executionOrderExercise">Exercício 13.18</a> shows that the pattern of thread
-execution can vary a lot.</p>
+<p>Infelizmente, a situação é ainda mais complicada. Tornar as threads
+parte de seu programa significa que o mesmo programa pode ser executado de forma diferente
+no <strong>mesmo</strong> sistema. A JVM e o sistema operacional precisam cooperar para agendar as threads
+e ambos os programas são montanhas complexas de código que tentam equilibrar muitos fatores.
+Se você criar três threads, não há garantia
+que o primeiro será executado primeiro, o segundo segundo e o terceiro terceiro,
+mesmo que isso aconteça nas primeiras 10 vezes em que você executar o programa. O
+<a href="#executionOrderExercise">Exercício 13.18</a> mostra que o padrão de execução das threads pode variar muito.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -28456,56 +28446,55 @@ execution can vary a lot.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In all the programs before this chapter, the same sequence of input
-would always produce the same sequence of output. Perhaps the biggest
-hurdle created by this nondeterminism is that programmers must shift
-their paradigm considerably. The processor can switch between executions
-of threads at any time, even in the middle of operations. Every possible
-interleaving of thread execution could crop up at some point. Unless you
-can be sure that your program behaves properly for all of them, you might
-never be able to debug your code completely. What&#8217;s so insidious about
-nondeterministic bugs is that they can occur rarely and be almost
-impossible to reproduce. In this chapter, we&#8217;ve introduced how to create and
-run threads, but making these threads interact properly is a major
-problem we tackle in subsequent chapters.</p>
+<p>Em todos os programas anteriores a este capítulo, a mesma sequência de entrada
+sempre produziria a mesma sequência de saída. Talvez o maior
+obstáculo criado por esse não determinismo seja o fato de os programadores
+terem de mudar seu paradigma consideravelmente. O processador pode alternar
+entre execuções de de threads a qualquer momento, mesmo no meio das operações. Todas as possíveis
+intercalações de execução de thread pode surgir em algum momento. A menos
+que você tenha certeza de que seu programa se comporta adequadamente em todos
+eles, talvez você nunca conseguirá depurar seu código completamente. O que é tão insidioso nos
+bugs não determinísticos é que eles podem ocorrer raramente e ser quase
+impossíveis de reproduzir. Neste capítulo, apresentamos como criar e executar
+threads, mas fazer com que essas threads interajam adequadamente é um
+problema importante que abordaremos nos capítulos seguintes.</p>
 </div>
 <div class="paragraph">
-<p>After those dire words of warning, we&#8217;d like to remind you that
-nondeterminism is not in itself a bad thing. Many threaded applications
-with a lot of input and output, such as server applications, necessarily
-exist in a nondeterministic world. For these programs, many different
-sequences of thread execution may be perfectly valid. Each individual
-program may have a different definition of correctness. For example, if
-a stock market server receives two requests to buy the last share of a
-particular stock at almost the same time from two threads corresponding
-to two different clients, it might be correct for either one of them to
-get that last share. However, it would never be correct for <strong>both</strong> of
-them to get it.</p>
+<p>Depois dessas terríveis palavras de advertência, gostaríamos de lembrá-lo de que
+o não determinismo não é em si uma coisa ruim. Muitos aplicativos com threads
+com muitas entradas e saídas, como os servidores de aplicação, necessariamente
+existem em um mundo não determinístico. Para esses programas, muitas diferentes
+sequências de threads em execução podem ser perfeitamente válidas. Cada programa
+individual pode ter uma definição diferente de correção. Por exemplo, se um servidor
+do mercado de ações receber duas solicitações para comprar a última ação de uma
+determinada empresa quase ao mesmo tempo de duas threads correspondentes a dois
+clientes diferentes, pode ser correto que qualquer um deles
+obtenha a última ação. No entanto, nunca seria correto que <strong>ambos</strong> a recebam.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_polling">13.6.2. Polling</h4>
+<h4 id="_votação">13.6.2. Votação</h4>
 <div class="paragraph">
-<p>So far the only mechanism we&#8217;ve introduced for coordinating different
-threads is using the <code>join()</code> method to wait for a thread to end.
-Another technique is <em>polling</em>, or <em>busy waiting</em>. The idea is to keep
-checking the state of one thread until it changes.</p>
+<p>Até agora, o único mecanismo que introduzimos para coordenar diferentes
+threads é usar o método <code>join()</code> para aguardar o término de uma thread.
+Outra técnica é <em>polling</em>, ou <em>busy waiting</em>. A ideia é continuar
+verificando o estado de uma thread até que ela mude.</p>
 </div>
 <div class="paragraph">
-<p>There are a number of problems with this approach. The first is that it
-wastes CPU cycles. Those cycles spent by the waiting thread continually
-checking could have been used productively by some other thread in the
-system. The second problem is that we have to be certain that the state
-of the thread we&#8217;re waiting for won&#8217;t change back to the original state
-or to some other state. Because of the unpredictability of scheduling,
-there&#8217;s no guarantee that the waiting thread will read the state of the
-other thread when it has the correct value.</p>
+<p>Há vários problemas com essa abordagem. O primeiro é que ela
+desperdiça ciclos da CPU. Os ciclos gastos pela thread em espera continuamente
+poderiam ter sido usados de forma produtiva por alguma outra thread no sistema. O
+segundo problema é que precisamos ter certeza de que o estado da thread que
+estamos esperando não voltará ao estado original ou para algum outro estado. Devido
+à imprevisibilidade do agendamento,
+não há garantia de que a thread em espera lerá o estado da outra thread quando
+ela tiver o valor correto.</p>
 </div>
 <div class="paragraph">
-<p>We bring up polling partly because it has a historical importance to
-parallel programming, partly because it can be useful in solving some
-problems in this chapter, and partly because we want you to understand
-the reasons why we need better techniques for thread communication.</p>
+<p>Mencionamos a votação em parte porque ela tem uma importância histórica para a
+programação paralela, em parte porque pode ser útil na solução de alguns
+problemas deste capítulo e, em parte, porque queremos que você entenda
+os motivos pelos quais precisamos de técnicas melhores para a comunicação entre threads.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -28517,26 +28506,24 @@ the reasons why we need better techniques for thread communication.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_syntax_thread_states">13.7. Syntax: Thread states</h3>
+<h3 id="_sintaxe_estados_da_thread">13.7. Sintaxe: Estados da thread</h3>
 <div class="paragraph">
-<p>A widely used Java tool for manipulating scheduling is the
-<code>Thread.sleep()</code> method. This method can be called any time you want a
-thread to do nothing for a set period of time. Until the sleep timer
-expires, the thread will not be scheduled for any CPU time, unless it&#8217;s
-interrupted. To make a thread of execution sleep, call <code>Thread.sleep()</code>
-in that thread of execution with a number of milliseconds as a
-parameter. For example, calling <code>Thread.sleep(2000)</code> will make the
-calling thread sleep for two full seconds.</p>
+<p>Uma ferramenta Java amplamente utilizada para manipular o agendamento é o método <code>Thread.sleep()</code>. Esse método pode ser chamado sempre que você quiser que uma
+thread não faça nada por um determinado período de tempo. Até que o temporizador <code>sleep</code>
+expire, a thread não será agendada para nenhum tempo de CPU, a menos que seja
+interrompida. Para fazer uma thread de execução dormir, chame <code>Thread.sleep()</code>
+nessa thread de execução com um número de milissegundos como parâmetro. Por exemplo, chamar <code>Thread.sleep(2000)</code> fará com que a
+thread chamada dormirá por dois segundos completos.</p>
 </div>
 <div class="paragraph">
-<p>Another useful tool is the <code>Thread.yield()</code> method. It gives up use of
-the CPU so that the next waiting thread can run. To use it, a thread
-calls <code>Thread.yield()</code>. This method is useful in practice, but
-according to official documentation, the JVM doesn&#8217;t <strong>have</strong> to do to
-anything when a <code>Thread.yield()</code> call happens. The Java specification
-doesn&#8217;t demand a particular implementation. A JVM could ignore a
-<code>Thread.yield()</code> call completely, but most JVMs will move on to the next
-thread in the schedule.</p>
+<p>Outra ferramenta útil é o método <code>Thread.yield()</code>. Ele abre mão do uso da
+CPU para que a próxima thread em espera possa ser executada. Para usá-lo, uma thread
+chama <code>Thread.yield()</code>. Esse método é útil na prática, mas
+de acordo com a documentação oficial, a JVM não <strong>tem</strong> que fazer nada quando
+um <code>Thread.yield()</code> é executado. A especificação Java não exige uma implementação
+específica. Uma JVM poderia ignorar uma chamada
+chamada <code>Thread.yield()</code> completamente, mas a maioria das JVMs passará para a
+próxima thread no cronograma.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -28550,61 +28537,57 @@ thread in the schedule.</p>
 <div class="content">
 <img src="chapters/13-concurrency/images/thread-states.svg" alt="thread states" width="80%">
 </div>
-<div class="title">Figura 13.7 Thread states and transitions.</div>
+<div class="title">Figura 13.7 Estados e transições da thread.</div>
 </div>
 <div class="paragraph">
-<p><a href="#figure-thread_states">Figura 13.7</a> shows the lifecycle of a thread. A
-thread begins its life in the New Thread state, after the constructor is
-called. When the <code>start()</code> method is called, the thread begins to run
-and transitions to the Runnable state. Being Runnable doesn&#8217;t
-necessarily mean that the thread is executing at any given moment but
-that it&#8217;s ready to run at any time. When in the Runnable state, a
-thread may call <code>Thread.yield()</code>, relinquishing use of the processor,
-but it will still remain Runnable.</p>
+<p><a href="#figure-thread_states">Figura 13.7</a> mostra o ciclo de vida de uma thread. A
+thread começa sua vida no estado <code>New Thread</code>, depois que o construtor
+é chamado. Quando o método <code>start()</code> é chamado, a thread começa a ser executada
+e faz a transição para o estado <code>Runnable. Ser executável não significa
+necessariamente que a thread está sendo executada em um determinado momento, mas
+que ela está pronta para ser executada a qualquer momento. Quando estiver no
+estado `Runnable</code>, uma thread pode chamar <code>Thread.yield()</code>, deixando de usar o processador,
+mas ainda permanecerá <code>Runnable</code>.</p>
 </div>
 <div class="paragraph">
-<p>However, if a thread goes to sleep with a <code>Thread.sleep()</code> call, waits
-for a condition to be true using a <code>wait()</code> call, or performs a blocking
-I/O operation, the thread will transition to the Not Runnable state. Not
-Runnable threads cannot be scheduled for processor time until they wake
-up, finish waiting, or complete their I/O. The final state is
-Terminated. A thread becomes Terminated when its <code>run()</code> method
-finishes. A Terminated thread cannot become Runnable again and is no
-longer a separate thread of execution.</p>
+<p>No entanto, se uma thread for dormir com uma chamada <code>Thread.sleep()</code>, aguardará
+para que uma condição seja verdadeira usando uma chamada <code>wait()</code> ou executar uma operação de
+de E/S bloqueante, a thread fará a transição para o estado <code>Not Runnable</code>. As
+threads não executáveis não podem ser agendadas para o tempo de processador até que
+acordem, terminem de esperar ou concluam sua E/S. O estado final é
+<code>Terminated</code>. Uma thread se torna terminada quando seu método <code>run()</code>
+termina. Uma thread terminada não pode se tornar executável novamente e
+não é mais uma thread de execução separado.</p>
 </div>
 <div class="paragraph">
-<p>Any object with a type that&#8217;s a subclass of <code>Thread</code> can tell you its
-current state using the <code>getState()</code> method. This method returns an
-<em>enum</em> type, whose value must come from a fixed list of constant
-objects. These objects are <code>Thread.State.NEW</code>, <code>Thread.State.RUNNABLE</code>,
-<code>Thread.State.BLOCKED</code>, <code>Thread.State.WAITING</code>,
-<code>Thread.State.TIMED_WAITING</code>, and <code>Thread.State.TERMINATED</code>. Although
-the others are self explanatory, we lump the <code>Thread.State.BLOCKED</code>,
-<code>Thread.State.WAITING</code>, and <code>Thread.State.TIMED_WAITING</code> values into
-the Not Runnable state, since the distinction between the three isn&#8217;t
-important for us.</p>
+<p>Qualquer objeto com um tipo que seja uma subclasse de <code>Thread</code> pode informar seu
+estado atual usando o método <code>getState()</code>. Esse método retorna um tipo <em>enum</em>, cujo
+valor deve vir de uma lista fixa de objetos constantes. Esses objetos são <code>Thread.State.NEW</code>,
+<code>Thread.State.RUNNABLE</code>, <code>Thread.State.BLOCKED</code>, <code>Thread.State.WAITING</code>,
+<code>Thread.State.TIMED_WAITING</code> e <code>Thread.State.TERMINATED</code>. Embora os outros sejam
+autoexplicativos, agrupamos o <code>Thread.State.BLOCKED</code>,
+<code>Thread.State.WAITING</code> e <code>Thread.State.TIMED_WAITING</code> no estado <code>Not Runnable</code>, já que
+a distinção entre os três não é importante para nós.</p>
 </div>
 <div class="paragraph">
-<p>Threads also have priorities in Java. When an object that&#8217;s a subclass
-of <code>Thread</code> is created in Java, its priority is initially the same as
-the thread that creates it. Usually, this priority is
-<code>Thread.NORM_PRIORITY</code>, but there are some special cases when it&#8217;s a
-good idea to raise or lower this priority. Avoid changing thread
-priorities because it increases platform dependence and because the
-effects are not always predictable. Be aware that priorities exist, but
-don&#8217;t use them unless and until you have a good reason.</p>
+<p>As threads também têm prioridades em Java. Quando um objeto que é uma subclasse
+de <code>Thread</code> é criado em Java, sua prioridade é inicialmente a mesma da thread que o cria.
+Normalmente, essa prioridade é <code>Thread.NORM_PRIORITY</code>, mas há alguns casos especiais em que é uma
+boa ideia aumentar ou diminuir essa prioridade. Evite alterar as prioridades de thread
+porque isso aumenta a dependência da plataforma e porque os efeitos nem sempre são previsíveis. Esteja
+ciente de que as prioridades existem, mas não as use a menos que você tenha um bom motivo.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Exemplo 13.12 Military marching</div>
+<div class="title">Exemplo 13.12 Marcha militar</div>
 <div class="content">
 <div class="paragraph">
-<p>Let&#8217;s apply the ideas discussed above to a lighthearted example. You
-might be familiar with sound of soldiers marching: &#8220;Left, Left, Left,
-Right, Left!&#8221; We can design a thread that prints <code>Left</code> and another
-thread that prints <code>Right</code>. We can combine the two to print the correct
-sequence for marching and loop the whole thing 10 times so that we can
-see how accurately we can place the words. We want to use the scheduling tools
-discussed above to get the timing right. Let&#8217;s try <code>Thread.sleep()</code>
+<p>Vamos aplicar as ideias discutidas acima a um exemplo leve. Você
+talvez esteja familiarizado com o som de soldados marchando: “<code>Esquerda, esquerda, esquerda,
+direita, esquerda!</code>” Podemos criar uma thread que imprima "Esquerda" e outra que imprima "Direita".
+Podemos combinar as duas para imprimir a sequência correta
+para marchar e repetir tudo 10 vezes para que possamos
+ver com que precisão podemos posicionar as palavras. Queremos usar as ferramentas de agendamento
+discutidas acima para obter o tempo correto. Vamos tentar <code>Thread.sleep()</code>
 first.</p>
 </div>
 <div id="LeftThreadProgram" class="listingblock">
@@ -28629,15 +28612,15 @@ first.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Inside, the <code>for</code> loop, this thread prints out <code>Left</code> three times.</td>
+<td>Dentro do loop <code>for</code>, essa thread imprime <code>Left</code> três vezes.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The, it waits for 10 milliseconds.</td>
+<td>Em seguida, ele aguarda 10 milissegundos.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Finally, it prints out <code>Left</code> again and repeats the loop.</td>
+<td>Finalmente, ele imprime <code>Esquerda</code> novamente e repete o loop.</td>
 </tr>
 </table>
 </div>
@@ -28663,22 +28646,22 @@ first.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This thread waits for 5 milliseconds to get synchronized.</td>
+<td>Essa thread aguarda 5 milissegundos para ser sincronizada.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Inside its <code>for</code> loop, it prints out <code>Right</code>.</td>
+<td>Dentro de seu loop <code>for</code>, ele imprime <code>Right</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Then, it waits for 10 milliseconds and repeats the loop.</td>
+<td>Em seguida, ela aguarda 10 milissegundos e repete o loop.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The driver program below creates a thread for each of these
-classes and then starts them. If you run this program, you should see 10
-lines of <code>Left Left Left Right Left</code>, but there are a few problems.</p>
+<p>O programa de driver abaixo cria uma thread para cada uma dessas
+classes e, em seguida, as inicia. Se você executar esse programa, verá 10
+linhas de <code>Left Left Left Right Left</code>, mas há alguns problemas.</p>
 </div>
 <div id="MilitaryMarchingProgram" class="listingblock">
 <div class="content">
@@ -28700,14 +28683,14 @@ lines of <code>Left Left Left Right Left</code>, but there are a few problems.</
 </div>
 </div>
 <div class="paragraph">
-<p>The first problem is that we have to wait some amount of time between
-calls. We could shorten the <code>Thread.sleep()</code> calls, but there are limits
-on the resolution of the timer. The bigger problem is that the two
-threads can sometimes get out of sync. If you run the program many
-times, you might see a <code>Right</code> out of place once in a while. If you
-increase the repetitions of the <code>for</code> loops to a larger number, the
-errors will become more likely. Whether or not you see errors is somewhat system
-dependent. We can try <code>Thread.yield()</code> instead of <code>Thread.sleep()</code>.</p>
+<p>O primeiro problema é que temos que esperar algum tempo entre as
+chamadas. Poderíamos encurtar as chamadas <code>Thread.sleep()</code>, mas há limites
+na resolução do cronômetro. O maior problema é que as duas
+threads podem, às vezes, ficar fora de sincronia. Se você executar o programa muitas
+vezes, você poderá ver um <code>Right</code> fora do lugar de vez em quando. Se você
+aumentar as repetições dos loops <code>for</code> para um número maior, os
+erros se tornarão mais prováveis. O fato de você ver ou não os erros depende um
+depende do sistema. Podemos tentar <code>Thread.yield()</code> em vez de <code>Thread.sleep()</code>.</p>
 </div>
 <div id="LeftYieldThreadProgram" class="listingblock">
 <div class="content">
@@ -28737,25 +28720,23 @@ dependent. We can try <code>Thread.yield()</code> instead of <code>Thread.sleep(
 </div>
 </div>
 <div class="paragraph">
-<p>These new versions of the two classes have essentially replaced calls to
-<code>Thread.sleep()</code> with calls to <code>Thread.yield()</code>. Without the need for
-exception handling, the code is simpler, but we&#8217;ve traded one set of
-problems for another. If there are other threads operating in the same
-application, they&#8217;ll be scheduled in ways that will interfere with the
-pattern of yielding. If you&#8217;re running this code on a machine
-with a single processor and a single core, you have a good chance of
-seeing something which matches the expected output. However, if you&#8217;re running
-it on multiple cores, everything will be jumbled. It&#8217;s likely that
-the <code>LeftYieldThread</code> will be running on one processor with the
-<code>RightYieldThread</code> on another. In that case, neither has any competition
-to yield to.</p>
+<p>Essas novas versões das duas classes basicamente substituíram as chamadas para
+<code>Thread.sleep()</code> por chamadas para <code>Thread.yield()</code>. Sem a necessidade de
+tratamento de exceções, o código é mais simples, mas trocamos um conjunto de
+problemas por outro. Se houver outras threads operando na mesma aplicação, eles
+serão agendadas de forma a interferir no padrão de rendimento. Se você estiver
+executando esse código em uma máquina
+com um único processador e um único núcleo, você terá uma boa chance de
+ver algo que corresponda ao resultado esperado. No entanto, se estiver executando
+em vários núcleos, tudo ficará confuso. É provável que
+a <code>LeftYieldThread</code> esteja sendo executada em um processador com a
+<code>RightYieldThread</code> em outro. Nesse caso, nenhuma delas tem concorrência
+para ceder.</p>
 </div>
 <div class="paragraph">
-<p>Finally, let&#8217;s look at a polling solution which still falls short of
-the mark. To do this, we need state variables inside of each class to
-keep track of whether or not it&#8217;s done. Each thread needs a reference
-to the other thread to make queries, and the driver program must be
-updated to add these in before starting the threads.</p>
+<p>Por fim, vamos dar uma olhada em uma solução de pesquisa de opinião que ainda não é suficiente. Para fazer isso, precisamos de variáveis de estado dentro de cada classe para
+para saber se ela foi concluída ou não. Cada thread precisa de uma referência
+para a outra thread para fazer consultas, e o programa controlador deve ser atualizado para adicioná-las antes de iniciar as threads.</p>
 </div>
 <div id="LeftPollingThreadProgram" class="listingblock">
 <div class="content">
@@ -28809,40 +28790,40 @@ updated to add these in before starting the threads.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Whether single core or multicore, this solution will always give the
-right output. Or it should. Java experts will point out that we are
-violating a technicality of the Java Memory Model. Because we&#8217;re not
-using synchronization tools, we have no guarantee that the change of the
-<code>done</code> variable will even be <strong>visible</strong> from one thread to another. In
-practice, this problem should affect you rarely, but to be safe, both of
-the <code>done</code> variables should be declared with the keyword <code>volatile</code>.
-This keyword makes Java aware that the value may be accessed at any time
-from arbitrary threads.</p>
+<p>Seja com um único núcleo ou com vários núcleos, essa solução sempre fornecerá
+a saída correta. Ou deveria. Os especialistas em Java apontarão que estamos
+violando um aspecto técnico do modelo de memória Java. Como não estamos
+usando ferramentas de sincronização, não temos garantia de que a alteração da variável
+<code>done</code> será sequer <strong>visível</strong> de uma thread para outra. Na prática, esse
+problema raramente o afetará, mas, por segurança, ambas as variáveis
+as variáveis <code>done</code> devem ser declaradas com a palavra-chave <code>volatile</code>.
+Essa palavra-chave faz com que o Java saiba que o valor pode ser acessado
+a qualquer momento por threads arbitrárias.</p>
 </div>
 <div class="paragraph">
-<p>Another issue is that there&#8217;s <strong>no</strong> parallel execution. Each thread must wait
-for the other to complete. Of course, this problem does not benefit from
-a parallelism, but applying this solution to problems which can
-benefit from parallelism might cause performance problems. Each thread
-wastes time busy waiting in a <code>while</code> loop for the other to be done,
-consuming CPU cycles while it does so. You&#8217;ll notice that the code
-must still be carefully written. Each thread must set the other thread&#8217;s
-<code>done</code> value to <code>false</code>. If threads were responsible for setting their
-own <code>done</code> values to <code>false</code>, one thread might print its information and
-go back to the top of the <code>for</code> loop before the other thread had reset
-its own <code>done</code> to <code>false</code>.</p>
+<p>Outro problema é que não há <strong>nenhuma</strong> execução paralela. Cada thread deve esperar
+para que o outro seja concluído.É claro que esse problema não se beneficia de
+paralelismo, mas aplicar essa solução a problemas que podem se beneficiar do
+paralelismo pode causar problemas de desempenho. Cada thread
+desperdiça tempo ocupado esperando em um loop <code>while</code> que o outro seja concluído,
+consumindo ciclos de CPU enquanto faz isso. Você perceberá que o código
+ainda deve ser escrito com cuidado. Cada thread deve definir o valor`done` da
+outra thread para <code>false</code>. Se as threads fossem responsáveis por definir seus
+próprios valores <code>done</code> para <code>false</code>, uma thread poderia imprimir suas
+informações e voltar para o topo da tabela <code>for</code> antes que a outra thread
+tivesse redefinido seu próprio <code>done</code> para <code>false</code>.</p>
 </div>
 <div class="paragraph">
-<p>In short, coordinating two or more threads together is a difficult
-problem. None of the solutions we give here are fully acceptable. We
-introduce better tools for coordination and synchronization in
+<p>Em resumo, a coordenação de duas ou mais threads é um problema difícil.
+Nenhuma das soluções que apresentamos aqui é totalmente aceitável. Nós
+apresentamos ferramentas melhores para coordenação e sincronização em
 <a href="#ch14-synchronization">Chapter 14</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_solution_deadly_virus">13.8. Solution: Deadly virus</h3>
+<h3 id="_solução_vírus_mortal">13.8. Solução: Vírus mortal</h3>
 <div class="paragraph">
 <p>Finally, we give the solution to the deadly virus problem. By this
 point, the threaded part of this problem should not seem very difficult.
@@ -29340,7 +29321,7 @@ wait and which threads terminate.</p>
 <div class="paragraph">
 <p>Concurrent programs allow multiple threads to be scheduled and executed,
 but the programmer doesn&#8217;t have a great deal of control over when
-threads execute. As explained in <a href="#_concepts_thread_scheduling">Section 13.6</a>,
+threads execute. As explained in <a href="#Concepts: Thread scheduling">[Concepts: Thread scheduling]</a>,
 the JVM and the underlying OS are responsible for scheduling threads
 onto processor cores.</p>
 </div>
