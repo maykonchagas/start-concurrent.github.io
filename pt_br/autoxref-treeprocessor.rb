@@ -59,7 +59,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 
     # Captions should we use.
     captions = {
-      :chapter => (document.attr 'autoxref-chapcaption', "Capítulo "),
+      :chapter => (document.attr 'autoxref-chapcaption', "Capítulo %d"),
       :section => (document.attr 'autoxref-sectcaption', "Seção %d.%d"),
       :image => (document.attr   'autoxref-imagecaption', "Figura %d.%d"),
       :listing => (document.attr 'autoxref-listingcaption', "Programa %d.%d"),
@@ -103,7 +103,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 	   
 
       # Scan for sections, titled images/listings/tables in the chapter.
-      [:chapter, :section, :image, :listing, :table, :example].each do |type|
+      [:section, :image, :listing, :table, :example].each do |type|
         chapter.find_by(context: type).each do |el|
           # Generate RNBCs for eligible targets and update reference table in the document.  For non-sections, we also overwrite their captions with RNBCs.
           if type != :section then
@@ -124,7 +124,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 		# Scan for exercises
 		chapter.find_by(context: :section).each do |section|
 			# Generate RNBCs for exercises and update reference table in the document.
-			if section.title == "Exercises" and section.level == 2 then
+			if section.title == "Exercícios" and section.level == 2 then
 				exercise = 1
 				section.find_by(context: :olist).each do |list|
 					# Only do lists containing exercises, not sub-parts of exercises.
@@ -165,7 +165,7 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 	end
 	
 	# Update xrefs inside titles (which are what appear as captions in text).
-	[:chapter, :section, :image, :listing, :table, :example].each do |type|
+	[:section, :image, :listing, :table, :example].each do |type|
 		document.find_by(context: type).each do |item|			
 			if item.title? then
 				# Same tricks as above.
