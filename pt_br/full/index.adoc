@@ -15,6 +15,10 @@ Barry Wittman <wittman1@otterbein.edu>; Tim Korb <jtk@purdue.edu>; Aditya Mathur
 :sectnums:
 :sectnumlevels: 3
 :listing-caption: Programa
+:chapter-signifier: Capítulo
+:chapter-refsig: Capítulo
+:section-signifier: Seção
+:section-refsig: Seção
 ifdef::ebook-format[:leveloffset: -1]
 :google-analytics-account: G-VEDGKRPMMK
 

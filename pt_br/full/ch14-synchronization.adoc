@@ -1,78 +1,76 @@
 [#ch14-synchronization]
 :imagesdir: chapters/14-synchronization/images
 :programsdir: chapters/14-synchronization/programs
-== Synchronization
+== Sincronização
 
 [quote, Mary Catherine Bateson]
 ____
-Sharing is sometimes more demanding than giving.
+Compartilhar é algumas vezes mais custoso do que dar.
 ____
 
-=== Introduction
+=== Introdução
 
-Concurrent programs allow multiple threads to be scheduled and executed,
-but the programmer doesn't have a great deal of control over when
-threads execute. As explained in <<Concepts: Thread scheduling>>,
-the JVM and the underlying OS are responsible for scheduling threads
-onto processor cores.
+Os programas concorrentes permitem que várias threads sejam programadas e executadas,
+mas o programador não tem muito controle sobre quando as threads são executadas. Conforme explicado em <<Conceitos: Agendamento de threads>>,
+a JVM e o sistema operacional subjacente são responsáveis pelo agendamento de threads
+nos núcleos do processador.
 
-While writing a concurrent program, you have to ensure that the program
-will work correctly even though different executions of the same program
-will likely lead to different sequences of thread execution. The problem
-we introduce next illustrates why one thread execution sequence might be
-perfectly fine while another might lead to unexpected and incorrect
-behavior. (And even people starving!)
+Ao escrever um programa concorrente, você precisa garantir que o programa
+funcione corretamente, mesmo que diferentes execuções do mesmo programa
+provavelmente levarão a diferentes sequências de execução de threads. O problema
+que apresentaremos a seguir ilustra por que uma sequência de execução de thread pode ser
+perfeitamente bem, enquanto outra pode levar a um comportamento inesperado e incorreto. (E até mesmo pessoas morrendo de fome!)
 
-=== Problem: Dining philosophers
+=== Problema: Jantar dos filósofos
 
-Concurrency gives us the potential to make our programs faster but
-introduces a number of other problems. The way that threads interact can
-be unpredictable. Because they share memory, one thread can corrupt a
-value in another thread's variables. We introduce synchronization tools
-in this chapter that can prevent threads from corrupting data, but these
-tools create new pitfalls. To explore these pitfalls, we give you
-another problem to solve.
+A concorrente nos dá o potencial de tornar nossos programas mais rápidos, mas
+introduz uma série de outros problemas. A maneira como as threads interagem pode
+ser imprevisível. Como elas compartilham memória, uma thread pode corromper um valor
+nas variáveis de outra thread. Apresentamos as ferramentas de sincronização
+neste capítulo que podem evitar que os threads corrompam os dados, mas essas
+ferramentas criam novas armadilhas. Para explorar essas armadilhas, apresentamos a você
+outro problema para resolver.
 
-Imagine a number of philosophers sitting at a round table with plates
-that are periodically filled with rice. Between adjacent philosophers
-are single chopsticks so that there are exactly the same number of
-chopsticks as there are philosophers. These philosophers only think and
-eat. In order to eat, a philosopher must pick up both the chopstick on
-her left and the chopstick on her right. <<figure-dining>> illustrates this situation.
+Imagine vários filósofos sentados em uma mesa redonda com pratos
+que são periodicamente preenchidos com arroz. Entre os filósofos adjacentes
+estão pauzinhos individuais, de modo que há exatamente o mesmo número de
+pauzinhos que o número de filósofos. Esses filósofos só pensam e
+comem. Para comer, um filósofo deve pegar o pauzinho à
+esquerdo e o da direita. <<figure-dining>> ilustra essa 
+situação.
 
 [[figure-dining]]
 [.text-center]
-.Table for five dining philosophers.
+.Mesa para cinco filósofos em um jantar.
 image::diners.svg[scaledwidth=50%,pdfwidth=50%,width=50%]
 
 
-Your goal is to write a class called `DiningPhilosopher` which extends
-`Thread`. Each thread created in the `main()` method should be a
-philosopher who thinks for some random amount of time, then acquires the
-two necessary chopsticks and eats. No philosopher should starve. No
-philosophers should be stuck indefinitely fighting over chopsticks.
+Seu objetivo é escrever uma classe chamada `DiningPhilosopher` que estende
+`Thread`. Cada thread criada no método `main()` deve ser um
+filósofo que pensa por algum tempo aleatório, depois pega os dois pauzinhos necessários e come. Nenhum filósofo deve passar fome. Nenhum dos
+filósofos deveria ficar preso indefinidamente brigando por pauzinhos.
 
-Although this problem sounds simple, the solution is not.
-Make sure that you understand the concepts and Java syntax in this
-chapter thoroughly before trying to implement your solution. It's
-important that no two philosophers try to use the same chopstick at the
-same time. Likewise, we need to avoid a situation where every
-philosopher is waiting for every other philosopher to give up a
-chopstick.
+Embora esse problema pareça simples, a solução não é.
+Certifique-se de que você entendeu bem os conceitos e a sintaxe Java deste
+capítulo completamente antes de tentar implementar sua solução. É importante que não haja dois filósofos tentando usar o mesmo pauzinho ao 
+mesmo tempo. Da mesma forma, precisamos evitar uma situação em que cada
+filósofo esteja esperando que todos os outros filósofos desistam de um
+pauzinho.
 
-=== Concepts: Thread interaction
+=== Conceitos: Interação de thread
 
-This dining philosopher problem highlights some difficulties which were
-emerging toward the end of the last chapter. In
-<<sharedThreadVariableExercise>> two snippets of code could run
-concurrently and modify the same shared variable, potentially producing
-incorrect output. Because of the nondeterministic nature of scheduling,
-we have to assume that the code executing in two or more threads can be
-interleaved in any possible way. When the *result* of computation
-changes depending on the order of thread execution, it's called a _race
-condition_. Below is a simple example of a race condition in Java.
+Esse problema do jantar dos filósofos destaca algumas dificuldades 
+que estavam surgindo no final do último capítulo. Em
+<<sharedThreadVariableExercise>> dois trechos de código poderiam ser executados
+concorrentemente e modificar a mesma variável compartilhada, potencialmente produzindo uma
+saída incorreta. Devido à natureza não determinística do agendamento,
+temos de presumir que o código executado em duas ou mais threads pode ser
+intercalados de qualquer maneira possível. Quando o *resultado* da computação
+muda dependendo da ordem de execução da thread, ele é chamado de 
+_condição de corrida_ (ou _race condition, em inglês). Abaixo está um 
+exemplo simples de uma condição de corrida em Java.
 
-.Short example of a race condition.
+.Exemplo simples de uma condição de corrida
 [source, java]
 [[RaceConditionProgram]]
 ----
