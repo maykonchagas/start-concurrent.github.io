@@ -77,28 +77,28 @@ exemplo simples de uma condição de corrida em Java.
 include::{programsdir}/RaceCondition.java[]
 ----
 
-This short (and pointless) class attempts to increment the variable
-`counter` until it reaches `1000000`. To illustrate the race condition,
-we've divided the work of incrementing `counter` evenly among a number
-of threads. If you run this program, the final value of `counter` will
-often not be `1000000`. Depending on which JVM, OS, and how many cores
-you have, you may never get `1000000`, and the answer you do get will
-vary a lot. On all systems, if you change the value of `THREADS` to `1`,
-the answer should always be correct.
+Essa classe curta (e sem sentido) tenta incrementar a variável `counter` 
+até que ela atinja `1000000`. Para ilustrar a condição de corrida,
+dividimos o trabalho de incrementar `counter` igualmente entre vários
+threads. Se você executar esse programa, o valor final de `counter
+geralmente não será `1000000`. Dependendo de qual JVM, sistema operacional e quantos núcleos
+você tem, talvez nunca obtenha `1000000`, e a resposta que você obtiver
+variar muito. Em todos os sistemas, se você alterar o valor de `THREADS` 
+para `1`, a resposta deverá estar sempre correta.
 
 ****
 <<raceConditionExercise>> +
 <<threadTimeSliceExercise>>
 ****
 
-Looking at the code, the problem might not be obvious. Everything
-centers on the statement `counter{plus}{plus}` in the `for` loop inside the
-`run()` method. But, this statement appears to execute in a single step!
-Each thread should increase the value of `counter` a total of
-`COUNT/THREADS` times, adding up to `1000000`. The trouble is that
-`counter{plus}{plus}` is *not* a single step. Recall that `counter{plus}{plus}` is shorthand
-for `counter = counter + 1`. To be even more explicit we could write it
-as follows.
+Observando o código, o problema pode não ser óbvio. Tudo
+está centrado na instrução `counter{plus}{plus}` no loop `for` dentro 
+método `run()`. Porém, essa instrução parece ser executada em uma única etapa!
+Cada thread deve aumentar o valor de `counter` em um total de
+`COUNT/THREADS` vezes, somando até `1000000`. O problema é que
+`counter{plus}{plus}` *não* é uma única etapa. Lembre-se de que `counter{plus}{plus}` é uma abreviação 
+para `contador = contador + 1`. Para ser ainda mais explícito, poderíamos escrever
+da seguinte forma.
 
 [source,java]
 ----
@@ -106,57 +106,58 @@ temp = counter;
 counter = temp + 1;
 ----
 
-One thread might get as far as storing `counter` into a temporary
-location, but then it runs out of time, allowing the next thread in the
-schedule to run. When that's the case, this next thread may do a series of
-increments to `count` which are all overwritten when the first thread
-runs again. Because the first thread had an old value of `counter`
-stored in `temp`, adding 1 to `temp` has the effect of ignoring
-increments that happened in the interim. This situation can happen on a single
-processor with threads switching back and forth, but it's even more dangerous
-on a multicore system.
+Um thread pode chegar ao ponto de armazenar o `counter` em um local 
+temporário, mas depois fica sem tempo, permitindo que a próxima thread 
+agendada seja executada. Quando esse for o caso, a próxima thread poderá fazer uma série de
+incrementos no `count` que são sobrescritos quando a primeira thread
+for executada novamente. Como a primeira thread tinha um valor antigo de `counter`
+armazenado em `temp`, adicionar 1 a `temp` tem o efeito de ignorar
+os incrementos que ocorreram nesse intervalo. Essa situação pode ocorrer em um único 
+processador com threads alternando entre si, mas é ainda mais perigosa
+em um sistema com vários núcleos.
 
-The primary lesson here is that threads can switch between each other at
-any time with unpredictable effects. The secondary lesson is that the
-source code is too coarse-grained to show _atomic_ operations. An atomic
-operation is one which cannot be interrupted by a context switch to
-another thread. The actual code that the JVM runs is much lower level
-than source code.
+A principal lição aqui é que as threads podem alternar entre si a 
+a qualquer momento, com efeitos imprevisíveis. A segunda lição é que o 
+código-fonte é muito grosseiro para mostrar operações _atômicas_. Uma operação atômica
+atômica é aquela que não pode ser interrompida por uma troca de contexto para
+outra thread. O código real que a JVM executa é de nível muito mais baixo
+do que o código-fonte.
 
-We can't easily force a non-atomic operation to be atomic, but there are
-ways to restrict access to certain pieces of code under certain
-conditions. The name we give to a piece of code which should not be
-accessed by more than one thread at a time is a _critical section_. In
-the example above, the single line of code which increments `counter` is
-a critical section, and the error in the program would be removed if
-only one thread were able to run that line of code at a time.
+Não é possível forçar facilmente uma operação não atômica a ser atômica, mas existem 
+maneiras de restringir o acesso a determinadas partes do código sob certas
+condições. O nome que damos a um trecho de código que não deve ser
+acessado por mais de uma thread ao mesmo tempo é _seção crítica_. No
+No exemplo acima, a única linha de código que incrementa o `counter` é 
+uma seção crítica, e o erro no programa seria removido se
+apenas uma thread pudesse executar essa linha de código por vez.
 
-Protecting a critical section is done with _mutual exclusion_ tools.
-They're called mutual exclusion tools because they enforce the
-requirement that one thread executing a critical section excludes the
-possibility of another. There are many different techniques, algorithms,
-and language features in computer science which can be used to create
-mutual exclusion. Java relies heavily on a tool called a _monitor_ which
-hides some of the details of enforcing mutual exclusion from the user.
-Mutual exclusion is a deeply researched topic with many approaches other
-than monitors. If you plan to write concurrent programs in another
-language, you may need to brush up on its mutual exclusion features.
+A proteção de uma seção crítica é feita com ferramentas de _exclusão mútua_.
+Elas são chamadas de ferramentas de exclusão mútua porque impõem o
+requisito de que uma thread que executa uma seção crítica exclui a
+possibilidade de outra. Há muitas técnicas, algoritmos
+e recursos de linguagem na ciência da computação que podem ser usados para criar
+exclusão mútua. O Java depende muito de uma ferramenta chamada _monitor_ que
+oculta do usuário alguns dos detalhes da aplicação da exclusão mútua.
+A exclusão mútua é um tópico profundamente pesquisado com muitas abordagens além 
+além dos monitores. Se planeja escrever programas concorrentes em outra
+linguagem, talvez seja necessário se atualizar sobre os recursos de exclusão 
+mútua dessa linguagem.
 
 ****
 <<restaurantSynchronizationExercise>>
 ****
 
-=== Syntax: Thread synchronization
+=== Sintaxe: Sincronização de thread
 
-==== The `synchronized` keyword
+==== A palavra-chave `synchronized`
 
-In Java, the language feature which allows you to enforce mutual
-exclusion is the `synchronized` keyword. There are two ways to use this
-keyword: with a method or with an arbitrary block of code. In the method
-version, you add the `synchronized` modifier before the return type.
-Let's imagine a class with a private `String` field called `message`
-which is set to be `"Will Robinson!"` by the constructor. Now, we define
-the following method.
+Em Java, o recurso de linguagem que permite que você aplique a 
+exclusão mútua é a palavra-chave `synchronized`. Há duas maneiras de usar essa 
+palavra-chave: com um método ou com um bloco arbitrário de código. No método
+você adiciona o modificador `synchronized` antes do tipo de retorno.
+Vamos imaginar uma classe com um campo `String` privado chamado `message`
+que é definido como `“Will Robinson!”` pelo construtor. Agora, definimos
+o seguinte método.
 
 [source,java]
 ----
@@ -165,33 +166,32 @@ public synchronized void danger() {
 }
 ----
 
-If `danger()` is called five times from different threads, `message`
-will contain +
-`"Danger, Danger, Danger, Danger, Danger, Will Robinson!"` Without the
-`synchronized` keyword, `danger()` would suffer from a race condition
-similar to the one in `RaceCondition`. Some of the `String`
-concatenations might be overwritten by other calls to `danger()`. You
-would never have more than five copies of `"Danger, "` appended to the
-beginning of `message`, but you might have fewer.
+Se `danger()` for chamada cinco vezes em diferentes threads, `message` conterá +
+`“Perigo, Perigo, Perigo, Perigo, Perigo, Will Robinson!”`. 
+Sem a palavra-chave `synchronized`, `danger()` sofreria de uma condição de corrida
+semelhante à de `RaceCondition`. Algumas das concatenações de `String`
+podem ser sobrescritas por outras chamadas a `danger()`. 
+Você nunca teria mais de cinco cópias de `“Danger,”` anexadas ao
+no início de `message`, mas você pode ter menos.
 
 ****
 <<synchronizedKeywordExercise>>
 ****
 
-Any time a thread enters a piece of code protected by the `synchronized`
-keyword, it implicitly acquires a lock which only a single thread can
-hold. If another thread tries to access the code, it's forced to wait
-until the lock is released. This lock is _re-entrant_. Re-entrant means
-that, when a thread currently holds a lock and tries to get it again, it
-succeeds. This situation frequently occurs with synchronized methods
-which call other synchronized methods.
+Sempre que uma thread entra em um trecho de código protegido pela palavra-chave 
+`synchronized` ele adquire implicitamente um bloqueio que somente uma única thread pode
+manter. Se outra thread tentar acessar o código, ela será forçada a esperar
+até que o bloqueio seja liberado. Esse bloqueio é _reentrante_. Reentrante significa
+significa que, quando uma thread mantém um bloqueio e tenta obtê-lo novamente, ela 
+é bem-sucedida. Essa situação ocorre frequentemente com métodos sincronizados
+que chamam outros métodos sincronizados.
 
 ****
 <<lockTimingExercise>>
 ****
 
-Consider method `safety()` which does the "`opposite`" of `danger()`, by
-removing occurrences of `"Danger, "` from the beginning of `message`.
+Considere o método `safety()` que faz o “`oposto`” de `danger()`, removendo 
+as ocorrências de `“Danger,”` do início de `message`.
 
 [source,java]
 ----
@@ -201,30 +201,31 @@ public synchronized void safety() {
 }
 ----
 
-Will the `danger()` and `safety()` methods play nicely together on the
-same object? In other words, will a thread be blocked from entering
-`safety()` if another thread is already in `danger()`? Yes! The locks
-in Java are connected to objects. When you use the `synchronized` keyword on a
-method, the object the method is being called on (whichever object
-`this` refers to inside the method) serves as the lock. Thus, only one
-thread can be inside of either of these methods on a given object. If you have 10
-synchronized methods in an object, only one of them can execute at a
-time for that object.
+Os métodos `danger()` e `safety()` funcionarão bem juntos no mesmo objeto? Em 
+outras palavras, uma thread será impedida de entrar em
+`safety()` se outra thread já estiver em `danger()`? Sim! Os bloqueios
+em Java estão conectados a objetos. Quando você usa a palavra-chave `synchronized` em um método
+o objeto no qual o método está sendo chamado (qualquer que seja o objeto
+`this` se refere dentro do método) funciona como o bloqueio. Portanto, somente uma
+thread pode estar dentro de qualquer um desses métodos em um determinado objeto. Se você tiver 10
+métodos sincronizados em um objeto, somente um deles poderá ser executado por vez para esse objeto.
+
 
 ****
 <<constructorLeakExercise>> +
 <<synchronizedThreadIncrementExercise>>
 ****
 
-Perhaps this level of control is too restrictive. You may have six
-methods which conflict with each other and four others which conflict
-with each other but not the first six. Using `synchronized` in each
-method declaration would unnecessarily limit the amount of concurrency
-your program could have.
+Talvez esse nível de controle seja muito restritivo. Você pode ter seis
+métodos que entram em conflito entre si e outros quatro que entram em conflito
+entre si, mas não com os seis primeiros. Usar `synchronized` em cada 
+declaração de método limitaria desnecessariamente a quantidade de 
+concorrência que seu programa poderia ter.
 
-Although it takes a little more work, using `synchronized` with a block
-of code allows more fine-grained control. The following version of
-`danger()` is equivalent to the earlier one.
+Embora exija um pouco mais de trabalho, o uso de `synchronized` em um bloco
+de código permite um controle mais refinado. A seguinte versão de
+`danger()` é equivalente à anterior.
+
 
 [source,java]
 ----
@@ -235,18 +236,19 @@ public void danger() {
 }
 ----
 
-Using `synchronized` on a block of code gives us more flexibility in two
-ways. First, we can choose exactly how much code we want to control,
-instead of the whole method. Second, we can choose which object we want
-to use for synchronization. For the block style, any arbitrary object
-can be used as a lock. Objects keep a list of threads which are waiting
-to get the lock and do all the other management needed to make the
-`synchronized` keyword work.
+O uso de `synchronized` em um bloco de código nos dá mais flexibilidade de duas 
+maneiras. Primeiro, podemos escolher exatamente a quantidade de código que queremos controlar,
+em vez de todo o método. Segundo, podemos escolher qual objeto queremos usar para 
+a sincronização. No estilo de bloco, qualquer objeto arbitrário
+pode ser usado como um bloqueio. Os objetos mantêm uma lista de threads que estão esperando
+para obter o bloqueio e fazem todos os outros gerenciamentos necessários para que a palavra-chave
+`synchronized` funcione.
 
-If you have two critical sections which are unrelated to each other, you
-can use the fine-grained control the block style provides. First, you'll
-need some objects to use as locks, probably declared so that they can
-easily be shared, perhaps as static fields of a class.
+Se houver duas seções críticas que não estejam relacionadas entre si, você
+poderá usar o controle refinado que o estilo de bloco oferece. Primeiro, você precisará 
+de alguns objetos para usar como bloqueios, provavelmente declarados de forma que possam ser
+facilmente compartilhados, talvez como campos estáticos de uma classe.
+
 
 [source,java]
 ----
@@ -254,43 +256,42 @@ private static Object lock1 = new Object();
 private static Object lock2 = new Object();
 ----
 
-Then, wherever you need control over concurrency, you use them as locks.
+Então, sempre que precisar de controle sobre a concorrência, use-os como bloqueios.
 
 [source,java]
 ----
 synchronized(lock1) {
-    // Do dangerous thing 1
+    // Fazer coisas perigosas 1
 }
 
-// Do safe things
+// Fazer coisas seguras
 
 synchronized(lock2) {
-    // Do dangerous thing 2, unrelated to dangerous thing 1
+    // Fazer a coisa perigosa 2, não relacionada à coisa perigosa 1
 }
 ----
 
-Since declaring a method with `synchronized` is equivalent to having its
-body enclosed in a block beginning with `synchronized(this)`, what about
-`static` methods? Can they be `synchronized`? Yes, they can. Whenever a
-class is loaded, Java creates an object of type `Class` which
-corresponds to that class. This object is what synchronized static
-methods inside the class will use as a lock. For example, a synchronized
-static method inside of the `Eggplant` class will lock on the object
+Como declarar um método com `synchronized` é equivalente a ter seu corpo
+em um bloco que começa com `synchronized(this)`, o que dizer dos métodos
+métodos `static`? Eles podem ser `sincronizados`? Sim, podem. Sempre que uma classe
+é carregada, o Java cria um objeto do tipo `Class` que
+corresponde a essa classe. Esse objeto é o que os métodos estáticos sincronizados
+dentro da classe usarão como bloqueio. Por exemplo, um método 
+estático sincronizado dentro da classe `Eggplant` bloqueará o objeto
 `Eggplant.class`.
 
-==== The `wait()` and `notify()` methods
+==== Os métodos `wait()` e `notify()`
 
-Protecting critical sections with the `synchronized` keyword is a
-powerful technique, and many other synchronization tools can be built
-using just this tool. However, efficiency demands a few more options.
+A proteção de seções críticas com a palavra-chave `synchronized` é uma
+técnica poderosa, e muitas outras ferramentas de sincronização podem ser criadas
+usando apenas essa ferramenta. Entretanto, a eficiência exige mais algumas opções.
 
-Sometimes a thread is waiting for another thread to finish a task so
-that it can process the results. Imagine one thread collecting votes
-while another one's waiting to count them. In this example, the
-counting thread must wait for all votes to be cast before it can begin
-counting. We could use a synchronized block and an indicator `boolean`
-called `votingComplete` to allow the collector thread to signal to the
-counting thread.
+Às vezes, uma thread está esperando que outra thread termine uma tarefa para
+possa processar os resultados. Imagine uma thread coletando votos
+enquanto outra está esperando para contá-los. Nesse exemplo, a thread de
+contagem deve esperar que todos os votos sejam lançados antes de começar a
+contar. Poderíamos usar um bloco sincronizado e um indicador `boolean`
+chamado `votingComplete` para permitir que a thread do coletor sinalize para a thread de contagem.
 
 [source,java]
 ----
@@ -303,23 +304,23 @@ while(true) {
 countVotes();
 ----
 
-What's the problem with this design? The counting thread is
-running through the `while` loop over and over waiting for
-`votingComplete` to become `true`. On a single processor, the counting
-thread would slow down the job of the collecting thread which is trying
-to process all the votes. On a multicore system, the counting thread is
-still wasting CPU cycles that some other thread could use. This
-phenomenon is known as _busy waiting_, for obvious reasons.
+Qual é o problema com esse design? A thread de contagem está
+está executando o loop `while` repetidamente, esperando que
+`votingComplete` se torne `true`. Em um único processador, a thread de contagem
+retardaria o trabalho da thread de coleta que está tentando processar todos os votos.
+Em um sistema com vários núcleos, a thread de contagem
+ainda está desperdiçando ciclos de CPU que alguma outra thread poderia usar. Esse
+fenômeno é conhecido como _busy waiting_, por motivos óbvios.
 
-To combat this problem, Java provides the `wait()` method. When a thread's
-executing synchronized code, it can call `wait()`. Instead of busy
-waiting, a thread which has called `wait()` will be removed from the
-list of running threads. It will wait in a dormant state until someone
-comes along and notifies the thread that its waiting is done. If you
-recall the thread state diagram from <<ch13-concurrency#ch13-concurrency>>,
-there's a Not Runnable state which threads enter by
-calling `sleep()`, calling `wait()`, or performing blocking I/O. Using
-`wait()`, we can rewrite the vote counting thread.
+Para combater esse problema, o Java fornece o método `wait()`. Quando uma 
+thread está executando código sincronizado, ele pode chamar `wait()`. Em vez de ficar ocupada
+esperando, uma thread que tenha chamado `wait()` será removida da lista de threads em execução.
+Ele aguardará em um estado inativo até que alguém
+apareça e notifique a thread de que sua espera terminou. Se você
+lembrar do diagrama de estado da thread de <<ch13-concurrency#ch13-concurrency>>,
+há um estado `Not Runnable` no qual as threads entram ao
+chamar `sleep()`, chamando `wait()` ou executando E/S de bloqueio. Usando
+`wait()`, podemos reescrever a thread de contagem de votos.
 
 [source,java]
 ----
@@ -331,21 +332,21 @@ synchronized(this) {
 countVotes();
 ----
 
-Note that the `while` loop has moved inside the synchronized block.
-Doing so before might have kept our program from terminating: As long as
-the vote counting thread held the lock, the vote collecting thread would
-not be allowed to modify `votingComplete`. When a thread calls `wait()`,
-however, it gives up the corresponding lock it's holding until it wakes
-up and runs again. Why use the `while` loop at all now? There's no
-guarantee that the condition you're waiting for is `true`. Many threads
-might be waiting on this particular lock. We use the `while` loop to check
-that `votingComplete` is `true` and wait *again* if it isn't.
+Observe que o loop `while` foi movido para dentro do bloco sincronizado.
+Fazer isso antes poderia ter impedido o término do nosso programa: 
+Enquanto a thread de contagem de votos mantivesse o bloqueio, a thread de coleta de votos
+não teria permissão para modificar `votingComplete`. Quando uma thread chama `wait()`,
+no entanto, ele abre mão do bloqueio correspondente que está mantendo até que ela
+acorde e execute novamente. Por que usar o loop `while` agora? Não há
+garantia de que a condição que você está esperando é “verdadeira”. Muitas threads
+podem estar esperando por esse bloqueio específico. Usamos o loop `while` para verificar
+que `votingComplete` é `true` e esperamos *novamente* se não for.
 
-In order to notify a waiting thread, the other thread calls the
-`notify()` method. Like `wait()`, `notify()` must be called within a
-synchronized block or method. Here is corresponding code the vote
-collecting thread might use to notify the counting thread that voting is
-complete.
+Para notificar uma thread em espera, a outra thread chama o 
+método `notify()`. Assim como o `wait()`, o `notify()` deve ser chamado em um
+bloco ou método sincronizado. Aqui está o código correspondente que a thread de coleta de votos
+pode usar para notificar a thread de contagem de votos de que a votação foi
+concluída.
 
 [source,java]
 ----
@@ -356,14 +357,14 @@ synchronized(this) {
 }
 ----
 
-A call to `notify()` will wake up one thread waiting on the lock object.
-If there are many threads waiting, the method `notifyAll()` used above
-can be called to wake them all up. In practice, it's usually safer to
-call `notifyAll()`. If a particular condition changes and a single
-waiting thread is notified, that thread might need to notify the next
-waiting thread when it's done. If your code isn't *very* carefully
-designed, some thread might end up waiting forever and never be notified
-if you only rely on `notify()`.
+Uma chamada a `notify()` despertará uma thread que esteja aguardando o objeto de bloqueio.
+Se houver muitas threads aguardando, o método `notifyAll()` usado acima
+pode ser chamado para despertar todas elas. Na prática, geralmente é mais seguro
+chamar `notifyAll()`. Se uma determinada condição for alterada e uma única
+thread em espera for notificada, essa thread talvez precise notificar a próxima
+thread em espera quando tiver terminado. Se seu código não for *muito* 
+cuidadosamente projetado, alguma thread pode acabar esperando para sempre e nunca ser notificada
+se você depender apenas de `notify()`.
 
 ****
 <<waitNotifyExercise>> +

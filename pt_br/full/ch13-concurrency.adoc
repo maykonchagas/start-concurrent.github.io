@@ -1,5 +1,4 @@
-:xrefstyle: short
-:chapter-caption: Capítulo
+:chap-caption: Capítulo
 
 [#ch13-concurrency]
 :imagesdir: chapters/13-concurrency/images
@@ -56,7 +55,7 @@ difícil, os números usados para criptografia de chave pública, geralmente com
 
 O problema do vírus mortal tem uma grande tarefa (fatorar um número) a ser executada. 
 Como devemos dividir essa tarefa para que possamos realizá-la mais rapidamente? Dividir 
-o trabalho a ser feito é o cerne de qualquer solução simultânea para um problema.
+o trabalho a ser feito é o cerne de qualquer solução concorrente para um problema.
 
 Em um processador com vários núcleos, cada núcleo é um trabalhador independente. É 
 preciso algum cuidado para coordenar esses trabalhadores. Antes de tudo, ainda precisamos 
@@ -475,7 +474,7 @@ include::{programsdir}/MathExpression.java[]
 ----
 
 
-Queremos deixar absolutamente claro quando os threads são criados, começam
+Queremos deixar absolutamente claro quando as threads são criadas, começam
 a execução e terminam. Esses detalhes são cruciais para os pontos mais finos da
 programação Java simultânea. Na <<figure-tasks_in_threads>>, parece que a execução da avaliação da expressão matemática 
 começa com a Thread 1, que gera a Thread 2. Embora essa figura
@@ -921,7 +920,7 @@ Essas perguntas se concentram no agendamento de threads. Como diferentes sistema
 concorrente lidam com o agendamento de forma diferente, descreveremos apenas o agendamento
 em Java. Embora a programação sequencial tenha tudo a ver com o controle preciso
 sobre o que acontece *depois*, a concorrência tira grande parte desse controle do 
-programador. Quando os threads são agendados e em qual processador eles são executados, isso 
+programador. Quando as threads são agendadas e em qual processador eles são executados, isso 
 é feito por uma combinação da JVM e do sistema operacional. Com as
 JVMs normais, não há uma maneira explícita de acessar o agendamento e alterá-lo a seu
 seu agrado.
@@ -939,7 +938,7 @@ qual thread será executada. As próprias threads podem ter informações mais e
 sobre quando precisarão ou não de tempo de processador. A thread pode precisar esperar 
 por um evento específico e não precisará ser executada
 até lá. O Java permite que as threads interajam com o agendador por meio dos 
-métodos `Thread.sleep()` e `Thread.yield()`, que discutiremos em <<Syntax: Thread states>> e 
+métodos `Thread.sleep()` e `Thread.yield()`, que discutiremos em <<Sintaxe: Estados da thread>> e 
 por meio do método `wait()`, que discutiremos em <<ch14-synchronization#ch14-synchronization>>.
 
 ==== Não determinismo
@@ -1047,7 +1046,7 @@ image::thread-states.svg[scaledwidth=80%,pdfwidth=80%,width=80%]
 <<figure-thread_states>> mostra o ciclo de vida de uma thread. A
 thread começa sua vida no estado `New Thread`, depois que o construtor 
 é chamado. Quando o método `start()` é chamado, a thread começa a ser executada
-e faz a transição para o estado `Runnable. Ser executável não significa
+e faz a transição para o estado `Runnable`. Ser executável não significa
 necessariamente que a thread está sendo executada em um determinado momento, mas
 que ela está pronta para ser executada a qualquer momento. Quando estiver no 
 estado `Runnable`, uma thread pode chamar `Thread.yield()`, deixando de usar o processador,
@@ -1296,7 +1295,7 @@ em <<figure-math_evaluation>>(a) e (b).
 quad-core. As tarefas em <<videoGameTasksExample>> e 
 <<mathExpressionTasksExample>> podem ser subdivididas para
 melhorar o desempenho em quatro núcleos? Por que sim ou por que não?
-.  [[speedupExercise]] Considere a definição de velocidade de <<Examples: Concurrency and speedup>>. Vamos supor que você tenha um
+.  [[speedupExercise]] Considere a definição de velocidade de <<Exemplos: Concorrência e aceleração>>. Vamos supor que você tenha um
 trabalho com 1.000.000 de unidades de tamanho. Uma thread pode processar 10.000 unidades de trabalho
 a cada segundo. São necessárias 100 unidades adicionais de trabalho para criar uma nova
 thread. Qual é o aumento de velocidade se você tiver um processador dual-core e criar

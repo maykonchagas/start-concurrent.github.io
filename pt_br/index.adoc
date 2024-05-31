@@ -176,7 +176,7 @@ necessária para implementar os conceitos já descritos nas seções Conceitos. 
 seções geralmente são mais longas e têm exemplos numerados em código Java 
 espalhados por toda parte.
 
-Solution:: Após a apresentação dos conceitos apropriados e da sintaxe Java necessários 
+Solução:: Após a apresentação dos conceitos apropriados e da sintaxe Java necessários 
 para resolver o problema motivador, uma solução é fornecida perto do final do capítulo. 
 Dessa forma, os alunos têm tempo suficiente para pensar sobre a abordagem necessária 
 para resolver o problema antes que a resposta seja dada.

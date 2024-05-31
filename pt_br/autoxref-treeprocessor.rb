@@ -59,7 +59,6 @@ class AutoXrefTreeprocessor < Extensions::Treeprocessor
 
     # Captions should we use.
     captions = {
-      :chapter => (document.attr 'autoxref-chapcaption', "Capítulo %d"),
       :section => (document.attr 'autoxref-sectcaption', "Seção %d.%d"),
       :image => (document.attr   'autoxref-imagecaption', "Figura %d.%d"),
       :listing => (document.attr 'autoxref-listingcaption', "Programa %d.%d"),
