@@ -739,9 +739,9 @@ pre.rouge .err {
 <li><a href="#_problema_jantar_dos_filósofos">14.2. Problema: Jantar dos filósofos</a></li>
 <li><a href="#_conceitos_interação_de_thread">14.3. Conceitos: Interação de thread</a></li>
 <li><a href="#_sintaxe_sincronização_de_thread">14.4. Sintaxe: Sincronização de thread</a></li>
-<li><a href="#_pitfalls_synchronization_challenges">14.5. Pitfalls: Synchronization challenges</a></li>
-<li><a href="#_solution_dining_philosophers">14.6. Solution: Dining philosophers</a></li>
-<li><a href="#_exercises_13">14.7. Exercises</a></li>
+<li><a href="#_armadilhas_desafios_de_sincronização">14.5. Armadilhas: Desafios de sincronização</a></li>
+<li><a href="#_solução_jantar_dos_filósofos">14.6. Solução: Jantar dos filósofos</a></li>
+<li><a href="#_exercícios_2">14.7. Exercícios</a></li>
 </ul>
 </li>
 <li><a href="#ch15-gui">Capítulo 15. Constructing Graphical User Interfaces</a>
@@ -752,7 +752,7 @@ pre.rouge .err {
 <li><a href="#_solution_math_tutor">15.4. Solution: Math tutor</a></li>
 <li><a href="#_concurrency_guis">15.5. Concurrency: GUIs</a></li>
 <li><a href="#_summary_5">15.6. Summary</a></li>
-<li><a href="#_exercises_14">15.7. Exercises</a></li>
+<li><a href="#_exercises_13">15.7. Exercises</a></li>
 </ul>
 </li>
 <li><a href="#ch16-testing-and-debugging">Capítulo 16. Testing and Debugging</a>
@@ -766,7 +766,7 @@ pre.rouge .err {
 <li><a href="#_syntax_java_testing_tools">16.7. Syntax: Java testing tools</a></li>
 <li><a href="#_concurrency_testing_tools">16.8. Concurrency: Testing tools</a></li>
 <li><a href="#_examples_testing_a_class">16.9. Examples: Testing a class</a></li>
-<li><a href="#_exercises_15">16.10. Exercises</a></li>
+<li><a href="#_exercises_14">16.10. Exercises</a></li>
 </ul>
 </li>
 <li><a href="#ch17-polymorphism">Capítulo 17. Polymorphism</a>
@@ -776,7 +776,7 @@ pre.rouge .err {
 <li><a href="#_syntax_inheritance_tools_in_java">17.3. Syntax: Inheritance tools in Java</a></li>
 <li><a href="#_solution_banking_account_with_a_vengeance">17.4. Solution: Banking account with a vengeance</a></li>
 <li><a href="#_concurrency_atomic_libraries">17.5. Concurrency: Atomic libraries</a></li>
-<li><a href="#_exercises_16">17.6. Exercises</a></li>
+<li><a href="#_exercises_15">17.6. Exercises</a></li>
 </ul>
 </li>
 <li><a href="#ch18-dynamic-data-structures">Capítulo 18. Dynamic Data Structures</a>
@@ -789,7 +789,7 @@ pre.rouge .err {
 <li><a href="#_solution_infix_conversion">18.6. Solution: Infix conversion</a></li>
 <li><a href="#_concurrency_linked_lists_and_thread_safety">18.7. Concurrency: Linked lists and thread safety</a></li>
 <li><a href="#_concurrency_thread_safe_libraries">18.8. Concurrency: Thread-safe libraries</a></li>
-<li><a href="#_exercises_17">18.9. Exercises</a></li>
+<li><a href="#_exercises_16">18.9. Exercises</a></li>
 </ul>
 </li>
 <li><a href="#ch19-recursion">Capítulo 19. Recursion</a>
@@ -800,7 +800,7 @@ pre.rouge .err {
 <li><a href="#_syntax_recursive_data_structures">19.4. Syntax: Recursive data structures</a></li>
 <li><a href="#_solution_maze_of_doom">19.5. Solution: Maze of doom</a></li>
 <li><a href="#_concurrency_futures">19.6. Concurrency: Futures</a></li>
-<li><a href="#_exercises_18">19.7. Exercises</a></li>
+<li><a href="#_exercises_17">19.7. Exercises</a></li>
 </ul>
 </li>
 <li><a href="#ch20-file-io">Capítulo 20. File I/O</a>
@@ -811,7 +811,7 @@ pre.rouge .err {
 <li><a href="#_examples_file_examples">20.4. Examples: File examples</a></li>
 <li><a href="#fileChapterSolution">20.5. Solution: A picture is worth 1,000 bytes</a></li>
 <li><a href="#_concurrency_file_io">20.6. Concurrency: File I/O</a></li>
-<li><a href="#_exercises_19">20.7. Exercises</a></li>
+<li><a href="#_exercises_18">20.7. Exercises</a></li>
 </ul>
 </li>
 <li><a href="#ch21-network-communication">Capítulo 21. Network Communication</a>
@@ -821,7 +821,7 @@ pre.rouge .err {
 <li><a href="#_syntax_networking_in_java">21.3. Syntax: Networking in Java</a></li>
 <li><a href="#_solution_web_server">21.4. Solution: Web server</a></li>
 <li><a href="#_concurrency_networking">21.5. Concurrency: Networking</a></li>
-<li><a href="#_exercises_20">21.6. Exercises</a></li>
+<li><a href="#_exercises_19">21.6. Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -29429,8 +29429,8 @@ para <code>1</code>, a resposta deverá estar sempre correta.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#raceConditionExercise">[raceConditionExercise]</a><br>
-<a href="#threadTimeSliceExercise">[threadTimeSliceExercise]</a></p>
+<p><a href="#raceConditionExercise">Exercício 14.6</a><br>
+<a href="#threadTimeSliceExercise">Exercício 14.14</a></p>
 </div>
 </div>
 </div>
@@ -29494,7 +29494,7 @@ mútua dessa linguagem.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#restaurantSynchronizationExercise">[restaurantSynchronizationExercise]</a></p>
+<p><a href="#restaurantSynchronizationExercise">Exercício 14.5</a></p>
 </div>
 </div>
 </div>
@@ -29531,7 +29531,7 @@ no início de <code>message</code>, mas você pode ter menos.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#synchronizedKeywordExercise">[synchronizedKeywordExercise]</a></p>
+<p><a href="#synchronizedKeywordExercise">Exercício 14.1</a></p>
 </div>
 </div>
 </div>
@@ -29547,7 +29547,7 @@ que chamam outros métodos sincronizados.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#lockTimingExercise">[lockTimingExercise]</a></p>
+<p><a href="#lockTimingExercise">Exercício 14.13</a></p>
 </div>
 </div>
 </div>
@@ -29576,8 +29576,8 @@ métodos sincronizados em um objeto, somente um deles poderá ser executado por 
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#constructorLeakExercise">[constructorLeakExercise]</a><br>
-<a href="#synchronizedThreadIncrementExercise">[synchronizedThreadIncrementExercise]</a></p>
+<p><a href="#constructorLeakExercise">Exercício 14.2</a><br>
+<a href="#synchronizedThreadIncrementExercise">Exercício 14.7</a></p>
 </div>
 </div>
 </div>
@@ -29746,32 +29746,32 @@ se você depender apenas de <code>notify()</code>.</p>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#waitNotifyExercise">[waitNotifyExercise]</a><br>
-<a href="#notifyAllExercise">[notifyAllExercise]</a></p>
+<p><a href="#waitNotifyExercise">Exercício 14.3</a><br>
+<a href="#notifyAllExercise">Exercício 14.4</a></p>
 </div>
 </div>
 </div>
 <div id="producerConsumerExample" class="exampleblock">
-<div class="title">Exemplo 14.1 Producer/consumer</div>
+<div class="title">Exemplo 14.1 Produtor/consumidor</div>
 <div class="content">
 <div class="paragraph">
-<p>To illustrate the use of <code>wait()</code> and <code>notify()</code> calls inside of
-synchronized code, we give a simple solution to the producer/consumer
-problem below. This problem is a classic example in the concurrent
-programming world. Often one thread (or a group of threads) is
-producing data, perhaps from some input operation. At the same time, one
-thread (or, again, a group of threads) is taking these chunks of
-data and consuming them by performing some computational or output task.</p>
+<p>Para ilustrar o uso das chamadas <code>wait()</code> e <code>notify()</code> dentro do código
+sincronizado, apresentamos uma solução simples para o problema do produtor/consumidor
+abaixo. Esse problema é um exemplo clássico no mundo da programação
+concorrente. Muitas vezes, uma thread (ou um grupo de threads) está
+produzindo dados, talvez de alguma operação de entrada. Ao mesmo tempo, uma
+thread (ou, novamente, um grupo de threads) está pegando esses pedaços
+de dados e consumindo-os ao executar alguma tarefa computacional ou de saída.</p>
 </div>
 <div class="paragraph">
-<p>Every resource inside of a computer is finite. Producer/consumer
-problems often assume a bounded buffer which stores items from the
-producer until the consumer can take them away. Our solution does all
-synchronization on this buffer. Many different threads can share this
-buffer, but all accesses will be controlled.</p>
+<p>Todo recurso dentro de um computador é finito. Produtor/consumidor
+geralmente assumem um buffer limitado que armazena itens do
+produtor até que o consumidor possa retirá-los. Nossa solução faz toda a
+sincronização nesse buffer. Muitas threads diferentes podem compartilhar esse
+buffer, mas todos os acessos serão controlados.</p>
 </div>
 <div id="BufferProgram" class="listingblock">
-<div class="title">Programa 14.2 Example of a synchronized buffer.</div>
+<div class="title">Programa 14.2 Exemplo de um buffer sincronizado.</div>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Buffer</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="no">SIZE</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
@@ -29801,86 +29801,83 @@ buffer, but all accesses will be controlled.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>When adding an item, producers enter the synchronized <code>addItem()</code>
-method.</td>
+<td>Ao adicionar um item, os produtores entram no método sincronizado <code>addItem()</code> sincronizado.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>If <code>count</code> shows that the buffer is full, the producer must wait
-until the buffer has at least one open space.</td>
+<td>Se <code>count</code> mostrar que o buffer está cheio, o produtor deverá esperar
+até que o buffer tenha pelo menos um espaço livre.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>After adding an item to
-the buffer, the producer then notifies all waiting threads.</td>
+<td>Após adicionar um item ao
+buffer, o produtor notifica todas as threads em espera.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>The consumer
-performs mirrored operations in <code>removeItem()</code>.</td>
+<td>O consumidor
+realiza operações espelhadas em <code>removeItem()</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>A consumer thread can&#8217;t
-consume anything if the buffer is empty and must then wait.</td>
+<td>Uma thread do consumidor não pode consumir nada se o buffer estiver vazio e deve, então, aguardar.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>After there&#8217;s
-an object to consume, the consumer removes it and notifies all other
+<td>Depois que houver
+um objeto para consumir, o consumidor o remove e notifica todos as outras
 threads.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Both methods are synchronized, making access to the buffer completely
-sequential. Although it seems undesirable, sequential behavior is
-precisely what&#8217;s needed for the producer/consumer problem. All
-synchronized code is a protection against unsafe concurrency. The goal
-is to minimize the amount of time spent in synchronized code and get
-threads back to parallel execution as quickly as possible.</p>
+<p>Ambos os métodos são sincronizados, tornando o acesso ao buffer
+completamente sequencial. Embora pareça indesejável, o comportamento sequencial é
+exatamente o que é necessário para o problema do produtor/consumidor. Todo
+código sincronizado é uma proteção contra a concorrência insegura. O objetivo
+é minimizar o tempo gasto no código sincronizado
+e fazer com que as threads voltem à execução paralela o mais rápido possível.</p>
 </div>
 </div>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#twoLockProducerConsumerExercise">[twoLockProducerConsumerExercise]</a></p>
+<p><a href="#twoLockProducerConsumerExercise">Exercício 14.10</a></p>
 </div>
 </div>
 </div>
 <div id="bankAccountExample" class="exampleblock">
-<div class="title">Exemplo 14.2 Bank account</div>
+<div class="title">Exemplo 14.2 Conta bancária</div>
 <div class="content">
 <div class="paragraph">
-<p>Although producer/consumer is a good model to keep in mind, there are
-other ways that reading and writing threads might interact. Consider the
-following programming problem, similar to one you might find in real
-life.</p>
+<p>Embora o produtor/consumidor seja um bom modelo para se ter em mente, existem
+outras maneiras pelas quais as threads de leitura e gravação podem interagir. Considere o
+seguinte problema de programação, semelhante a um que você pode encontrar na vida real.</p>
 </div>
 <div class="paragraph">
-<p>As a rising star in a bank&#8217;s IT department, you&#8217;ve been given the job
-of creating a new bank account class called <code>SynchronizedAccount</code>. This
-class must have methods to support the following operations: deposit,
-withdraw, and check balance. Each method should print a status message
-to the screen on completion. Also, the method for withdraw should return
-<code>false</code> and do nothing if there are insufficient funds. Because the
-latest system is multi-threaded, these methods must be designed so that
-the bookkeeping is consistent even if many threads are accessing a
-single account. No money should magically appear or disappear.</p>
+<p>Como uma estrela em ascensão no departamento de TI de um banco, você recebeu a tarefa de
+de criar uma nova classe de conta bancária chamada <code>SynchronizedAccount</code>. Essa
+classe deve ter métodos para suportar as seguintes operações: depósito,
+saque e verificação de saldo. Cada método deve imprimir uma mensagem de status
+na tela ao ser concluído. Além disso, o método para retirada deve retornar
+<code>false</code> e não fazer nada se não houver fundos suficientes. Como o
+sistema mais recente é multi-threaded, esses métodos devem ser projetados de modo que
+a contabilidade seja consistente, mesmo que muitas threads estejam acessando uma
+uma única conta. Nenhum dinheiro deve aparecer ou desaparecer magicamente.</p>
 </div>
 <div class="paragraph">
-<p>There&#8217;s an additional challenge. To maximize concurrency,
-<code>SynchronizedAccount</code> should be synchronized differently for read and
-write accesses. Any number of threads should be able to
-check the balance on an account simultaneously, but only one thread can
-deposit or withdraw at a time.</p>
+<p>Há um desafio adicional. Para maximizar a concorrência,
+<code>SynchronizedAccount</code> deve ser sincronizado de forma diferente para
+acessos de leitura e gravação. Qualquer número de threads deve ser capaz de
+verificar o saldo de uma conta simultaneamente, mas somente uma thread pode
+depositar ou sacar de cada vez.</p>
 </div>
 <div class="paragraph">
-<p>To solve this problem, our implementation of the class has a <code>balance</code>
-variable to record the balance, but it also has a <code>readers</code> variable to
-keep track of the number of threads which are reading from the account
-at any given time.</p>
+<p>Para resolver esse problema, nossa implementação da classe tem uma variável <code>balance</code>
+para registrar o saldo, mas também tem uma variável <code>readers</code> para
+manter o controle do número de threads que estão lendo da conta
+em um determinado momento.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -29890,8 +29887,7 @@ at any given time.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, the <code>getBalance()</code> method is called by threads which wish to read
-the balance.</p>
+<p>Em seguida, o método <code>getBalance()</code> é chamado pelas threads que desejam ler o o saldo.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -29913,27 +29909,27 @@ the balance.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Access to the <code>readers</code> variable is synchronized.</td>
+<td>O acesso à variável <code>readers</code> é sincronizado.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>After passing that first <code>synchronized</code> block, the code which stores the
-balance is no longer synchronized. In this way, multiple readers can access
-the data at the same time. For this example, the concurrency controls we
-have are overkill. The command <code>amount = balance</code> does not take a great
-deal of time. If it did, however, it would make sense for readers to
-execute it concurrently as we do.</td>
+<td>Depois de passar pelo primeiro bloco <code>sincronizado</code>, o código que armazena o
+saldo não é mais sincronizado. Dessa forma, vários leitores podem acessar
+os dados ao mesmo tempo. Para esse exemplo, os controles de concorrência que temos
+são exagerados. O comando <code>amount = balance</code> não leva
+muito tempo. No entanto, se fosse assim, faria sentido para os leitores que
+o executassem de forma concorrente, como nós fazemos.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>After reading the balance, this method
-decrements <code>readers</code>.</td>
+<td>Depois de ler o saldo, esse método
+diminui <code>leitores</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>If <code>readers</code> reaches 0, a call to <code>notifyAll()</code> is
-made, signaling that threads trying to deposit to or withdraw from the
-account can continue.</td>
+<td>Se <code>readers</code> chegar a 0, uma chamada para <code>notifyAll()</code> será realizada
+sinalizando que as threads que estão tentando depositar ou retirar dinheiro da
+conta podem continuar.</td>
 </tr>
 </table>
 </div>
@@ -29957,9 +29953,8 @@ account can continue.</td>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>deposit()</code> and <code>withdraw()</code> methods are wrappers for the
-<code>changeBalance()</code> method, which has all the interesting concurrency
-controls.</p>
+<p>Os métodos <code>deposit()</code> e <code>withdraw()</code> são invólucros para o
+método <code>changeBalance()</code>, que possui todos os controles de concorrência interessantes.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -29979,21 +29974,21 @@ controls.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>changeBalance()</code> method is synchronized so that it can have
-exclusive access to the <code>readers</code> variable. It&#8217;s also marked <code>protected</code>
-because <code>SynchronizedAccount</code> will be used as a parent class in
+<td>O método <code>changeBalance()</code> é sincronizado para que possa ter acesso
+exclusivo à variável <code>readers</code>. Ele também está marcado como <code>protected</code>
+porque <code>SynchronizedAccount</code> será usado como uma super classe em
 <a href="#ch17-polymorphism">Capítulo 17</a>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>As long as <code>readers</code> is
-greater than 0, this method will wait.</td>
+<td>Enquanto <code>readers</code> for
+for maior que 0, esse método aguardará.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Eventually, the readers should
-finish their job and notify the waiting writer which can finish changing
-the balance of the account.</td>
+<td>Eventualmente, os leitores devem
+terminar seu trabalho e notificar o escritor em espera, que pode terminar de alterar o
+o saldo da conta.</td>
 </tr>
 </table>
 </div>
@@ -30002,54 +29997,53 @@ the balance of the account.</td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pitfalls_synchronization_challenges">14.5. Pitfalls: Synchronization challenges</h3>
+<h3 id="_armadilhas_desafios_de_sincronização">14.5. Armadilhas: Desafios de sincronização</h3>
 <div class="paragraph">
-<p>As you can see from the dining philosophers problem, synchronization
-tools help us get the right answer but also create other difficulties.</p>
+<p>Como você pode ver no problema do jantar dos filósofos, as ferramentas de sincronização
+nos ajudam a obter a resposta correta, mas também criam outras dificuldades.</p>
 </div>
 <div class="sect3">
-<h4 id="_deadlock">14.5.1. Deadlock</h4>
+<h4 id="_impasse">14.5.1. Impasse</h4>
 <div class="paragraph">
-<p><em>Deadlock</em> is the situation when two or more threads are both waiting
-for the others to complete, forever. Some combination of locks or other
-synchronization tools has forced a blocking dependence onto a group of
-threads which will <strong>never</strong> be resolved.</p>
+<p>Impasse (ou <em>Deadlock</em>) é a situação em que duas ou mais threads estão esperando
+para que os outros sejam concluídos, para sempre. Alguma combinação de bloqueios ou outras
+ferramentas de sincronização forçou uma dependência de bloqueio em um grupo de
+thread que <strong>nunca</strong> será resolvida.</p>
 </div>
 <div class="paragraph">
-<p>In the past, people have described four conditions which must exist for
-deadlock to happen.</p>
+<p>No passado, as pessoas descreveram quatro condições que devem existir para que o
+impasse aconteça.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Mutual Exclusion: Only one thread can access the resource (often a
-lock) at a time.</p>
+<p>Exclusão mútua: Apenas uma thread pode acessar o recurso (geralmente um
+bloqueio) por vez.</p>
 </li>
 <li>
-<p>Hold and Wait: A thread holding a resource can ask for additional
-resources.</p>
+<p>Manter e esperar: uma thread que mantém um recurso pode solicitar recursos adicionais.</p>
 </li>
 <li>
-<p>No Preemption: A thread holding a resource cannot be forced to
-release it by another thread.</p>
+<p>Sem preempção: Uma thread que mantém um recurso não pode ser forçada a
+liberá-lo por outra thread.</p>
 </li>
 <li>
-<p>Circular Wait: Two or more threads hold resources which make up a
-circular chain of dependency.</p>
+<p>Espera circular: duas ou mais threads mantêm recursos que formam uma
+cadeia circular de dependência.</p>
 </li>
 </ol>
 </div>
 <div id="deadlockPhilosophersExample" class="exampleblock">
-<div class="title">Exemplo 14.3 Deadlock philosophers</div>
+<div class="title">Exemplo 14.3 Impasse dos filósofos</div>
 <div class="content">
 <div class="paragraph">
-<p>We illustrate deadlock with an example of how <strong>not</strong> to solve the dining
-philosophers problem. What if all the philosophers decided to pick up
-the chopstick on her left and then the chopstick on her right? If the
-timing was just right, each philosopher would be holding one chopstick
-in her left hand and be waiting forever for her neighbor on the right to
-give up a chopstick. No philosopher would ever be able to eat. Here&#8217;s
-that scenario illustrated in code.</p>
+<p>Ilustramos o impasse com um exemplo de como <strong>não</strong> resolver o problema dos
+filósofos. E se todos os filósofos decidissem pegar
+o pauzinho à sua esquerda e depois o pauzinho à sua direita? Se o
+momento fosse o ideal, cada filósofo estaria segurando um pauzinho
+em sua mão esquerda e ficaria esperando eternamente que seu vizinho da direita
+dê um pauzinho. Nenhum filósofo jamais conseguiria comer. Aqui está
+esse cenário ilustrado em código.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30067,16 +30061,16 @@ that scenario illustrated in code.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>We define a constant for the number of seats.</td>
+<td>Definimos uma constante para o número de assentos.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>We create a shared <code>boolean</code> array called <code>chopsticks</code> so that all philosophers
-can know which chopsticks are in use.</td>
+<td>Criamos uma matriz <code>booleana</code> compartilhada chamada <code>chopsticks</code> para que todos os filósofos
+possam saber quais pauzinhos estão sendo usados.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The constructor assigns each philosopher a seat number.</td>
+<td>O construtor atribui a cada filósofo um número de assento.</td>
 </tr>
 </table>
 </div>
@@ -30103,18 +30097,18 @@ can know which chopsticks are in use.</td>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In <code>main()</code>, we create and start a thread for each
-philosopher.</td>
+<td>Em <code>main()</code>, criamos e iniciamos uma thread para cada
+filósofo.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Then, we wait for them to finish which, sadly, will never happen.</td>
+<td>Em seguida, esperamos que eles terminem, o que, infelizmente, nunca acontecerá.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>After setting up the class and the <code>main()</code> method, things get interesting
-in the <code>run()</code> method.</p>
+<p>Depois de configurar a classe e o método <code>main()</code>, as coisas ficam interessantes
+no método <code>run()</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30135,29 +30129,29 @@ in the <code>run()</code> method.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>First a philosopher tries to get her left chopstick.</td>
+<td>Primeiro, uma filósofa tenta pegar seu pauzinho esquerdo.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Then she sleeps for 50 milliseconds.</td>
+<td>Em seguida, ela dorme por 50 milissegundos.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Finally, she tries to get her right chopstick. We mod by <code>SEATS</code> so that the
-last philosopher will try to get the chopstick at the beginning of the array.</td>
+<td>Finalmente, ela tenta pegar seu pauzinho direito. Nós modificamos por <code>SEATS</code> para que o
+último filósofo tente pegar o pauzinho no início da matriz.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Without sleeping, this code would usually run just fine.
-Every once in a while, the philosophers would become deadlocked, but it
-would be hard to predict when. By introducing the sleep, we can all but
-guarantee that the philosophers will deadlock every time.</p>
+<p>Sem o <code>sleep</code>, esse código normalmente funcionaria muito bem.
+De vez em quando, os filósofos ficariam em um impasse,
+mas seria difícil prever quando. Ao introduzir o sleep, podemos praticamente
+garantir que os filósofos sempre entrarão em um impasse.</p>
 </div>
 <div class="paragraph">
-<p>The remaining two methods are worth examining to see how the
-synchronization is done, but by getting the two chopsticks separately
-above, we&#8217;ve already gotten ourselves into trouble.</p>
+<p>Vale a pena examinar os dois métodos restantes para ver como a
+sincronização é feita, mas ao obter os dois pauzinhos separadamente
+acima, já nos metemos em problemas.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30190,20 +30184,20 @@ above, we&#8217;ve already gotten ourselves into trouble.</p>
 </div>
 </div>
 <div id="deadlockSumExample" class="exampleblock">
-<div class="title">Exemplo 14.4 Deadlock sum</div>
+<div class="title">Exemplo 14.4 Soma de impasses</div>
 <div class="content">
 <div class="paragraph">
-<p>Here&#8217;s another example of deadlock. We emphasize deadlock because it&#8217;s
-one of the most common and problematic issues with using synchronization
-carelessly.</p>
+<p>Aqui está outro exemplo de impasse. Damos ênfase ao impasse porque ele é
+um dos problemas mais comuns e problemáticos do uso da sincronização
+de forma descuidada.</p>
 </div>
 <div class="paragraph">
-<p>Consider two threads which both need access to two separate resources.
-In our example, the two resources are random number generators. The goal
-of each of these threads is to acquire locks for the two shared random
-number generators, generate two random numbers each, and sum the numbers
-generated. (Note that locks are totally unnecessary for this problem
-since access to <code>Random</code> objects is synchronized.)</p>
+<p>Considere duas threads que precisam acessar dois recursos separados.
+Em nosso exemplo, os dois recursos são geradores de números aleatórios.
+O objetivo de cada uma dessas threads é adquirir bloqueios para os dois
+geradores de números aleatórios compartilhados, gerar dois números aleatórios cada e somar os números
+gerados. (Observe que os bloqueios são totalmente desnecessários para esse problema
+já que o acesso aos objetos <code>Random</code> é sincronizado).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30217,9 +30211,9 @@ since access to <code>Random</code> objects is synchronized.)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The class begins by creating shared <code>static</code> <code>Random</code> objects
-<code>random1</code> and <code>random2</code>. Then, in the <code>main()</code> method, the main thread
-spawns two new threads, passing <code>true</code> to one and <code>false</code> to the other.</p>
+<p>A classe começa criando objetos <code>static</code> <code>Random</code> compartilhados
+<code>random1</code> e <code>random2</code> compartilhados. Em seguida, no método <code>main()</code>, a thread principal
+gera duas novas threads, passando <code>true</code> para uma e <code>false</code> para a outra.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30239,8 +30233,8 @@ spawns two new threads, passing <code>true</code> to one and <code>false</code> 
 </div>
 </div>
 <div class="paragraph">
-<p>Next, the mischief begins to unfold. One of the two threads stores
-<code>true</code> in its <code>reverse</code> field.</p>
+<p>Em seguida, a bagunça começa a se revelar. Uma das duas threads armazena
+<code>true</code> em seu campo <code>reverse</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30250,11 +30244,11 @@ spawns two new threads, passing <code>true</code> to one and <code>false</code> 
 </div>
 </div>
 <div class="paragraph">
-<p>Finally, we have the <code>run()</code> method where all the action happens. If the
-two running threads were both to acquire locks for <code>random1</code> and <code>random2</code> in
-the same order, everything would work out fine. However, the reversed
-thread locks on <code>random2</code> and then <code>random1</code>, with a <code>sleep()</code> in
-between. The non-reversed thread tries to lock on <code>random1</code> and then
+<p>Por fim, temos o método <code>run()</code>, onde toda a ação acontece. Se as
+duas threads em execução adquirissem bloqueios para <code>random1</code> e <code>random2</code>
+na mesma ordem, tudo funcionaria bem. Entretanto, a
+thread invertida bloqueia o <code>random2</code> e depois o <code>random1</code>, com um <code>sleep()</code> no meio.
+entre eles. A thread não invertida tenta bloquear em <code>random1</code> e depois em
 <code>random2</code>.</p>
 </div>
 <div class="listingblock">
@@ -30291,107 +30285,107 @@ between. The non-reversed thread tries to lock on <code>random1</code> and then
 </div>
 </div>
 <div class="paragraph">
-<p>If you run this code, it should invariably deadlock with <code>thread1</code>
-locked on <code>random2</code> and <code>thread2</code> locked on <code>random1</code>. No sane
-programmer would intentionally code the threads like this. In fact, the
-extra work we did to acquire the locks in opposite orders is exactly
-what causes the deadlock. For more complicated programs, there may be
-many different kinds of threads and many different resources. If two
-different threads (perhaps written by different programmers) need
-both resource A and resource B at the same time but try to acquire them
-in reverse order, this kind of deadlock can occur without such an
-obvious cause.</p>
+<p>Se você executar esse código, ele deverá invariavelmente causar um impasse com <code>thread1</code>
+travado em <code>random2</code> e <code>thread2</code> travado em <code>random1</code>. Nenhum programador em sã
+consciência codificaria intencionalmente as threads dessa forma. De fato, o
+trabalho extra que fizemos para adquirir os bloqueios em ordens opostas
+é exatamente o que causa do impasse. Em programas mais complicados, pode haver
+muitos tipos diferentes de threads e muitos recursos diferentes. Se duas
+threads diferentes (talvez escritas por programadores diferentes) precisarem
+recursos A e B ao mesmo tempo, mas tentarem adquiri-los
+na ordem inversa, esse tipo de impasse pode ocorrer sem uma causa óbvia.
+causa óbvia.</p>
 </div>
 <div class="paragraph">
-<p>For deadlock of this type, the circular wait condition can be broken by
-ordering the resources and always locking the resources in ascending
-order. Of course, this solution only works if there is some universal
-way of ordering the resources and the ordering is always followed by all
-threads in the program.</p>
+<p>Para esse tipo de impasse, a condição de espera circular pode ser quebrada
+ordenando os recursos e sempre bloqueando os recursos em
+ordem crescente. Obviamente, essa solução só funciona se houver alguma maneira
+universal de ordenar os recursos e se a ordenação for sempre seguida por todas as
+threads do programa.</p>
 </div>
 <div class="paragraph">
-<p>Ignoring the deadlock problems with the example above, it gives a nice
-example of the way Java intended synchronization to be done: when
-possible, use the resource you need as its own lock. Many other
-languages require programmers to create additional locks or semaphores
-to protect a given resource, but this approach causes problems if the
-same lock is not consistently used. Using the resource itself as a lock
-is an elegant solution.</p>
+<p>Ignorando os problemas de impasse do exemplo acima, ele oferece um bom
+exemplo da maneira como o Java pretendia que a sincronização fosse feita: quando
+possível, use o recurso de que você precisa como seu próprio bloqueio. Muitas outras
+linguagens exigem que os programadores criem bloqueios ou semáforos adicionais
+para proteger um determinado recurso, mas essa abordagem causa problemas se o
+mesmo bloqueio não for usado de forma consistente. Usar o próprio recurso como um bloqueio
+é uma solução elegante.</p>
 </div>
 </div>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#deadlockExercise">[deadlockExercise]</a></p>
+<p><a href="#deadlockExercise">Exercício 14.8</a></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_starvation_and_livelock">14.5.2. Starvation and livelock</h4>
+<h4 id="_inanição_e_livelock">14.5.2. Inanição e livelock</h4>
 <div class="paragraph">
-<p><em>Starvation</em> is another problem which can occur with careless use of
-synchronization tools. Starvation is a general term which covers any
-situation in which some thread never gets access to the resources it
-needs. Deadlock can be viewed as a special case of starvation since none
-of the threads which are deadlocking makes progress.</p>
+<p>Inanição (ou <em>Starvation</em>) é outro problema que pode ocorrer com o uso descuidado de
+ferramentas de sincronização. A inanição é um termo geral que abrange qualquer
+situação em que alguma thread nunca obtém acesso aos recursos de que
+precisa. O impasse pode ser visto como um caso especial de inanição,
+uma vez que nenhuma das threads que estão em impasse faz progresso.</p>
 </div>
 <div class="paragraph">
-<p>The dining philosophers problem was framed around the idea of eating
-with humorous intent. If a philosopher is never able to acquire
-chopsticks, that philosopher will quite literally starve.</p>
+<p>O problema do jantar dos filósofos foi criado em torno da ideia de comer
+com intenção humorística. Se um filósofo nunca conseguir adquirir
+pauzinhos, esse filósofo literalmente morrerá de fome.</p>
 </div>
 <div class="paragraph">
-<p>Starvation doesn&#8217;t necessarily mean deadlock, however. Examine the
-implementation in <a href="#bankAccountExample">Exemplo 14.2</a> for the bank account.
-That solution is correct in the sense that it preserves mutual
-exclusion. No combination of balance checks, deposits, or withdrawals
-will cause the balance to be incorrect. Money will neither be created
-nor destroyed. A closer inspection reveals that the solution is not
-entirely fair. If a single thread is checking the balance, no other
-thread can make a deposit or a withdrawal. Balance checking threads
-could be coming and going constantly, incrementing and decrementing the
-<code>readers</code> variable, but if <code>readers</code> never goes down to zero, threads
-waiting to make deposits and withdrawals will wait forever.</p>
+<p>No entanto, a fome não significa necessariamente um impasse. Examine a
+implementação em <a href="#bankAccountExample">Exemplo 14.2</a> para a conta bancária.
+Essa solução está correta no sentido de que preserva a
+exclusão mútua. Nenhuma combinação de verificações de saldo, depósitos ou retiradas
+fará com que o saldo esteja incorreto. O dinheiro não será criado
+nem destruído. Uma inspeção mais detalhada revela que a solução não é
+totalmente justa. Se uma única thread estiver verificando o saldo, nenhuma outra
+thread poderá fazer um depósito ou uma retirada. As threads de verificação de saldo
+poderiam estar entrando e saindo constantemente, incrementando e decrementando a
+variável <code>readers</code>, mas se <code>readers</code> nunca chegar a zero, as threads
+esperando para fazer depósitos e retiradas ficarão esperando para sempre.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#concurrentReadExercise">[concurrentReadExercise]</a></p>
+<p><a href="#concurrentReadExercise">Exercício 14.11</a></p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Another kind of starvation is <em>livelock</em>. In deadlock, two or more
-threads get stuck and wait forever, doing nothing. Livelock is similar
-except that the two threads keep executing code and waiting for some
-condition that never arrives. A classic example of livelock is two
-polite (but oddly predictable) people speaking with each other:
-Both happen to start talking at exactly the same moment and then stop to
-hear what the other has to say. After exactly one second, they both
-begin again and immediately stop. Lather, rinse, repeat.</p>
+<p>Outro tipo de inanição é o <em>livelock</em>. No <em>deadlock</em>, dois ou mais
+threads ficam presas e esperam para sempre, sem fazer nada. O <em>livelock</em> é semelhante
+exceto pelo fato de que as duas threads continuam executando o código e esperando por alguma
+condição que nunca chega. Um exemplo clássico de <em>livelock</em> são duas
+pessoas educadas (mas estranhamente previsíveis) falando uma com a outra:
+Ambas começam a falar exatamente no mesmo momento e depois param para ouvir o que a outra tem a dizer.
+Depois de exatamente um segundo, as duas
+começam novamente e param imediatamente. Ensaboar, enxaguar, repetir.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Exemplo 14.5 Livelock party preparations</div>
+<div class="title">Exemplo 14.5 Preparativos para a festa do <em>livelock</em></div>
 <div class="content">
 <div class="paragraph">
-<p>Imagine three friends going to a party. Each of them starts
-getting ready at different times. They follow the pattern of getting
-ready for a while, waiting for their friends to get ready, and then
-calling their friends to see if the other two are ready. If all three
-are ready, then the friends will leave. Unfortunately, if a friend calls
-and either of the other two aren&#8217;t ready, he&#8217;ll become frustrated and
-stop being ready. Perhaps he&#8217;ll realize that he&#8217;s got time to take a
-shower or get involved in some other activity for a while. After
-finishing that activity, he&#8217;ll become ready again and wait for his
-friends to become ready.</p>
+<p>Imagine três amigos indo a uma festa. Cada um deles começa a
+a se arrumar em momentos diferentes. Eles seguem o padrão
+de se arrumar por um tempo, esperar que seus amigos se arrumem e
+ligam para seus amigos para ver se os outros dois estão prontos. Se todos os três
+estiverem prontos, os amigos irão embora. Infelizmente, se um amigo ligar
+e um dos outros dois não estiver pronto, ele ficará frustrado e
+e deixará de se arrumar. Talvez ele se dê conta de que tem tempo para
+tomar banho ou se envolver em alguma outra atividade por um tempo.
+Depois de terminar essa atividade, ele ficará pronto novamente e esperará que seus
+amigos estejam prontos.</p>
 </div>
 <div class="paragraph">
-<p>If the timing is just right, the three friends will keep becoming ready,
-waiting for a while, and then becoming frustrated when they realize that
-their friends aren&#8217;t ready. Here&#8217;s a rough simulation of this process
-in code.</p>
+<p>Se o momento for adequado, os três amigos continuarão se preparando,
+esperando por um tempo e, em seguida, ficarão frustrados quando perceberem que
+seus amigos não estão prontos. Aqui está uma simulação aproximada desse processo
+em código.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30409,18 +30403,18 @@ in code.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>First, we create a shared variable called <code>totalReady</code> which
-tracks the total number of friends ready.</td>
+<td>Primeiro, criamos uma variável compartilhada chamada <code>totalReady</code> que
+rastreia o número total de amigos prontos.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>To avoid race conditions, a shared <code>Object</code> called <code>lock</code> will be used to control
-access to <code>totalReady</code>.</td>
+<td>Para evitar condições de corrida, um <code>Object</code> compartilhado chamado <code>lock</code> será usado para controlar o
+acesso ao <code>totalReady</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Then, the <code>main()</code> method creates <code>Livelock</code>
-objects representing each of the friends.</td>
+<td>Em seguida, o método <code>main()</code> cria objetos <code>Livelock</code>
+representando cada um dos amigos.</td>
 </tr>
 </table>
 </div>
@@ -30445,10 +30439,10 @@ objects representing each of the friends.</td>
 </div>
 </div>
 <div class="paragraph">
-<p>The rest of the <code>main()</code> method starts each of the threads representing
-the friends running, with a 100 millisecond delay before the next thread
-starts . Then, it waits for them all to finish. If
-successful, it&#8217;ll print <code>All ready!</code> to the screen.</p>
+<p>O restante do método <code>main()</code> inicia cada uma das threads que representam
+os amigos em execução, com um atraso de 100 milissegundos antes de a próxima thread
+iniciar. Em seguida, ele espera que todos eles terminem. Se
+for bem-sucedido, ele imprimirá <code>Tudo pronto!</code> na tela.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30481,73 +30475,73 @@ successful, it&#8217;ll print <code>All ready!</code> to the screen.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In the <code>run()</code> method, each friend goes through a loop until the <code>done</code>
-variable is <code>true</code>.</td>
+<td>No método <code>run()</code>, cada amigo passa por um loop até que a variável <code>done</code>
+seja <code>verdadeiro</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>In this loop, an initial call to <code>Thread.sleep()</code>
-for 75 milliseconds represents preparing for the party.</td>
+<td>Nesse loop, uma chamada inicial para <code>Thread.sleep()</code>
+por 75 milissegundos representa a preparação para a festa.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>After that,
-<code>totalReady</code> is incremented by one.</td>
+<td>Depois disso,
+<code>totalReady</code> é incrementado em um.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Then, the friend waits for another
-75 milliseconds.</td>
+<td>Em seguida, o amigo espera por mais
+75 milissegundos.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Finally, he checks to see if everyone else is ready by
-testing whether <code>totalReady</code> is <code>3</code>.</td>
+<td>Finalmente, ele verifica se todos os outros estão prontos
+testando se o <code>totalReady</code> é <code>3</code>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>If not, he decrements <code>totalReady</code> and repeats the process.</td>
+<td>Caso contrário, ele diminui o <code>totalReady</code> e repete o processo.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>At roughly 75 milliseconds into the simulation, the first friend becomes
-ready, but he doesn&#8217;t check with his friends until 150 milliseconds.
-Unfortunately, the second friend doesn&#8217;t become ready until 175
-milliseconds. He then checks with his friends at 225 milliseconds,
-around which time the first friend is becoming ready a second time.
-However, the third friend isn&#8217;t ready until 275 milliseconds. When he
-then checks at 350 milliseconds, the first friend isn&#8217;t ready anymore.
-On some systems the timing might drift such that the friends all become
-ready at the same time, but it could take a long, long while.</p>
+<p>Aproximadamente 75 milissegundos após o início da simulação, o primeiro amigo fica
+pronto, mas não verifica com seus amigos até 150 milissegundos.
+Infelizmente, o segundo amigo não fica pronto até 175
+milissegundos. Ele então verifica com seus amigos em 225 milissegundos,
+momento em que o primeiro amigo está se preparando pela segunda vez.
+No entanto, o terceiro amigo não está pronto até 275 milissegundos.
+Quando ele faz a verificação em 350 milissegundos, o primeiro amigo não está mais pronto.
+Em alguns sistemas, o tempo pode variar de forma que todos os amigos fiquem
+prontos ao mesmo tempo, mas isso pode levar muito, muito tempo.</p>
 </div>
 <div class="paragraph">
-<p>In reality, human beings would not put off going to a party
-indefinitely. Some people would decide that it was too late to go.
-Others would go alone. Others would go over to their friends' houses and
-demand to know what was taking so long. Computers are not nearly as
-sensible and must obey instructions, even if they cause useless
-repetitive patterns. Realistic examples of livelock are hard to show in
-a short amount of code, but they do crop up in real systems and can be
-very difficult to predict.</p>
+<p>Na realidade, os seres humanos não adiariam a ida a uma festa
+indefinidamente. Algumas pessoas decidiriam que já era tarde demais para ir.
+Outras iriam sozinhas. Outras iriam até a casa de seus
+amigos e exigiriam saber por que estava demorando tanto. Os computadores não são tão
+sensíveis e devem obedecer às instruções, mesmo que elas causem
+padrões repetitivos inúteis. Exemplos realistas de <em>livelock</em> são difíceis de mostrar em
+em um pequeno trecho de código, mas eles aparecem em sistemas reais e podem ser
+muito difíceis de prever.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sequential_execution">14.5.3. Sequential execution</h4>
+<h4 id="_execução_sequencial">14.5.3. Execução sequencial</h4>
 <div class="paragraph">
-<p>When designing a parallel program, you might notice that synchronization
-tools are necessary to get a correct answer. Then, when you run this
-parallel version and compare it to the sequential version, it runs no
-faster or, worse, runs slower than the sequential version. Too much zeal
-with synchronization tools can produce a program which gives the right
-answer but doesn&#8217;t exploit any parallelism.</p>
+<p>Ao projetar um programa paralelo, você pode perceber que as ferramentas de sincronização
+são necessárias para obter uma resposta correta. Então, quando você executa essa
+versão paralela e a compara com a versão sequencial, ela não é executada
+mais rápido ou, pior ainda, é executada mais lento do que a versão sequencial. O excesso de zelo
+com as ferramentas de sincronização pode produzir um programa que dá a
+resposta correta, mas que não explora nenhum paralelismo.</p>
 </div>
 <div class="paragraph">
-<p>For example, we can take the <code>run()</code> method from the parallel
-implementation of matrix multiply given in <a href="#matrixMultiplicationExample">Exemplo 13.11</a>
-and use the <code>synchronized</code> keyword to lock on the matrix itself.</p>
+<p>Por exemplo, podemos usar o método <code>run()</code>
+da implementação paralela da multiplicação de matrizes fornecida em <a href="#matrixMultiplicationExample">Exemplo 13.11</a>
+e usar a palavra-chave <code>synchronized</code> para bloquear a própria matriz.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30562,64 +30556,63 @@ and use the <code>synchronized</code> keyword to lock on the matrix itself.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In this case, only a single thread would have access to the matrix at
-any given time, and all speedup would be lost.</p>
+<p>Nesse caso, apenas uma thread teria acesso à matriz
+a qualquer momento, e todo o aumento de velocidade seria perdido.</p>
 </div>
 <div class="paragraph">
-<p>For the parallel version of matrix multiply we gave earlier, no synchronization is needed. In
-the case of the producer/consumer problem, synchronization is necessary,
-and the only way to manage the buffer properly is to enforce sequential
-execution. Sometimes sequential execution can&#8217;t be avoided, but you
-should always know which pieces of code are truly executing in parallel
-and which aren&#8217;t if you hope to get the maximum amount of speedup. The
-<code>synchronized</code> keyword should be used whenever it&#8217;s needed, but no
-more.</p>
+<p>Para a versão paralela da multiplicação de matrizes que apresentamos
+anteriormente, nenhuma sincronização é necessária.
+No caso do problema do produtor/consumidor, a sincronização é necessária,
+e a única maneira de gerenciar o buffer adequadamente é impor a execução
+sequencial. Às vezes, a execução sequencial não pode ser evitada, mas você
+sempre deve saber quais partes do código estão realmente sendo executadas
+em paralelo e quais não estão, se quiser obter o máximo de aceleração.
+A palavra-chave <code>synchronized</code> deve ser usada sempre que for
+necessária, mas não mais do que isso.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_priority_inversion">14.5.4. Priority inversion</h4>
+<h4 id="_inversão_de_prioridade">14.5.4. Inversão de prioridade</h4>
 <div class="paragraph">
-<p>In <a href="#ch13-concurrency">Capítulo 13</a> we suggest that you rarely use
-thread priorities. Even good reasons to use priorities can be
-thwarted by <em>priority inversion</em>. In priority inversion, a lower
-priority thread holds a lock needed by a higher priority thread,
-potentially for a long time. Because the high priority thread cannot
-continue, the lower priority thread gets more CPU time, as if it were a
-high priority thread.</p>
+<p>No <a href="#ch13-concurrency">Capítulo 13</a>, sugerimos que você raramente use
+prioridades de thread.
+Mesmo os bons motivos para usar prioridades podem ser frustrados pela
+<em>inversão de prioridade</em>. Na inversão de prioridade, uma thread de
+prioridade mais baixa mantém um bloqueio necessário para uma thread
+de prioridade mais alta, potencialmente por um longo tempo. Como a
+thread de alta prioridade não pode continuar, a thread de prioridade
+mais baixa obtém mais tempo de CPU, como se fosse uma thread de alta prioridade.</p>
 </div>
 <div class="paragraph">
-<p>Worse, if there are some medium priority threads in the system, the low
-priority thread could hold the lock needed by the high priority thread for
-even longer because those medium priority threads reduce the amount of
-CPU time the low priority thread has to finish its task.</p>
+<p>Pior ainda, se houver algumas threads de prioridade média no sistema, a
+thread de baixa prioridade poderá manter o bloqueio necessário para a thread de alta prioridade por
+ainda mais tempo, porque essas threads de prioridade média reduzem a quantidade de
+tempo de CPU que a thread de baixa prioridade tem para concluir sua tarefa.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#priorityInversionExercise">[priorityInversionExercise]</a><br>
-<a href="#priorityiInversionExperimentExercise">[priorityiInversionExperimentExercise]</a></p>
+<p><a href="#priorityInversionExercise">Exercício 14.9</a><br>
+<a href="#priorityiInversionExperimentExercise">Exercício 14.15</a></p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_solution_dining_philosophers">14.6. Solution: Dining philosophers</h3>
+<h3 id="_solução_jantar_dos_filósofos">14.6. Solução: Jantar dos filósofos</h3>
 <div class="paragraph">
-<p>Here we give our solution to the dining philosophers problem. Although
-deadlock was the key pitfall we were trying to avoid, many other issues
-can crop up in solutions to this problem. A single philosopher might be
-forced into starvation, or all philosophers might experience livelock
-through some pattern of picking up and putting down chopsticks which
-never quite works out. A very simple solution could allow the
-philosophers to eat, one by one, in order. Then, the philosophers would
-often and unnecessarily be waiting to eat, and the program would
-approach sequential execution.</p>
+<p>Aqui apresentamos nossa solução para o problema do jantar dos filósofos. Embora o
+o impasse fosse a principal armadilha que estávamos tentando evitar, muitas outras questões
+podem surgir em soluções para esse problema. Um único filósofo pode ser forçado a passar fome, ou todos os filósofos podem passar por um <em>livelock</em> por meio de um padrão de pegar e largar os pauzinhos que
+nunca dá certo. Uma solução muito simples poderia permitir que os filósofos comessem, um a um, em ordem. Então, os filósofos
+desnecessariamente e com frequência estariam esperando para comer, e o programa
+se aproximaria da execução sequencial.</p>
 </div>
 <div class="paragraph">
-<p>The key element that makes our solution work is that we force a
-philosopher to pick up two chopsticks atomically. The philosopher will
-either pick up both chopsticks or neither.</p>
+<p>O principal elemento que faz com que nossa solução funcione é o fato de forçarmos um
+filósofo a pegar dois pauzinhos atomicamente. O filósofo irá
+pegará os dois pauzinhos ou não pegará nenhum.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -30636,7 +30629,7 @@ either pick up both chopsticks or neither.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>We begin with a similar setup as the deadlocking version given in
+<p>Começamos com uma configuração semelhante à versão de impasse apresentada em
 <a href="#deadlockPhilosophersExample">Exemplo 14.3</a>.</p>
 </div>
 <div class="listingblock">
@@ -30662,12 +30655,12 @@ either pick up both chopsticks or neither.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In <code>main()</code>, we create and start a thread for each
-philosopher.</td>
+<td>Em <code>main()</code>, criamos e iniciamos uma thread para cada
+filósofo.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Then, we wait for them to finish.</td>
+<td>Em seguida, esperamos que eles terminem.</td>
 </tr>
 </table>
 </div>
@@ -30696,20 +30689,20 @@ philosopher.</td>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This <code>run()</code> method is different from the deadlocking version but not in
-a way that prevents deadlock.</td>
+<td>Esse método <code>run()</code> é diferente da versão com deadlock, mas não de
+uma maneira que impeça o impasse.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>We added the <code>for</code> loop so that you could
-see the philosophers eat and think many different times without
-problems.</td>
+<td>Adicionamos o loop <code>for</code> para que você pudesse
+ver os filósofos comerem e pensarem muitas vezes diferentes sem
+problemas.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>We also added the <code>think()</code> method to randomize the amount of
-time between eating so that each run of the program is less
-deterministic.</td>
+<td>Também adicionamos o método <code>think()</code> para randomizar a quantidade de
+tempo entre as refeições, para que cada execução do programa seja menos
+determinística.</td>
 </tr>
 </table>
 </div>
@@ -30739,21 +30732,21 @@ deterministic.</td>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The real place where deadlock is prevented is in the <code>getChopsticks()</code>
-method. As in <a href="#deadlockPhilosophersExample">Exemplo 14.3</a>, we mod by <code>SEATS</code> so that the last philosopher
-tries to get the first chopstick in the array.</td>
+<td>O verdadeiro local onde o deadlock é evitado é no método <code>getChopsticks()</code>.
+Como no <a href="#deadlockPhilosophersExample">Exemplo 14.3</a>, modificamos por <code>SEATS</code> para que o último filósofo
+tente obter o primeiro pauzinho da matriz.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The philosopher acquires the <code>chopsticks</code> lock.</td>
+<td>O filósofo pega <code>chopsticks</code> e bloqueia.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Then, she picks up the two chopsticks she needs only if both are available.</td>
+<td>Em seguida, ela pega os dois pauzinhos de que precisa somente se ambos estiverem disponíveis.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Otherwise, she waits.</td>
+<td>Caso contrário, ele espera.</td>
 </tr>
 </table>
 </div>
@@ -30777,110 +30770,110 @@ tries to get the first chopstick in the array.</td>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Finally, in the <code>eat()</code> method, the philosopher eats the rice. We would
-assume that some other computation would be done here in a realistic
-problem <strong>before</strong> entering the <code>synchronized</code> block. The eating itself
-does not require a lock.</td>
+<td>Finalmente, no método <code>eat()</code>, o filósofo come o arroz. Nós
+podemos presumir que algum outro cálculo seria feito aqui em um problema
+realista <strong>antes</strong> de entrar no bloco <code>synchronized</code>. O ato de comer em si
+não requer um bloqueio.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>After eating&#8217;s done, the lock is acquired to
-give back the chopsticks (hopefully after some cleaning).</td>
+<td>Depois que a refeição termina, o bloqueio é adquirido para
+devolver os pauzinhos (esperamos que depois de alguma limpeza).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Then, all waiting philosophers are notified that some chopsticks may have become
-available.</td>
+<td>Em seguida, todos os filósofos em espera são notificados de que alguns pauzinhos podem ter se tornado
+disponíveis.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Our solution prevents deadlock and livelock because <strong>some</strong> philosopher
-will get control of two chopsticks eventually, yet there are still
-issues. Note that each philosopher only eats and thinks 100 times. If,
-instead of philosophers sharing chopsticks, each thread were a server
-sharing network storage units, the program could run for an unspecified
-amount of time: days, weeks, even years. If starvation is happening to a
-particular philosopher in our program, the other philosophers will
-finish after 100 rounds, and the starved philosopher can catch up. If
-there were no limitation on the loop, a starving philosopher might never
-catch up.</p>
+<p>Nossa solução evita o <em>deadlock</em> e o <em>livelock</em> porque <strong>algum</strong> filósofo
+acabará obtendo o controle de dois pauzinhos, mas ainda há
+problemas. Observe que cada filósofo come e pensa apenas 100 vezes. Se,
+em vez de filósofos compartilhando pauzinhos, cada thread fosse um servidor
+compartilhando unidades de armazenamento de rede, o programa poderia ser executado por um
+tempo não especificado: dias, semanas e até anos. Se a fome estiver acontecendo com um
+filósofo específico em nosso programa, os outros filósofos
+terminarão após 100 rodadas, e o filósofo faminto poderá recuperar o atraso. Se
+não houvesse nenhuma limitação no loop, um filósofo faminto poderia nunca
+recuperar o atraso.</p>
 </div>
 <div class="paragraph">
-<p>Even if we increase the number of iterations of the loop quite a lot,
-we probably wouldn&#8217;t see starvation of an individual thread because we&#8217;re
-cheating in another way. Some unlucky sequence of chopstick accesses
-by two neighboring philosophers could starve the philosopher between
-them. By making the <code>think()</code> method wait a random amount of time, such
-a sequence will probably be interrupted. If all philosophers thought for
-exactly the same amount of time each turn, an unlucky pattern could
-repeat. It&#8217;s not unreasonable to believe that the amount
-of thinking a philosopher (or a server) will do at any given time will
-vary, but the behavior depends on the system.</p>
+<p>Mesmo se aumentarmos bastante o número de iterações do loop,
+provavelmente não veríamos a inanição de uma thread individual porque estamos
+trapaceando de outra forma. Uma sequência azarada de acessos ao pauzinho
+por dois filósofos vizinhos poderia fazer com que o filósofo entre
+entre eles fique com fome. Ao fazer com que o método <code>think()</code> espere um período
+de tempo aleatório, essa sequência provavelmente será interrompida.
+Se todos os filósofos pensassem por
+exatamente a mesma quantidade de tempo em cada turno, um padrão de azar poderia se
+repetir. Não é irracional acreditar que a quantidade
+de pensamento que um filósofo (ou um servidor) fará em um determinado momento
+varia, mas o comportamento depende do sistema.</p>
 </div>
 <div class="paragraph">
-<p>It&#8217;s very difficult to come up with a perfect answer to some
-synchronization problems. Such problems have been studied for many
-years, and research continues to find better solutions.</p>
+<p>É muito difícil encontrar uma resposta perfeita para alguns
+problemas de sincronização. Esses problemas vêm sendo estudados há muitos
+anos, e as pesquisas continuam para encontrar soluções melhores.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="#fairDiningPhilosophersExercise">[fairDiningPhilosophersExercise]</a></p>
+<p><a href="#fairDiningPhilosophersExercise">Exercício 14.12</a></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_13">14.7. Exercises</h3>
+<h3 id="_exercícios_2">14.7. Exercícios</h3>
 <div class="paragraph">
-<p><strong>Conceptual Problems</strong></p>
+<p><strong>Problemas conceituais</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a id="synchronizedKeywordExercise"></a> What&#8217;s the purpose of the
-<code>synchronized</code> keyword? How does it work?</p>
+<p><a id="synchronizedKeywordExercise"></a> Qual é a finalidade da palavra-chave
+<code>synchronized</code>? Como ela funciona?</p>
 </li>
 <li>
-<p><a id="constructorLeakExercise"></a> The language specification for Java
-makes it illegal to use the <code>synchronized</code> keyword on constructors.
-During the creation of an object, it&#8217;s possible to <em>leak</em> data to the
-outside world by adding a reference to the object under construction to
-some shared data structure. What&#8217;s the danger of leaking data in this
-way?</p>
+<p><a id="constructorLeakExercise"></a> A especificação de linguagem para Java
+torna ilegal o uso da palavra-chave <code>synchronized</code> em construtores.
+Durante a criação de um objeto, é possível <em>vazar</em> dados para o
+mundo externo adicionando uma referência ao objeto em construção a
+alguma estrutura de dados compartilhada. Qual é o perigo de vazar dados dessa forma?
+dessa forma?</p>
 </li>
 <li>
-<p><a id="waitNotifyExercise"></a> If you call
-<code>wait()</code> or <code>notify()</code> on an object, it <strong>must</strong> be inside of a block
-synchronized on the same object. If not, the code will compile, but an
-<code>IllegalMonitorStateException</code> may be thrown at run time. Why is it
-necessary to own the lock on an object before calling <code>wait()</code> or
-<code>notify()</code> on it?</p>
+<p><a id="waitNotifyExercise"></a> Se você chamar
+<code>wait()</code> ou <code>notify()</code> em um objeto, isso <strong>deve</strong> estar dentro de um bloco
+sincronizado no mesmo objeto. Caso contrário, o código será compilado, mas uma mensagem
+<code>IllegalMonitorStateException</code> poderá ser lançada em tempo de execução. Por que é
+necessário possuir o bloqueio em um objeto antes de chamar <code>wait()</code> ou
+<code>notify()</code> sobre ele?</p>
 </li>
 <li>
-<p><a id="notifyAllExercise"></a> Why is it safer to call
-<code>notifyAll()</code> than <code>notify()</code>? If it&#8217;s generally safer to call
-<code>notifyAll()</code>, are there any scenarios in which there are good reasons
-to call <code>notify()</code>?</p>
+<p><a id="notifyAllExercise"></a> Por que é mais seguro chamar
+<code>notifyAll()</code> do que <code>notify()</code>? Se geralmente é mais seguro chamar
+<code>notifyAll()</code>, há algum cenário em que há boas razões para chamar <code>notify()</code>?</p>
 </li>
 <li>
-<p><a id="restaurantSynchronizationExercise"></a> Imagine a simulation of a
-restaurant with many waiter and chef objects. The waiters must submit
-orders to the kitchen staff, and the chefs must divide the work among
-themselves. How would you design this system? How would information and
-food be passed from waiter to chef and chef to waiter? How would you
-synchronize the process?</p>
+<p><a id="restaurantSynchronizationExercise"></a> Imagine uma simulação de um
+restaurante com muitos objetos de garçom e chef. Os garçons devem enviar
+pedidos à equipe da cozinha, e os chefs devem dividir o trabalho
+entre si. Como você projetaria esse sistema? Como as informações e os
+alimentos seriam passados do garçom para o chef e do chef para o garçom? Como você
+sincronizaria o processo?</p>
 </li>
 <li>
-<p><a id="raceConditionExercise"></a> What&#8217;s a race condition? Give a real
-life example of one.</p>
+<p><a id="raceConditionExercise"></a> O que é uma condição de corrida? Dê um
+exemplo real de uma.</p>
 </li>
 <li>
-<p><a id="synchronizedThreadIncrementExercise"></a> Let&#8217;s reexamine the code that
-increments a variable with several threads from
-<a href="#Concepts: Thread interaction">[Concepts: Thread interaction]</a>. We can rewrite the <code>run()</code>
-method as follows.</p>
+<p><a id="synchronizedThreadIncrementExercise"></a> Vamos reexaminar o código que
+incrementa uma variável com várias threads de
+<a href="#_conceitos_interação_de_thread">Seção 14.3</a>. Podemos reescrever o método <code>run()</code>
+da seguinte forma.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
@@ -30890,122 +30883,121 @@ method as follows.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Will this change fix the race condition? Why or why not?</p>
+<p>Essa alteração corrigirá a condição de corrida? Por que sim ou por que não?</p>
 </div>
 </li>
 <li>
-<p><a id="deadlockExercise"></a> Examine our deadlock example from
-<a href="#deadlockSumExample">Exemplo 14.4</a>. Explain why this example fulfills all
-four conditions for deadlock. Be specific about which threads and which
-resources are needed to show each condition.</p>
+<p><a id="deadlockExercise"></a> Examine nosso exemplo de impasse
+em <a href="#deadlockSumExample">Exemplo 14.4</a>. Explique por que esse exemplo atende a todas as
+quatro condições de impasse. Seja específico com relação a quais threads e quais
+recursos são necessários para demonstrar cada condição.</p>
 </li>
 <li>
-<p><a id="priorityInversionExercise"></a> What&#8217;s priority inversion? Why can
-a low priority thread holding a lock be particularly problematic?</p>
+<p><a id="priorityInversionExercise"></a> O que é inversão de prioridade? Por que
+uma thread de baixa prioridade com um bloqueio pode ser particularmente problemática?</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Programming Practice</strong></p>
+<p><strong>Práticas de programação</strong></p>
 </div>
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="10">
 <li>
-<p><a id="twoLockProducerConsumerExercise"></a> In
-<a href="#producerConsumerExample">Exemplo 14.1</a> the <code>Buffer</code> class used to
-implement a solution to the producer/consumer problem only has a single
-lock. When the buffer is empty and a producer puts an item in it, both
-producers and consumers are woken up. A similar situation happens
-whenever the buffer is full and a consumer removes an item. Re-implement
-this solution with two locks so that a producer putting an item into an
-empty buffer only wakes up consumers and a consumer removing an item
-from a full buffer only wakes up producers.</p>
+<p><a id="twoLockProducerConsumerExercise"></a> Em
+<a href="#producerConsumerExample">Exemplo 14.1</a> a classe <code>Buffer</code> usada para
+implementar uma solução para o problema do produtor/consumidor tem apenas um
+único bloqueio. Quando o buffer está vazio e um produtor coloca um item nele, ambos
+produtores e consumidores são acordados. Uma situação semelhante acontece
+sempre que o buffer está cheio e um consumidor remove um item. Reimplementar
+essa solução com dois bloqueios, de modo que um produtor que coloca um item em um
+buffer vazio só desperte os consumidores e que um consumidor que remova um item
+de um buffer cheio só desperte os produtores.</p>
 </li>
 <li>
-<p><a id="concurrentReadExercise"></a> In <a href="#bankAccountExample">Exemplo 14.2</a>
-we used the class <code>SynchronizedAccount</code> to solve a bank account problem.
-As we mention in <a href="#_starvation_and_livelock">Seção 14.5.2</a>, depositing
-and withdrawing threads can be starved out by a steady supply of balance
-checking threads. Add additional synchronization tools to
-<code>SynchronizedAccount</code> so that balance checking threads will take turns
-with depositing and withdrawing threads. If there are no depositing or
-withdrawing threads, make your implementation continue to allow an
-unlimited number of balance checking threads to read concurrently.</p>
+<p><a id="concurrentReadExercise"></a> Em <a href="#bankAccountExample">Exemplo 14.2</a>
+usamos a classe <code>SynchronizedAccount</code> para resolver um problema de conta bancária.
+Como mencionamos em <a href="#_inanição_e_livelock">Seção 14.5.2</a>, as threads de depósito
+e retiradas podem ser eliminadas por um suprimento constante de
+threads de verificação de saldo. Adicione ferramentas de sincronização adicionais a
+<code>SynchronizedAccount</code> para que as threads de verificação de saldo se revezem
+com as threads de depósito e retirada. Se não houver threads
+de depósito ou retirada, faça com que sua implementação continue a permitir um
+número ilimitado de threads de verificação de saldo para leitura concorrente.</p>
 </li>
 <li>
-<p><a id="fairDiningPhilosophersExercise"></a> The solution to the dining
-philosophers problem given in <a href="#_solution_dining_philosophers">Seção 14.6</a>
-suffers from the problem that a philosopher could be starved by the two
-philosophers on either side of her, if she happened to get unlucky. Add
-variables to each philosopher which indicate hunger and the last time a
-philosopher has eaten. If a given philosopher is hungry and hasn&#8217;t
-eaten for longer than her neighbor, her neighbor shouldn&#8217;t pick up the
-chopstick they share. Add synchronization tools to enforce this
-principle of fairness. Note that your solution must not cause
-deadlock. Although one philosopher may be waiting on another who is
-waiting on another and so on, <strong>some</strong> philosopher in the circle must have
-gone hungry the longest, breaking circular wait.</p>
+<p><a id="fairDiningPhilosophersExercise"></a> A solução para o problema do jantar dos
+filósofos dada em <a href="#_solução_jantar_dos_filósofos">Seção 14.6</a> sofre com o
+problema de que um filósofo pode ficar faminto pelos dois
+filósofos de cada lado dela, se ela não tiver sorte. Adicione
+variáveis a cada filósofo que indicam fome e a última vez que um
+filósofo comeu. Se um determinado filósofo estiver com fome e não tiver comido
+há mais tempo que seu vizinho, ele não deverá pegar o
+pauzinho que eles compartilham. Adicione ferramentas de sincronização para aplicar esse
+princípio de justiça. Observe que sua solução não deve causar
+impasse. Embora um filósofo possa estar esperando por outro, que está esperando por
+outro e assim por diante, <strong>algum</strong> filósofo no círculo deve ter o mesmo tempo de espera
+ter ficado com fome por mais tempo, quebrando o tempo de espera.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p><strong>Experiments</strong></p>
+<p><strong>Experimentos</strong></p>
 </div>
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="13">
 <li>
-<p><a id="lockTimingExercise"></a> Critical sections can slow down
-your program by preventing parallel computation. However, the locks used
-to enforce critical sections can add extra delays on top of that. Design
-a simple experiment which repeatedly acquires a lock and does some
-simple operation. Test the running time with and without the lock. See
-if you can estimate the time needed to acquire a lock in Java on your
-system.</p>
+<p><a id="lockTimingExercise"></a> As seções críticas podem tornar o programa mais lento
+ao impedir a computação paralela. No entanto, os bloqueios usados para reforçar as seções críticas podem adicionar atrasos extras além disso. Projete
+um experimento simples que adquire repetidamente um bloqueio e faz alguma
+operação simples. Teste o tempo de execução com e sem o bloqueio. Veja
+se você pode estimar o tempo necessário para adquirir um bloqueio em Java em seu
+sistema.</p>
 </li>
 <li>
-<p><a id="threadTimeSliceExercise"></a> Design a program which
-experimentally determines how much time a thread is scheduled to spend
-running on a CPU before switching to the next thread. To do this, first
-create a tight loop which runs a large number of iterations, perhaps
-1,000,000 or more. Determine how much time it takes to run a single run
-of those iterations. Then, write an outer loop which runs the tight loop
-several times. Each iteration of the outer loop, test to see how much
-time has passed. When you encounter a large jump in time, typically at
-least 10 times the amount of time the tight loop usually takes to run to
-completion, record that time. If you run these loops in multiple threads
-and average the unusually long times together for each thread, you
-should be able to find out about how long each thread waits between
-runs. Using this information, you can estimate how much time each thread
-is allotted. Bear in mind that your this average is only an estimation. Some JVMs
-will change the amount of CPU time allotted to threads for various
-reasons. If you&#8217;re on a multicore machine, it will be more difficult to
-interpret your data since some threads will be running concurrently.</p>
+<p><a id="threadTimeSliceExercise"></a> Desenhe um programa que
+determina experimentalmente quanto tempo uma thread está programada para passar
+em execução numa CPU antes de passar para a próxima thread. Para fazer isso, primeiro
+crie um loop fechado que execute um grande número de iterações, talvez
+1.000.000 ou mais. Determine quanto tempo leva para executar uma única execução
+dessas iterações. Em seguida, escreva um laço externo que execute o laço fechado
+várias vezes. A cada iteração do laço externo, teste para ver quanto tempo
+tempo passou. Quando encontrar um grande salto no tempo, tipicamente
+pelo menos 10 vezes a quantidade de tempo que o loop fechado normalmente leva para ser executado até a
+conclusão, registe esse tempo. Se você executar esses loops em várias threads
+e calcular a média dos tempos incomumente longos para cada thread, você
+deve ser capaz de descobrir quanto tempo cada thread espera entre
+execuções. Usando essa informação, você pode estimar quanto tempo cada thread
+está alocada. Tenha em mente que essa média é apenas uma estimativa. Algumas JVMs
+alteram a quantidade de tempo de CPU alocada às threads por várias
+razões. Se você estiver em uma máquina com vários núcleos, será mais difícil
+interpretar seus dados, pois algumas threads estarão sendo executadas concorrentemente.</p>
 </li>
 <li>
-<p><a id="priorityiInversionExperimentExercise"></a> Create an experiment to
-investigate priority inversion in the following way.</p>
+<p><a id="priorityiInversionExperimentExercise"></a> Criar um experimento para
+investigar a inversão de prioridades da seguinte forma.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Create two threads, setting the priority of the first to
-<code>MIN_PRIORITY</code> and the priority of the second to <code>MAX_PRIORITY</code>. Start
-the first thread running but wait 100 milliseconds before starting the
-second thread. The first thread should acquire a shared lock and then
-perform some lengthy process such as finding the sum of the sines of the
-first million integers. After it finishes its computation, it should
-release the lock, and print a message. The second thread should try to
-acquire the lock, print a message, and then release the lock. Time the
-process. Because the lock is held by the lower priority thread, the
-higher priority thread will have to wait until the other thread is done
-for it to finish.</p>
+<p>Crie duas threads, definindo a prioridade da primeira como
+<code>MIN_PRIORITY</code> e a prioridade da segunda para <code>MAX_PRIORITY</code>. Iniciar
+a primeira thread em execução, mas espere 100 milissegundos antes de iniciar a
+segunda thread. A primeira thread deve adquirir um bloqueio compartilhado e então
+executar algum processo demorado, como encontrar a soma dos senos do
+primeiro milhão de inteiros. Depois de terminar o cálculo, ela deve
+liberar o bloqueio e imprimir uma mensagem. A segunda thread deve tentar
+adquirir o bloqueio, imprimir uma mensagem e, em seguida, liberar o bloqueio. Cronometre o
+processo. Como o bloqueio é mantido pela thread de prioridade mais baixa, a thread de
+prioridade mais alta terá que esperar até que a outra thread termine
+para que ela termine.</p>
 </li>
 <li>
-<p>Once you have a feel for the time it takes for these two threads to
-finish alone, create 10 more threads that must also perform a lot of
-computation. However, do not make these threads try to acquire the lock. How
-much do they delay completion of the task? How does this delay relate to
-the number of cores in your processor? How much does the delay change if
-you set the priorities of these new threads to <code>MAX_PRIORITY</code> or
+<p>Quando tiver uma ideia do tempo que leva
+para que essas duas threads terminem sozinhas, crie mais 10 threads que também devem realizar uma série de
+computação. No entanto, não faça com que essas threads tentem adquirir o bloqueio.
+Quanto é que elas atrasam a conclusão da tarefa? Como é que este atraso se relaciona com
+o número de núcleos do seu processador? Quanto o atraso muda se
+você definir as prioridades dessas novas threads como <code>MAX_PRIORITY</code> ou
 <code>MIN_PRIORITY</code>?</p>
 </li>
 </ol>
@@ -33976,7 +33968,7 @@ reference sources.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_14">15.7. Exercises</h3>
+<h3 id="_exercises_13">15.7. Exercises</h3>
 <div class="paragraph">
 <p><strong>Conceptual Problems</strong></p>
 </div>
@@ -35609,7 +35601,7 @@ because they are deadlock prone.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_sequential_execution_2">16.4.3. Sequential execution</h4>
+<h4 id="_sequential_execution">16.4.3. Sequential execution</h4>
 <div class="paragraph">
 <p>One bug that isn&#8217;t even a bug in non-parallel code is
 sequential execution. This situation arises when, usually due to overuse
@@ -36759,7 +36751,7 @@ class.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_15">16.10. Exercises</h3>
+<h3 id="_exercises_14">16.10. Exercises</h3>
 <div class="paragraph">
 <p><strong>Conceptual Problems</strong></p>
 </div>
@@ -38110,7 +38102,7 @@ applications depends on CAS implementations.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_16">17.6. Exercises</h3>
+<h3 id="_exercises_15">17.6. Exercises</h3>
 <div class="paragraph">
 <p><strong>Conceptual Problems</strong></p>
 </div>
@@ -41057,7 +41049,7 @@ tools.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_17">18.9. Exercises</h3>
+<h3 id="_exercises_16">18.9. Exercises</h3>
 <div class="paragraph">
 <p><strong>Conceptual Problems</strong></p>
 </div>
@@ -43233,7 +43225,7 @@ additional <code>Callable</code> objects to it to run more futures.</td>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_18">19.7. Exercises</h3>
+<h3 id="_exercises_17">19.7. Exercises</h3>
 <div class="paragraph">
 <p><strong>Conceptual Problems</strong></p>
 </div>
@@ -45127,7 +45119,7 @@ the file I/O operations discussed in this chapter.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_19">20.7. Exercises</h3>
+<h3 id="_exercises_18">20.7. Exercises</h3>
 <div class="paragraph">
 <p><strong>Conceptual Problems</strong></p>
 </div>
@@ -46418,7 +46410,7 @@ threads to solve the networking problem effectively.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_exercises_20">21.6. Exercises</h3>
+<h3 id="_exercises_19">21.6. Exercises</h3>
 <div class="paragraph">
 <p><strong>Conceptual Problems</strong></p>
 </div>

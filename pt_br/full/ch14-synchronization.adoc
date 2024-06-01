@@ -372,49 +372,47 @@ se você depender apenas de `notify()`.
 ****
 
 [[producerConsumerExample]]
-.Producer/consumer
+.Produtor/consumidor
 ====
 
-To illustrate the use of `wait()` and `notify()` calls inside of
-synchronized code, we give a simple solution to the producer/consumer
-problem below. This problem is a classic example in the concurrent
-programming world. Often one thread (or a group of threads) is
-producing data, perhaps from some input operation. At the same time, one
-thread (or, again, a group of threads) is taking these chunks of
-data and consuming them by performing some computational or output task.
+Para ilustrar o uso das chamadas `wait()` e `notify()` dentro do código 
+sincronizado, apresentamos uma solução simples para o problema do produtor/consumidor
+abaixo. Esse problema é um exemplo clássico no mundo da programação
+concorrente. Muitas vezes, uma thread (ou um grupo de threads) está
+produzindo dados, talvez de alguma operação de entrada. Ao mesmo tempo, uma
+thread (ou, novamente, um grupo de threads) está pegando esses pedaços 
+de dados e consumindo-os ao executar alguma tarefa computacional ou de saída.
 
-Every resource inside of a computer is finite. Producer/consumer
-problems often assume a bounded buffer which stores items from the
-producer until the consumer can take them away. Our solution does all
-synchronization on this buffer. Many different threads can share this
-buffer, but all accesses will be controlled.
+Todo recurso dentro de um computador é finito. Produtor/consumidor
+geralmente assumem um buffer limitado que armazena itens do 
+produtor até que o consumidor possa retirá-los. Nossa solução faz toda a
+sincronização nesse buffer. Muitas threads diferentes podem compartilhar esse
+buffer, mas todos os acessos serão controlados.
 
-.Example of a synchronized buffer.
+.Exemplo de um buffer sincronizado.
 [source, java]
 [[BufferProgram]]
 ----
 include::{programsdir}/Buffer.java[]
 ----
-<.> When adding an item, producers enter the synchronized `addItem()`
-method.
-<.> If `count` shows that the buffer is full, the producer must wait
-until the buffer has at least one open space.
-<.> After adding an item to
-the buffer, the producer then notifies all waiting threads.
-<.> The consumer
-performs mirrored operations in `removeItem()`.
-<.> A consumer thread can't
-consume anything if the buffer is empty and must then wait.
-<.> After there's
-an object to consume, the consumer removes it and notifies all other
+<.> Ao adicionar um item, os produtores entram no método sincronizado `addItem()` sincronizado.
+<.> Se `count` mostrar que o buffer está cheio, o produtor deverá esperar
+até que o buffer tenha pelo menos um espaço livre.
+<.> Após adicionar um item ao
+buffer, o produtor notifica todas as threads em espera.
+<.> O consumidor
+realiza operações espelhadas em `removeItem()`.
+<.> Uma thread do consumidor não pode consumir nada se o buffer estiver vazio e deve, então, aguardar.
+<.> Depois que houver
+um objeto para consumir, o consumidor o remove e notifica todos as outras
 threads.
 
-Both methods are synchronized, making access to the buffer completely
-sequential. Although it seems undesirable, sequential behavior is
-precisely what's needed for the producer/consumer problem. All
-synchronized code is a protection against unsafe concurrency. The goal
-is to minimize the amount of time spent in synchronized code and get
-threads back to parallel execution as quickly as possible.
+Ambos os métodos são sincronizados, tornando o acesso ao buffer 
+completamente sequencial. Embora pareça indesejável, o comportamento sequencial é
+exatamente o que é necessário para o problema do produtor/consumidor. Todo
+código sincronizado é uma proteção contra a concorrência insegura. O objetivo
+é minimizar o tempo gasto no código sincronizado 
+e fazer com que as threads voltem à execução paralela o mais rápido possível.
 ====
 
 ****
@@ -422,34 +420,33 @@ threads back to parallel execution as quickly as possible.
 ****
 
 [[bankAccountExample]]
-.Bank account
+.Conta bancária
 ====
 
-Although producer/consumer is a good model to keep in mind, there are
-other ways that reading and writing threads might interact. Consider the
-following programming problem, similar to one you might find in real
-life.
+Embora o produtor/consumidor seja um bom modelo para se ter em mente, existem 
+outras maneiras pelas quais as threads de leitura e gravação podem interagir. Considere o
+seguinte problema de programação, semelhante a um que você pode encontrar na vida real.
 
-As a rising star in a bank's IT department, you've been given the job
-of creating a new bank account class called `SynchronizedAccount`. This
-class must have methods to support the following operations: deposit,
-withdraw, and check balance. Each method should print a status message
-to the screen on completion. Also, the method for withdraw should return
-`false` and do nothing if there are insufficient funds. Because the
-latest system is multi-threaded, these methods must be designed so that
-the bookkeeping is consistent even if many threads are accessing a
-single account. No money should magically appear or disappear.
+Como uma estrela em ascensão no departamento de TI de um banco, você recebeu a tarefa de
+de criar uma nova classe de conta bancária chamada `SynchronizedAccount`. Essa 
+classe deve ter métodos para suportar as seguintes operações: depósito,
+saque e verificação de saldo. Cada método deve imprimir uma mensagem de status
+na tela ao ser concluído. Além disso, o método para retirada deve retornar
+`false` e não fazer nada se não houver fundos suficientes. Como o 
+sistema mais recente é multi-threaded, esses métodos devem ser projetados de modo que
+a contabilidade seja consistente, mesmo que muitas threads estejam acessando uma
+uma única conta. Nenhum dinheiro deve aparecer ou desaparecer magicamente.
 
-There's an additional challenge. To maximize concurrency,
-`SynchronizedAccount` should be synchronized differently for read and
-write accesses. Any number of threads should be able to
-check the balance on an account simultaneously, but only one thread can
-deposit or withdraw at a time.
+Há um desafio adicional. Para maximizar a concorrência,
+`SynchronizedAccount` deve ser sincronizado de forma diferente para 
+acessos de leitura e gravação. Qualquer número de threads deve ser capaz de
+verificar o saldo de uma conta simultaneamente, mas somente uma thread pode
+depositar ou sacar de cada vez.
 
-To solve this problem, our implementation of the class has a `balance`
-variable to record the balance, but it also has a `readers` variable to
-keep track of the number of threads which are reading from the account
-at any given time.
+Para resolver esse problema, nossa implementação da classe tem uma variável `balance`
+para registrar o saldo, mas também tem uma variável `readers` para
+manter o controle do número de threads que estão lendo da conta
+em um determinado momento.
 
 [source, java]
 ----
@@ -457,126 +454,123 @@ include::{programsdir}/SynchronizedAccount.java[lines=1..3]
 ----
 
 
-Next, the `getBalance()` method is called by threads which wish to read
-the balance. 
+Em seguida, o método `getBalance()` é chamado pelas threads que desejam ler o o saldo. 
 
 [source, java]
 ----
 include::{programsdir}/SynchronizedAccount.java[lines=5..16]
 ----
-<.> Access to the `readers` variable is synchronized.
-<.> After passing that first `synchronized` block, the code which stores the
-balance is no longer synchronized. In this way, multiple readers can access
-the data at the same time. For this example, the concurrency controls we
-have are overkill. The command `amount = balance` does not take a great
-deal of time. If it did, however, it would make sense for readers to
-execute it concurrently as we do.
-<.> After reading the balance, this method
-decrements `readers`.
-<.> If `readers` reaches 0, a call to `notifyAll()` is
-made, signaling that threads trying to deposit to or withdraw from the
-account can continue.
+<.> O acesso à variável `readers` é sincronizado. 
+<.> Depois de passar pelo primeiro bloco `sincronizado`, o código que armazena o
+saldo não é mais sincronizado. Dessa forma, vários leitores podem acessar
+os dados ao mesmo tempo. Para esse exemplo, os controles de concorrência que temos
+são exagerados. O comando `amount = balance` não leva 
+muito tempo. No entanto, se fosse assim, faria sentido para os leitores que 
+o executassem de forma concorrente, como nós fazemos.
+<.> Depois de ler o saldo, esse método
+diminui `leitores`.
+<.> Se `readers` chegar a 0, uma chamada para `notifyAll()` será realizada
+sinalizando que as threads que estão tentando depositar ou retirar dinheiro da
+conta podem continuar.
 
 [source, java]
 ----
 include::{programsdir}/SynchronizedAccount.java[lines=18..32]
 ----
 
-The `deposit()` and `withdraw()` methods are wrappers for the
-`changeBalance()` method, which has all the interesting concurrency
-controls.
+Os métodos `deposit()` e `withdraw()` são invólucros para o 
+método `changeBalance()`, que possui todos os controles de concorrência interessantes.
 
 [source, java]
 ----
 include::{programsdir}/SynchronizedAccount.java[lines=34..43]
 ----
-<.> The `changeBalance()` method is synchronized so that it can have
-exclusive access to the `readers` variable. It's also marked `protected`
-because `SynchronizedAccount` will be used as a parent class in
+<.> O método `changeBalance()` é sincronizado para que possa ter acesso 
+exclusivo à variável `readers`. Ele também está marcado como `protected`
+porque `SynchronizedAccount` será usado como uma super classe em
 <<ch17-polymorphism#ch17-polymorphism>>.
-<.> As long as `readers` is
-greater than 0, this method will wait.
-<.> Eventually, the readers should
-finish their job and notify the waiting writer which can finish changing
-the balance of the account.
+<.> Enquanto `readers` for
+for maior que 0, esse método aguardará.
+<.> Eventualmente, os leitores devem
+terminar seu trabalho e notificar o escritor em espera, que pode terminar de alterar o
+o saldo da conta.
 ====
 
-=== Pitfalls: Synchronization challenges
+=== Armadilhas: Desafios de sincronização
 
-As you can see from the dining philosophers problem, synchronization
-tools help us get the right answer but also create other difficulties.
+Como você pode ver no problema do jantar dos filósofos, as ferramentas de sincronização
+nos ajudam a obter a resposta correta, mas também criam outras dificuldades.
 
-==== Deadlock
+==== Impasse
 
-_Deadlock_ is the situation when two or more threads are both waiting
-for the others to complete, forever. Some combination of locks or other
-synchronization tools has forced a blocking dependence onto a group of
-threads which will *never* be resolved.
+Impasse (ou _Deadlock_) é a situação em que duas ou mais threads estão esperando
+para que os outros sejam concluídos, para sempre. Alguma combinação de bloqueios ou outras
+ferramentas de sincronização forçou uma dependência de bloqueio em um grupo de
+thread que *nunca* será resolvida.
 
-In the past, people have described four conditions which must exist for
-deadlock to happen.
+No passado, as pessoas descreveram quatro condições que devem existir para que o 
+impasse aconteça.
 
-.  Mutual Exclusion: Only one thread can access the resource (often a
-lock) at a time.
-.  Hold and Wait: A thread holding a resource can ask for additional
-resources.
-.  No Preemption: A thread holding a resource cannot be forced to
-release it by another thread.
-.  Circular Wait: Two or more threads hold resources which make up a
-circular chain of dependency.
+.  Exclusão mútua: Apenas uma thread pode acessar o recurso (geralmente um
+bloqueio) por vez.
+.  Manter e esperar: uma thread que mantém um recurso pode solicitar recursos adicionais.
+.  Sem preempção: Uma thread que mantém um recurso não pode ser forçada a 
+liberá-lo por outra thread.
+.  Espera circular: duas ou mais threads mantêm recursos que formam uma
+cadeia circular de dependência.
 
 [[deadlockPhilosophersExample]]
-.Deadlock philosophers
+.Impasse dos filósofos
 ====
 
-We illustrate deadlock with an example of how *not* to solve the dining
-philosophers problem. What if all the philosophers decided to pick up
-the chopstick on her left and then the chopstick on her right? If the
-timing was just right, each philosopher would be holding one chopstick
-in her left hand and be waiting forever for her neighbor on the right to
-give up a chopstick. No philosopher would ever be able to eat. Here's
-that scenario illustrated in code.
+Ilustramos o impasse com um exemplo de como *não* resolver o problema dos 
+filósofos. E se todos os filósofos decidissem pegar
+o pauzinho à sua esquerda e depois o pauzinho à sua direita? Se o
+momento fosse o ideal, cada filósofo estaria segurando um pauzinho
+em sua mão esquerda e ficaria esperando eternamente que seu vizinho da direita
+dê um pauzinho. Nenhum filósofo jamais conseguiria comer. Aqui está
+esse cenário ilustrado em código.
 
 [source, java]
 ----
 include::{programsdir}/DeadlockPhilosopher.java[lines=1..8]
 ----
-<.> We define a constant for the number of seats.
-<.> We create a shared `boolean` array called `chopsticks` so that all philosophers
-can know which chopsticks are in use.
-<.> The constructor assigns each philosopher a seat number.
+<.> Definimos uma constante para o número de assentos. 
+<.> Criamos uma matriz `booleana` compartilhada chamada `chopsticks` para que todos os filósofos
+possam saber quais pauzinhos estão sendo usados.
+<.> O construtor atribui a cada filósofo um número de assento.
 
 
 [source, java]
 ----
 include::{programsdir}/DeadlockPhilosopher.java[lines=10..24]
 ----
-<.> In `main()`, we create and start a thread for each
-philosopher.
-<.> Then, we wait for them to finish which, sadly, will never happen.
+<.> Em `main()`, criamos e iniciamos uma thread para cada 
+filósofo.
+<.> Em seguida, esperamos que eles terminem, o que, infelizmente, nunca acontecerá.
 
 
-After setting up the class and the `main()` method, things get interesting
-in the `run()` method.
+Depois de configurar a classe e o método `main()`, as coisas ficam interessantes
+no método `run()`.
 
 [source, java]
 ----
 include::{programsdir}/DeadlockPhilosopher.java[lines=26..36]
 ----
-<.> First a philosopher tries to get her left chopstick.
-<.> Then she sleeps for 50 milliseconds.
-<.> Finally, she tries to get her right chopstick. We mod by `SEATS` so that the
-last philosopher will try to get the chopstick at the beginning of the array. 
+<.> Primeiro, uma filósofa tenta pegar seu pauzinho esquerdo. 
+<.> Em seguida, ela dorme por 50 milissegundos.
+<.> Finalmente, ela tenta pegar seu pauzinho direito. Nós modificamos por `SEATS` para que o
+último filósofo tente pegar o pauzinho no início da matriz. 
 
-Without sleeping, this code would usually run just fine.
-Every once in a while, the philosophers would become deadlocked, but it
-would be hard to predict when. By introducing the sleep, we can all but
-guarantee that the philosophers will deadlock every time.
+Sem o `sleep`, esse código normalmente funcionaria muito bem.
+De vez em quando, os filósofos ficariam em um impasse, 
+mas seria difícil prever quando. Ao introduzir o sleep, podemos praticamente
+garantir que os filósofos sempre entrarão em um impasse.
 
 
-The remaining two methods are worth examining to see how the
-synchronization is done, but by getting the two chopsticks separately
-above, we've already gotten ourselves into trouble.
+Vale a pena examinar os dois métodos restantes para ver como a
+sincronização é feita, mas ao obter os dois pauzinhos separadamente
+acima, já nos metemos em problemas.
 
 [source, java]
 ----
@@ -586,19 +580,19 @@ include::{programsdir}/DeadlockPhilosopher.java[lines=38..61]
 ====
 
 [[deadlockSumExample]]
-.Deadlock sum
+.Soma de impasses
 ====
 
-Here's another example of deadlock. We emphasize deadlock because it's
-one of the most common and problematic issues with using synchronization
-carelessly.
+Aqui está outro exemplo de impasse. Damos ênfase ao impasse porque ele é
+um dos problemas mais comuns e problemáticos do uso da sincronização
+de forma descuidada.
 
-Consider two threads which both need access to two separate resources.
-In our example, the two resources are random number generators. The goal
-of each of these threads is to acquire locks for the two shared random
-number generators, generate two random numbers each, and sum the numbers
-generated. (Note that locks are totally unnecessary for this problem
-since access to `Random` objects is synchronized.)
+Considere duas threads que precisam acessar dois recursos separados.
+Em nosso exemplo, os dois recursos são geradores de números aleatórios. 
+O objetivo de cada uma dessas threads é adquirir bloqueios para os dois 
+geradores de números aleatórios compartilhados, gerar dois números aleatórios cada e somar os números
+gerados. (Observe que os bloqueios são totalmente desnecessários para esse problema
+já que o acesso aos objetos `Random` é sincronizado).
 
 [source, java]
 ----
@@ -606,9 +600,9 @@ include::{programsdir}/DeadlockSum.java[lines=1..7]
 ----
 
 
-The class begins by creating shared `static` `Random` objects
-`random1` and `random2`. Then, in the `main()` method, the main thread
-spawns two new threads, passing `true` to one and `false` to the other.
+A classe começa criando objetos `static` `Random` compartilhados
+`random1` e `random2` compartilhados. Em seguida, no método `main()`, a thread principal
+gera duas novas threads, passando `true` para uma e `false` para a outra.
 
 [source, java]
 ----
@@ -616,8 +610,8 @@ include::{programsdir}/DeadlockSum.java[lines=9..21]
 ----
 
 
-Next, the mischief begins to unfold. One of the two threads stores
-`true` in its `reverse` field.
+Em seguida, a bagunça começa a se revelar. Uma das duas threads armazena
+`true` em seu campo `reverse`.
 
 [source, java]
 ----
@@ -625,11 +619,11 @@ include::{programsdir}/DeadlockSum.java[lines=23..25]
 ----
 
 
-Finally, we have the `run()` method where all the action happens. If the
-two running threads were both to acquire locks for `random1` and `random2` in
-the same order, everything would work out fine. However, the reversed
-thread locks on `random2` and then `random1`, with a `sleep()` in
-between. The non-reversed thread tries to lock on `random1` and then
+Por fim, temos o método `run()`, onde toda a ação acontece. Se as
+duas threads em execução adquirissem bloqueios para `random1` e `random2` 
+na mesma ordem, tudo funcionaria bem. Entretanto, a 
+thread invertida bloqueia o `random2` e depois o `random1`, com um `sleep()` no meio.
+entre eles. A thread não invertida tenta bloquear em `random1` e depois em
 `random2`.
 
 [source, java]
@@ -637,30 +631,30 @@ between. The non-reversed thread tries to lock on `random1` and then
 include::{programsdir}/DeadlockSum.java[lines=27..55]
 ----
 
-If you run this code, it should invariably deadlock with `thread1`
-locked on `random2` and `thread2` locked on `random1`. No sane
-programmer would intentionally code the threads like this. In fact, the
-extra work we did to acquire the locks in opposite orders is exactly
-what causes the deadlock. For more complicated programs, there may be
-many different kinds of threads and many different resources. If two
-different threads (perhaps written by different programmers) need
-both resource A and resource B at the same time but try to acquire them
-in reverse order, this kind of deadlock can occur without such an
-obvious cause.
+Se você executar esse código, ele deverá invariavelmente causar um impasse com `thread1`
+travado em `random2` e `thread2` travado em `random1`. Nenhum programador em sã 
+consciência codificaria intencionalmente as threads dessa forma. De fato, o 
+trabalho extra que fizemos para adquirir os bloqueios em ordens opostas 
+é exatamente o que causa do impasse. Em programas mais complicados, pode haver
+muitos tipos diferentes de threads e muitos recursos diferentes. Se duas
+threads diferentes (talvez escritas por programadores diferentes) precisarem
+recursos A e B ao mesmo tempo, mas tentarem adquiri-los 
+na ordem inversa, esse tipo de impasse pode ocorrer sem uma causa óbvia.
+causa óbvia.
 
-For deadlock of this type, the circular wait condition can be broken by
-ordering the resources and always locking the resources in ascending
-order. Of course, this solution only works if there is some universal
-way of ordering the resources and the ordering is always followed by all
-threads in the program.
+Para esse tipo de impasse, a condição de espera circular pode ser quebrada
+ordenando os recursos e sempre bloqueando os recursos em 
+ordem crescente. Obviamente, essa solução só funciona se houver alguma maneira 
+universal de ordenar os recursos e se a ordenação for sempre seguida por todas as
+threads do programa.
 
-Ignoring the deadlock problems with the example above, it gives a nice
-example of the way Java intended synchronization to be done: when
-possible, use the resource you need as its own lock. Many other
-languages require programmers to create additional locks or semaphores
-to protect a given resource, but this approach causes problems if the
-same lock is not consistently used. Using the resource itself as a lock
-is an elegant solution.
+Ignorando os problemas de impasse do exemplo acima, ele oferece um bom 
+exemplo da maneira como o Java pretendia que a sincronização fosse feita: quando
+possível, use o recurso de que você precisa como seu próprio bloqueio. Muitas outras
+linguagens exigem que os programadores criem bloqueios ou semáforos adicionais
+para proteger um determinado recurso, mas essa abordagem causa problemas se o 
+mesmo bloqueio não for usado de forma consistente. Usar o próprio recurso como um bloqueio
+é uma solução elegante.
 ====
 
 ****
@@ -668,132 +662,132 @@ is an elegant solution.
 ****
 
 
-==== Starvation and livelock
+==== Inanição e livelock
 
-_Starvation_ is another problem which can occur with careless use of
-synchronization tools. Starvation is a general term which covers any
-situation in which some thread never gets access to the resources it
-needs. Deadlock can be viewed as a special case of starvation since none
-of the threads which are deadlocking makes progress.
+Inanição (ou _Starvation_) é outro problema que pode ocorrer com o uso descuidado de
+ferramentas de sincronização. A inanição é um termo geral que abrange qualquer
+situação em que alguma thread nunca obtém acesso aos recursos de que
+precisa. O impasse pode ser visto como um caso especial de inanição, 
+uma vez que nenhuma das threads que estão em impasse faz progresso.
 
-The dining philosophers problem was framed around the idea of eating
-with humorous intent. If a philosopher is never able to acquire
-chopsticks, that philosopher will quite literally starve.
+O problema do jantar dos filósofos foi criado em torno da ideia de comer
+com intenção humorística. Se um filósofo nunca conseguir adquirir
+pauzinhos, esse filósofo literalmente morrerá de fome.
 
-Starvation doesn't necessarily mean deadlock, however. Examine the
-implementation in <<bankAccountExample>> for the bank account.
-That solution is correct in the sense that it preserves mutual
-exclusion. No combination of balance checks, deposits, or withdrawals
-will cause the balance to be incorrect. Money will neither be created
-nor destroyed. A closer inspection reveals that the solution is not
-entirely fair. If a single thread is checking the balance, no other
-thread can make a deposit or a withdrawal. Balance checking threads
-could be coming and going constantly, incrementing and decrementing the
-`readers` variable, but if `readers` never goes down to zero, threads
-waiting to make deposits and withdrawals will wait forever.
+No entanto, a fome não significa necessariamente um impasse. Examine a 
+implementação em <<bankAccountExample>> para a conta bancária.
+Essa solução está correta no sentido de que preserva a 
+exclusão mútua. Nenhuma combinação de verificações de saldo, depósitos ou retiradas
+fará com que o saldo esteja incorreto. O dinheiro não será criado
+nem destruído. Uma inspeção mais detalhada revela que a solução não é
+totalmente justa. Se uma única thread estiver verificando o saldo, nenhuma outra
+thread poderá fazer um depósito ou uma retirada. As threads de verificação de saldo
+poderiam estar entrando e saindo constantemente, incrementando e decrementando a 
+variável `readers`, mas se `readers` nunca chegar a zero, as threads
+esperando para fazer depósitos e retiradas ficarão esperando para sempre.
 
 ****
 <<concurrentReadExercise>>
 ****
 
-Another kind of starvation is _livelock_. In deadlock, two or more
-threads get stuck and wait forever, doing nothing. Livelock is similar
-except that the two threads keep executing code and waiting for some
-condition that never arrives. A classic example of livelock is two
-polite (but oddly predictable) people speaking with each other:
-Both happen to start talking at exactly the same moment and then stop to
-hear what the other has to say. After exactly one second, they both
-begin again and immediately stop. Lather, rinse, repeat.
+Outro tipo de inanição é o _livelock_. No _deadlock_, dois ou mais
+threads ficam presas e esperam para sempre, sem fazer nada. O _livelock_ é semelhante
+exceto pelo fato de que as duas threads continuam executando o código e esperando por alguma
+condição que nunca chega. Um exemplo clássico de _livelock_ são duas
+pessoas educadas (mas estranhamente previsíveis) falando uma com a outra:
+Ambas começam a falar exatamente no mesmo momento e depois param para ouvir o que a outra tem a dizer.
+Depois de exatamente um segundo, as duas
+começam novamente e param imediatamente. Ensaboar, enxaguar, repetir.
 
-.Livelock party preparations
+.Preparativos para a festa do _livelock_
 ====
 
-Imagine three friends going to a party. Each of them starts
-getting ready at different times. They follow the pattern of getting
-ready for a while, waiting for their friends to get ready, and then
-calling their friends to see if the other two are ready. If all three
-are ready, then the friends will leave. Unfortunately, if a friend calls
-and either of the other two aren't ready, he'll become frustrated and
-stop being ready. Perhaps he'll realize that he's got time to take a
-shower or get involved in some other activity for a while. After
-finishing that activity, he'll become ready again and wait for his
-friends to become ready.
+Imagine três amigos indo a uma festa. Cada um deles começa a
+a se arrumar em momentos diferentes. Eles seguem o padrão 
+de se arrumar por um tempo, esperar que seus amigos se arrumem e
+ligam para seus amigos para ver se os outros dois estão prontos. Se todos os três
+estiverem prontos, os amigos irão embora. Infelizmente, se um amigo ligar
+e um dos outros dois não estiver pronto, ele ficará frustrado e
+e deixará de se arrumar. Talvez ele se dê conta de que tem tempo para 
+tomar banho ou se envolver em alguma outra atividade por um tempo. 
+Depois de terminar essa atividade, ele ficará pronto novamente e esperará que seus
+amigos estejam prontos.
 
-If the timing is just right, the three friends will keep becoming ready,
-waiting for a while, and then becoming frustrated when they realize that
-their friends aren't ready. Here's a rough simulation of this process
-in code.
+Se o momento for adequado, os três amigos continuarão se preparando,
+esperando por um tempo e, em seguida, ficarão frustrados quando perceberem que
+seus amigos não estão prontos. Aqui está uma simulação aproximada desse processo
+em código.
 
 [source, java]
 ----
 include::{programsdir}/Livelock.java[lines=1..8]
 ----
-<.> First, we create a shared variable called `totalReady` which
-tracks the total number of friends ready.
-<.> To avoid race conditions, a shared `Object` called `lock` will be used to control
-access to `totalReady`.
-<.> Then, the `main()` method creates `Livelock`
-objects representing each of the friends.
+<.> Primeiro, criamos uma variável compartilhada chamada `totalReady` que
+rastreia o número total de amigos prontos.
+<.> Para evitar condições de corrida, um `Object` compartilhado chamado `lock` será usado para controlar o
+acesso ao `totalReady`. 
+<.> Em seguida, o método `main()` cria objetos `Livelock`
+representando cada um dos amigos.
 
 [source, java]
 ----
 include::{programsdir}/Livelock.java[lines=10..25]
 ----
 
-The rest of the `main()` method starts each of the threads representing
-the friends running, with a 100 millisecond delay before the next thread
-starts . Then, it waits for them all to finish. If
-successful, it'll print `All ready!` to the screen.
+O restante do método `main()` inicia cada uma das threads que representam
+os amigos em execução, com um atraso de 100 milissegundos antes de a próxima thread
+iniciar. Em seguida, ele espera que todos eles terminem. Se
+for bem-sucedido, ele imprimirá `Tudo pronto!` na tela.
 
 [source, java]
 ----
 include::{programsdir}/Livelock.java[lines=27..49]
 ----
-<.> In the `run()` method, each friend goes through a loop until the `done`
-variable is `true`.
-<.> In this loop, an initial call to `Thread.sleep()`
-for 75 milliseconds represents preparing for the party.
-<.> After that,
-`totalReady` is incremented by one.
-<.> Then, the friend waits for another
-75 milliseconds.
-<.> Finally, he checks to see if everyone else is ready by
-testing whether `totalReady` is `3`.
-<.> If not, he decrements `totalReady` and repeats the process.
+<.> No método `run()`, cada amigo passa por um loop até que a variável `done`
+seja `verdadeiro`.
+<.> Nesse loop, uma chamada inicial para `Thread.sleep()`
+por 75 milissegundos representa a preparação para a festa.
+<.> Depois disso,
+`totalReady` é incrementado em um.
+<.> Em seguida, o amigo espera por mais
+75 milissegundos.
+<.> Finalmente, ele verifica se todos os outros estão prontos
+testando se o `totalReady` é `3`.
+<.> Caso contrário, ele diminui o `totalReady` e repete o processo.
 
-At roughly 75 milliseconds into the simulation, the first friend becomes
-ready, but he doesn't check with his friends until 150 milliseconds.
-Unfortunately, the second friend doesn't become ready until 175
-milliseconds. He then checks with his friends at 225 milliseconds,
-around which time the first friend is becoming ready a second time.
-However, the third friend isn't ready until 275 milliseconds. When he
-then checks at 350 milliseconds, the first friend isn't ready anymore.
-On some systems the timing might drift such that the friends all become
-ready at the same time, but it could take a long, long while.
+Aproximadamente 75 milissegundos após o início da simulação, o primeiro amigo fica
+pronto, mas não verifica com seus amigos até 150 milissegundos.
+Infelizmente, o segundo amigo não fica pronto até 175
+milissegundos. Ele então verifica com seus amigos em 225 milissegundos,
+momento em que o primeiro amigo está se preparando pela segunda vez.
+No entanto, o terceiro amigo não está pronto até 275 milissegundos. 
+Quando ele faz a verificação em 350 milissegundos, o primeiro amigo não está mais pronto.
+Em alguns sistemas, o tempo pode variar de forma que todos os amigos fiquem
+prontos ao mesmo tempo, mas isso pode levar muito, muito tempo.
 
-In reality, human beings would not put off going to a party
-indefinitely. Some people would decide that it was too late to go.
-Others would go alone. Others would go over to their friends' houses and
-demand to know what was taking so long. Computers are not nearly as
-sensible and must obey instructions, even if they cause useless
-repetitive patterns. Realistic examples of livelock are hard to show in
-a short amount of code, but they do crop up in real systems and can be
-very difficult to predict.
+Na realidade, os seres humanos não adiariam a ida a uma festa
+indefinidamente. Algumas pessoas decidiriam que já era tarde demais para ir.
+Outras iriam sozinhas. Outras iriam até a casa de seus 
+amigos e exigiriam saber por que estava demorando tanto. Os computadores não são tão
+sensíveis e devem obedecer às instruções, mesmo que elas causem 
+padrões repetitivos inúteis. Exemplos realistas de _livelock_ são difíceis de mostrar em
+em um pequeno trecho de código, mas eles aparecem em sistemas reais e podem ser
+muito difíceis de prever.
 
 ====
 
-==== Sequential execution
+==== Execução sequencial
 
-When designing a parallel program, you might notice that synchronization
-tools are necessary to get a correct answer. Then, when you run this
-parallel version and compare it to the sequential version, it runs no
-faster or, worse, runs slower than the sequential version. Too much zeal
-with synchronization tools can produce a program which gives the right
-answer but doesn't exploit any parallelism.
+Ao projetar um programa paralelo, você pode perceber que as ferramentas de sincronização
+são necessárias para obter uma resposta correta. Então, quando você executa essa
+versão paralela e a compara com a versão sequencial, ela não é executada
+mais rápido ou, pior ainda, é executada mais lento do que a versão sequencial. O excesso de zelo
+com as ferramentas de sincronização pode produzir um programa que dá a 
+resposta correta, mas que não explora nenhum paralelismo.
 
-For example, we can take the `run()` method from the parallel
-implementation of matrix multiply given in <<matrixMultiplicationExample>>
-and use the `synchronized` keyword to lock on the matrix itself.
+Por exemplo, podemos usar o método `run()` 
+da implementação paralela da multiplicação de matrizes fornecida em <<matrixMultiplicationExample>>
+e usar a palavra-chave `synchronized` para bloquear a própria matriz.
 
 [source,java]
 ----
@@ -807,172 +801,171 @@ public void run() {
 }
 ----
 
-In this case, only a single thread would have access to the matrix at
-any given time, and all speedup would be lost.
+Nesse caso, apenas uma thread teria acesso à matriz 
+a qualquer momento, e todo o aumento de velocidade seria perdido.
 
-For the parallel version of matrix multiply we gave earlier, no synchronization is needed. In
-the case of the producer/consumer problem, synchronization is necessary,
-and the only way to manage the buffer properly is to enforce sequential
-execution. Sometimes sequential execution can't be avoided, but you
-should always know which pieces of code are truly executing in parallel
-and which aren't if you hope to get the maximum amount of speedup. The
-`synchronized` keyword should be used whenever it's needed, but no
-more.
+Para a versão paralela da multiplicação de matrizes que apresentamos 
+anteriormente, nenhuma sincronização é necessária. 
+No caso do problema do produtor/consumidor, a sincronização é necessária,
+e a única maneira de gerenciar o buffer adequadamente é impor a execução 
+sequencial. Às vezes, a execução sequencial não pode ser evitada, mas você
+sempre deve saber quais partes do código estão realmente sendo executadas 
+em paralelo e quais não estão, se quiser obter o máximo de aceleração. 
+A palavra-chave `synchronized` deve ser usada sempre que for 
+necessária, mas não mais do que isso.
 
-==== Priority inversion
+==== Inversão de prioridade
 
-In <<ch13-concurrency#ch13-concurrency>> we suggest that you rarely use
-thread priorities. Even good reasons to use priorities can be
-thwarted by _priority inversion_. In priority inversion, a lower
-priority thread holds a lock needed by a higher priority thread,
-potentially for a long time. Because the high priority thread cannot
-continue, the lower priority thread gets more CPU time, as if it were a
-high priority thread.
+No <<ch13-concurrency#ch13-concurrency>>, sugerimos que você raramente use
+prioridades de thread. 
+Mesmo os bons motivos para usar prioridades podem ser frustrados pela 
+_inversão de prioridade_. Na inversão de prioridade, uma thread de 
+prioridade mais baixa mantém um bloqueio necessário para uma thread 
+de prioridade mais alta, potencialmente por um longo tempo. Como a 
+thread de alta prioridade não pode continuar, a thread de prioridade 
+mais baixa obtém mais tempo de CPU, como se fosse uma thread de alta prioridade.
 
-Worse, if there are some medium priority threads in the system, the low
-priority thread could hold the lock needed by the high priority thread for
-even longer because those medium priority threads reduce the amount of
-CPU time the low priority thread has to finish its task.
+Pior ainda, se houver algumas threads de prioridade média no sistema, a 
+thread de baixa prioridade poderá manter o bloqueio necessário para a thread de alta prioridade por
+ainda mais tempo, porque essas threads de prioridade média reduzem a quantidade de
+tempo de CPU que a thread de baixa prioridade tem para concluir sua tarefa.
 
 ****
 <<priorityInversionExercise>> +
 <<priorityiInversionExperimentExercise>>
 ****
 
-=== Solution: Dining philosophers
+=== Solução: Jantar dos filósofos
 
-Here we give our solution to the dining philosophers problem. Although
-deadlock was the key pitfall we were trying to avoid, many other issues
-can crop up in solutions to this problem. A single philosopher might be
-forced into starvation, or all philosophers might experience livelock
-through some pattern of picking up and putting down chopsticks which
-never quite works out. A very simple solution could allow the
-philosophers to eat, one by one, in order. Then, the philosophers would
-often and unnecessarily be waiting to eat, and the program would
-approach sequential execution.
+Aqui apresentamos nossa solução para o problema do jantar dos filósofos. Embora o
+o impasse fosse a principal armadilha que estávamos tentando evitar, muitas outras questões
+podem surgir em soluções para esse problema. Um único filósofo pode ser forçado a passar fome, ou todos os filósofos podem passar por um _livelock_ por meio de um padrão de pegar e largar os pauzinhos que
+nunca dá certo. Uma solução muito simples poderia permitir que os filósofos comessem, um a um, em ordem. Então, os filósofos
+desnecessariamente e com frequência estariam esperando para comer, e o programa
+se aproximaria da execução sequencial.
 
-The key element that makes our solution work is that we force a
-philosopher to pick up two chopsticks atomically. The philosopher will
-either pick up both chopsticks or neither.
+O principal elemento que faz com que nossa solução funcione é o fato de forçarmos um
+filósofo a pegar dois pauzinhos atomicamente. O filósofo irá
+pegará os dois pauzinhos ou não pegará nenhum.
 
 [source, java]
 ----
 include::{programsdir}/DiningPhilosopher.java[lines=1..10]
 ----
 
-We begin with a similar setup as the deadlocking version given in
+Começamos com uma configuração semelhante à versão de impasse apresentada em
 <<deadlockPhilosophersExample>>.
 
 [source, java]
 ----
 include::{programsdir}/DiningPhilosopher.java[lines=12..26]
 ----
-<.> In `main()`, we create and start a thread for each
-philosopher.
-<.> Then, we wait for them to finish.
+<.> Em `main()`, criamos e iniciamos uma thread para cada
+filósofo.
+<.> Em seguida, esperamos que eles terminem.
 
 
 [source, java]
 ----
 include::{programsdir}/DiningPhilosopher.java[lines=28..44]
 ----
-<.> This `run()` method is different from the deadlocking version but not in
-a way that prevents deadlock.
-<.> We added the `for` loop so that you could
-see the philosophers eat and think many different times without
-problems.
-<.> We also added the `think()` method to randomize the amount of
-time between eating so that each run of the program is less
-deterministic.
+<.> Esse método `run()` é diferente da versão com deadlock, mas não de
+uma maneira que impeça o impasse.
+<.> Adicionamos o loop `for` para que você pudesse
+ver os filósofos comerem e pensarem muitas vezes diferentes sem
+problemas.
+<.> Também adicionamos o método `think()` para randomizar a quantidade de
+tempo entre as refeições, para que cada execução do programa seja menos
+determinística.
 
 
 [source, java]
 ----
 include::{programsdir}/DiningPhilosopher.java[lines=46..63]
 ----
-<.> The real place where deadlock is prevented is in the `getChopsticks()`
-method. As in <<deadlockPhilosophersExample>>, we mod by `SEATS` so that the last philosopher
-tries to get the first chopstick in the array.
-<.> The philosopher acquires the `chopsticks` lock.
-<.> Then, she picks up the two chopsticks she needs only if both are available.
-<.> Otherwise, she waits.
+<.> O verdadeiro local onde o deadlock é evitado é no método `getChopsticks()`. 
+Como no <<deadlockPhilosophersExample>>, modificamos por `SEATS` para que o último filósofo
+tente obter o primeiro pauzinho da matriz.
+<.> O filósofo pega `chopsticks` e bloqueia.
+<.> Em seguida, ela pega os dois pauzinhos de que precisa somente se ambos estiverem disponíveis.
+<.> Caso contrário, ele espera.
 
 [source, java]
 ----
 include::{programsdir}/DiningPhilosopher.java[lines=65..76]
 ----
-<.> Finally, in the `eat()` method, the philosopher eats the rice. We would
-assume that some other computation would be done here in a realistic
-problem *before* entering the `synchronized` block. The eating itself
-does not require a lock.
-<.> After eating's done, the lock is acquired to
-give back the chopsticks (hopefully after some cleaning). 
-<.> Then, all waiting philosophers are notified that some chopsticks may have become
-available.
+<.> Finalmente, no método `eat()`, o filósofo come o arroz. Nós
+podemos presumir que algum outro cálculo seria feito aqui em um problema 
+realista *antes* de entrar no bloco `synchronized`. O ato de comer em si
+não requer um bloqueio.
+<.> Depois que a refeição termina, o bloqueio é adquirido para
+devolver os pauzinhos (esperamos que depois de alguma limpeza). 
+<.> Em seguida, todos os filósofos em espera são notificados de que alguns pauzinhos podem ter se tornado
+disponíveis.
 
-Our solution prevents deadlock and livelock because *some* philosopher
-will get control of two chopsticks eventually, yet there are still
-issues. Note that each philosopher only eats and thinks 100 times. If,
-instead of philosophers sharing chopsticks, each thread were a server
-sharing network storage units, the program could run for an unspecified
-amount of time: days, weeks, even years. If starvation is happening to a
-particular philosopher in our program, the other philosophers will
-finish after 100 rounds, and the starved philosopher can catch up. If
-there were no limitation on the loop, a starving philosopher might never
-catch up.
+Nossa solução evita o _deadlock_ e o _livelock_ porque *algum* filósofo
+acabará obtendo o controle de dois pauzinhos, mas ainda há
+problemas. Observe que cada filósofo come e pensa apenas 100 vezes. Se,
+em vez de filósofos compartilhando pauzinhos, cada thread fosse um servidor
+compartilhando unidades de armazenamento de rede, o programa poderia ser executado por um
+tempo não especificado: dias, semanas e até anos. Se a fome estiver acontecendo com um
+filósofo específico em nosso programa, os outros filósofos
+terminarão após 100 rodadas, e o filósofo faminto poderá recuperar o atraso. Se
+não houvesse nenhuma limitação no loop, um filósofo faminto poderia nunca
+recuperar o atraso.
 
-Even if we increase the number of iterations of the loop quite a lot,
-we probably wouldn't see starvation of an individual thread because we're
-cheating in another way. Some unlucky sequence of chopstick accesses
-by two neighboring philosophers could starve the philosopher between
-them. By making the `think()` method wait a random amount of time, such
-a sequence will probably be interrupted. If all philosophers thought for
-exactly the same amount of time each turn, an unlucky pattern could
-repeat. It's not unreasonable to believe that the amount
-of thinking a philosopher (or a server) will do at any given time will
-vary, but the behavior depends on the system.
+Mesmo se aumentarmos bastante o número de iterações do loop,
+provavelmente não veríamos a inanição de uma thread individual porque estamos
+trapaceando de outra forma. Uma sequência azarada de acessos ao pauzinho
+por dois filósofos vizinhos poderia fazer com que o filósofo entre
+entre eles fique com fome. Ao fazer com que o método `think()` espere um período 
+de tempo aleatório, essa sequência provavelmente será interrompida.
+Se todos os filósofos pensassem por
+exatamente a mesma quantidade de tempo em cada turno, um padrão de azar poderia se 
+repetir. Não é irracional acreditar que a quantidade 
+de pensamento que um filósofo (ou um servidor) fará em um determinado momento
+varia, mas o comportamento depende do sistema.
 
-It's very difficult to come up with a perfect answer to some
-synchronization problems. Such problems have been studied for many
-years, and research continues to find better solutions.
+É muito difícil encontrar uma resposta perfeita para alguns
+problemas de sincronização. Esses problemas vêm sendo estudados há muitos
+anos, e as pesquisas continuam para encontrar soluções melhores.
 
 ****
 <<fairDiningPhilosophersExercise>>
 ****
 
-=== Exercises
-*Conceptual Problems*
+=== Exercícios
+*Problemas conceituais*
 
-.  [[synchronizedKeywordExercise]] What's the purpose of the
-`synchronized` keyword? How does it work?
-.  [[constructorLeakExercise]] The language specification for Java
-makes it illegal to use the `synchronized` keyword on constructors.
-During the creation of an object, it's possible to _leak_ data to the
-outside world by adding a reference to the object under construction to
-some shared data structure. What's the danger of leaking data in this
-way?
-.  [[waitNotifyExercise]] If you call
-`wait()` or `notify()` on an object, it *must* be inside of a block
-synchronized on the same object. If not, the code will compile, but an
-`IllegalMonitorStateException` may be thrown at run time. Why is it
-necessary to own the lock on an object before calling `wait()` or
-`notify()` on it?
-.  [[notifyAllExercise]] Why is it safer to call
-`notifyAll()` than `notify()`? If it's generally safer to call
-`notifyAll()`, are there any scenarios in which there are good reasons
-to call `notify()`?
-.  [[restaurantSynchronizationExercise]] Imagine a simulation of a
-restaurant with many waiter and chef objects. The waiters must submit
-orders to the kitchen staff, and the chefs must divide the work among
-themselves. How would you design this system? How would information and
-food be passed from waiter to chef and chef to waiter? How would you
-synchronize the process?
-.  [[raceConditionExercise]] What's a race condition? Give a real
-life example of one.
-.  [[synchronizedThreadIncrementExercise]] Let's reexamine the code that
-increments a variable with several threads from
-<<Concepts: Thread interaction>>. We can rewrite the `run()`
-method as follows.
+.  [[synchronizedKeywordExercise]] Qual é a finalidade da palavra-chave
+`synchronized`? Como ela funciona?
+.  [[constructorLeakExercise]] A especificação de linguagem para Java
+torna ilegal o uso da palavra-chave `synchronized` em construtores.
+Durante a criação de um objeto, é possível _vazar_ dados para o 
+mundo externo adicionando uma referência ao objeto em construção a
+alguma estrutura de dados compartilhada. Qual é o perigo de vazar dados dessa forma?
+dessa forma?
+.  [[waitNotifyExercise]] Se você chamar
+`wait()` ou `notify()` em um objeto, isso *deve* estar dentro de um bloco
+sincronizado no mesmo objeto. Caso contrário, o código será compilado, mas uma mensagem
+`IllegalMonitorStateException` poderá ser lançada em tempo de execução. Por que é
+necessário possuir o bloqueio em um objeto antes de chamar `wait()` ou
+`notify()` sobre ele?
+.  [[notifyAllExercise]] Por que é mais seguro chamar
+`notifyAll()` do que `notify()`? Se geralmente é mais seguro chamar
+`notifyAll()`, há algum cenário em que há boas razões para chamar `notify()`?
+.  [[restaurantSynchronizationExercise]] Imagine uma simulação de um 
+restaurante com muitos objetos de garçom e chef. Os garçons devem enviar 
+pedidos à equipe da cozinha, e os chefs devem dividir o trabalho 
+entre si. Como você projetaria esse sistema? Como as informações e os
+alimentos seriam passados do garçom para o chef e do chef para o garçom? Como você
+sincronizaria o processo?
+.  [[raceConditionExercise]] O que é uma condição de corrida? Dê um 
+exemplo real de uma.
+.  [[synchronizedThreadIncrementExercise]] Vamos reexaminar o código que
+incrementa uma variável com várias threads de
+<<Conceitos: Interação de thread>>. Podemos reescrever o método `run()`
+da seguinte forma.
 +
 [source,java]
 ----
@@ -982,90 +975,89 @@ public synchronized void run() {
 }
 ----
 +
-Will this change fix the race condition? Why or why not?
-.  [[deadlockExercise]] Examine our deadlock example from
-<<deadlockSumExample>>. Explain why this example fulfills all
-four conditions for deadlock. Be specific about which threads and which
-resources are needed to show each condition.
-.  [[priorityInversionExercise]] What's priority inversion? Why can
-a low priority thread holding a lock be particularly problematic?
+Essa alteração corrigirá a condição de corrida? Por que sim ou por que não?
+.  [[deadlockExercise]] Examine nosso exemplo de impasse 
+em <<deadlockSumExample>>. Explique por que esse exemplo atende a todas as
+quatro condições de impasse. Seja específico com relação a quais threads e quais
+recursos são necessários para demonstrar cada condição.
+.  [[priorityInversionExercise]] O que é inversão de prioridade? Por que
+uma thread de baixa prioridade com um bloqueio pode ser particularmente problemática?
 
-*Programming Practice*
+*Práticas de programação*
 
-. [[twoLockProducerConsumerExercise]] In
-<<producerConsumerExample>> the `Buffer` class used to
-implement a solution to the producer/consumer problem only has a single
-lock. When the buffer is empty and a producer puts an item in it, both
-producers and consumers are woken up. A similar situation happens
-whenever the buffer is full and a consumer removes an item. Re-implement
-this solution with two locks so that a producer putting an item into an
-empty buffer only wakes up consumers and a consumer removing an item
-from a full buffer only wakes up producers.
-. [[concurrentReadExercise]] In <<bankAccountExample>>
-we used the class `SynchronizedAccount` to solve a bank account problem.
-As we mention in <<Starvation and livelock>>, depositing
-and withdrawing threads can be starved out by a steady supply of balance
-checking threads. Add additional synchronization tools to
-`SynchronizedAccount` so that balance checking threads will take turns
-with depositing and withdrawing threads. If there are no depositing or
-withdrawing threads, make your implementation continue to allow an
-unlimited number of balance checking threads to read concurrently.
-. [[fairDiningPhilosophersExercise]] The solution to the dining
-philosophers problem given in <<Solution: Dining philosophers>>
-suffers from the problem that a philosopher could be starved by the two
-philosophers on either side of her, if she happened to get unlucky. Add
-variables to each philosopher which indicate hunger and the last time a
-philosopher has eaten. If a given philosopher is hungry and hasn't
-eaten for longer than her neighbor, her neighbor shouldn't pick up the
-chopstick they share. Add synchronization tools to enforce this
-principle of fairness. Note that your solution must not cause
-deadlock. Although one philosopher may be waiting on another who is
-waiting on another and so on, *some* philosopher in the circle must have
-gone hungry the longest, breaking circular wait.
+. [[twoLockProducerConsumerExercise]] Em
+<<producerConsumerExample>> a classe `Buffer` usada para
+implementar uma solução para o problema do produtor/consumidor tem apenas um 
+único bloqueio. Quando o buffer está vazio e um produtor coloca um item nele, ambos
+produtores e consumidores são acordados. Uma situação semelhante acontece
+sempre que o buffer está cheio e um consumidor remove um item. Reimplementar
+essa solução com dois bloqueios, de modo que um produtor que coloca um item em um
+buffer vazio só desperte os consumidores e que um consumidor que remova um item
+de um buffer cheio só desperte os produtores.
+. [[concurrentReadExercise]] Em <<bankAccountExample>>
+usamos a classe `SynchronizedAccount` para resolver um problema de conta bancária.
+Como mencionamos em <<Inanição e livelock>>, as threads de depósito
+e retiradas podem ser eliminadas por um suprimento constante de 
+threads de verificação de saldo. Adicione ferramentas de sincronização adicionais a
+`SynchronizedAccount` para que as threads de verificação de saldo se revezem
+com as threads de depósito e retirada. Se não houver threads 
+de depósito ou retirada, faça com que sua implementação continue a permitir um
+número ilimitado de threads de verificação de saldo para leitura concorrente.
+. [[fairDiningPhilosophersExercise]] A solução para o problema do jantar dos
+filósofos dada em <<Solução: Jantar dos filósofos>> sofre com o 
+problema de que um filósofo pode ficar faminto pelos dois 
+filósofos de cada lado dela, se ela não tiver sorte. Adicione
+variáveis a cada filósofo que indicam fome e a última vez que um 
+filósofo comeu. Se um determinado filósofo estiver com fome e não tiver comido
+há mais tempo que seu vizinho, ele não deverá pegar o
+pauzinho que eles compartilham. Adicione ferramentas de sincronização para aplicar esse
+princípio de justiça. Observe que sua solução não deve causar
+impasse. Embora um filósofo possa estar esperando por outro, que está esperando por 
+outro e assim por diante, *algum* filósofo no círculo deve ter o mesmo tempo de espera 
+ter ficado com fome por mais tempo, quebrando o tempo de espera.
 
-*Experiments*
+*Experimentos*
 
-. [[lockTimingExercise]] Critical sections can slow down
-your program by preventing parallel computation. However, the locks used
-to enforce critical sections can add extra delays on top of that. Design
-a simple experiment which repeatedly acquires a lock and does some
-simple operation. Test the running time with and without the lock. See
-if you can estimate the time needed to acquire a lock in Java on your
-system.
-. [[threadTimeSliceExercise]] Design a program which
-experimentally determines how much time a thread is scheduled to spend
-running on a CPU before switching to the next thread. To do this, first
-create a tight loop which runs a large number of iterations, perhaps
-1,000,000 or more. Determine how much time it takes to run a single run
-of those iterations. Then, write an outer loop which runs the tight loop
-several times. Each iteration of the outer loop, test to see how much
-time has passed. When you encounter a large jump in time, typically at
-least 10 times the amount of time the tight loop usually takes to run to
-completion, record that time. If you run these loops in multiple threads
-and average the unusually long times together for each thread, you
-should be able to find out about how long each thread waits between
-runs. Using this information, you can estimate how much time each thread
-is allotted. Bear in mind that your this average is only an estimation. Some JVMs
-will change the amount of CPU time allotted to threads for various
-reasons. If you're on a multicore machine, it will be more difficult to
-interpret your data since some threads will be running concurrently.
-. [[priorityiInversionExperimentExercise]] Create an experiment to
-investigate priority inversion in the following way.
-..  Create two threads, setting the priority of the first to
-`MIN_PRIORITY` and the priority of the second to `MAX_PRIORITY`. Start
-the first thread running but wait 100 milliseconds before starting the
-second thread. The first thread should acquire a shared lock and then
-perform some lengthy process such as finding the sum of the sines of the
-first million integers. After it finishes its computation, it should
-release the lock, and print a message. The second thread should try to
-acquire the lock, print a message, and then release the lock. Time the
-process. Because the lock is held by the lower priority thread, the
-higher priority thread will have to wait until the other thread is done
-for it to finish.
-..  Once you have a feel for the time it takes for these two threads to
-finish alone, create 10 more threads that must also perform a lot of
-computation. However, do not make these threads try to acquire the lock. How
-much do they delay completion of the task? How does this delay relate to
-the number of cores in your processor? How much does the delay change if
-you set the priorities of these new threads to `MAX_PRIORITY` or
+. [[lockTimingExercise]] As seções críticas podem tornar o programa mais lento
+ao impedir a computação paralela. No entanto, os bloqueios usados para reforçar as seções críticas podem adicionar atrasos extras além disso. Projete
+um experimento simples que adquire repetidamente um bloqueio e faz alguma
+operação simples. Teste o tempo de execução com e sem o bloqueio. Veja
+se você pode estimar o tempo necessário para adquirir um bloqueio em Java em seu
+sistema.
+. [[threadTimeSliceExercise]] Desenhe um programa que
+determina experimentalmente quanto tempo uma thread está programada para passar
+em execução numa CPU antes de passar para a próxima thread. Para fazer isso, primeiro
+crie um loop fechado que execute um grande número de iterações, talvez
+1.000.000 ou mais. Determine quanto tempo leva para executar uma única execução
+dessas iterações. Em seguida, escreva um laço externo que execute o laço fechado
+várias vezes. A cada iteração do laço externo, teste para ver quanto tempo
+tempo passou. Quando encontrar um grande salto no tempo, tipicamente
+pelo menos 10 vezes a quantidade de tempo que o loop fechado normalmente leva para ser executado até a 
+conclusão, registe esse tempo. Se você executar esses loops em várias threads
+e calcular a média dos tempos incomumente longos para cada thread, você
+deve ser capaz de descobrir quanto tempo cada thread espera entre
+execuções. Usando essa informação, você pode estimar quanto tempo cada thread
+está alocada. Tenha em mente que essa média é apenas uma estimativa. Algumas JVMs
+alteram a quantidade de tempo de CPU alocada às threads por várias
+razões. Se você estiver em uma máquina com vários núcleos, será mais difícil
+interpretar seus dados, pois algumas threads estarão sendo executadas concorrentemente.
+. [[priorityiInversionExperimentExercise]] Criar um experimento para
+investigar a inversão de prioridades da seguinte forma.
+..  Crie duas threads, definindo a prioridade da primeira como
+`MIN_PRIORITY` e a prioridade da segunda para `MAX_PRIORITY`. Iniciar
+a primeira thread em execução, mas espere 100 milissegundos antes de iniciar a
+segunda thread. A primeira thread deve adquirir um bloqueio compartilhado e então
+executar algum processo demorado, como encontrar a soma dos senos do
+primeiro milhão de inteiros. Depois de terminar o cálculo, ela deve
+liberar o bloqueio e imprimir uma mensagem. A segunda thread deve tentar 
+adquirir o bloqueio, imprimir uma mensagem e, em seguida, liberar o bloqueio. Cronometre o 
+processo. Como o bloqueio é mantido pela thread de prioridade mais baixa, a thread de
+prioridade mais alta terá que esperar até que a outra thread termine
+para que ela termine.
+..  Quando tiver uma ideia do tempo que leva 
+para que essas duas threads terminem sozinhas, crie mais 10 threads que também devem realizar uma série de 
+computação. No entanto, não faça com que essas threads tentem adquirir o bloqueio. 
+Quanto é que elas atrasam a conclusão da tarefa? Como é que este atraso se relaciona com
+o número de núcleos do seu processador? Quanto o atraso muda se
+você definir as prioridades dessas novas threads como `MAX_PRIORITY` ou
 `MIN_PRIORITY`?
